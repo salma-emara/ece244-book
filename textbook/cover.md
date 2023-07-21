@@ -1,11 +1,8 @@
-# Welcome to your Jupyter Book
+# Khufu: Object-Oriented Programming using C++
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Welcome to the first edition of *Khufu: Object-Oriented Programming using C++* book. The textbook is a successor of *Snefru: Learning Programming with C*.
 
-Check out the content pages bundled with this sample book to see more.
+This textbook is tailored for students taking ECE 244: Programming Fundamentals at the University of Toronto. It teaches foundations of Object-Oriented Programming (OOP) concepts using C++ programming language. It can serve as a resource for students who had prior programming experience in C, but not in C++.
 
 ```{tableofcontents}
 ```
