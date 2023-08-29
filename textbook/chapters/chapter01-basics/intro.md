@@ -1,4 +1,3 @@
-# Welcome to your Jupyter Book
+# Programming Basics
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This chapter we review what are computers and introduce the C++ programming language.
