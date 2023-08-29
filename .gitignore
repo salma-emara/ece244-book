@@ -1,3 +1,5 @@
 .DS_Store
 textbook/_build
 .vscode/
+textbook/code/*/*/build/
+
