@@ -2,4 +2,8 @@
 textbook/_build
 .vscode/
 textbook/code/*/*/build/
+*.mp4
+*.key
+*.mov
+*.m4v
 
