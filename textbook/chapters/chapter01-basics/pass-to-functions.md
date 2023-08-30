@@ -1,4 +1,18 @@
-# Welcome to your Jupyter Book
+# Functions
 
-This is a small sample book to give you a feel for how book content is
-structured.
+In C++, the functions are declared, implemented and used the same way as in C. 
+
+For example, to ...
+pass-by-value
+
+## Pass by pointers
+
+Example
+
+## Pass by reference
+
+Example
+
+## Differences
+
+1. 
