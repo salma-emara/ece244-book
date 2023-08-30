@@ -17,5 +17,7 @@ The **central processing unit (CPU)** executes instructions of a program. The CP
 
 Some instructions executed require accessing **input and output (I/O) devices.** These devices are used to communicate with the outside world, for example, to take input from a user from a keyboard, or to provide output to a user on a monitor.
 
+Next, let's get started on how to write a program in C++. 
+
 [^1]: Image taken from [Snefru: Learning Programming with C](https://learningc.org/chapters/chapter01-computers/basic-structure).
 
