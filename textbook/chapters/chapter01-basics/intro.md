@@ -1,3 +1,3 @@
 # Programming Basics
 
-This chapter we review what are computers and introduce the C++ programming language.
+In this chapter, we plan to review the basic structure of computers and introduce the C++ programming language.
