@@ -11,7 +11,7 @@ This textbook is tailored for students taking ECE 244: Programming Fundamentals 
 ``` 
 -->
 
-**Copyright 2023–2024 Salma Emara.** Released under the <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+**Copyright 2023 Salma Emara.** Released under the <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
 <img alt="Creative Commons License" style="border-width:0"
