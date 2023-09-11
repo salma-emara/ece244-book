@@ -63,7 +63,7 @@ One of the problems is that this program only works for name and hobby inputs wi
 ### Get an entire line with `getline`
 Turns out we can get a whole line with the `getline` function.
 
-There are multiple ways of calling `getline`. One is to pass `cin` as the first parameter, the receiving data variable as the second parameter, and optionally pass a *delimiter* as a last parameter. The *delimiter* is a character that `cin` will read up to (![c++ docs](https://cplusplus.com/reference/string/string/getline/?kw=getline)). If unspecified, `getline` reads until the `\n` character. `\n` is emitted when the `<Enter>` key is pressed.
+There are multiple ways of calling `getline`. One is to pass `cin` as the first parameter, the receiving data variable as the second parameter, and optionally pass a *delimiter* as a last parameter. The *delimiter* is a character that `cin` will read up to ([c++ docs](https://cplusplus.com/reference/string/string/getline/?kw=getline)). If unspecified, `getline` reads until the `\n` character. `\n` is emitted when the `<Enter>` key is pressed.
 
 ```{code-block} c
 #include <iostream>
@@ -86,7 +86,7 @@ Unfortunately, this program doesn't quite work yet!
 
 ````{admonition} C-style string with getline
 
-  Another way of calling `getline` is to pass a `char*` variable, the max number of characters to read, and the delimiter. `getline` will read until it encounters the delimiter, or if it reaches the max number of characters, whichever comes first (![c++ docs](https://cplusplus.com/reference/istream/istream/getline/)).
+  Another way of calling `getline` is to pass a `char*` variable, the max number of characters to read, and the delimiter. `getline` will read until it encounters the delimiter, or if it reaches the max number of characters, whichever comes first ([c++ docs](https://cplusplus.com/reference/istream/istream/getline/)).
 
   ```{code-block} c
   :emphasize-lines: 8

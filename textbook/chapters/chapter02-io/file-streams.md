@@ -105,4 +105,4 @@ using namespace std;
 As illustrated in the examples above, always close the file with `file.close()`.
 
 
-[^1]: Check out ![ostream::seekp](https://cplusplus.com/reference/ostream/ostream/seekp/) if you're interested.
+[^1]: Check out [ostream::seekp](https://cplusplus.com/reference/ostream/ostream/seekp/) if you're interested.
