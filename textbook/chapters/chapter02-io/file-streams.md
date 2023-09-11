@@ -3,7 +3,7 @@
 Files are read very similarly to standard keyboard input. The main things to remember here are to open and close the file. Include the header `fstream` to use these functions.
 
 ## Opening a file
-To open a file as a stream, use the `file.open` method.
+To open a file as a stream, use the `file.open()` method.
 ```{code-block} c
 fstream file;
 file.open("diary.txt", ios_base::in | ios_base::out | ios_base::trunc);
@@ -69,7 +69,8 @@ string weather; // "Sunny"
 string contents; // "Dear Diary,\nToday we learned about file streams in C++!"
 ```
 
-```{dropdown} Solution
+````{dropdown} Solution
+```{code-block} c
 #include <iostream>
 #include <string>
 using namespace std;
@@ -95,10 +96,13 @@ using namespace std;
     }
     cout << day << " " << month << " " << year << " " << dayOfWeek << " " << weather << " " << contents;
  }
-```
+ ```
+
+ Notice the use of `ifstream`.
+````
 
 ## Closing a file
-Always close the file with `file.close()`.
+As illustrated in the examples above, always close the file with `file.close()`.
 
 
 [^1]: Check out ![ostream::seekp](https://cplusplus.com/reference/ostream/ostream/seekp/) if you're interested.
