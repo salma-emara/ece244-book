@@ -33,11 +33,11 @@ We can chain an arbitrary number of variables. `cin` will read them in order.
 using namespace std;
 
 int main(){
-  string name;
+  string name, hobby;
   int age;
-  cout << "Enter your name and age: " << endl;
-  cin >> name >> age;
-  cout << "Hi, " << age << "-year-old "<< name << endl;
+  cout << "Enter your name, age and hobby: " << endl;
+  cin >> name >> age >> hobby;
+  cout << "Hi, " << age << "-year-old "<< name << " who loves " << hobby << "!" << endl;
 }
 ```
 Play around with the example above to see how you can break it.
@@ -56,13 +56,14 @@ Play around with the example above to see how you can break it.
   ```
 ````
 
-<!-- TODO: number the code blocks -->
 I hope you have had a try at breaking the program above. Every programmer should know how to break programs as well as how to fix them.
 
-One of the problems is that this program only works for a first name, or name without spaces. You should have come to the conclusion: `cin` will only read a string up to a whitespace character. So how can we store a whole line of text in one string?
+One of the problems is that this program only works for name and hobby inputs without spaces. Given the input "Anne 20 rock climbing", the program outputs "Hi, 20-year-old Anne who loves rock!". You should have come to the conclusion: `cin` will only read a string up to a whitespace character. So how can we store a whole line of text in one string?
 
 ### Get an entire line with `getline`
-Turns out we can get a whole line with `getline`.
+Turns out we can get a whole line with the `getline` function.
+
+There are multiple ways of calling `getline`. One is to pass `cin` as the first parameter, the receiving data variable as the second parameter, and optionally pass a *delimiter* as a last parameter. The *delimiter* is a character that `cin` will read up to (![c++ docs](https://cplusplus.com/reference/string/string/getline/?kw=getline)). If unspecified, `getline` reads until the `\n` character. `\n` is emitted when the `<Enter>` key is pressed.
 
 ```{code-block} c
 #include <iostream>
@@ -70,65 +71,69 @@ Turns out we can get a whole line with `getline`.
 using namespace std;
 
 int main(){
-  char name[256];
+  string name, hobby;
   int age;
   cout << "Enter your name: " << endl;
-  cin.getline(name, 256, '\n');
+  getline(cin, name);
   cout << "Enter your age: " << endl;
   cin >> age;
-  cout << "Hi, " << age << "-year-old "<< name << endl;
+  cout << "Enter your hobby: " << endl;
+  getline(cin, hobby);
+  cout << "Hi, " << age << "-year-old "<< name << " who loves " << hobby << "!" << endl;
 }
 ```
-`getline` is a function that takes in 3 parameters, the variable to store data into, the maximum number of characters to read, and a *delimiter* character that `cin` will read up to. `getline` will read until it encounters the delimiter, or if it reaches the max number of characters, whichever comes first. In this case, the delimiter is `\n`, which is the character that is sent to the stream when the `<Enter>` key is pressed.
+Unfortunately, this program doesn't quite work yet!
 
-Hold on, what is the dot syntax in `cin.getline`? It means we are accessing the member function `getline` of an object, `cin`. Don't worry about this yet. We will get to objects and classes in chapter ___.
-<!-- TODO: insert chapter number and link to chapter -->
+````{admonition} C-style string with getline
 
-````{admonition}
-  Warning: `cin` will read only exactly what it needs to fill the variables given. This means that the newline character will be left in the stream after it stores the numbers into age. The following code will not work. When `getline` comes along, it reads the `\n` left in the buffer, and exits immediately.
+  Another way of calling `getline` is to pass a `char*` variable, the max number of characters to read, and the delimiter. `getline` will read until it encounters the delimiter, or if it reaches the max number of characters, whichever comes first (![c++ docs](https://cplusplus.com/reference/istream/istream/getline/)).
 
   ```{code-block} c
-  #include <iostream>
-  #include <string>
-  using namespace std;
-
-  int main(){
-    char name[256], hobby[256];
-    int age;
-    cout << "Enter your name and age: " << endl;
-    cin >> name >> age;
-    cout << "Enter your hobby: " << endl;
-    cin.getline(hobby, 256, '\n');
-    cout << "Hi, " << age << "-year-old "<< name << " who loves " << hobby << "!" << endl;
-  }
-  ```
-
-  One way to circumvent this is to use `cin.ignore(1)` to ignore the newline character.
-
-  ```{code-block} c
-  :emphasize-lines:11
+  :emphasize-lines: 8
   :linenos:
   #include <iostream>
-  #include <string>
   using namespace std;
 
   int main(){
-    char name[256], hobby[256];
+    char name[256];
     int age;
-    cout << "Enter your name and age: " << endl;
-    cin >> name >> age;
-    cout << "Enter your hobby: " << endl;
-    cin.ignore(1);
-    cin.getline(hobby, 256, '\n');
-    cout << "Hi, " << age << "-year-old "<< name << " who loves " << hobby << "!" << endl;
+    cout << "Enter your name: " << endl;
+    cin.getline(name, 256, '\n');
   }
   ```
+  Hold on, what is the dot syntax in `cin.getline`? It means we are accessing the member function `getline` of an object. `cin` is an object of the class `istream`. Don't worry about this yet. We will get to objects and classes in [chapter ?]().
+  <!-- TODO: insert chapter number and link to chapter -->
 ````
 
-## Input validation with `cin` flags
-Another problem you may have realized is how `cin` behaves when we enter a string when it's expecting a number. (Try this out if you haven't).
+The program now takes name inputs with spaces correctly, but doesn't allow the user to enter a hobby. This is because `cin` will read only exactly what it needs to fill the variables given. When a user enters an age such as `23`, `cin` receives the characters `23\n`. While `23` can be stored in the `int` variable, the newline character will still be left in the stream. And when it's time to read into `hobby` with `getline`, it reads the `\n` left in the buffer, and exits immediately.
 
-Take this input for example on the latest version of our program,
+One way to circumvent this is to use `cin.ignore(1)` to tell `cin` to ignore 1 character, that is, the leftover newline character.
+
+```{code-block} c
+:emphasize-lines: 13
+:linenos:
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+  string name, hobby;
+  int age;
+  cout << "Enter your name: " << endl;
+  getline(cin, name);
+  cout << "Enter your age: " << endl;
+  cin >> age;
+  cout << "Enter your hobby: " << endl;
+  cin.ignore(1);
+  getline(cin, hobby);
+  cout << "Hi, " << age << "-year-old "<< name << " who loves " << hobby << "!" << endl;
+}
+```
+
+## Input validation with `cin` flags
+We are almost there! The last problem is how `cin` behaves when we enter a string when it's expecting a number. (Try this out if you haven't).
+
+Take this input for example,
 ```
 Bjorn twenty programming
 ```
@@ -140,14 +145,13 @@ Hi, 0-year-old Bjorn who loves !
 
 What happened here? `cin` fails to fill in our `age` and `hobby` variables, so they retained their default values (ie. 0 for `int` and "" for `string`). 
 
-It turns out that as `cin` is going through the input characters one by one, when it reads an input character that is incompatible with the variable provided, it will simply get stuck on that character and stubbornly refuse to read any more. Importantly, `cin` fails silently without throwing a runtime error. Therefore, the onus is on you, the programmer, to handle `cin` failures.
+As `cin` goes through the input characters one by one, as soon as it reads an input character that is incompatible with the variable type provided, it will raise a failure *flag*, and stubbornly refuse to read any more. Importantly, `cin` fails silently without throwing a runtime error. Therefore, the onus is on you, the programmer, to check the *flags* and handle `cin` failures.
 
-<!-- TODO: insert diagram here -->
+Flags are essentially single-bit booleans that represent system states. One such flag is `fail`, which is raised in case of failures, eg. when `cin` reads an unexpected character.
 
-`cin` communicates these failures by raising *flags*. Flags are essentially single-bit booleans that represent system states. One such flag is `fail`, which is raised in case of failures, eg. when `cin` reads an unexpected character.
-
+**Code**
 ```{code-block} c
-:emphasize-lines:10-12
+:emphasize-lines: 10, 11, 12
 :linenos:
 #include <iostream>
 #include <string>
@@ -170,11 +174,51 @@ int main(){
   cout << "Hi, " << age << "-year-old "<< name << " who loves " << hobby << "!" << endl;
 }
 ```
-This program repeatedly asks for an age input, until the user enters an integer. Notice that we need to manually unset the failure flag, to let `cin` know that the failure has been handled so it can continue reading. Then, since the stream still contains the problematic input, we must discard those garbage characters with `cin.ignore`.
+This program repeatedly asks for an age input until the user enters an integer. Notice that we need to manually unset the failure flag, to let `cin` know that the failure has been handled so it can continue reading. Then, since the unread stream still contains the problematic input, we must discard those garbage characters with `cin.ignore`.
 
-<!-- TODO: eof flag for stdin? -->
+### The `eof` flag
+We have seen when and how to use the `fail` flag. Another flag we could leverage is the `eof` flag, short for "end of file". As the name suggests, it is really more relevant for file streams as we will see, but a keyboard can also emit an "eof" character with key combination `Ctrl` + `D`.
 
-## A note on `endl` and others - `iomanip` (not required content)
+When `Ctrl+D` is pressed, `cin` raises both `fail` and `eof` flags.
+
+`````{admonition} Exercise
+:class: tip
+Write a program that takes in a poem and counts the lines that end in a vowel. The user should end the poem with `Ctrl+D`.
+````{dropdown} Solution
+```{code-block} c
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isVowel(char c){
+    return c == 'a' || c == 'e' || c=='i' || c=='o' || c=='u';
+}
+
+int main(){
+  int vowelCount = 0;
+  string line;
+  while (!cin.eof()){
+      getline(cin, line);
+      vowelCount += isVowel(line[line.length()-1]);
+  }
+  cout << vowelCount << endl;
+}
+```
+````
+Input
+```
+Roses are red
+Violets are blue
+Learn C plus plus
+To put some class in you
+```
+Output
+```
+2
+```
+`````
+
+## An extra note on `iomanip`
 <!-- TODO: -->
 
 
@@ -184,6 +228,7 @@ This program repeatedly asks for an age input, until the user enters an integer.
 char postalCode[N];
 cin >> postalCode;
 ``` 
+
 2. What is the value stored in integer if the input is "123abc"? Ans: b
 ```{code-block} c
 int integer;
