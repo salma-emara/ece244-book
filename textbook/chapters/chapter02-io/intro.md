@@ -1,4 +1,3 @@
-# Welcome to your Jupyter Book
+# C++ Input/Output (I/O)
 
-This is a small sample book to give you a feel for how book content is
-structured.
+In this chapter, we discuss different means of input-output (I/O) in C++. These are standard I/O, file I/O and string I/O streams. We then demonstrate ways to detect errors in inputs and how to handle them in a program. 
