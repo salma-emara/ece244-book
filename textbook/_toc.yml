@@ -14,19 +14,13 @@ parts:
     chapters:
       - file: chapters/chapter01-basics/intro.md
         sections:
-          - file: chapters/chapter01-basics/computers.md
-          - file: chapters/chapter01-basics/recap-basics.md
-          - file: chapters/chapter01-basics/strings.md
-          - file: chapters/chapter01-basics/pass-to-functions.md
-          - file: chapters/chapter01-basics/separate-compilation.md
-
+          - file: chapters/chapter01-basics/exercises.md
       - file: chapters/chapter02-io/intro.md
         sections:
-          - file: chapters/chapter02-io/input-output.md
-          - file: chapters/chapter02-io/file-streams.md
-          - file: chapters/chapter02-io/string-streams.md
-
+          - file: chapters/chapter02-io/exercises.md
       - file: chapters/chapter03-classes/intro.md
         sections:
-          - file: chapters/chapter03-classes/access-control.md
-          - file: chapters/chapter03-classes/constructors-destructors.md
+          - file: chapters/chapter03-classes/exercises.md
+      - file: chapters/chapter04-pointers/intro.md
+        sections:
+          - file: chapters/chapter04-pointers/exercises.md
