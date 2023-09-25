@@ -2,7 +2,7 @@
 
 This is a repository for developing the first online textbook of its kind for ECE244: Programming Fundamentals. The book's name is Khufu: Object-Oriented Programming using C++. It is developed using Jupyter Book.
 
-The book is not yet published. When published, you will find the book at [learningcpp.org](https://learningcpp.org), or [learningcpp.netlify.app](https://learningcpp.netlify.app/)
+You will find the book at [learningcpp.org](https://learningcpp.org), or [learningcpp.netlify.app](https://learningcpp.netlify.app/)
 
 ## Getting Started
 
