@@ -24,3 +24,30 @@ parts:
       - file: chapters/chapter04-pointers/intro.md
         sections:
           - file: chapters/chapter04-pointers/exercises.md
+      - file: chapters/chapter05-dynamic-mem-alloc/intro.md
+        sections:
+          - file: chapters/chapter05-dynamic-mem-alloc/exercises.md
+      - file: chapters/chapter06-operator-overloading/intro.md
+        sections:
+          - file: chapters/chapter06-operator-overloading/exercises.md
+      - file: chapters/chapter07-objects-w-pointers/intro.md
+        sections:
+          - file: chapters/chapter07-objects-w-pointers/exercises.md
+      - file: chapters/chapter08-linked-lists/intro.md
+        sections:
+          - file: chapters/chapter08-linked-lists/exercises.md
+      - file: chapters/chapter09-recursion/intro.md
+        sections:
+          - file: chapters/chapter09-recursion/exercises.md
+      - file: chapters/chapter10-bst/intro.md
+        sections:
+          - file: chapters/chapter10-bst/exercises.md
+      - file: chapters/chapter11-inheritance/intro.md
+        sections:
+          - file: chapters/chapter11-inheritance/exercises.md
+      - file: chapters/chapter12-hash-tables/intro.md
+        sections:
+          - file: chapters/chapter12-hash-tables/exercises.md
+      - file: chapters/chapter13-complexity-analysis/intro.md
+        sections:
+          - file: chapters/chapter13-complexity-analysis/exercises.md
