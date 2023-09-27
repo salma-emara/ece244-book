@@ -103,4 +103,39 @@ Default destructor for `b2` is called as we return from `main`, and `b2` goes ou
 We don't have `delete b5`, and hence the destructor is not called for the two-element array. 
 ```
 
+**Question 1 in Fall 2022 Midterm Exam [Easy]**
+
+Consider the following C++ program. There are three statements in the main function: A, B, and C. Which of these three statements will trigger compile-time errors?
+
+```{code-block} cpp
+class ECE244 {
+ private:
+  int num_student;
+  int num_TA;
+  int get_num_instructor();
+
+ public:
+  int num_instructor;
+  int get_num_student();
+  int get_num_TA();
+};
+
+int main() {
+  ECE244 year2022;
+  int num_student = year2022.num_student;              // Statement A
+  int num_TA = year2022.get_num_TA();                  // Statement B
+  int num_instructor = year2022.get_num_instructor();  // Statement C
+  return 0;
+}
+```
+
+```{admonition} Answer
+:class: dropdown
+<pre>
+A, C
+</pre>
+
+`get_num_TA()` and `get_num_instructor()` both of those function members are private, and you cannot access them outside the class.
+```
+
 In progress!
