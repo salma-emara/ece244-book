@@ -302,6 +302,11 @@ int main() {
       line >> intArg;
       if (line.fail()) {
         return false;
+      } 
+      string dummy;
+      line >> dummy; 
+      if (line.fail()) {
+        return false;
       } else {
         return true;
       }
