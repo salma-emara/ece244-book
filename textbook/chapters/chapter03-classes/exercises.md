@@ -138,4 +138,71 @@ A, C
 `get_num_TA()` and `get_num_instructor()` both of those function members are private, and you cannot access them outside the class.
 ```
 
-In progress!
+**Modified Question 9 in Fall 2018 Midterm Exam [Challenging]**
+
+
+Consider the following definition/implementation of a class called `Shape` that appears in the file: `Shape.h`.
+
+**Shape.h**
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+class Shape {
+ private:
+  int ID;
+
+ public:
+  Shape() {
+    ID = 0;
+    cout << "Constructor 1 " << ID << endl;
+  }
+  Shape(int id) {
+    ID = id;
+    cout << "Constructor 2 " << ID << endl;
+  }
+
+  ~Shape() { cout << "Destructor " << endl; }
+
+  int getID() const { return ID; }
+  void setID(int id) { ID = id; }
+};
+```
+
+The following is a main program that uses the above class.
+
+**main.cpp**
+```{code-block} cpp
+#include <iostream>
+#include "Shape.h"
+using namespace std;
+
+int getShapeID(Shape& s) {
+  return s.getID();
+}
+int main() {
+  Shape circle(5);
+  Shape line2[2];
+
+  cout << circle.getID() << endl;
+  cout << getShapeID(line2[1]) << endl;
+  return 0;
+}
+```
+
+What is the output of the program? Select one of the answers from the table below.
+
+```{admonition} Answer 
+:class: dropdown
+<pre>
+Constructor 2 5
+Constructor 1 0
+Constructor 1 0
+5
+0
+Destructor 
+Destructor 
+Destructor 
+</pre>
+
+Note that the destructor is called when an object goes out of scope. 
+```
