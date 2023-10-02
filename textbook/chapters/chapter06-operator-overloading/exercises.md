@@ -209,59 +209,6 @@ Mystery& operator=(const Mystery&);
 ```
 ````
 
-**Question 2 in Fall 2017 Midterm Exam [Intermediate]**
-
-Consider the following program. 
-
-```{code-block} cpp
-class Point {
-  int x;
-  int y;
-
- public:
-  Point(int i, int j);
-  Point increment_x();
-  Point increment_y();
-  void print() const;
-};
-Point::Point(int i, int j) {
-  x = i;
-  y = j;
-}
-Point Point::increment_x() {
-  ++x;
-  return *this;
-}
-Point Point::increment_y() {
-  ++y;
-  return *this;
-}
-void Point::print() const {
-  cout << "(" << x << "," << y << ")" << endl;
-}
-int main() {
-  Point a(2, 3);
-  // Evaluation is done left to right
-  a.increment_x().increment_y().print();
-  a.print();
-  return 0;
-}
-```
-
-Assuming the C++ compiler does not optimize away copying of objects. Write the output produced by the program.
-
-```{admonition} Answer
-:class: dropdown
-<pre>
-(3,4)
-</pre>
-`a.increment_x()` is evaluated first, and would increment the `x` of object `a` making `x` of `a` equal to 3. This would return a new object with `x = 3` and `y = 3`. On this new object, you would call `increment_y()`, which would increment `y` to 4 and return a new object with `x = 3` and `y = 4`. Printing this new object would produce `(3,4)`.
-<pre>
-(3,3)
-</pre>
-Printing object `a` would output `(3,3)` due to the previous `a.increment_x()` call. 
-```
-
 **Question 8 in Fall 2022 Midterm Exam [Challenging]**
 
 Vector is widely used in the engineering and science world. Suppose we create a class called `vector_2d`. It can be used to represent a 2D vector, with `x` and `y` as its values. The partial code of this vector is shown below.
