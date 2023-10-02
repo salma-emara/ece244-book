@@ -86,4 +86,110 @@ Which of the following statements (that come after the above snippets executes) 
 8. `cout << (**s) / 2;`
 ```
 
+**Question 4 in Fall 2018 Midterm Exam [Intermediate]**
+
+Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.
+
+```{code-block} cpp
+:linenos:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int* first_ptr;
+  int* second_ptr;
+  int** p_ptr;
+  first_ptr = new int;
+  second_ptr = new int;
+  p_ptr = &first_ptr;
+  *first_ptr = 4;
+  *second_ptr = 8;
+  second_ptr = *p_ptr;
+  cout << *first_ptr << " " << *second_ptr << endl;
+  delete first_ptr;
+  delete second_ptr;
+  delete *p_ptr;
+  return (0);
+}
+```
+
+1. What is the output produced by by `cout` on line 14 of the code
+
+    ```{admonition} Answer
+    The output is
+    <pre>
+    4 4
+    </pre>
+    ```
+2. The program may have a problem with it. What is the problem, if any? Circle only one answer.
+    1. The program has no problem with it
+    2. The program has a memory leak.
+    3. The delete on line 17 should not dereference p_ptr, but use it directly.
+    4. The program deletes the same region of memory more than once.
+    5. 2 and 3.
+    6. 2 and 4.
+    7. 2, 3 and 4.
+
+    ```{admonition} Answer
+    The program has a memory leak because in line 13, it changes what `second_ptr` is pointing to without freeing up the memory space it was pointing to.
+
+    `second_ptr`, `first_ptr`, and `*p_ptr` are all pointing to an `int` with $4$, while there are three deletes for the same memory space. 
+    ```
+
+**Question 2 in Fall 2017 Midterm Exam [Intermediate]**
+
+Consider the following program. 
+
+```{code-block} cpp
+class Point {
+  int x;
+  int y;
+
+ public:
+  Point(int i, int j);
+  Point increment_x();
+  Point increment_y();
+  void print() const;
+};
+Point::Point(int i, int j) {
+  x = i;
+  y = j;
+}
+Point Point::increment_x() {
+  ++x;
+  return *this;
+}
+Point Point::increment_y() {
+  ++y;
+  return *this;
+}
+void Point::print() const {
+  cout << "(" << x << "," << y << ")" << endl;
+}
+int main() {
+  Point a(2, 3);
+  // Evaluation is done left to right
+  a.increment_x().increment_y().print();
+  a.print();
+  return 0;
+}
+```
+
+Assuming the C++ compiler does not optimize away copying of objects. Write the output produced by the program.
+
+```{admonition} Answer
+:class: dropdown
+<pre>
+(3,4)
+</pre>
+
+Recall, `this` is a pointer to the object itself. 
+
+`a.increment_x()` is evaluated first, and would increment the `x` of object `a` making `x` of `a` equal to 3. This would return a new object with `x = 3` and `y = 3`. On this new object, you would call `increment_y()`, which would increment `y` to 4 and return a new object with `x = 3` and `y = 4`. Printing this new object would produce `(3,4)`.
+<pre>
+(3,3)
+</pre>
+Printing object `a` would output `(3,3)` due to the previous `a.increment_x()` call. 
+```
+
 In progress!
