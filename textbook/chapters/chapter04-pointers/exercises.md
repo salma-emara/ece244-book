@@ -116,6 +116,7 @@ int main() {
 1. What is the output produced by by `cout` on line 14 of the code
 
     ```{admonition} Answer
+    :class: dropdown
     The output is
     <pre>
     4 4
@@ -131,6 +132,7 @@ int main() {
     7. 2, 3 and 4.
 
     ```{admonition} Answer
+    :class: dropdown
     The program has a memory leak because in line 13, it changes what `second_ptr` is pointing to without freeing up the memory space it was pointing to.
 
     `second_ptr`, `first_ptr`, and `*p_ptr` are all pointing to an `int` with $4$, while there are three deletes for the same memory space. 
