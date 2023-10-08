@@ -194,4 +194,3 @@ Recall, `this` is a pointer to the object itself.
 Printing object `a` would output `(3,3)` due to the previous `a.increment_x()` call. 
 ```
 
-In progress!
