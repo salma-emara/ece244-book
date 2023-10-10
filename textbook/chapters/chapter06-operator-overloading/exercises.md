@@ -4,6 +4,72 @@ Many of these exercises are taken from past exams of ECE 244 Programming Fundame
 
 Headings in this page classify the exercises into different categories: **[Easy]**, **[Intermediate]**, and **[Challenging]**. I suggest you start by easy exercises and work your way up to the challenging ones.
 
+**Question 2 in Fall 2019 Midterm Exam [Intermediate]**
+
+Consider the definition of a class called `Nova`, which is in the file `Nova.h`.
+
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+class Nova {
+ private:
+ // Private members not shown
+ public:
+ // Public members not shown
+};
+```
+
+Now consider the following program that uses the `Nova` class. The program compiles and runs correctly.
+
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+#include “Nova.h”
+int main() {
+  Nova a(3, 8.1);
+  Nova* p;
+  Nova b(a);
+  ++a.it;
+  a.setAll(1, 7.8);
+  p = new Nova(9, 12.7);
+  if (a != b)
+    *p = a + b;
+  delete p;
+  return 0;
+}
+```
+
+What members of the class Nova must exist for the above code to compile with no errors? Give variable declarations and/or method prototypes in the table below. Note that you may or may not need to fill every row in the table. 
+
+|   Variable Declaration or Method Prototype    |
+|-----------------------------------------------|
+|                                               |
+|                                               |
+|                                               |
+|                                               |
+|                                               |
+|                                               |
+|                                               |
+|                                               |
+|                                               |
+|                                               |
+
+````{admonition} Answer
+:class: dropdown
+
+|   Variable Declaration or Method Prototype    |
+|-----------------------------------------------|
+|         `Nova(int, double);`                  |
+|               `int it;`                       |
+|       `void setAll(int,double);`             |
+|         `operator+(Nova&)`                    |
+|         `bool operator!=(Nova&)`              |
+
+No need for destructor as I don't dynamically allocate space in the object.
+No need for a copy constructor in `Nova b(a)` since one is given by default.
+No need for `operator=` in `*p = a + b`
+````
+
 **Question 7 in Fall 2018 Midterm Exam [Intermediate]**
 
 The following is the definition/implementation of a class called `Foo`.
@@ -231,7 +297,7 @@ class vector_2d {
   double get_x() const { return x; }
   double get_y() const { return y; }
   // Add overloaded operator+= here
-}
+};
 ```
 
 Implement `operator+=` for `vector_2d`, as a member function. 
