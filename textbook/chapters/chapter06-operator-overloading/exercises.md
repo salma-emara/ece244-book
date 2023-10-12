@@ -325,5 +325,4 @@ which is equivalent to:
 
 ````
 
-In progress!
 
