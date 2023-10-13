@@ -306,9 +306,9 @@ int main() {
       string dummy;
       line >> dummy; 
       if (line.fail()) {
-        return false;
-      } else {
         return true;
+      } else {
+        return false;
       }
     }
     ```
