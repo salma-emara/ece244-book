@@ -175,7 +175,7 @@ You are required to implement the following functions of the queue class to have
     :class: dropdown
     ```{code-block} cpp
     void push_back(int k){
-
+        In progress!
     }
     ```
     ````
@@ -189,7 +189,7 @@ You are required to implement the following functions of the queue class to have
     :class: dropdown
     ```{code-block} cpp
     int front(){
-
+        In progress!
     }
     ```
     ````
@@ -203,7 +203,7 @@ You are required to implement the following functions of the queue class to have
     :class: dropdown
     ```{code-block} cpp
     bool isempty(){
-
+        In progress!
     }
     ```
     ````
@@ -218,7 +218,7 @@ You are required to implement the following functions of the queue class to have
     :class: dropdown
     ```{code-block} cpp
     int pop_front(){
-        
+       In progress! 
     }
     ```
     ````
