@@ -242,5 +242,20 @@ You are required to implement the following functions of the queue class to have
     }
     ```
     ````
+**Question 6 in Fall 2019 Final Exam [Intermediate]**
+
+Circular linked lists are a variation on linked lists described in class. In a circular linked list, the next field in the last node in the list is not set to NULL (or nullptr). Rather, the field is made to point to the first node in the list, hence the name "circular". An example of a circular linked list is
+shown below.
+
+Consider the class `ListNode` shown below. It represents a node in a circular linked list. It is similar to the one described in class and that you implemented in the labs, but all members are public for simplicity. The declaration of a head pointer, which points to the head of the list, is also shown.
+
+```{code-block} cpp
+class ListNode {
+ public:
+  int id;
+  ListNode* next;
+};
+ListNode* head;
+```
 
 In progress!
