@@ -200,7 +200,29 @@ What is the output of the program? Select one of the answers from the table belo
 
 ```{admonition} Answer 
 :class: dropdown
-B
+G (and B is acceptable too)
+
+The output is very similar to B, except for swapping `5` and `Destructor` in the following.
+<pre>
+Constructor 2 5
+Constructor 3 5
+Constructor 3 5
+Operator= 5
+Destructor 
+Constructor 1 0
+Constructor 1 0
+Constructor 3 5
+Operator= 0
+Destructor 
+5
+Constructor 3 5
+5
+Destructor (this and the line above)
+5
+Destructor 
+Destructor 
+Destructor 
+</pre>
 ```
 
 **Question 8 in Fall 2021 Midterm Exam [Intermediate]**
@@ -325,4 +347,86 @@ which is equivalent to:
 
 ````
 
+**Question 14 in Fall 2019 Midterm Exam [Intermediate]**
 
+The following class is used to create objects that represent ordinary fractions `n/d`, consisting of a numerator `n` and a denominator `d`.
+
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+class Fraction {
+ private:
+  int numerator;
+  int denominator;
+
+ public:
+  Fraction(int num, int denm);
+  int getNumerator();
+  int getDenominator();
+  void setNumerator(int num);
+  void setDenominator(int denm);
+  void print();
+};
+Fraction::Fraction(int num, int denm) {
+  numerator = num;
+  // Should check that denm is not 0, but ignore for now
+  denominator = denm;
+}
+int Fraction::getNumerator() {
+  return (numerator);
+}
+int Fraction::getDenominator() {
+  return (denominator);
+}
+void Fraction::setNumerator(int num) {
+  numerator = num;
+}
+void Fraction::setDenominator(int denm) {
+  // Should check that denm is not 0, but ignore for now
+  denominator = denm;
+}
+void Fraction::print() {
+  cout << numerator << "/" << denominator << endl;
+}
+```
+
+We wish to overload the `*` operator for the Fraction class to be able to write code like this in a non-member function (say main):
+
+```{code-block} cpp
+Fraction X(1, 5);
+Fraction Y(4, 6);
+ :
+ .. = X * Y; // The first multiply operation
+ ..= X * 2;  // The second multiply operation
+```
+
+For example, if `X` represents `1/5` and `Y` represents `4/6` then `X * Y` results in an object that represents `4/30`, while `X * 2` results in an object that represents `2/10`. That is, both the numerator and denominator are multiplied by `2`.
+
+Write the implementation of the two overloaded operator functions as members of the class
+Fraction. Clearly show the function header and its body.
+
+1. Overload the multiplication operator `*` as a member of the class `Fraction` to be
+able to perform the first multiply operation (see comment above). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
+
+````{admonition} Answer
+:class: dropdown
+```{code-block} cpp
+Fraction Fraction::operator*(Fraction& rhs) {
+  Fraction w(numerator * rhs.numerator, denominator * rhs.denominator);
+  return w;
+}
+```
+````
+
+1. Overload the multiplication operator `*` as a member of the class `Fraction` to be
+able to perform the second multiply operation (see comment above). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
+
+````{admonition} Answer
+:class: dropdown
+```{code-block} cpp
+Fraction Fraction::operator*(int x) {
+  Fraction w(numerator * x, denominator);
+  return w;
+}
+```
+````
