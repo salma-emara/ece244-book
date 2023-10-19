@@ -408,25 +408,25 @@ Fraction. Clearly show the function header and its body.
 1. Overload the multiplication operator `*` as a member of the class `Fraction` to be
 able to perform the first multiply operation (see comment above). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
 
-````{admonition} Answer
-:class: dropdown
-```{code-block} cpp
-Fraction Fraction::operator*(Fraction& rhs) {
-  Fraction w(numerator * rhs.numerator, denominator * rhs.denominator);
-  return w;
-}
-```
-````
+    ````{admonition} Answer
+    :class: dropdown
+    ```{code-block} cpp
+    Fraction Fraction::operator*(Fraction& rhs) {
+      Fraction w(numerator * rhs.numerator, denominator * rhs.denominator);
+      return w;
+    }
+    ```
+    ````
 
-1. Overload the multiplication operator `*` as a member of the class `Fraction` to be
+2. Overload the multiplication operator `*` as a member of the class `Fraction` to be
 able to perform the second multiply operation (see comment above). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
 
-````{admonition} Answer
-:class: dropdown
-```{code-block} cpp
-Fraction Fraction::operator*(int x) {
-  Fraction w(numerator * x, denominator);
-  return w;
-}
-```
-````
+    ````{admonition} Answer
+    :class: dropdown
+    ```{code-block} cpp
+    Fraction Fraction::operator*(int x) {
+      Fraction w(numerator * x, denominator);
+      return w;
+    }
+    ```
+    ````
