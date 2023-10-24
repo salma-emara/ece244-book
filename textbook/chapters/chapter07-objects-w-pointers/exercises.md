@@ -4,6 +4,74 @@ Many of these exercises are taken from past exams of ECE 244 Programming Fundame
 
 Headings in this page classify the exercises into different categories: **[Easy]**, **[Intermediate]**, and **[Challenging]**. I suggest you start by easy exercises and work your way up to the challenging ones.
 
+**Question 5 in Fall 2019 Midterm Exam [Easy]**
+
+Consider a (non-member) function called `doIt`, which takes a single object of type `DayOfYear` and returns a single object also of type `DayOfYear`. You may assume that the class `DayOfYear` is correctly implemented and that `DayOfYear.h` is included. Which of the
+following implementations of this function is problem-free? 
+
+1.
+    ```{code-block} cpp
+    DayOfYear doIt(DayOfYear& arg) {
+      DayOfYear temp;
+      temp = arg;
+      return (arg);
+    }
+    ```
+
+    ```{admonition} Answer
+    :class: dropdown
+
+    Has no problem. We return `arg` by value and we create a copy of `arg` using copy constructor.
+
+    ```
+
+2.
+    ```{code-block} cpp
+    DayOfYear doIt(DayOfYear& arg) {
+      DayOfYear temp;
+      temp = arg;
+      return (temp);
+    }
+    ```
+
+    ```{admonition} Answer
+    :class: dropdown
+
+    Has no problem. We return `temp` by value and we create a copy of `temp` using copy constructor.
+
+    ```
+
+3. 
+    ```{code-block} cpp
+    DayOfYear& doIt(DayOfYear& arg) {
+      DayOfYear temp;
+      temp = arg;
+      return (*this);
+    }
+    ```
+
+    ```{admonition} Answer
+    :class: dropdown
+
+    Has a problem, because in the question it says `doIt` is a non-member function. Since this is a pointer to an object on which the member function is invoked, it can only be accessed in a member function. In short, we cannot access `this` in `doIt` function.
+    ```
+
+4. 
+    ```{code-block} cpp
+    DayOfYear& doIt(DayOfYear& arg) {
+      DayOfYear temp;
+      temp = arg;
+      return (temp);
+    }
+    ```
+
+    ```{admonition} Answer
+    :class: dropdown
+
+    Has a problem, but it is quite tricky. `temp` is a local only to the function `doIt` since it was defined only inside the function. `temp` will go out of scope or disappear from the memory the moment we return from `doIt` function. If we return `temp` by reference, and `temp` actually is non-existing after the function call, the behavior is undefined if we try accessing whatever `doIt` returns.
+
+    ```
+
 **Question 5 in Fall 2019 Final Exam [Intermediate]**
 
 Consider the following class definition and implementation.
@@ -70,36 +138,37 @@ int main() {
 1. Write the output produced by each of the labeled statement (Statement 1 to
 Statement 6) in main. Write your answer in the table below.
 
-|   Grade   |   Output   |
-| --------- | ---------- |
-|Statement 1|            |
-|Statement 2|            |
-|Statement 3|            |
-|Statement 4|            |
-|Statement 5|            |
-|Statement 6|            |
+    |   Grade   |   Output   |
+    | --------- | ---------- |
+    |Statement 1|            |
+    |Statement 2|            |
+    |Statement 3|            |
+    |Statement 4|            |
+    |Statement 5|            |
+    |Statement 6|            |
 
-```{admonition} Answer
-:class: dropdown
-|   Grade   |   Output   |
-| --------- | ---------- |
-|Statement 1| 24 45      |
-|Statement 2| 1 2        |
-|Statement 3| 3 5        |
-|Statement 4| 7 8        |
-|Statement 5| 6 12<br>12 36  |
-|Statement 6|  6 12      |
-```
+    ```{admonition} Answer
+    :class: dropdown
+    |   Grade   |   Output   |
+    | --------- | ---------- |
+    |Statement 1| 24 45      |
+    |Statement 2| 1 2        |
+    |Statement 3| 3 5        |
+    |Statement 4| 7 8        |
+    |Statement 5| 6 12<br>12 36  |
+    |Statement 6|  6 12      |
+    ```
 
 2. How many integers exist in memory in the form of a memory leak when execution
 reaches Point A in the main function above? Write your answer in the box below.
 
-```{admonition} Answer
-:class: dropdown
-Z initially had p and q pointing to two integers, and we lost acess to them when we pointed to p and q from the object returned by value in `Z = X.funnyMultiply(Y);`.
+    ```{admonition} Answer
+    :class: dropdown
+    Z initially had p and q pointing to two integers, and we lost access to them when we pointed to p and q from the object returned by value in `Z = X.funnyMultiply(Y);`.
 
-Another two integers were lost in `W.print().funnyMultiply(V).print();` after returning from `funnyMultiply` function. 
+    Another two integers were lost in `W.print().funnyMultiply(V).print();` after returning from `funnyMultiply` function. 
 
-Total, we have 4 integers in the memory exist in the form of a memory leak. 
-```
+    Total, we have 4 integers in the memory exist in the form of a memory leak. 
+    ```
+
 In progress!
