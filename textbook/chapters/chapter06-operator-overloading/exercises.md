@@ -285,10 +285,10 @@ Mystery(int, string);
 void invert(int, string);
 // used here: x.invert(1, n)
 
-bool operator==(const Mystery& left, const Mystery& right);
+bool operator==(const Mystery& right);
 // used here: x == y
 
-Mystery operator/(const Mystery& left, const Mystery& right);
+Mystery operator/(const Mystery& right);
 Mystery& operator=(const Mystery&);
 // used here: x = y / *p;
   
