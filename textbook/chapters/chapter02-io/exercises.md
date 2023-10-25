@@ -399,6 +399,7 @@ void readInts() {
       cin.clear();
       cin.ignore(1000, '\n');
       cout << "Invalid Input" << endl;
+      cin >> num;
     } else {
       cout << num << endl;
       cin >> num;
