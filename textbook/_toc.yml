@@ -39,15 +39,15 @@ parts:
       - file: chapters/chapter09-recursion/intro.md
         sections:
           - file: chapters/chapter09-recursion/exercises.md
-      - file: chapters/chapter10-bst/intro.md
+      - file: chapters/chapter10-complexity-analysis/intro.md
         sections:
-          - file: chapters/chapter10-bst/exercises.md
-      - file: chapters/chapter11-inheritance/intro.md
+          - file: chapters/chapter10-complexity-analysis/exercises.md
+      - file: chapters/chapter11-bst/intro.md
         sections:
-          - file: chapters/chapter11-inheritance/exercises.md
-      - file: chapters/chapter12-hash-tables/intro.md
+          - file: chapters/chapter11-bst/exercises.md
+      - file: chapters/chapter12-inheritance/intro.md
         sections:
-          - file: chapters/chapter12-hash-tables/exercises.md
-      - file: chapters/chapter13-complexity-analysis/intro.md
+          - file: chapters/chapter12-inheritance/exercises.md
+      - file: chapters/chapter13-hash-tables/intro.md
         sections:
-          - file: chapters/chapter13-complexity-analysis/exercises.md
+          - file: chapters/chapter13-hash-tables/exercises.md
