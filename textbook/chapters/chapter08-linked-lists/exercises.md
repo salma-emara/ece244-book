@@ -257,5 +257,3 @@ class ListNode {
 };
 ListNode* head;
 ```
-
-In progress!
