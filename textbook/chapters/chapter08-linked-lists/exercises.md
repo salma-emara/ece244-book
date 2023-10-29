@@ -257,3 +257,86 @@ class ListNode {
 };
 ListNode* head;
 ```
+
+
+```{figure} ./images/circular-linked-list.png
+:alt: Circular Linked List
+:class: with-shadow
+:width: 800px
+:align: center
+```
+
+1. Write a non-member function traverse `ListNode* h` that traverses the linked list. The function is invoked as `traverse(head)` to start the traversal at the head of the list. In the traversal, visiting a node is simply printing its `id` field to `cout`.
+
+    ```{code-block} cpp
+    void traverse(ListNode* h) {
+    ```
+
+    ````{admonition} Answer
+    :class: dropdown
+
+    ```{code-block} cpp
+    void traverse(ListNode* h) {
+      if (h == nullptr)
+        return;
+      ListNode* curr = h;
+      cout << curr->id << " ";
+      curr = curr->next;
+      while (curr != h) {
+        cout << curr->id << " ";
+        curr = curr->next;
+      }
+    }
+    ```
+    ````
+
+2. Write a non-member function `deleteNode(ListNode*& h, ListNode* p)` that deletes the node *after the one pointed to by p* from the circular list pointed to by h. The function is invoked as `deleteNode(head, ptr)`, where `ptr` is guaranteed to point to one of the nodes on the list.
+
+    ```{code-block} cpp
+    void deleteNode(ListNode*& h, ListNode* p) {
+    ```
+
+    ````{admonition} Answer
+    :class: dropdown
+
+    ```{code-block} cpp
+    void deleteNode(ListNode*& h, ListNode* p) {
+      if (h == nullptr)
+        return;
+      if (h->next == h) {  // one element, guaranteed p == h delete h;
+        h = nullptr;
+      }
+      return;
+      if (p->next == h) {
+        h = h->next;
+      }
+      
+      ListNode* next = p->next;
+      p->next = next->next;
+      delete next;
+    }
+    ```
+    ````
+
+3. It is sometimes not known if the linked list pointed to by `head` is circular or just a regular linked list with the next field in the last node set to `NULL`. Write a non-member function `isCircular(ListNode* h)` that returns true if the list is circular and false otherwise. The function is invoked as `isCircular(head)`.
+
+    ```{code-block} cpp
+    void deleteNode(ListNode*& h, ListNode* p) {
+    ```
+
+    ````{admonition} Answer
+    :class: dropdown
+
+    ```{code-block} cpp
+    bool isCircular(ListNode* h) {
+      if (h == nullptr) {  // is circular and regular at the same time
+        return true;
+      }
+      ListNode* p = h->next;
+      while (p != nullptr && p != h) {
+        p = p->next;
+      }
+      return p == h;
+    }
+    ```
+    ````
