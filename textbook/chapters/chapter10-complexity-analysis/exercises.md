@@ -87,24 +87,28 @@ Answer the following question about code written by Amy and John.
 1. Is Amy's function correct (does it compute and return $2^n$)?
 
     ```{admonition} Answer
+    :class: dropdown
     Yes
     ```
 
 2. Is John's function correct (does it compute and return $2^n$)?
 
     ```{admonition} Answer
+    :class: dropdown
     Yes
     ```
 
 3. What is the worst-case complexity of Amy's function using Big-O notation?
 
     ```{admonition} Answer
+    :class: dropdown
     $O(2^n)$
     ```
 
 4. What is the worst-case complexity of John's function using Big-O notation?
 
     ```{admonition} Answer
+    :class: dropdown
     $T(n) = T(n - 1) + c$
 
     $T(n) = T(n - 2) + 2c$
