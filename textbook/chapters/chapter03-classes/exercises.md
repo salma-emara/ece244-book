@@ -135,10 +135,10 @@ int main() {
 A, C
 </pre>
 
-In statement A, `num_student` is private and cannot be accessed outside the class. 
+In statement A, `num_student` is a private data member and cannot be accessed outside the class. 
 
 
-In statement C, `get_num_instructor()` is a private function member.
+In statement C, `get_num_instructor()` is a private function member, and cannot be accessed outside the class. 
 ```
 
 **Modified Question 9 in Fall 2018 Midterm Exam [Challenging]**
