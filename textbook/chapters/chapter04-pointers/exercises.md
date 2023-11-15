@@ -113,7 +113,7 @@ int main() {
 }
 ```
 
-1. What is the output produced by by `cout` on line 14 of the code
+1. What is the output produced by `cout` on line 14 of the code
 
     ```{admonition} Answer
     :class: dropdown
