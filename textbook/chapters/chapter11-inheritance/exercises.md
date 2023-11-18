@@ -164,7 +164,7 @@ Indicate also the reason in the table below.
 
 ```
 
-**Question 12 in Fall 2023 Final Exam [Intermediate]**
+**Question 12 in Fall 2018 Final Exam [Intermediate]**
 
 Consider the following base and derived classes. They compile with no errors.
 
