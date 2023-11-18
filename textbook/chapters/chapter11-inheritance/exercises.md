@@ -157,10 +157,10 @@ Indicate also the reason in the table below.
 
 |            Code snippet              | Does the code snippet compile? If yes, Why?|
 | ------------------------------------ | -------------------- |
-| `Shape s;`                           | Yes, an object of an abstract class cannot be created |
-| `Circle c;`                          | Yes, Circle is an abstract class too as it doesn't implement print | 
-| `Rectangle r;` <br> `r.setID(9)`     | No                   |
-| `Rectangle d;` <br> `d.length = 3.0;`| Yes, Rectangle::length is a protected data member that cannot be accessed outside the class         |
+| `Shape s;`                           | No, an object of an abstract class cannot be created |
+| `Circle c;`                          | No, Circle is an abstract class too as it doesn't implement print | 
+| `Rectangle r;` <br> `r.setID(9)`     | Yes                   |
+| `Rectangle d;` <br> `d.length = 3.0;`| No, Rectangle::length is a protected data member that cannot be accessed outside the class         |
 
 ```
 
