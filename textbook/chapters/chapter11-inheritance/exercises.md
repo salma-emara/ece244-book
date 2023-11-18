@@ -87,7 +87,7 @@ Indicate what each statement in the above `main` function prints, using the tabl
 |`firstOne a;`| <pre>Constructor 1 of firstOne done</pre>  |
 |`firstOne b("G");`| <pre>Constructor 2 of firstOne done</pre> |
 |`secondOne c ( "N");`| <pre>Constructor 1 of firstOne done<br>Constructor 1 of secondOne done</pre> |
-|`secondOne d(8);`| <pre>Constructor 1 of firstOne done<br>Constructor 2 of secondOne done</pre> |
+|`secondOne d(8);`| <pre>Constructor 2 of firstOne done<br>Constructor 2 of secondOne done</pre> |
 ```
 
 **Question 14 in Fall 2019 Final Exam [Easy]**
