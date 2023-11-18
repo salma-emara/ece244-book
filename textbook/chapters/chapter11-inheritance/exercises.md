@@ -669,5 +669,3 @@ For each main function, if the function compiles with no errors (ignore warnings
 
     The error exists at `r->powerResistance()`. `powerResistance()` is not a virtual function, hence when `r->powerResistance()` is executed, `powerResistance()` of `Resistor` is called. There is no member named `powerResistance` in `Resistor` class. 
     ```
-
-In progress!
