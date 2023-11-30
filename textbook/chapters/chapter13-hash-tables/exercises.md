@@ -184,6 +184,7 @@ bool HashTable::exist(const string& name) {
       }
       ListNode* n = new ListNode(name);
       table[idx]->insert(n);
+      num_elements++;
       return true;
     }
     ```
