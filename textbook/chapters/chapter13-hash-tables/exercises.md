@@ -11,7 +11,7 @@ Thanks to your previous implementation of the VTuber, it became an instant moder
 A native solution would be using an array of 300,000 entries, with each entry holding a boolean variable indicating whether the corresponding Vtuber is live-streaming or not. However, there are two major problems: 
 
 1. Users can only query the database with Vtubers' names, not some internal ids.
-2. Only ~20% of totls Vtubers are streaming at any given time, so most array enteris are inactive. However, you'd like to maintain a lookup time that is approximately $O(n)$.
+2. Only ~20% of total Vtubers are streaming at any given time, so most array enteries are inactive. However, you'd like to maintain a lookup time that is approximately $O(n)$.
 
 Now, you suddenly recall that in ECE 244 you learned the hash table, which resolves collisions with chaining. The hash table would suit your needs perfectly. Even better, you can use an existing linked list implementation written by your new colleague.
 
