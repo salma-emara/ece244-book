@@ -155,13 +155,61 @@ bool HashTable::exist(const string& name) {
     ```
     ````{admonition} Answer
     :class: dropdown
-    bool HashTable::insert(const string& name){}
+    ```{code-block} cpp
+    bool HashTable::insert(const string& name) {
+      if (this->exist(name)) {
+        return false;  // found!
+      }
+
+      // not found!
+      if (num_elements + 1 >= table_slot_size / 2) {
+        LinkedList** newTable = new LinkedList*[table_slot_size * 2];
+        for (int i = 0; i < table_slot_size * 2; ++i) {
+          if (i >= 0 && i < table_slot_size) {
+            newTable[i] = table[i];
+            table[i] = nullptr;
+          } else {
+            newTable[i] = nullptr;
+          }
+        }
+        table_slot_size *= 2;
+        delete[] table;
+        table = newTable;
+        }
+
+      int idx = this->get_hash_index(name);
+
+      if (table[idx] == NULL) {
+        table[idx] = new LinkedList;
+      }
+      ListNode* n = new ListNode(name);
+      table[idx]->insert(n);
+      return true;
+    }
+    ```
     ````
 
 2. Implement the `remove` method. Return true if the given name exists and is successfully removed, otherwise, return false. Your code should not trigger any segmentation fault, and it should not leak memory.
     ```{code-block} cpp
     bool HashTable::remove(const string& name) {
+    }  
     ```
+
+    ````{admonition} Answer
+    :class: dropdown
+    ```{code-block} cpp
+    bool HashTable::remove(const string& name) {
+      if (this->exist(name)) {
+        int idx = this->get_hash_index(name);
+        ListNode* removeNode = table[idx]->remove(name);
+        delete removeNode;
+        return true;
+      }
+      // not found!
+      return false;
+    }    
+    ```
+    ````
 
 3. Implement the `change_name` method. It removes the `old_name` and inserts the
 `new_name`. Return true if successful. Otherwise, it returns false either when the `old_name`
@@ -169,13 +217,42 @@ doesn’t exist, or the `new_name` is the same as any existing name. Your code s
 any segmentation fault, and it should not leak memory. Hint: you can use the function you
 implemented in the previous questions.
     ```{code-block} cpp
-    bool HashTable::change_name(const strings old_name, const strings new_name) {
+    bool HashTable::change_name(const string& old_name, const string& new_name) {
     ```
+    ````{admonition} Answer
+    :class: dropdown
+    ```{code-block} cpp
+    bool HashTable::change_name(const string& old_name, const string& new_name) {
+      if (this->exist(old_name) && !this->exist(new_name)) {
+        // change name!
+        this->remove(old_name);
+        this->insert(new_name);
+        return true;
+      } else if (this->exist(old_name) && this->exist(new_name)) {
+        // don't change name
+        return false;
+      } else if (!this->exist(old_name)) {
+        // din't find
+        return false;
+      } else {
+        // not needed!
+        return false;
+      }
+    }
+    ```
+    ````
 
 4.  Implement the destructor of `HashTable`. It should deallocate the table array and all
 the lists. Your code should not trigger any segmentation fault, and it should not leak memory.
     ```{code-block} cpp
     HashTable::~HashTable() {
     ```
+    ````{admonition} Answer
+    :class: dropdown
+    ```{code-block} cpp
+    HashTable::~HashTable() {
+      delete table;
+    }
+    ```
+    ````
 
-In progress!
