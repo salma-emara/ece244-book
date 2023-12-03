@@ -144,7 +144,7 @@ bool HashTable::exist(const string& name) {
     become equal to or larger than `table_slot_size/2`, you should double
     `table_slot_size` and allocate a new table with the updated size. Then, you should
     move all the existing names from the old table to the newly allocated table, and
-    deallocate the old table. Notice that the hash index is directly related to the `slot_list_size`, so the hash index of the same name can be changed when moving from one table to another.
+    deallocate the old table. Notice that the hash index is directly related to the `table_slot_size`, so the hash index of the same name can be changed when moving from one table to another.
 
     3. You can add additional member functions if you need to.
     4. Your code should not trigger any segmentation fault, and it should not leak memory.
@@ -159,28 +159,38 @@ bool HashTable::exist(const string& name) {
     bool HashTable::insert(const string& name) {
       if (this->exist(name)) {
         return false;  // found!
-      }
+    }
 
       // not found!
-      if (num_elements + 1 >= table_slot_size / 2) {
-        LinkedList** newTable = new LinkedList*[table_slot_size * 2];
-        for (int i = 0; i < table_slot_size * 2; ++i) {
-          if (i >= 0 && i < table_slot_size) {
-            newTable[i] = table[i];
-            table[i] = nullptr;
-          } else {
-            newTable[i] = nullptr;
+      if (num_elements + 1 >= table_slot_size) {
+        table_slot_size = table_slot_size * 2;
+        LinkedList** newTable = new LinkedList*[table_slot_size];
+        for (int i = 0; i < table_slot_size; i++) {
+          newTable[i] = nullptr;
+        }
+
+        for (int i = 0; i < table_slot_size / 2; ++i) {
+          if (table[i] != NULL) {
+            ListNode* n = table[i]->pop_head();
+            while (n != NULL) {
+              int idx = get_hash_index(n->name);
+              if (newTable[idx] == NULL) {
+                newTable[idx] = new LinkedList;  // msh
+              }
+              newTable[idx]->insert(n);
+              n = table[i]->pop_head();
+            }
+            delete table[i];
           }
         }
-        table_slot_size *= 2;
         delete[] table;
         table = newTable;
-        }
+      }
 
       int idx = this->get_hash_index(name);
 
       if (table[idx] == NULL) {
-        table[idx] = new LinkedList;
+        table[idx] = new LinkedList;  // msh
       }
       ListNode* n = new ListNode(name);
       table[idx]->insert(n);
