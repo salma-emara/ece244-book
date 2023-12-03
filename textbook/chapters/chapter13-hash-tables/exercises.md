@@ -204,6 +204,7 @@ bool HashTable::exist(const string& name) {
         int idx = this->get_hash_index(name);
         ListNode* removeNode = table[idx]->remove(name);
         delete removeNode;
+        num_elements--;
         return true;
       }
       // not found!
@@ -252,7 +253,10 @@ the lists. Your code should not trigger any segmentation fault, and it should no
     :class: dropdown
     ```{code-block} cpp
     HashTable::~HashTable() {
-      delete table;
+      for (int i = 0; i < table_slot_size; i++) {
+        delete table[i];
+      }
+      delete[] table;
     }
     ```
     ````
