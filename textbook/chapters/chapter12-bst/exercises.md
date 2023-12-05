@@ -19,21 +19,24 @@ Consider the following binary tree. The keys of the nodes are shown below inside
     ```{admonition} Answer
     :class: dropdown
     1 2 3 4 5 6 7
-    (NLR) Nodes are visited recursively printing root node, left subtree then right subtree. This means when you print the left subtree, print it also by starting with the root, left node, then right node. 
+
+    **(NLR)** Nodes are visited recursively printing root node, left subtree then right subtree. This means when you print the left subtree, print it also by starting with the root, left node, then right node. 
     ```
 
 2. What is the *inorder* traversal of the tree? 
     ```{admonition} Answer
     :class: dropdown
     3 2 4 1 5 7 6
-    (LNR) Nodes are visited recursively printing left subtree, root node, then right subtree. This means when you print the left subtree, print it also by starting with the left node, root node, then right node. 
+
+    **(LNR)** Nodes are visited recursively printing left subtree, root node, then right subtree. This means when you print the left subtree, print it also by starting with the left node, root node, then right node. 
     ```
 
 3. What is the *postorder* traversal of the tree?
     ```{admonition} Answer
     :class: dropdown
     3 4 2 7 6 5 1
-    (LRN) Nodes are visited recursively printing left subtree, right subtree, then root node. This means when you print the left subtree, print it also by starting with the left node, right node, then root node. 
+
+    **(LRN)** Nodes are visited recursively printing left subtree, right subtree, then root node. This means when you print the left subtree, print it also by starting with the left node, right node, then root node. 
     ```
 
 **Question 9 in Fall 2022 Final Exam [Intermediate]**
