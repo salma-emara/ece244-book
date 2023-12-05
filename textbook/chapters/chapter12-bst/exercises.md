@@ -18,21 +18,21 @@ Consider the following binary tree. The keys of the nodes are shown below inside
 1. What is the *preorder* traversal of the tree?
     ```{admonition} Answer
     :class: dropdown
-    NLR
+    1 2 3 4 5 6 7
     
     ```
 
 2. What is the *inorder* traversal of the tree? 
     ```{admonition} Answer
     :class: dropdown
-    LNR
+    3 2 4 1 5 7 6
     
     ```
 
 3. What is the *postorder* traversal of the tree?
     ```{admonition} Answer
     :class: dropdown
-    LRN
+    3 4 2 7 6 5 1
     
     ```
 
