@@ -29,16 +29,24 @@ You may assume:
 :class: dropdown
 
 **Stack**
-n: 4 bytes
-size: 4 bytes
-q: 4 bytes
-i: 4 bytes
+
+`n`: 4 bytes
+
+`size`: 4 bytes
+
+`q`: 4 bytes
+
+`i`: 4 bytes
+
 Total: 16 bytes
 
 **Heap**
+
 `n` is 1, `size` is 2
+
 The loop iterates 3 times, each time it allocates 2 integers. 
-Total is 6 * 4 bytes = 24 bytes.
+
+Total is 3 * 2 * 4 bytes = 24 bytes.
 ```
 
 **Question 9 in Fall 2021 Midterm Exam [Intermediate]**
