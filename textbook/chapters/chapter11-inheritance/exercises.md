@@ -410,7 +410,7 @@ error). Assume the statements in the rows of the table also appear in the `nohel
 | ---------------- | ----------------- |
 | `derived.a = 8;` |Incorrect (`a` is a private member of the `Base` class)|
 | `derived.b = 10;`|Correct (`b` is protected in `Base` and can be access in `DerivedC`)|
-| `derived.x = 12;`|    Correct (`x` is private member of the `Base` class and can be accessed in `DerivedC`)         |
+| `derived.x = 12;`|    Correct (`x` is private member of the `DerivedC` class and can be accessed in `DerivedC`)         |
 | `derived.w = 4;` |    Correct (`w` is a public member of `DerivedC`)        |
 
 ```
