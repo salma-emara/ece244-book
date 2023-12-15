@@ -321,7 +321,7 @@ ListNode* head;
 3. It is sometimes not known if the linked list pointed to by `head` is circular or just a regular linked list with the next field in the last node set to `NULL`. Write a non-member function `isCircular(ListNode* h)` that returns true if the list is circular and false otherwise. The function is invoked as `isCircular(head)`.
 
     ```{code-block} cpp
-    void deleteNode(ListNode*& h, ListNode* p) {
+    bool isCircular(ListNode* h) {
     ```
 
     ````{admonition} Answer
