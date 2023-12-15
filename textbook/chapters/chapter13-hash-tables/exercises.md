@@ -70,7 +70,7 @@ class LinkedList {
 Also, you are given a string hash function, which uses a secret algorithm to turn the given string into a non-negative integer value. You can safely assume that given the same string inputs, the output value is always the same. However, two different strings may be turned into the same number.
 
 ```{code-block} cpp
-int string_hash(const strings name);
+int string_hash(const string& name);
 ```
 
 And finally, here is how the hash table is declared. It stores all the names of active VTubers at a given time, **using the name as a unique key**. The hash table **solves collisions by chaining** using the linked list.
