@@ -35,7 +35,7 @@ void prefixsum(int* arr, int left, int right, int psum) {
 
 Write a recursive function called `reverseArray` that reverses an n-element array in-place, i.e., without using an additional array. For example, given `int arr[] = {1, 2, 3, 4, 5, 6, 7};`, the function changes the array to have `{7, 6, 5, 4, 3, 2, 1}`.
 
-That is, the `reverseArray` function swaps elements `a[i]` with element `a[n - i - 1]`. For an n-element array, the function is called lke this: `reverseArray(a, 0, n-1);`.
+That is, the `reverseArray` function swaps elements `a[i]` with element `a[n - i - 1]`. For an n-element array, the function is called like this: `reverseArray(a, 0, n-1);`.
 
 Write your answer below. You are not allowed to use any loops in your solution.
 
