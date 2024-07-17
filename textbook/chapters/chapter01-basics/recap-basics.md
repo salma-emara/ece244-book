@@ -16,11 +16,6 @@ In {numref}`hello-program`, we show an example of a C++ program that prints `Hel
 A simple hello world program showing the structure of a C++ program
 ```
 
-**Output**
-<pre>
-Hello world!
-</pre>
-
 `#include <iostream>` is an include statement that includes the standard input-output stream library. `iostream` has implementations of *streams*, which are a sequence of characters transferred between the program and input-output devices. We will use `cout` and `cin`, where `cout` is for output and `cin` is for input. The equivalent of `#include <iostream>` is `#include <stdio.h>` in C.
 
 `using namespace std;` is a statement that declares using a container of names named `std`. Here, `namespace` means a container and `std` is the container we will use. `std` is short for standard.
@@ -31,36 +26,40 @@ Hello world!
 
 `<<` is an operator. Just like `+` is an operator for addition, `<<` is an operator to output.
 
-`"Hello world!"` is a string that we want to output. Notice that we have it between double quotes. 
+`"Hello world!"` is a string that we want to output. Note that we have it between double quotes. 
 
-`<< endl;` is the output operator again followed by `endl`, which is used to output a newline in C++. 
+`<< endl;` is the output operator `<<` again followed by `endl`, which is used to output a newline in C++. 
 
 `return 0;` exits the main function just as in C.
 
 Recall that in C, the above program would look as follows:
 
 **Code**
-```{code-block} c
-#include <stdio.h>
-
-int main() {
-    printf("Hello world!\n");
-    return 0;
+{{code_runner_header}}
+<pre class="code-runner-wrapper">
+<code-runner language="c" output="Hello world!">
+&#35;include &lt;stdio.h&gt;
+<br>
+int main(void){
+  printf("Hello world!\n");
+  return 0;
 }
-```
+</code-runner>
+</pre>
 
 ### A program to input a value
 
 If we would like to write a program that takes a number from the user, we would use `cin` as follows.
 
 **Code**
-```{code-block} cpp
-:linenos:
-:emphasize-lines: 8, 10
-#include <iostream>
+{{code_runner_header}}
+<pre class="code-runner-wrapper">
+<code-runner language="c++" highlight-lines="8 10" input="7" output="Enter a value: <b>7</b>
+The value entered is 7">
+&#35;include &lt;iostream&gt;
 using namespace std;
-
-int main() {
+<br>
+int main(void) {
   int value = 0;
   cout << "Enter a value: ";
 
@@ -69,44 +68,43 @@ int main() {
   cout << "The value entered is " << value << endl;
   return 0;
 }
-```
-
-**Output [^1]**
-<pre>
-Enter a value: <b>7</b>
-The value entered is 7
+</code-runner>
 </pre>
 
-In line 5, we declare an integer as we would do in C.
+In line 5, we declare an integer variable named `value` as we would do in C.
 
-In line 8, `cin` is used for input and `>>` is the operator used to get an input from the user and store it in the variable to the right, which is `value`.
+In line 8, `cin` is standard input stream used to get user input, and `>>` is the operator used to get the user input and store it in the variable to the right of `>>`, which is `value`.
 
 In line 10, we use `cout` to output the string `"The value entered is "` followed by `value`. To follow the string by the value stored in a variable, you have to put a `<<` before the variable. 
 
 ````{admonition} Equivalent in C
-If we would write the above program in C, it look as follows.
+The above program in C looks as follows.
 
 **Code**
-```{code-block} c
-:emphasize-lines: 6
-:linenos:
-#include <stdio.h>
-
-int main() {
-    int value;
-    printf("Enter a value: ");
-    scanf("%d", &value);
-    printf("The value entered is %d\n", value);
-    return 0;
+{{code_runner_header}}
+<pre class="code-runner-wrapper">
+<code-runner language="c" highlight-lines="6" input="7" output="Enter a value: <b>7</b>
+The value entered is 7">
+&#35;include &lt;stdio.h&gt;
+using namespace std;
+<br>
+int main(void) {
+  int value;
+  printf("Enter a value: ");
+  scanf("%d", &value);
+  printf("The value entered is %d\n", value);
+  return 0;
 }
-```
+</code-runner>
+</pre>
+
 In line 6, we used `scanf` function to take input from the user.
 
 In C, we have to use format specifiers, e.g. `%d`, to specify the type of the variable to print it or to take it as input. Note that this is not the case in C++.
 ````
 
 ````{tip}
-Many people get confused between `<<` and `>>` and when to use them. The direction of the operator can help you. If you are using `cout`, you use `<<` which points outside the page on the left. Otherwise, if you are using `cin`, then use `>>` which points inside the page. This is illustrated in the figure below.
+Many people are confused about when to use `<<` and `>>`. Our tip is to consider the direction in which the operators point. If you are using `cout`, you use `<<` which points ***out***side the page towards `cout`. Otherwise, if you are using `cin`, then use `>>` which points ***in***side the page towards the variable that we are reading into. This is illustrated in the figure below.
 
 ```{figure} ./images/tip-on-io.png
 :alt: Direction of operator
@@ -114,7 +112,7 @@ Many people get confused between `<<` and `>>` and when to use them. The directi
 :width: 400px
 :align: center
 
-Direction of the operator can help you determine its use case.
+Direction of the operator can help you recall its use.
 ```
 ````
 
@@ -130,21 +128,21 @@ Integers are whole numbers, for example, $0$, $-23$ and $789$. We have different
 2. `short` stores an integer typically in 16 bits. If one bit stores the sign, we have 15 bits to store the number. Hence, `short` can store $-2^{15}$ to $0$ to $2^{15} - 1$.
 3. `long` stores an integer typically in more than 32 bits with obviously a wider range of numbers. 
 
-For the purpose of this course, we recommend using `int` to store integers. For example, `int apples = 6;`
+For the purpose of this course, we recommend using `int` to store integers. For example, `int participants = 60;`
 
 ### Floating-point numbers
 
-Floating-point numbers or fractional number or real numbers are numbers that have numbers after the decimal point, for example, $2.9$, $-118.763$. We have different data types to store floating-point numbers. The floating-point representation does often resemble scientific notation., *e.g.* $2.89 \times 10^{14}$ is represented as $2.89e14$ or $2.89E14$. 
+Floating-point/fractional/real numbers are numbers that have numbers after the decimal point, for example, $2.9$, $-118.763$. The floating-point representation in computer memory resemble scientific notation., *e.g.* $2.89 \times 10^{14}$ is represented as $2.89e14$ or $2.89E14$. Different data types in C/C++ can store floating-point numbers.  
 
-1. `float` stores a number using 32 bits, with 7 decimal digits of precision, which refers to the total number of significant digits, both before and after the decimal point.
+1. `float` stores a number using 32 bits, with 7 decimal digits of precision --- the total number of significant digits both before and after the decimal point.
 2. `double` stores a number using 64 bits, with 15 decimal digits of precision.
-3. `long double` typically stores a number using more than 64 bits, with obviously greater precision than `double`.
+3. `long double` typically stores a number using more than 64 bits, with greater precision than `double`.
 
-For the purpose of this course, we recommend the usage of `double` data type to store floating-point numbers. For example, `double inchesInCm = 2.54;`
+For the purpose of this course, we recommend using `double` to store floating-point numbers. For example, `double inchesInCm = 2.54;`
 
 ### Boolean 
 
-In C, we had a `bool` data type used to represent a logical value, *i.e.* `true` or `false` in 8 bits. We had to include a library using `#include <stdbool.h>` to use this data type. Similarly, in C++, we have the same `bool` stored in 8 bits, but we don't need to include a library for it. For example, `bool isRaining = false;`
+Similar to C, in C++, we have the `bool` data type to represent a logical value, *i.e.* `true` or `false` in 8 bits. Different from C, in C++, we don't need to include a library to use this data type. For example, `bool isRaining = false;`
 
 ### Characters 
 
@@ -152,17 +150,17 @@ We can store a single character in `char` data type using 8 bits. For example, `
 
 ### Arrays
 
-To store multiple data elements of the same data type using a single variable name, we can use an array. Data can be of any type. For example, in 
+An array stores multiple data elements of the **same** data type using a single identifier. Data can be of any type. For example, in 
 
 ```
 int arr[7] = {1, 2, 3, 4, 5, 6, 7};
 ```
 
-`arr` is an array that represents 7 different elements of the data type `int`. `arr[0]` would access the first element, `arr[1]` would access the second element, and so on till `arr[6]`, which accesses the last element.
+`arr` is an array identifier that represents 7 different elements of the data type `int`. `arr[0]` would access the first element storing `1`. The last element can be accessed using `arr[6]`.
 
 ### Strings
 
-An array can store more than a single character using one variable name. This can be a **string** in C if it was a null-terminated array of characters. For example, in
+An array can be used to store more than a single character. This can be a **string** in C if it was a null-terminated array of characters. For example, in
 ```
 char h[6] = "Hello";
 ```
@@ -171,31 +169,37 @@ we declare a string named `h` that stores the string `"Hello"`, where `h[5]` sto
 
 In C, including the string library using `#include <string.h>` can give access to string functions like `strcmp`, `strlen` and `strcpy`. 
 
-However, in C++, we have a data type named `string` to store a sequence of characters. To use this data type, you need to include the string library using `#include <string>`. You can perform some operations on strings such as concatenating them using `+` or comparing them using `==`. For example, in the following code, we take from the user the course department and code and check if it is `"ECE244"``.
+However, in C++, we have a data type named `string` to store a sequence of characters. To use this data type, you need to include the string library using `#include <string>`. You can perform some operations on strings such as concatenating them using `+` or comparing them using `==`. For example, in the following code, we take from the user the course department and code and check if it is `"ECE244"`.
 
 **Code**
-```{code-block} cpp
-#include <iostream>
-#include <string>
-
+{{code_runner_header}}
+<pre class="code-runner-wrapper">
+<code-runner language="c++" input="ECE244" output="Fill in the blank of the following sentence
+This course is ________ Programming Fundamentals!
+<b>ECE244</b>
+Correct!
+This course is ECE244 Programming Fundamentals!">
+&#35;include &lt;iostream&gt;
+&#35;include &lt;string&gt;
+<br>
 using namespace std;
-
-int main() {
-  string courseDepart, courseNum, courseCode;
-  cout << "Enter course department and code: ";
-  cin >> courseDepart >> courseNum;
-  courseCode = courseDepart + courseNum;
-  if (courseCode == "ECE244") {
-    cout << "This course is titled Programming Fundamentals" << endl;
+<br>
+int main(void) {
+  string prePhrase = "This course is ",
+         postPhrase = " Programming Fundamentals!", blank = "________";
+  cout << "Fill in the blank of the following sentence" << endl;
+  cout << prePhrase << blank << postPhrase << endl;
+  cin >> blank;
+  if (blank == "ECE244") {
+    cout << "Correct!" << endl;
+    string sentence = prePhrase + blank + postPhrase;
+    cout << sentence << endl;
+  } else {
+    cout << "Incorrect!" << endl;
   }
   return 0;
 }
-```
-
-**Output[^1]**
-<pre>
-Enter course department and code: <b>ECE 244</b>
-This course is titled Programming Fundamentals
+</code-runner>
 </pre>
 
 ## Operators
@@ -218,10 +222,14 @@ Control structures are used to control the flow of execution of a program, *e.g.
 In C and C++, if-statements allow you to take a decision in a program to do something if a condition is `true`. If we want to take another decision if the condition is `false`, an `else` to the `if` would do it. For example, in the following code, we try finding out if the shape is a rectangle or square based on the height and width entered by the user. 
 
 **Code**
-```{code-block} cpp
-#include <iostream>
+{{code_runner_header}}
+<pre class="code-runner-wrapper">
+<code-runner language="c++" input="76 4" output="Please enter the height and width of your shape: <b>76 4</b>
+The shape is a rectangle.">
+&#35;include &lt;iostream&gt;
+<br>
 using namespace std;
-
+<br>
 int main(void) {
   int height = 0, width = 0;
   cout << "Please enter the height and width of your shape: ";
@@ -234,26 +242,24 @@ int main(void) {
   }
   return 0;
 }
-```
-
-**Output[^1]**
-<pre>
-Please enter the height and width of your shape: <b>76 4</b>
-The shape is a rectangle.
+</code-runner>
 </pre>
 
 ### Loops
 
 On the other hand, loops help you execute a block of code repeatedly as long as a condition is `true`. There are three main loop structures:
 
-1. **A while loop** checks the condition of the loop, then if `true` executes the body of the loop. Otherwise, statements after the loop are executed. For example, the following code prints numbers from 1 to 10.
+1. In **a while loop**, if the condition is `true`, the body of the loop will be executed. Otherwise, statements after the loop are executed. The body of the loop will be executed repeatedly until the condition returns `false`. For example, the following code prints numbers from 1 to 10.
 
     **Code**
-    ```{code-block} cpp
-    #include <iostream>
+    {{code_runner_header}}
+    <pre class="code-runner-wrapper">
+    <code-runner language="c++" highlight-lines="7" output="1 2 3 4 5 6 7 8 9 10">
+    &#35;include &lt;iostream&gt;
+    <br>
     using namespace std;
-
-    int main() {
+    <br>
+    int main(void) {
       int i = 1;
       while (i <= 10) {
         cout << i << " ";
@@ -262,39 +268,50 @@ On the other hand, loops help you execute a block of code repeatedly as long as 
       cout << endl;
       return 0;
     }
-    ```
-   **Output**
-   <pre>
-   1 2 3 4 5 6 7 8 9 10
-   </pre>
+    </code-runner>
+    </pre>
 
-2. **A do-while loop** executes the body of the loop first then check the condition. If the condition is `true`, the body of the loop would be executed again. Otherwise, the statements after the loop will be executed. For example, the following code would ask the user to enter a number between 1 and 10, and if the entered number is within the range, it would exit the loop. Otherwise, it will continue to prompt the user. In short, the body of the loop will be executed at least once.
+2. A **do-while loop** executes the body of the loop first then checks the condition. If the condition is `true`, the body of the loop would be executed again. Otherwise, the statements after the loop will be executed. For example, the following code would ask the user to enter a number between 1 and 10, and if the entered number is within the range in line 10, it would exit the loop. Otherwise, it will continue to prompt the user in lines 8 -- 9. The body of the loop will be executed at least once.
     
     **Code**
-    ```{code-block} cpp
-    #include <iostream>
+    {{code_runner_header}}
+    <pre class="code-runner-wrapper">
+    <code-runner language="c++" input="-10 8" highlight-lines="10" output="Please enter a number between 1 and 10 (inclusive): <b>-10</b>
+    Please enter a number between 1 and 10  (inclusive): <b>8</b>
+    The number entered is 8">
+    &#35;include &lt;iostream&gt;
+    <br>
     using namespace std;
-
+    <br>
     int main(void) {
       int num;
-
       do {
         cout << "Please enter a number between 1 and 10 (inclusive): ";
         cin >> num;
       } while (num < 1 || num > 10);
-
       cout << "The number entered is " << num <<  endl;
       return 0;
     }
-    ```
-    **Output[^1]**
-    <pre>
-    Please enter a number between 1 and 10 (inclusive): <b>-10</b>
-    Please enter a number between 1 and 10  (inclusive): <b>8</b>
-    The number entered is 8</pre>
-
-3. **A for loop** also does repeat a block of code depending on a condition, but it has a different structure with three expressions: *initialization*, where you initialize a state of a variable for example, *condition*, which determines if the program will execute the body of the loop, and *increment*, where you change the state of the variable to get closer to change the condition. 
+    </code-runner>
+    </pre>
 
 
+3. A **for loop** also does repeat a block of code depending on a condition, but it has a different structure with three expressions: *initialization*, where you initialize a state of a variable for example, *condition*, which determines if the program will execute the body of the loop, and *increment*, where you change the state of the variable to get closer to change the condition. For example, in line 6 in the code below, `int i = 1` initializes `i` to 1, `i <= 10` checks if `i` is less than or equal to 10, and in `i++` we increment `i` by 1. The body of the for loop is executed as long as `i` is less than or equal to 10.
 
-[^1]: Inputs to programs are in **bold**.
+    **Code**
+    {{code_runner_header}}
+    <pre class="code-runner-wrapper">
+    <code-runner language="c++" highlight-lines="6" output="1 2 3 4 5 6 7 8 9 10">
+    &#35;include &lt;iostream&gt;
+    <br>
+    using namespace std;
+    <br>
+    int main(void) {
+      for (int i = 1; i <= 10; i++) {
+        cout << i << " ";
+      }
+      cout << endl;
+      return 0;
+    }
+    </code-runner>
+    </pre>
