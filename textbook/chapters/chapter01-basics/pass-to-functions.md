@@ -77,8 +77,6 @@ int nChooseK(int n, int k) {
 
 It is **important** to note that when calling the `nChooseK` function, you must pass in the values of `n` and `k` in their respective order as arguments.
 
-
-
 **Code**
 {{code_runner_header}}
 <pre class="code-runner-wrapper">
@@ -116,8 +114,63 @@ int main(void) {
 </code-runner>
 </pre>
 
+### Function prototypes
 
+In the previous example, the `factorial` function was defined before `nChooseK` function, and `nChooseK` function was defined before the `main` function. The order is important as functions cannot be called before they are defined. Otherwise, the program will not compile. 
 
+However, in some cases, determining the order of function definitions can be challenging. For example, if function `a` calls function `b`, and function `b` calls function `a`, the order of function definitions before the `main` function cannot be determined. 
+
+To solve this issue, you can define a function prototype before the `main` function to inform the compiler about the function signature. Then, later after the `main` function implement all the functions defined before the `main` function. 
+
+A function prototype is a declaration of the function that includes the function name, return type, and parameter list. The general syntax of a function prototype is as follows:
+
+```{code-block} cpp
+return_type function_name(parameter_list);
+```
+
+To rewrite the code in the previous example using function prototypes, you would define the `factorial` and `nChooseK` function prototypes before the `main` function and implement them after the `main` function as shown below:
+
+**Code**
+{{code_runner_header}}
+<pre class="code-runner-wrapper">
+<code-runner language="cpp" highlight-lines="12 13 14" input="5 2" output="Enter the value of n: 
+5
+Enter the value of k: 
+2
+The number of ways to choose 2 from 5 is 10">
+&#35;include &lt;iostream&gt;
+using namespace std;
+<br>
+int factorial(int n);
+int nChooseK(int n, int k);
+
+int main(void) {
+  int n, k;
+  cout << "Enter the value of n: " << endl;
+  cin >> n;
+  cout << "Enter the value of k: " << endl;
+  cin >> k;
+  cout << "The number of ways to choose " << k;
+  cout << " from " << n << " is ";
+  cout << nChooseK(n, k) << endl;
+  return 0;
+}
+
+int factorial(int n) {
+  int result = 1;
+  for (int i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+int nChooseK(int n, int k) {
+  return factorial(n) / (factorial(k) * factorial(n - k));
+}
+</code-runner>
+</pre>
+
+In this case, the order of function prototypes and function definitions does not matter. The compiler will know the function signature and will not raise any errors.
 
 ## Pass-by-value
 
