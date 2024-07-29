@@ -4,12 +4,17 @@
 using namespace std;
 
 int main() {
-  string courseDepart, courseNum, courseCode;
-  cout << "Enter course department and code: ";
-  cin >> courseDepart >> courseNum;
-  courseCode = courseDepart + courseNum;
-  if (courseCode == "ECE244") {
-    cout << "This course is titled Programming Fundamentals" << endl;
+  string prePhrase = "This course is ",
+         postPhrase = " Programming Fundamentals!", blank = "________";
+  cout << "Fill in the blank of the following sentence" << endl;
+  cout << prePhrase << blank << postPhrase << endl;
+  cin >> blank;
+  if (blank == "ECE244") {
+    cout << "Correct!" << endl;
+    string sentence = prePhrase + blank + postPhrase;
+    cout << sentence << endl;
+  } else {
+    cout << "Incorrect!" << endl;
   }
   return 0;
 }
