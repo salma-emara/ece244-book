@@ -86,7 +86,7 @@ The above program in C looks as follows.
 <code-runner language="c" highlight-lines="6" input="7" output="Enter a value: <b>7</b>
 The value entered is 7">
 &#35;include &lt;stdio.h&gt;
-using namespace std;
+
 <br>
 int main(void) {
   int value;
