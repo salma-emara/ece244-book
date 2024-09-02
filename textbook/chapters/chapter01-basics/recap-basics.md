@@ -39,7 +39,6 @@ Recall that in C, the above program would look as follows:
 <pre class="code-runner-wrapper">
 <code-runner language="c" output="Hello world!">
 &#35;include &lt;stdio.h&gt;
-<br>
 int main(void){
   printf("Hello world!\n");
   return 0;
