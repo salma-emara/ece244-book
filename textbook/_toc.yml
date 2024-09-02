@@ -17,13 +17,14 @@ parts:
           - file: chapters/chapter01-basics/computers.md
           - file: chapters/chapter01-basics/recap-basics.md
           - file: chapters/chapter01-basics/pass-to-functions.md
+          - file: chapters/chapter01-basics/separate-compilation.md
           - file: chapters/chapter01-basics/exercises.md
-      - file: chapters/chapter02-io/intro.md
+      - file: chapters/chapter02-classes/intro.md
         sections:
-          - file: chapters/chapter02-io/exercises.md
-      - file: chapters/chapter03-classes/intro.md
+          - file: chapters/chapter02-classes/exercises.md
+      - file: chapters/chapter03-io/intro.md
         sections:
-          - file: chapters/chapter03-classes/exercises.md
+          - file: chapters/chapter03-io/exercises.md
       - file: chapters/chapter04-pointers/intro.md
         sections:
           - file: chapters/chapter04-pointers/exercises.md
@@ -54,3 +55,7 @@ parts:
       - file: chapters/chapter13-hash-tables/intro.md
         sections:
           - file: chapters/chapter13-hash-tables/exercises.md
+  - caption: "Hidden Pages"
+    hidden: true
+    chapters:
+      - file: semantic-search.md
