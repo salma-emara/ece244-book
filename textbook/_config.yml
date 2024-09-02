@@ -4,7 +4,7 @@
 title: "Khufu: Object-Oriented Programming using C++"
 author: Salma Emara et al.
 copyright: "2024"
-logo: logo.png
+logo: logo-v1.png
 only_build_toc_files: true
 
 sphinx:
