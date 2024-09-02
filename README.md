@@ -30,10 +30,59 @@ jupyter-book build --all textbook
 jupyter-book build textbook
 ```
 
-4- To view the book, you can run:
+4- To view the book, you have two options:
 
-```open textbook/_build/html/index.html```
+1. **Open directly**:
+   ```bash
+   open textbook/_build/html/index.html
+   ```
+   **Note**: Opening the book this way uses the `file:///` protocol, which may cause issues with functionalities like search or semantic search due to CORS policies.
 
+2. **Run a local server** (recommended for full functionality):
+   ```bash
+   cd textbook/_build/html
+   python -m http.server 8000
+   open http://localhost:8000
+   ```
+   This method ensures all functionalities, including search and semantic search, work correctly.
+
+5- To update text embeddings for Semantic Search after a change, follow these steps:
+
+1. Ensure you have installed the necessary packages as described in the `embeddings/README.md` file. Or run the following command 
+   ```bash
+   pip install sentence-transformers beautifulsoup4 numpy
+   ```
+2. Run the following commands:
+   ```bash
+   python embeddings/generate.py
+   cp -r embeddings/outputs textbook/_build/html
+   ```
+
+### Extra: to solve no title issue for semantic-search page
+1. Run the following command when deploying on Netlify:
+   ```bash
+   cp -r textbook/semantic-search.html textbook/_build/html
+   ```
+2. Whenever a change that could affect table of content or semantic-search page
+   1. Run the following command after jupyter-book build to update locally stored semantic-search.html
+      ```bash
+      cp -r textbook/_build/html/semantic-search.html textbook
+      ```
+   2. Run the following command or open directly the local semantic-search.html in VSCode edit mode
+      ```bash
+      code textbook/semantic-search.html
+      ```
+   3. Make changes in the local semantic-search.html
+      1. Use ctrl + F or cmd + F and search for title
+      2. change  
+         ```<title>&lt;no title&gt; &#8212; Snefru: Learning Programming with C</title>```  
+         to below:  
+         ```<title>Semantic Search &#8212; Snefru: Learning Programming with C</title>```
+   4. Run the following command again to update the changes in _build when deploying on Netlify
+      ```bash
+      cp -r textbook/semantic-search.html textbook/_build/html
+      ```
+      
 ### Check spelling mistakes
 
 To check spelling mistakes, you need to install `pyspelling` using the following command:
