@@ -184,7 +184,7 @@ When passing the input parameter `n` to the `factorial` function, the function c
 In the following image, we visualize what happens in the main memory when `n` is passed to the `factorial` function. When the `factorial` function is called:
 
 1. a memory frame that stores the local variables of `factorial`, such as `n` and `result`, is created
-2. the changes in the local `n` and `result` of `factorial` will affect any variables elsewhere
+2. the changes in the local `n` and `result` of `factorial` will not affect any variables elsewhere
   
 When the `factorial` function returns, the memory frame that stores the local variables of `factorial` is removed from the main memory.
 
