@@ -10,7 +10,7 @@ For example, while learning C programming language in [Snefru](https:://www.lear
 
 Object-oriented programming provides a different way of framing and solving problems. It allows you to better organize larger projects by breaking them into smaller chunks that can be solved by creating *objects*. Developers define what are these objects: their properties and what can we do to them. Object-oriented programming: 
 
-1. Improves *modularity* of code, which allows you to build more complex code. Recall 
+1. Improves *modularity* of code, which allows you to build more complex code. 
 2. Improves reusability of your code as code of objects can be easily used in other parts of the program or in other programs
 3. Can make it easier to extend programs
 4. Makes programs easier to maintain and troubleshoot/debug
