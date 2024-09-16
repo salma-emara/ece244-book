@@ -1,0 +1,3 @@
+# Classes
+
+In this chapter, we discuss classes, which is an expansion of `struct`s. Classes incorporate data, like structs, and methods/functions, new in classes. Classes can be thought of as creating your own user-defined data type, and creating a variable of this data type is considered instantiating an "object". Different objects from the same class have different data members stored in the memory. By default, constructors are called when an object is instantiated, and destructors are called when an object is destroyed.
