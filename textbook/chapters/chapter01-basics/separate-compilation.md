@@ -161,16 +161,54 @@ Header files used to store function declarations are included in the source file
 
 **Let's copy function declarations.** If we were to get rid of header files and include the function declarations in the source files, we would have to copy the function declarations to all source files that use the functions. This would lead to code duplication and make the code harder to maintain.
 
-**Let's include source files** If we were to include source files instead of the header files: 
+**Let's include source files.** If we were to include source files instead of the header files: 
 
-1- whenever we change a source file, we have to compile it and any other file that includes it. For example, if we have `#include "print.cpp"` in the `main.cpp` file, we have to compile `print.cpp` and `main.cpp` whenever we change `print.cpp`. 
-2- the linker will fail at generating an executable as it will detect that there are duplicate function implementations in multiple object files. For example, if we have `#include "print.cpp"` in the `main.cpp` file, the `printNum` function will be defined in both `print.o` and `main.o` files. The linker will detect this and fail to generate an executable file.
+1. whenever we change a source file, we have to compile it and any other file that includes it. For example, if we have `#include "print.cpp"` in the `main.cpp` file, we have to compile `print.cpp` and `main.cpp` whenever we change `print.cpp`. This defeats the purpose of separate compilation that saves time by compiling **only** the source files that have been changed.
+
+2. the linker will fail at generating an executable as it will detect that there are duplicate function implementations in multiple object files. For example, if we have `#include "print.cpp"` in the `main.cpp` file, the `printNum` function will be defined in both `print.o` and `main.o` files. The linker will detect this and fail to generate an executable file.
 
 ## What happens if we include a header file multiple times?
 
-Why would someone mistakenly include a header file multiple times? The answer is that the header file may include other header files, and these header files may include the same header file. For example, 
+Why would someone mistakenly include a header file multiple times? The answer is that a header file may include another header file, and then you include both these header files in a source file. For example, the following figure shows a.h and b.h header files. The `b.h` header file includes the `a.h` header file to be able to use `struct A` in b.h. If you include both `a.h` and `b.h` in a source file, at the preprocessing stage, the `a.h` file contents, which is `struct A` definition will be included twice in the source file. This flags an error at compilation as the `struct A` definition is duplicated.
 
-(work-in-progress!)
+```{figure} ./images/duplicate-inclusion.png
+:alt: Duplicate inclusion of a.h
+:class: with-shadow
+:width: 600px
+:align: center
+:name: exec-from-source
+
+Since a.h is included in b.h and we included a.h and b.h in main.cp, indirectly, the header file a.h is included twice in main.cpp. 
+```
+
+**Solution!** To avoid this error, we need to tell the preprocessor to include each header file only once using **header guards**. Header guards are preprocessor directives that prevent the contents of a header file from being included more than once in a source file. The header guards are defined at the beginning of the header file and are used to check if the header file has been included before. If the header file has been included before, the contents of the header file are not included again.
+
+The header guards are defined as follows:
+
+```{code-block} cpp
+#ifndef FILE_NAME_H
+#define FILE_NAME_H
+
+// Contents of the header file
+
+#endif
+```
+
+`#ifndef FILE_NAME_H` checks if the `FILE_NAME_H` macro has been defined before. If it has not been defined, the contents of the header file are included. The `#define FILE_NAME_H` directive defines the `FILE_NAME_H` macro to prevent the contents of the header file from being included again. The `#endif` directive ends the header guard.
+
+For example, after adding header guards to `a.h` header file, it  will look like the following figure. As shown, the preprocessor will include the contents of the `a.h` file once and define the macro `A_H`; however, the next time to include `a.h`, the preprocessor will realize that the macro `A_H` has been defined before and ignore the contents till `#endif`. In short, this will prevent the duplication of the `struct A` definition.
+
+```{figure} ./images/header-guards-added.png
+:alt: Header guards in a.h
+:class: with-shadow
+:width: 600px
+:align: center
+
+Header guards prevent the contents of the header file from being included more than once in a source file.
+```
+
+The convention in naming the macro is to follow the file name. For example, the macro in the header guards for `b.h` file will be `B_H`. This is to ensure the macros are unique and prevent conflicts with other header files.
+
 
 
 
