@@ -21,6 +21,9 @@ parts:
           - file: chapters/chapter01-basics/exercises.md
       - file: chapters/chapter02-classes/intro.md
         sections:
+          - file: chapters/chapter02-classes/structs-and-classes.md
+          - file: chapters/chapter02-classes/constructors.md
+          - file: chapters/chapter02-classes/destructors.md
           - file: chapters/chapter02-classes/exercises.md
       - file: chapters/chapter03-io/intro.md
         sections:
