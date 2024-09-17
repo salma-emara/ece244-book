@@ -145,15 +145,26 @@ The process of generating an executable file from multiple source files.
 
 ### Separate Compilation
 
-The process of compiling each source file separately and linking them together is called **separate compilation**. Separate compilation allows us to compile only the source files that have been changed. This makes the compilation process faster.
+The process of compiling each source file separately and linking them together is called **separate compilation**. Separate compilation allows us to compile only the source files that have been changed. This makes the compilation process faster. 
 
-In the above example, if we change the `print.cpp` file, this changes the machine code in the `print.o` file. To generate the new executable file, we only need to compile the `print.cpp` file and link it with the other object files. We don't need to compile the `main.cpp` and `input.cpp` files.
+In the above example, if we change the 
 
-Similarly, if we change the `main.cpp`, we only need to compile `main.cpp` using `g++ -c main.cpp` and link the `main.o` file with the other object files using the `g++ main.o print.o input.o -o main` command.
+1. `print.cpp` file, this changes the machine code in the `print.o` file. To generate the new executable file, we only need to compile the `print.cpp` file and link it with the other object files. We don't need to compile the `main.cpp` and `input.cpp` files. This requires running the following commands:
+   - `g++ -c print.cpp`
+   - `g++ main.o print.o input.o -o main`
 
-However, if we change the `print.h` file, any source file that includes it must be recompiled. This is because, during the preprocessing stage, `#include "print.h"` is replaced with the updated contents of the file. Recompiling ensures that source files using the updated declarations generate the correct object files.
+2. `main.cpp`, we only need to compile `main.cpp` and link the `main.o` file with the other object files using:
+   - `g++ -c main.cpp` 
+   - `g++ main.o print.o input.o -o main`
 
-Separate compilation is a powerful feature that allows us to compile only the source files that have been changed. This makes the compilation process faster and more efficient. IDEs, like VS Code, and build tools, like Make, automate the process of separate compilation by tracking files changed and compiling only the necessary source files.
+3. `print.h` file, any source file that includes it must be recompiled. This is because, during the preprocessing stage, `#include "print.h"` is replaced with the updated contents of the file. Recompiling ensures that source files using the updated declarations generate the correct object files. This requires running the following commands:
+   - `g++ -c print.cpp`
+   - `g++ -c main.cpp`
+   - `g++ main.o print.o input.o -o main`
+
+The order of compiling the source files does not matter as long as all source files are compiled before linking them together.
+
+Since linking is much faster than compilation, we will only compile files that need to be recompiled and. Separate compilation is a powerful feature that allows us to compile only the source files that have been changed. This makes the compilation process faster and more efficient. IDEs, like VS Code, and build tools, like Make, automate the process of separate compilation by tracking files changed and compiling only the necessary source files.
 
 ## Why do we need header files?
 
@@ -176,7 +187,6 @@ Why would someone mistakenly include a header file multiple times? The answer is
 :class: with-shadow
 :width: 600px
 :align: center
-:name: exec-from-source
 
 Since a.h is included in b.h and we included a.h and b.h in main.cp, indirectly, the header file a.h is included twice in main.cpp. 
 ```
