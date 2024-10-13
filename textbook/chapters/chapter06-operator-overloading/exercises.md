@@ -425,7 +425,7 @@ able to perform the second multiply operation (see comment above). Be sure to in
     :class: dropdown
     ```{code-block} cpp
     Fraction Fraction::operator*(int x) {
-      Fraction w(numerator * x, denominator);
+      Fraction w(numerator * x, denominator * x);
       return w;
     }
     ```
