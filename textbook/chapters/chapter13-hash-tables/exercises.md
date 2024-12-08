@@ -162,7 +162,7 @@ bool HashTable::exist(const string& name) {
     }
 
       // not found!
-      if (num_elements + 1 >= table_slot_size) {
+      if (num_elements + 1 >= table_slot_size / 2) {
         table_slot_size = table_slot_size * 2;
         LinkedList** newTable = new LinkedList*[table_slot_size];
         for (int i = 0; i < table_slot_size; i++) {
