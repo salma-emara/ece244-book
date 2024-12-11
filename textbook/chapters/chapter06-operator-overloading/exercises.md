@@ -62,10 +62,10 @@ What members of the class Nova must exist for the above code to compile with no 
 |         `Nova(int, double);`                  |
 |               `int it;`                       |
 |       `void setAll(int,double);`             |
-|         `operator+(Nova&)`                    |
+|         `Nova operator+(Nova&)`                    |
 |         `bool operator!=(Nova&)`              |
 
-No need for destructor as I don't dynamically allocate space in the object.
+No need for destructor as we don't dynamically allocate space in the object.
 No need for a copy constructor in `Nova b(a)` since one is given by default.
 No need for `operator=` in `*p = a + b`
 ````
