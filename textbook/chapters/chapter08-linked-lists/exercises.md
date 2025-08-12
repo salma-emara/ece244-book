@@ -303,10 +303,12 @@ ListNode* head;
     void deleteNode(ListNode*& h, ListNode* p) {
       if (h == nullptr)
         return;
-      if (h->next == h) {  // one element, guaranteed p == h delete h;
+      if (h->next == h) {  // one element, guaranteed p == h
+        delete h;
         h = nullptr;
+        return;
       }
-      return;
+      
       if (p->next == h) {
         h = h->next;
       }
