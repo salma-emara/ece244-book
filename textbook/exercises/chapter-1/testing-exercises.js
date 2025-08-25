@@ -2,118 +2,114 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
-      "title": "Question 2 in Winter 2018 Midterm Exam",
+      "title": "Question 2 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
       "table": false,
       "multipart": false,
-      "question": "Writea single C statement — which contains exactly one terminating semi-colon (`;`), and does\nnot contain brace brackets (`{` or `}`) — that declares a `bool` variable named `isHighlighted`, and\nsets its value to true if and only if the value stored in an integer variable named `characterCount`\nis an **even positive** number. Assume that the variable `characterCount` has already been declared\nand initialized.\n",
-      "answer": " \nbool isHighlighted = characterCount % 2 == 0 && characterCount > 0; "
+      "question": "When you compile the following program, what happens? If there is an error, explain what the error is (one sentence max).\n",
+      "question-code": "\n#include <iostream>\nusing namespace std;\n\nint main() {\n  hello(1);\n  return 0;\n}\nvoid hello(int i) {\n  cout << \"Hello !\" << i << endl;\n  return;\n}\n\n",
+      "answer": " \nThere will be a compilation error because hello() is called before it's declared.\n"
     },
     {
-      "title": "Question 2 in Winter 2019 Midterm Exam",
+      "title": "Question 4 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
+      "type": "tracing",
+      "multipart": false,
+      "question": "Consider the following program. Write down the output",
+      "question-code": "#include <iostream>\nusing namespace std;\n\nvoid increment(int& a) {\n  a = a + 1;\n}\nvoid decrement(int a) {\n  a = a - 1;\n}\nvoid doubling(int* a) {\n  *a = (*a) * 2;\n}\n\nint main() {\n  int a = 3;\n  increment(a);\n  cout << a << endl;\n  decrement(a);\n  cout << a << endl;\n  doubling(&a);\n  cout << a << endl;\n  return 0;\n}\n\n",
+      "answer": " \n4\n4\n8\n"
+    },
+    {
+      "title": "Question 6 in Fall 2022 Midterm Exam",
+      "difficulty": "Easy",
       "type": "explaination",
-      "multipart": false,
-      "question": "Write a single C statement that declares a boolean-type variable named `divisible` and assigns\ntrue to divisible if and only if the value stored in the int variable named `numOfItems` is exactly\ndivisible by $5$ or $7$. Assume that variable `numOfItems` has been declared and initialized.\n",
-      "answer": " \nbool divisible = numOfItems % 5 == 0 || numOfItems % 7 == 0; "
-    },
-    {
-      "title": "Question 7 in Winter 2018 Final Exam",
-      "difficulty": "Easy",
-      "type": "multiple-choice",
       "table": false,
       "multipart": true,
-      "question": "Evaluate the following relational expressions by circling the right answer.\n",
-      "question-code": " '\\O' == 0\n",
-      "answer": [
-        0
-      ],
-      "choices": [
-        "True",
-        "False"
-      ],
-      "explanations": [
-        "True, since \\0 has ASCII code of zero"
-      ]
+      "question": "Compared to C, passing by reference is introduced in C++. Both of the following two functions can be used to swap the value of two integers:\n\n```{code-block} cpp\nvoid swap_by_p(int* a, int* b); // swap version.1\nvoid swap_by_r(int& a, int& b); // swap version.2\n```\n\n1. Write the implementations for these two functions (no more than 4 lines of code for each function)\n\n```{code-block} cpp\nvoid swap_by_p(int* a, int* b) {\n\n}\nvoid swap_by_r(int& a, int& b) {\n\n}\n```\n",
+      "answer": "void swap_by_p(int* a, int* b) {\n  int temp = *a;\n  *a = *b;\n  *b = temp;\n}\n\nvoid swap_by_r(int& a, int& b) {\n  int temp = a;\n  a = b;\n  b = temp;\n}\n"
     },
     {
-      "title": "Question 7 in Winter 2018 Final Exam",
+      "title": "Question 6 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
-      "type": "multiple-choice",
+      "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n",
-      "question-code": " int x = 10 % 8;\n(x > 0) && (x % 2 == 0) && !false\n",
-      "answer": [
-        0
-      ],
-      "choices": [
-        "True",
-        "False"
-      ],
-      "explanations": [
-        "True, since x stores 2"
-      ]
+      "question": " 2. If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_p`.\n",
+      "answer": "swap_by_p (&x, &y);\n"
     },
     {
-      "title": "Question 7 in Winter 2018 Final Exam",
+      "title": "Question 6 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
-      "type": "multiple-choice",
+      "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n",
-      "question-code": " 'c' - 3 == 'a'\n",
-      "answer": [
-        1
-      ],
-      "choices": [
-        "True",
-        "False"
-      ],
-      "explanations": [
-        "False, since 'c' - 2 == 'a'"
-      ]
+      "question": " 3. If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_r`. \n",
+      "answer": "swap_by_r (x, y);\n"
     },
     {
-      "title": "Question 7 in Winter 2018 Final Exam",
+      "title": "Question 7 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
-      "type": "multiple-choice",
+      "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n",
-      "question-code": " \nint w = rand() % 75 * 2 - 99;\n(w < -99) || (w > 49);\n",
-      "answer": [
-        1
-      ],
-      "choices": [
-        "True",
-        "False"
-      ],
-      "explanations": [
-        "False, since the range of random numbers in w is between -99 and 49 inclusive"
-      ]
+      "question": " \nEllie writes a program to make a simple database for ECE students who like drinking soy milk from 2T2 to 2T6. She designs two classes: `student` and `ECE`, and puts them into different files below. The main function is in the `main.cpp`.\n\n**ECE.h**\n```\n#ifndefine ECE\n#define ECE\n\n#include \"student.h\"\n\nclass ECE{\n  ...\n};\n#endif\n```\n\n**ECE.cpp**\n```\n#include \"ECE.h\"\n\nECE::ECE(){\n  ...\n}\n```\n\n**student.h**\n```\n#include <string>\n\nclass Student{\n  ...\n};\n```\n\n**student.cpp**\n```\n#include \"student.h\"\n\nStudent::Student(){\n  ...     \n}\n```\n\n**main.cpp**\n```\n#include \"ECE.h\"\n#include \"student.h\"\nint main(){\n     ...\n}\n```\n\n1. Ellie tries to compile this program with g++. What's the Unix (i.e., terminal) command that compiles the entire program using one command, which generates an executable called `small_database`?\n\n",
+      "answer": "g++ ECE.cpp student.cpp main.cpp -o small_database\n"
     },
     {
-      "title": "Modified version of Question 7 in Winter 2019 Midterm Exam",
+      "title": "Question 7 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
-      "type": "programming",
+      "type": "explaination",
       "table": false,
-      "multipart": false,
-      "question": "Write C program to find the median, which is the number at the middle, among three integers `p`, `q` and `r`. \nThe program should prompt the user to enter three integers, which get stored in `p`, `q` and `r`. Your program \nshould print the value of the number at the middle. For example, with integers $2$, $7$, and $5$ as input, the \nfunction returns 5; with integers $6$, $4$, and $6$ as input, the function returns $6$.\n\n",
-      "starter-code": "#include <stdio.h>\n\nint main(void) {\n\n}\n",
-      "answer": "#include <stdio.h>\nint main(void) {\n  int p = 0, q = 0, r = 0;\n  printf(\"Enter three integers: \");\n  scanf(\"%d %d %d\", &p, &q, &r);\n\n  if ((p >= q && p <= r) || (p >= r && p <= q)) {\n    printf(\"%d\", p);\n  } else if ((q >= p && q <= r) || (q >= r && q <= p)) {\n    printf(\"%d\", q);\n  } else {\n    printf(\"%d\", r);\n  }\n}\n"
+      "multipart": true,
+      "question": " \n2. However, it fails to compile. Can you point out the compile-time error and fix this error for her? \n",
+      "answer": "No header guard in student.h\n"
     },
     {
-      "title": "Modified Version of Question 4 in Winter 2022 Midterm Exam",
+      "title": "Question 7 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
-      "type": "programming",
+      "type": "explaination",
       "table": false,
-      "multipart": false,
-      "question": "The following program finds the middle character, e.g., if we have `a = 'a'`, `b = 'b'`, and `c = 'c'`, the program prints `b`. Rewrite this function such that it only uses one `printf` and one nested `if-else` statement.\n\n```{code-block} c\n#include <stdio.h>\n\nint main(void) {\n  char a = '\\0', b = '\\0', c = '\\0';\n  printf(\"Enter three characters: \");\n  scanf(\"%c %c %c\", &a, &b, &c);\n  if (a < b) {\n    if (b < c) {\n      printf(\"%c\", b);\n    } else if (a < c) {\n      printf(\"%c\", c);\n    } else {\n      printf(\"%c\", a);\n    }\n  }\n\n  if (c < b) {\n    printf(\"%c\", b);\n  }\n  if (a < c) {\n    printf(\"%c\", a);\n  }\n  printf(\"%c\", c);\n}\n```\n\n",
-      "starter-code": "#include <stdio.h>\n\nint main(void) {\n\n}\n",
-      "answer": "#include <stdio.h>\n\nint main(void) {\n  char a = '\\0', b = '\\0', c = '\\0';\n  printf(\"Enter three characters: \");\n  scanf(\"%c %c %c\", &a, &b, &c);\n\n  char result = a;\n\n  if ((a < b && b < c) || (c < b && b < a)) {\n    result = b;\n  } else if ((a < c && c < b) || (b < c && c < a)) {\n    result = c;\n  }\n\n  printf(\"%c\", result);\n}\n"
+      "multipart": true,
+      "question": " \n3. With your help, Ellie has fixed the compile-time error. Now, Ellie wants to use separate compilation learned from ECE244 to compile her project. Write down all the Unix commands necessary to separately compile the above files and generate an executable `small_database`.\n",
+      "answer": "g++ -c student.cpp -o student.o\ng++ -c ECE.cpp -o ECE.o\ng++ -c main.cpp -o main.o\ng++ student.o ECE.o main.o -o small_database\n"
+    },
+    {
+      "title": "Question 7 in Fall 2022 Midterm Exam",
+      "difficulty": "Easy",
+      "type": "explaination",
+      "table": false,
+      "multipart": true,
+      "question": " \n4. Ellie then changes some code in `ECE.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files needed. Assume the generated executable is called `small_database`.\n",
+      "answer": "g++ -c ECE.cpp -o ECE.o\ng++ student.o ECE.o main.o -o small_database\n"
+    },
+    {
+      "title": "Question 2 Fall 2018 Midterm Exam",
+      "difficulty": "Easy",
+      "type": "explaination",
+      "table": false,
+      "multipart": true,
+      "question": " \nYou are given a program that has a main function and 3 classes: First, Second and Third. For each of these classes, you have a definition file and an implementation file. Thus, you have seven\nfiles in total: First.h, First.cpp, Second.h, Second.cpp, Third.h, Third.cpp and main.cpp. All the files exist in the same directory. \n\nThe first few lines of each file are shown below.\nThe rest of the contents of each file is irrelevant to the question and is shown as `...`. You may assume the definition/implementation files are error-free.\n\n**First.h**\n```{code-block} cpp\n#ifndef FIRST_H\n#define FIRST_H\nclass First {\n  ...\n};\n#endif\n```\n\n**First.cpp**\n```{code-block} cpp\n#include “First.h”\nFirst::First() {\n  ...\n}\n```\n\n**Second.h**\n```{code-block} cpp\n#ifndef SECOND_H\n#define SECOND_H\nclass Second {\n  ...\n};\n#endif\n```\n\n**Second.cpp**\n```{code-block} cpp\n#include “First.h”\n#include “Second.h”\nSecond::Second() {\n  ...\n}\n```\n\n**Third.h**\n```{code-block} cpp\n#ifndef THIRD_H\n#define THIRD_H\nclass Third {\n  ...\n};\n#endif\n```\n\n**Third.cpp**\n```{code-block} cpp\n#include “Second.h”\nThird::Third() {\n  ...\n}\n```\n\n**main.cpp**\n```{code-block} cpp\n#include “First.h”\n#include “Second.h”\n#include “Third.h”\nint main() {\n  ...\n}\n```\n\nThe files are to be separately compiled and then linked into a single executable called `main`.\n\n1. Write down the Unix commands necessary to separately compile the above files and generate the executable.\n",
+      "answer": "g++ -c First.cpp -o First.o\ng++ -c Second.cpp -o Second.o\ng++ -c Third.cpp -o Third.o\ng++ -c main.cpp -o main.o\ng++ First.o Second.o Third.o main.o -o main\n"
+    },
+    {
+      "title": "Question 2 Fall 2018 Midterm Exam",
+      "difficulty": "Easy",
+      "type": "explaination",
+      "table": false,
+      "multipart": true,
+      "question": " \n2. You modify the file `Second.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.\n",
+      "answer": "g++ -c Second.cpp -o Second.o\ng++ First.o Second.o Third.o main.o -o main\n"
+    },
+    {
+      "title": "Question 2 Fall 2018 Midterm Exam",
+      "difficulty": "Easy",
+      "type": "explaination",
+      "table": false,
+      "multipart": true,
+      "question": " \n3. You modify the file `First.h`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.\n",
+      "answer": "g++ -c First.cpp -o First.o\ng++ -c Second.cpp -o Second.o\ng++ -c main.cpp -o main.o\ng++ First.o Second.o Third.o main.o -o main\n"
     }
   ]
 };
