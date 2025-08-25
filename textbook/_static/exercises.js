@@ -17,6 +17,7 @@ function generate_exercises(filename) {
 	const exercises = parsedObject.exercises;
 
 	let inMultipart = false;
+	let multipartTitle = "";
 	let currentMultipartForm = null;
 	let multipartCount = 0;
 
@@ -42,7 +43,9 @@ function generate_exercises(filename) {
 
 			multipartCount++;
 
-			if (!inMultipart) {
+			let firstMultipart = false;
+
+			if (!inMultipart || multipartTitle != ex.title) {
 				// first part of multipart questions
 				inMultipart = true;
 				currentMultipartForm = document.createElement('div');
@@ -50,6 +53,8 @@ function generate_exercises(filename) {
 				currentMultipartForm.id = `exercise-multipart-${i}`;
 
 				createTitle(currentMultipartForm, ex);
+				multipartTitle = ex.title;
+				firstMultipart = true;
 				container.appendChild(currentMultipartForm);
 			}
 
@@ -59,7 +64,7 @@ function generate_exercises(filename) {
 			storageKey = `${filename}-${form.id}-part-${multipartCount}`;
 
 			// Add divider between multipart sub-questions
-			if (i > 0 && exercises[i - 1].multipart) {
+			if (i > 0 && exercises[i - 1].multipart && !firstMultipart) {
 				const divider = document.createElement("div");
 				divider.className = "multipart-divider";
 				form.appendChild(divider);
