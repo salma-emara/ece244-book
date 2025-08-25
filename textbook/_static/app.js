@@ -456,10 +456,10 @@ function parse_and_generate_form(fileName) {
         const pre = document.createElement("pre");
         pre.classList.add("code-runner-quizzes");
           
-        // creating <code-runner language="c" output="Hello World!"> 
+        // creating <code-runner language="c++" output="Hello World!"> 
         const codeRunner = document.createElement("code-runner");
 
-        codeRunner.setAttribute("language", "c");
+        codeRunner.setAttribute("language", "c++");
         codeRunner.setAttribute("output", "");
         codeRunner.setAttribute("inputTestcase", "");
             
@@ -1286,7 +1286,7 @@ function resetQuiz(fileName) {
 
                 // create new code runner with same functionality as original
                 const newCodeRunner = document.createElement("code-runner");
-                newCodeRunner.setAttribute("language", "c");
+                newCodeRunner.setAttribute("language", "c++");
                 newCodeRunner.setAttribute("output", "");
                 newCodeRunner.textContent = defaultCode;
 
