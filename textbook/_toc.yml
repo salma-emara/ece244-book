@@ -20,6 +20,7 @@ parts:
           - file: chapters/chapter01-basics/pass-to-functions.md
           - file: chapters/chapter01-basics/separate-compilation.md
           - file: chapters/chapter01-basics/exercises.md
+          - file: chapters/chapter01-basics/testing-exercises.md
       - file: chapters/chapter02-classes/intro.md
         sections:
           - file: chapters/chapter02-classes/structs-and-classes.md
