@@ -223,7 +223,7 @@ function generate_exercises(filename) {
 			pre.classList.add("code-runner-quizzes");
 
 			const codeRunner = document.createElement("code-runner");
-			codeRunner.setAttribute("language", "c");
+			codeRunner.setAttribute("language", "c++");
 			codeRunner.setAttribute("output", "");
 			codeRunner.setAttribute("inputTestcase", "");
 
