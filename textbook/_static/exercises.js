@@ -19,7 +19,7 @@ function generate_exercises(filename) {
 	let inMultipart = false;
 	let multipartTitle = "";
 	let currentMultipartForm = null;
-	let multipartCount = 0;
+	let multipartIndex = 0;
 
 	for (let i = 0; i < exercises.length; i++) {
 		const ex = exercises[i];
@@ -29,7 +29,7 @@ function generate_exercises(filename) {
 
 		if (!ex.multipart) {
 			inMultipart = false;
-			multipartCount = 0;
+			multipartIndex = 0;
 
 			form = document.createElement('div');
 			form.className = 'exercise-card';
@@ -41,7 +41,7 @@ function generate_exercises(filename) {
 
 		} else {
 
-			multipartCount++;
+			multipartIndex++;
 
 			let firstMultipart = false;
 
@@ -55,13 +55,14 @@ function generate_exercises(filename) {
 				createTitle(currentMultipartForm, ex);
 				multipartTitle = ex.title;
 				firstMultipart = true;
+				multipartIndex = 0;
 				container.appendChild(currentMultipartForm);
 			}
 
 			form = currentMultipartForm;
 
 			// each subquestion gets its own unique storageKey
-			storageKey = `${filename}-${form.id}-part-${multipartCount}`;
+			storageKey = `${filename}-${form.id}-part-${multipartIndex}`;
 
 			// Add divider between multipart sub-questions
 			if (i > 0 && exercises[i - 1].multipart && !firstMultipart) {
@@ -357,6 +358,8 @@ function generate_exercises(filename) {
 
 		});
 
+		const thisPartIndex = multipartIndex; // capture the current value
+
 		submitButton.addEventListener("click", async function () {
 
 			resultMessage.style.display = "block";
@@ -456,10 +459,10 @@ function generate_exercises(filename) {
 
 			} else if (type === "explaination" && ex.table){
 				
-				handle_output_submission(form, resultMessage, type, correctAnswer, ex, storageKey);
+				handle_output_submission(form, resultMessage, type, correctAnswer, ex, storageKey, thisPartIndex);
 
 			} else {
-				handle_output_submission(form, resultMessage, type, correctAnswer, ex, storageKey);
+				handle_output_submission(form, resultMessage, type, correctAnswer, ex, storageKey, thisPartIndex);
 			}
 		});
 
@@ -492,7 +495,7 @@ async function handle_prog_submission(form, messageElement, inputArray, expected
     updateResultMessage(messageElement, isCorrect, questionType, correctAnswer, "", numTestcasesPassed, totalTestcases, testcaseContainer, hintContainer, studentCode);
 }
 
-async function handle_output_submission(form, messageElement, questionType, correctAnswer, exercise, storageKey) {
+async function handle_output_submission(form, messageElement, questionType, correctAnswer, exercise, storageKey, multipartIndex) {
 
 	const existingFeedbackContainer = messageElement.querySelector(".hint-container");
 	if (existingFeedbackContainer) existingFeedbackContainer.remove();
@@ -527,8 +530,9 @@ async function handle_output_submission(form, messageElement, questionType, corr
 		return;
 	}
 
-	const traceInput = form.querySelector(".trace-textarea") || form.querySelector(".explaination-textarea");
-	const userAnswer = traceInput ? traceInput.value.trim() : "";
+    const traceInputs = form.querySelectorAll(".trace-textarea, .explaination-textarea");
+    const traceInput = traceInputs[multipartIndex] || null;
+    const userAnswer = traceInput ? traceInput.value.trim() : "";
 
 	if (!userAnswer) {
 		updateResultMessage(messageElement, false, questionType, correctAnswer, "Please enter your answer before submitting.");
