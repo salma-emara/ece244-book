@@ -2,11 +2,11 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
-      "title": "Question 7 in Fall 2021 Midterm Exam",
-      "difficulty": "Easy",
+      "title": "Question 9 in Fall 2022 Midterm Exam",
+      "difficulty": "Intermediate",
       "table": false,
       "type": "tracing",
-      "multipart": false,
+      "multipart": true,
       "question": "Consider the class definition shown below. Assume that `iostream` and `string` are included, and that \nthe `std namespace` is used. Also assume that the class is correctly implemented. What is the output of \nthe following main function?\n",
       "question-code": "class Book {\n public:\n  Book() { cout << \"A new book is added.\" << endl; }\n  Book(string s) {\n    cout << \"Book \" << s << \" is added.\" << endl;\n    name = s;\n  }\n  ~Book() { cout << \"Book \" << name << \" is removed.\" << endl; }\n\n private:\n  string name = \"ECE244\";\n};\n\nBook* b1;\n\nint main() {\n  Book b2;\n  Book* b3 = new Book(\"Pride and Prejudice\");\n\n  if (true) {\n    b1 = new Book();\n    Book b4(\"Wuthering heights\");\n    delete b3;\n    Book* b5 = new Book[2];\n  }\n\n  delete b1;\n  return 0;\n}\n",
       "answer": " \nA new book is added.\nBook Pride and Prejudice is added.\nA new book is added.\nBook Wuthering heights is added.\nBook Pride and Prejudice is removed.\nA new book is added.\nA new book is added.\nBook Wuthering heights is removed.\nBook ECE244 is removed.\nBook ECE244 is removed.\n"

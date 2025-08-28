@@ -104,7 +104,7 @@ function generate_exercises(filename) {
             editor.setTheme("ace/theme/tomorrow");
             editor.setValue(code, 1);
 
-			const lineCount = Math.max(questionCode.split('\n').length, 1);
+			const lineCount = Math.max(code.split('\n').length, 1);
 			
 			editor.setOptions({
 				readOnly: true,

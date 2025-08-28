@@ -35,6 +35,7 @@ parts:
       - file: chapters/chapter03-io/intro.md
         sections:
           - file: chapters/chapter03-io/exercises.md
+          - file: chapters/chapter03-io/testing-exercises.md
       - file: chapters/chapter04-pointers/intro.md
         sections:
           - file: chapters/chapter04-pointers/exercises.md
