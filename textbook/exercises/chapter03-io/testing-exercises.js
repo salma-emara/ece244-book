@@ -7,7 +7,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
-      "question": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n1. `\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
+      "question": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n1.`\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
       "answer": " \na = 1\n"
     },
     {
