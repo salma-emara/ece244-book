@@ -14,14 +14,14 @@ function startQuiz() {
     startClickCount++;
     localStorage.setItem(key, startClickCount);
 
-    const userID = getOrCreateUserID();
+    // const userID = getOrCreateUserID();
     // Send event to Google Analytics
-    gtag('event', 'start_quiz_click', {
-        event_category: 'Quiz Interaction',
-        event_label: `Start Button Clicked - ${filename}`,
-        value: startClickCount,
-        quiz_user_id: userID  
-    });
+    // gtag('event', 'start_quiz_click', {
+    //     event_category: 'Quiz Interaction',
+    //     event_label: `Start Button Clicked - ${filename}`,
+    //     value: startClickCount,
+    //     quiz_user_id: userID  
+    // });
 
     console.log(`Start button clicked ${startClickCount} times for ${filename}`);
 

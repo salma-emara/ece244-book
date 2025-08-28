@@ -23,18 +23,6 @@ async function getChatCompletion(prompt) {
 
 }
 
-gtag('config', 'G-37FN5PSTPH', {
-    debug_mode: true
-});
-
-function getOrCreateQuizUserID() {
-  let uid = localStorage.getItem("quiz_user_id");
-  if (!uid) {
-    uid = "anon-" + Math.random().toString(36).substr(2, 10);
-    localStorage.setItem("quiz_user_id", uid);
-  }
-  return uid;
-}
 
 async function generate_hints(form, originalCode, outputArray, actualOutput, questionPrompt, previousHints) {
 
@@ -42,7 +30,7 @@ async function generate_hints(form, originalCode, outputArray, actualOutput, que
     let hintContainer = form.querySelector(".hint-container");
     let hintInfoContainer, anotherHint;
 
-    let quizUserID;
+    // let quizUserID;
 
     if (!hintContainer){ // initial setup
 
@@ -61,14 +49,14 @@ async function generate_hints(form, originalCode, outputArray, actualOutput, que
         anotherHint.classList.add("another-hint");
         hintContainer.appendChild(anotherHint);
         
-        quizUserID = getOrCreateQuizUserID();
+        // quizUserID = getOrCreateQuizUserID();
 
         // set user id properties
-        gtag('set', {
-            user_properties: {
-                user_id_property: quizUserID
-            }
-        });
+        // gtag('set', {
+        //     user_properties: {
+        //         user_id_property: quizUserID
+        //     }
+        // });
 
     } else {
         hintInfoContainer = hintContainer.querySelector(".hint-info-container");
@@ -84,12 +72,12 @@ async function generate_hints(form, originalCode, outputArray, actualOutput, que
         countdown++;
         localStorage.setItem(hintKey, countdown);
 
-        gtag('event', 'testing_hint_requests', {
-            event_category: 'Quiz Interaction',
-            event_label: `Hint Click - ${filename}_${form.id}`,
-            quiz_user_id: quizUserID,
-            debug_mode: true
-        });
+        // gtag('event', 'testing_hint_requests', {
+        //     event_category: 'Quiz Interaction',
+        //     event_label: `Hint Click - ${filename}_${form.id}`,
+        //     quiz_user_id: quizUserID,
+        //     debug_mode: true
+        // });
 
         console.log(`Hint count for ${filename}_${form.id}:`, countdown);
 
