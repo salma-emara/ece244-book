@@ -38,6 +38,7 @@ parts:
       - file: chapters/chapter04-pointers/intro.md
         sections:
           - file: chapters/chapter04-pointers/exercises.md
+          - file: chapters/chapter04-pointers/testing-exercises.md
       - file: chapters/chapter05-dynamic-mem-alloc/intro.md
         sections:
           - file: chapters/chapter05-dynamic-mem-alloc/exercises.md
