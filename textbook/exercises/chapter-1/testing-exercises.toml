@@ -7,10 +7,8 @@ multipart= false
 
 question = """
 When you compile the following program, what happens? If there is an error, explain what the error is (one sentence max).
-"""
 
-question-code = '''
-
+```{code-block} cpp 
 #include <iostream>
 using namespace std;
 
@@ -22,8 +20,8 @@ void hello(int i) {
   cout << "Hello !" << i << endl;
   return;
 }
-
-'''
+```
+"""
 
 answer = """ 
 There will be a compilation error because hello() is called before it's declared.
@@ -38,9 +36,9 @@ type = "tracing"
 multipart= false
 
 question = """
-Consider the following program. Write down the output"""
+Consider the following program. Write down the output
 
-question-code = '''
+```{code-block} cpp
 #include <iostream>
 using namespace std;
 
@@ -64,8 +62,8 @@ int main() {
   cout << a << endl;
   return 0;
 }
-
-'''
+```
+"""
 
 answer = """ 
 4
@@ -284,7 +282,7 @@ The first few lines of each file are shown below.
 The rest of the contents of each file is irrelevant to the question and is shown as `...`. You may assume the definition/implementation files are error-free.
 
 **First.h**
-```{code-block} cpp
+```
 #ifndef FIRST_H
 #define FIRST_H
 class First {
@@ -294,7 +292,7 @@ class First {
 ```
 
 **First.cpp**
-```{code-block} cpp
+```
 #include “First.h”
 First::First() {
   ...
@@ -302,7 +300,7 @@ First::First() {
 ```
 
 **Second.h**
-```{code-block} cpp
+```
 #ifndef SECOND_H
 #define SECOND_H
 class Second {
@@ -312,7 +310,7 @@ class Second {
 ```
 
 **Second.cpp**
-```{code-block} cpp
+```
 #include “First.h”
 #include “Second.h”
 Second::Second() {
@@ -321,7 +319,7 @@ Second::Second() {
 ```
 
 **Third.h**
-```{code-block} cpp
+```
 #ifndef THIRD_H
 #define THIRD_H
 class Third {
@@ -331,7 +329,7 @@ class Third {
 ```
 
 **Third.cpp**
-```{code-block} cpp
+```
 #include “Second.h”
 Third::Third() {
   ...
@@ -339,7 +337,7 @@ Third::Third() {
 ```
 
 **main.cpp**
-```{code-block} cpp
+```
 #include “First.h”
 #include “Second.h”
 #include “Third.h”

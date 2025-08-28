@@ -7,8 +7,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": false,
-      "question": "When you compile the following program, what happens? If there is an error, explain what the error is (one sentence max).\n",
-      "question-code": "\n#include <iostream>\nusing namespace std;\n\nint main() {\n  hello(1);\n  return 0;\n}\nvoid hello(int i) {\n  cout << \"Hello !\" << i << endl;\n  return;\n}\n\n",
+      "question": "When you compile the following program, what happens? If there is an error, explain what the error is (one sentence max).\n\n```{code-block} cpp \n#include <iostream>\nusing namespace std;\n\nint main() {\n  hello(1);\n  return 0;\n}\nvoid hello(int i) {\n  cout << \"Hello !\" << i << endl;\n  return;\n}\n```\n",
       "answer": " \nThere will be a compilation error because hello() is called before it's declared.\n"
     },
     {
@@ -17,8 +16,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": false,
-      "question": "Consider the following program. Write down the output",
-      "question-code": "#include <iostream>\nusing namespace std;\n\nvoid increment(int& a) {\n  a = a + 1;\n}\nvoid decrement(int a) {\n  a = a - 1;\n}\nvoid doubling(int* a) {\n  *a = (*a) * 2;\n}\n\nint main() {\n  int a = 3;\n  increment(a);\n  cout << a << endl;\n  decrement(a);\n  cout << a << endl;\n  doubling(&a);\n  cout << a << endl;\n  return 0;\n}\n\n",
+      "question": "Consider the following program. Write down the output\n\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\n\nvoid increment(int& a) {\n  a = a + 1;\n}\nvoid decrement(int a) {\n  a = a - 1;\n}\nvoid doubling(int* a) {\n  *a = (*a) * 2;\n}\n\nint main() {\n  int a = 3;\n  increment(a);\n  cout << a << endl;\n  decrement(a);\n  cout << a << endl;\n  doubling(&a);\n  cout << a << endl;\n  return 0;\n}\n```\n",
       "answer": " \n4\n4\n8\n"
     },
     {
@@ -90,7 +88,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \nYou are given a program that has a main function and 3 classes: First, Second and Third. For each of these classes, you have a definition file and an implementation file. Thus, you have seven\nfiles in total: First.h, First.cpp, Second.h, Second.cpp, Third.h, Third.cpp and main.cpp. All the files exist in the same directory. \n\nThe first few lines of each file are shown below.\nThe rest of the contents of each file is irrelevant to the question and is shown as `...`. You may assume the definition/implementation files are error-free.\n\n**First.h**\n```{code-block} cpp\n#ifndef FIRST_H\n#define FIRST_H\nclass First {\n  ...\n};\n#endif\n```\n\n**First.cpp**\n```{code-block} cpp\n#include “First.h”\nFirst::First() {\n  ...\n}\n```\n\n**Second.h**\n```{code-block} cpp\n#ifndef SECOND_H\n#define SECOND_H\nclass Second {\n  ...\n};\n#endif\n```\n\n**Second.cpp**\n```{code-block} cpp\n#include “First.h”\n#include “Second.h”\nSecond::Second() {\n  ...\n}\n```\n\n**Third.h**\n```{code-block} cpp\n#ifndef THIRD_H\n#define THIRD_H\nclass Third {\n  ...\n};\n#endif\n```\n\n**Third.cpp**\n```{code-block} cpp\n#include “Second.h”\nThird::Third() {\n  ...\n}\n```\n\n**main.cpp**\n```{code-block} cpp\n#include “First.h”\n#include “Second.h”\n#include “Third.h”\nint main() {\n  ...\n}\n```\n\nThe files are to be separately compiled and then linked into a single executable called `main`.\n\n1. Write down the Unix commands necessary to separately compile the above files and generate the executable.\n",
+      "question": " \nYou are given a program that has a main function and 3 classes: First, Second and Third. For each of these classes, you have a definition file and an implementation file. Thus, you have seven\nfiles in total: First.h, First.cpp, Second.h, Second.cpp, Third.h, Third.cpp and main.cpp. All the files exist in the same directory. \n\nThe first few lines of each file are shown below.\nThe rest of the contents of each file is irrelevant to the question and is shown as `...`. You may assume the definition/implementation files are error-free.\n\n**First.h**\n```\n#ifndef FIRST_H\n#define FIRST_H\nclass First {\n  ...\n};\n#endif\n```\n\n**First.cpp**\n```\n#include “First.h”\nFirst::First() {\n  ...\n}\n```\n\n**Second.h**\n```\n#ifndef SECOND_H\n#define SECOND_H\nclass Second {\n  ...\n};\n#endif\n```\n\n**Second.cpp**\n```\n#include “First.h”\n#include “Second.h”\nSecond::Second() {\n  ...\n}\n```\n\n**Third.h**\n```\n#ifndef THIRD_H\n#define THIRD_H\nclass Third {\n  ...\n};\n#endif\n```\n\n**Third.cpp**\n```\n#include “Second.h”\nThird::Third() {\n  ...\n}\n```\n\n**main.cpp**\n```\n#include “First.h”\n#include “Second.h”\n#include “Third.h”\nint main() {\n  ...\n}\n```\n\nThe files are to be separately compiled and then linked into a single executable called `main`.\n\n1. Write down the Unix commands necessary to separately compile the above files and generate the executable.\n",
       "answer": "g++ -c First.cpp -o First.o\ng++ -c Second.cpp -o Second.o\ng++ -c Third.cpp -o Third.o\ng++ -c main.cpp -o main.o\ng++ First.o Second.o Third.o main.o -o main\n"
     },
     {
