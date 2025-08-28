@@ -21,6 +21,8 @@ function generate_exercises(filename) {
 	let currentMultipartForm = null;
 	let multipartIndex = 0;
 
+	ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
+
 	for (let i = 0; i < exercises.length; i++) {
 		const ex = exercises[i];
 
@@ -74,15 +76,45 @@ function generate_exercises(filename) {
 
         const md = window.markdownit({ html: true, linkify: true, typographer: true });
 
-        const question = document.createElement('div');
-        const questionHTML = md.render(ex.question);
-        question.innerHTML = questionHTML;
+        const questionContentBox = document.createElement("div");
+        questionContentBox.className = "question-content-box";
 
-		const questionContentBox = document.createElement("div");
-		questionContentBox.className = "question-content-box";
-        questionContentBox.appendChild(question);
+        // extract {code-block} and replace with placeholders
+        let pendingEditors = [];
+        const questionHtmlWithPlaceholders = ex.question.replace(
+            /```{code-block}\s*(\w+)?([\s\S]*?)```/g,
+            (_, lang, code) => {
+                const editorId = "editor-" + Math.random().toString(36).substr(2, 9);
+                pendingEditors.push({ id: editorId, code: code.trim(), lang: lang || "cpp" });
+                return `<div id="${editorId}" class="ace-editor-tracing"></div>`;
+            }
+        );
+
+        const questionDiv = document.createElement("div");
+        questionDiv.innerHTML = md.render(questionHtmlWithPlaceholders);
+        questionContentBox.appendChild(questionDiv);
+        form.appendChild(questionContentBox);
+
+        if (window.MathJax) MathJax.typesetPromise([questionContentBox]);
 		
-        if (window.MathJax) MathJax.typesetPromise([question]);
+		// Initialize Ace editors inline
+        pendingEditors.forEach(({ id, code, lang }) => {
+            const editor = ace.edit(id);
+            editor.session.setMode("ace/mode/" + (lang === "cpp" ? "c_cpp" : lang));
+            editor.setTheme("ace/theme/tomorrow");
+            editor.setValue(code, 1);
+
+			const lineCount = Math.max(questionCode.split('\n').length, 1);
+			
+			editor.setOptions({
+				readOnly: true,
+				showGutter: lineCount > 5,
+				wrap: true,
+				maxLines: Infinity,
+				fontSize: "14px",
+				fontFamily: "'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace"
+			});
+        });
 
 		const type = ex.type;
 		const isProgrammingQuestion = type === "programming" || type === "function programming";
@@ -93,33 +125,33 @@ function generate_exercises(filename) {
 
 		let userInputElement = null;
 
-		if (ex["question-code"]) {
-			const questionCode = ex["question-code"].trim();
-			ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
-			const pre = document.createElement("pre");
+		// if (ex["question-code"]) {
+		// 	const questionCode = ex["question-code"].trim();
+		// 	ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
+		// 	const pre = document.createElement("pre");
 
-			const editorContainer = document.createElement("div");
-			editorContainer.classList.add("ace-editor-tracing");
+		// 	const editorContainer = document.createElement("div");
+		// 	editorContainer.classList.add("ace-editor-tracing");
 
-			pre.appendChild(editorContainer);
-			questionContentBox.appendChild(pre);
+		// 	pre.appendChild(editorContainer);
+		// 	questionContentBox.appendChild(pre);
 
-			const editor = ace.edit(editorContainer);
-			editor.session.setMode("ace/mode/c_cpp");
-			editor.setTheme("ace/theme/tomorrow");
-			editor.setValue(questionCode, 1);
+		// 	const editor = ace.edit(editorContainer);
+		// 	editor.session.setMode("ace/mode/c_cpp");
+		// 	editor.setTheme("ace/theme/tomorrow");
+		// 	editor.setValue(questionCode, 1);
 
-			const lineCount = Math.max(questionCode.split('\n').length, 1);
+		// 	const lineCount = Math.max(questionCode.split('\n').length, 1);
 		
-			editor.setOptions({
-				readOnly: true,
-				showGutter: lineCount > 5,
-				wrap: true,
-				maxLines: Infinity,
-				fontSize: "14px",
-				fontFamily: "'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace"
-			});
-		}
+		// 	editor.setOptions({
+		// 		readOnly: true,
+		// 		showGutter: lineCount > 5,
+		// 		wrap: true,
+		// 		maxLines: Infinity,
+		// 		fontSize: "14px",
+		// 		fontFamily: "'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace"
+		// 	});
+		// }
 
 		if (isMultipleChoice && ex.choices) {
 			const choicesElement = document.createElement("div");
