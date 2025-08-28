@@ -71,25 +71,6 @@ parse:
       <script src = "../../_static/app.js"> </script>
       <script src = "../../_static/hints.js"> </script>
       <script src="https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/ace.js"></script>
-
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-37FN5PSTPH"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        function getOrCreateUserID() {
-          let uid = localStorage.getItem("user_id");
-          if (!uid) {
-            uid = "anon-" + Math.random().toString(36).substr(2, 10);
-            localStorage.setItem("user_id", uid);
-          }
-          return uid;
-        }
-
-        const userID = getOrCreateUserID();
-   
-      </script>
       
       <div id="container-header" class="container-box">
       <div class = "header">
@@ -121,25 +102,6 @@ parse:
             displayMath: [['$$', '$$'], ['\\[', '\\]']]
           }
         };
-      </script>
-
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-37FN5PSTPH"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        function getOrCreateUserID() {
-          let uid = localStorage.getItem("user_id");
-          if (!uid) {
-            uid = "anon-" + Math.random().toString(36).substr(2, 10);
-            localStorage.setItem("user_id", uid);
-          }
-          return uid;
-        }
-
-        const userID = getOrCreateUserID();
-   
       </script>
 
       <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
