@@ -152,6 +152,47 @@ int main(void) {
 </code-runner>
 </pre>
 
+{{cpp_visualizer}}
+ <c-visualizer example="1" lang="cpp">
+    <script type="application/json" data-kind="annotation">
+      {
+      "annotation": { 
+        "5": "Define integer variable x = 10", 
+        "6": "Define pointer p and initialize to NULL", 
+        "7": "Make p point to the address of x", 
+        "8": "Modify the value of x through pointer p (x = 5)", 
+        "10": "Allocate a new int on the heap", 
+        "12": "Assign value 20 to the heap-allocated int", 
+        "14": "Print the value stored at p (*p)", 
+        "15": "Print the value of x", 
+        "17": "Free the heap memory", 
+        "18": "Set pointer p to NULL to avoid dangling pointer"
+      },
+      "folds": [{ "start": 13, "end": 16 }]
+    }
+    </script>
+
+   #include &lt;iostream&gt;
+    using namespace std;
+
+    int main() {
+      int x = 10;
+      int* p = NULL;
+      p = &amp;x;
+      *p = 5;
+
+      p = new int;
+
+      *p = 20;
+
+      cout &lt;&lt; "Value at p: " &lt;&lt; *p &lt;&lt; endl;
+      cout &lt;&lt; "Value of x: " &lt;&lt; x &lt;&lt; endl;
+
+      delete p;
+      p = NULL;
+      return 0;
+    }
+  </c-visualizer>
 
 
 
