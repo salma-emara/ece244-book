@@ -3,165 +3,218 @@ title = "Question 9 in Fall 2022 Midterm Exam"
 difficulty = "Intermediate"
 table = false
 type = "tracing"
-multipart= true
-
-question = """
-Consider the class definition shown below. Assume that `iostream` and `string` are included, and that 
-the `std namespace` is used. Also assume that the class is correctly implemented. What is the output of 
-the following main function?
-"""
-
-question-code = '''
-class Book {
- public:
-  Book() { cout << "A new book is added." << endl; }
-  Book(string s) {
-    cout << "Book " << s << " is added." << endl;
-    name = s;
-  }
-  ~Book() { cout << "Book " << name << " is removed." << endl; }
-
- private:
-  string name = "ECE244";
-};
-
-Book* b1;
-
-int main() {
-  Book b2;
-  Book* b3 = new Book("Pride and Prejudice");
-
-  if (true) {
-    b1 = new Book();
-    Book b4("Wuthering heights");
-    delete b3;
-    Book* b5 = new Book[2];
-  }
-
-  delete b1;
-  return 0;
-}
-'''
-
-answer = """ 
-A new book is added.
-Book Pride and Prejudice is added.
-A new book is added.
-Book Wuthering heights is added.
-Book Pride and Prejudice is removed.
-A new book is added.
-A new book is added.
-Book Wuthering heights is removed.
-Book ECE244 is removed.
-Book ECE244 is removed.
-"""
-
-
-[[exercises]]
-title = "Question 1 in Fall 2022 Midterm Exam "
-difficulty = "Easy"
-table = false
-type = "explaination"
 multipart= false
 
 question = """
-Consider the following C++ program. There are three statements in the main function: A, B, and C. Which of these three statements will trigger compile-time errors?
-"""
+Write down the standard output of the following program. Remember to write two "Check Point", since partial marks are given based on these "stop points". You might find it helpful to write down the memory layout.
 
-question-code = '''
-class ECE244 {
- private:
-  int num_student;
-  int num_TA;
-  int get_num_instructor();
+```{code-block} cpp
+#include <iostream>
+using namespace std;
 
- public:
-  int num_instructor;
-  int get_num_student();
-  int get_num_TA();
-};
+int i[5] = {0, 2, 4, 6, 8};
+int* p;
+
+void foo() {
+  cout << *p << endl;
+  ++(*p);
+  ++p;
+}
+
+void bar() {
+  for (int i = 0; i < 3; ++i) {
+    foo();
+  }
+}
 
 int main() {
-  ECE244 year2022;
-  int num_student = year2022.num_student;              // Statement A
-  int num_TA = year2022.get_num_TA();                  // Statement B
-  int num_instructor = year2022.get_num_instructor();  // Statement C
+  p = i;
+  bar();
+  cout << "Check Point 1" << endl;
+  p = i;
+  foo();
+  cout << "Check Point 2" << endl;
   return 0;
 }
-'''
+```
+"""
 
 answer = """ 
-A, C
+0
+2
+4
+Check Point 1
+1
+Check Point 2
+"""
 
-In statement A, `num_student` is a private data member and cannot be accessed outside the class. 
-In statement C, `get_num_instructor()` is a private function member, and cannot be accessed outside the class. 
+
+[[exercises]]
+title = "Question 3 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = """
+
+Consider the following code snippet that manipulates pointers in a main function of a C++ program. 
+
+```{code-block} cpp
+int* p = nullptr;
+int* q = nullptr;
+int* r = nullptr;
+int** t = &p;
+int** s = &q;
+r = p;
+p = new int;
+q = new int;
+*p = 5;
+*q = 2;
+**s = *p + **t;
+```
+
+Which of the following statements (that come after the above snippets executes) prints 5 to the standard output? You may assume `iostream` is included and the `std` namespace is used. Choose all correct answers.
 
 """
+
+answer = [3,4,7]
+
+choices = [
+  "1. `cout << r;`",
+  "2. `cout << *t;`",
+  "3. `cout << *q;`",
+  "4. `cout << *p;`",
+  "5. `cout << **t;`",
+  "6. `cout << *r;`",
+  "7. `cout << *s;`",
+  "8. `cout << (**s) / 2;`"
+]
+
+
+explanations = ["4. `cout << *p;`",
+ "5. `cout << **t;`",
+ "8. `cout << (**s) / 2;"]
 
 
 
 [[exercises]]
-title = "Question 7 in Fall 2021 Midterm Exam"
-difficulty = "Easy"
+title = "Question 4 in Fall 2018 Midterm Exam"
+difficulty = "Intermediate"
+table = false
+type = "tracing"
+multipart= true
+
+question = """
+Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.
+
+```{code-block} cpp
+:linenos:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int* first_ptr;
+  int* second_ptr;
+  int** p_ptr;
+  first_ptr = new int;
+  second_ptr = new int;
+  p_ptr = &first_ptr;
+  *first_ptr = 4;
+  *second_ptr = 8;
+  second_ptr = *p_ptr;
+  cout << *first_ptr << " " << *second_ptr << endl;
+  delete first_ptr;
+  delete second_ptr;
+  delete *p_ptr;
+  return (0);
+}
+```
+
+1. What is the output produced by `cout` on line 14 of the code
+
+"""
+
+answer = """ 
+4 4
+"""
+
+[[exercises]]
+title = "Question 4 in Fall 2018 Midterm Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = """
+2. The program may have a problem with it. What is the problem, if any? Circle only one answer.
+"""
+
+answer = [5]
+
+choices = [
+  "A. The program has no problem with it",
+  "B. The program has a memory leak.",
+  "C. The delete on line 17 should not dereference p_ptr, but use it directly.",
+  "D. The program deletes the same region of memory more than once.",
+  "E. B and C.",
+  "F. B and D.",
+  "G. B, C and D.",
+]
+
+
+explanations = ["The program has a memory leak because in line 13, it changes what `second_ptr` is pointing to without freeing up the memory space it was pointing to.`second_ptr`, `first_ptr`, and `*p_ptr` are all pointing to an `int` with 4, while there are three deletes for the same memory space. "]
+
+
+
+[[exercises]]
+title = "Question 2 in Fall 2017 Midterm Exam"
+difficulty = "Intermediate"
 table = false
 type = "tracing"
 multipart= false
 
 question = """
-Consider the following definition/implementation of a class called `Shape` that appears in the file: `Shape.h`.
-What is the output of the following main function?
-"""
+Consider the following program. 
 
-question-code = '''
-// Shape.h
-#include <iostream>
-using namespace std;
-class Shape {
- private:
-  int ID;
+```{code-block} cpp
+class Point {
+  int x;
+  int y;
 
  public:
-  Shape() {
-    ID = 0;
-    cout << "Constructor 1 " << ID << endl;
-  }
-  Shape(int id) {
-    ID = id;
-    cout << "Constructor 2 " << ID << endl;
-  }
-
-  ~Shape() { cout << "Destructor " << endl; }
-
-  int getID() const { return ID; }
-  void setID(int id) { ID = id; }
+  Point(int i, int j);
+  Point increment_x();
+  Point increment_y();
+  void print() const;
 };
-
-// main.cpp
-
-#include <iostream>
-#include "Shape.h"
-using namespace std;
-
-int getShapeID(Shape& s) {
-  return s.getID();
+Point::Point(int i, int j) {
+  x = i;
+  y = j;
+}
+Point Point::increment_x() {
+  ++x;
+  return *this;
+}
+Point Point::increment_y() {
+  ++y;
+  return *this;
+}
+void Point::print() const {
+  cout << "(" << x << "," << y << ")" << endl;
 }
 int main() {
-  Shape circle(5);
-  Shape line2[2];
-
-  cout << circle.getID() << endl;
-  cout << getShapeID(line2[1]) << endl;
+  Point a(2, 3);
+  // Evaluation is done left to right
+  a.increment_x().increment_y().print();
+  a.print();
   return 0;
 }
-'''
+```
+
+Assuming the C++ compiler does not optimize away copying of objects. Write the output produced by the program.
+"""
 
 answer = """ 
-Constructor 2 5
-Constructor 1 0
-Constructor 1 0
-5
-0
-Destructor 
-Destructor 
-Destructor 
+(3,4)
 """
