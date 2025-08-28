@@ -415,7 +415,7 @@ function generate_exercises(filename) {
 					<details style="margin-top: 10px;">
 						<summary style="cursor: pointer;">Show Explanation</summary>
 						<div style="margin-top: 5px;">
-							${ex.explanations[0]}
+							${ex.explanations.join('<br>')}
 						</div>
 					</details>
 					`;
