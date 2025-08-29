@@ -134,34 +134,6 @@ function generate_exercises(filename) {
 
 		let userInputElement = null;
 
-		// if (ex["question-code"]) {
-		// 	const questionCode = ex["question-code"].trim();
-		// 	ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
-		// 	const pre = document.createElement("pre");
-
-		// 	const editorContainer = document.createElement("div");
-		// 	editorContainer.classList.add("ace-editor-tracing");
-
-		// 	pre.appendChild(editorContainer);
-		// 	questionContentBox.appendChild(pre);
-
-		// 	const editor = ace.edit(editorContainer);
-		// 	editor.session.setMode("ace/mode/c_cpp");
-		// 	editor.setTheme("ace/theme/tomorrow");
-		// 	editor.setValue(questionCode, 1);
-
-		// 	const lineCount = Math.max(questionCode.split('\n').length, 1);
-		
-		// 	editor.setOptions({
-		// 		readOnly: true,
-		// 		showGutter: lineCount > 5,
-		// 		wrap: true,
-		// 		maxLines: Infinity,
-		// 		fontSize: "14px",
-		// 		fontFamily: "'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace"
-		// 	});
-		// }
-
 		if (isMultipleChoice && ex.choices) {
 			const choicesElement = document.createElement("div");
 			choicesElement.classList.add("multiple-choice-container");
@@ -278,7 +250,7 @@ function generate_exercises(filename) {
 			codeRunner.setAttribute("inputTestcase", "");
 
 			// saved answer
-			let progData = JSON.parse(localStorage.getItem(`${storageKey}-programming`));
+			let progData = JSON.parse(localStorage.getItem(`${storageKey}-programming-${multipartIndex}`));
 
 			if (progData) {
 				codeRunner.textContent = progData.userCode; 
@@ -290,13 +262,14 @@ function generate_exercises(filename) {
 			questionContentBox.appendChild(pre);
 
 			codeRunner.addEventListener('input', () => {
-				const closest = codeRunner.closest('.exercise-card');
-				const editorContainer = closest.querySelector("#codetorun"); 
-				const editor = ace.edit(editorContainer); 
-				const code = editor.getValue();
-			    localStorage.setItem(`${storageKey}-programming`, JSON.stringify({ userCode: code }));
-			    console.log("Code saved");
+				const code = codeRunner.querySelector('.ace_content').innerText;
+				localStorage.setItem(`${storageKey}-programming-${thisPartIndex}`, JSON.stringify({ userCode: code }));
+				console.log("Code saved");
 			});
+
+
+			codeRunner.dataset.partIndex = multipartIndex; // store the part index
+
 
 		} else if (isTracingQuestion) {
 
@@ -367,21 +340,23 @@ function generate_exercises(filename) {
 		footerBox.appendChild(resultMessage);
 		questionContentBox.appendChild(footerBox);
 
+		const thisPartIndex = multipartIndex; // capture the current value
+
 		resetButton.addEventListener("click", () => {
 			if (isProgrammingQuestion){
 
-				localStorage.removeItem(`${storageKey}-programming`);
+				const codeRunner = form.querySelector(`code-runner[data-part-index="${thisPartIndex}"]`);
+				if (!codeRunner) return;
 
-				const closest = resetButton.closest('.exercise-card');
-				const editorContainer = closest.querySelector("#codetorun"); 
-				const editor = ace.edit(editorContainer);
+				const editorDiv = codeRunner.querySelector('.ace_editor'); 
+				if (!editorDiv) return;
 
+				const editor = ace.edit(editorDiv);  
 				const starterCode = ex["starter-code"] ? ex["starter-code"].trim() : '';
 				editor.setValue(starterCode, 1);  
-
 				console.log("Code cleared");
-
-			} else if (isTracingQuestion) {
+			} 
+			else if (isTracingQuestion) {
 
 				localStorage.removeItem(`${storageKey}-trace`);
 				if (userInputElement) userInputElement.value = '';
@@ -405,8 +380,6 @@ function generate_exercises(filename) {
 			resultMessage.innerHTML = "";
 
 		});
-
-		const thisPartIndex = multipartIndex; // capture the current value
 
 		submitButton.addEventListener("click", async function () {
 
@@ -470,11 +443,25 @@ function generate_exercises(filename) {
 					expectedOutput.push(exerciseTestcases[j].output || []);
 				}
 
-				const codeRunner = form.querySelector('code-runner');
+				// const codeRunner = form.querySelector('code-runner');
+				const codeRunner = form.querySelector(`code-runner[data-part-index="${thisPartIndex}"]`);
+
 				let studentCode = null;
 
 				// append main-function for function programming type
-				if (type === "function programming" && ex["main-function"]) {
+
+				if (type === "function programming" && ex["append-before"] && ex["main-function"]) {
+					const rawCode = codeRunner.querySelector('.ace_content').innerText;
+					const studentOnlyCode = removeMainFunction(rawCode).trim();
+
+					studentCode = "// Given Code\n" + ex["append-before"].trim() +
+					"\n\n// Student Code\n" +
+					studentOnlyCode +
+					"\n\n// Appended main function used for testcases\n" +
+					ex["main-function"].trim();
+
+				}
+				else if (type === "function programming" && ex["main-function"]) {
 
 					const rawCode = codeRunner.querySelector('.ace_content').innerText;
 					const studentOnlyCode = removeMainFunction(rawCode).trim();
@@ -660,13 +647,14 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
             const mainInfoTitle = document.createElement("div");
             mainInfoTitle.style.marginTop = "10px";
             mainInfoTitle.style.fontWeight = "bold";
-            mainInfoTitle.innerText = "Appended main function to student code:";
+            mainInfoTitle.innerText = "Appended function(s) to student code:";
 
 			// bold comments
 			const highlightedCode = studentCode
 				.replace(/&/g, '&amp;')
 				.replace(/</g, '&lt;')
 				.replace(/>/g, '&gt;')
+				.replace(/\/\/ Given Code/g, '<span style="font-weight:bold">// Given Code</span>')
 				.replace(/\/\/ Student Code/g, '<span style="font-weight:bold">// Student Code</span>')
 				.replace(/\/\/ Appended main function used for testcases/g, '<span style="font-weight:bold">// Appended main function used for testcases</span>');
 
