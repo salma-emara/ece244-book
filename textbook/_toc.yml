@@ -59,6 +59,7 @@ parts:
       - file: chapters/chapter09-recursion/intro.md
         sections:
           - file: chapters/chapter09-recursion/exercises.md
+          - file: chapters/chapter09-recursion/testing-exercises.md
       - file: chapters/chapter10-complexity-analysis/intro.md
         sections:
           - file: chapters/chapter10-complexity-analysis/exercises.md
