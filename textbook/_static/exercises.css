@@ -7,14 +7,14 @@
 /* tracing block */
 .ace-editor-tracing {
     width: 100%;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
     background: var(--code-bg, #f6f6f6);
     color: var(--code, black);
     font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace;
     font-size: 14px;
     height: auto;
     line-height: 18px;
-    padding-top: 5px;
+    padding-top: 20px;
 }
 
 .trace-label {
