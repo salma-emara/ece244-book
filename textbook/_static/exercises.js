@@ -351,6 +351,8 @@ function generate_exercises(filename) {
 				const editorDiv = codeRunner.querySelector('.ace_editor'); 
 				if (!editorDiv) return;
 
+				localStorage.removeItem(`${storageKey}-programming-${thisPartIndex}`);
+
 				const editor = ace.edit(editorDiv);  
 				const starterCode = ex["starter-code"] ? ex["starter-code"].trim() : '';
 				editor.setValue(starterCode, 1);  
