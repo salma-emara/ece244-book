@@ -312,6 +312,8 @@ function generate_exercises(filename) {
 				localStorage.setItem(`${storageKey}-trace`, traceTextarea.value);
 			});
 
+			traceTextarea.dataset.partIndex = multipartIndex; // store the part index
+
 			questionContentBox.appendChild(traceTextarea);
 			userInputElement = traceTextarea;
 
@@ -327,6 +329,8 @@ function generate_exercises(filename) {
 			textbox.addEventListener("input", () => {
 				localStorage.setItem(`${storageKey}-explaination`, textbox.value);
 			});
+
+			textbox.dataset.partIndex = multipartIndex; // store the part index
 
 			questionContentBox.appendChild(textbox);
 			userInputElement = textbox;
@@ -574,14 +578,15 @@ async function handle_output_submission(form, messageElement, questionType, corr
 		return;
 	}
 
-    const traceInputs = form.querySelectorAll(".trace-textarea, .explaination-textarea");
-    const traceInput = traceInputs[multipartIndex - traceInputs.length] || null;
-    const userAnswer = traceInput ? traceInput.value.trim() : "";
+    // select the input corresponding to this part
+	const traceInput = form.querySelector(`.trace-textarea[data-part-index="${multipartIndex}"], .explaination-textarea[data-part-index="${multipartIndex}"]`);
+	const userAnswer = traceInput ? traceInput.value.trim() : "";
 
 	if (!userAnswer) {
 		updateResultMessage(messageElement, false, questionType, correctAnswer, "Please enter your answer before submitting.");
 		return;
 	}
+
 
 	let isCorrect = false;
 
