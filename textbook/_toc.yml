@@ -75,6 +75,7 @@ parts:
       - file: chapters/chapter13-hash-tables/intro.md
         sections:
           - file: chapters/chapter13-hash-tables/exercises.md
+          - file: chapters/chapter13-hash-tables/testing-exercises.md
   - caption: "Hidden Pages"
     hidden: true
     chapters:
