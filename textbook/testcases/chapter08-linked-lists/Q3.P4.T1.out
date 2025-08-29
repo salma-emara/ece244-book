@@ -1,0 +1,8 @@
+Pushed: 5
+Pushed: 10
+Pushed: 15
+Front: 5
+Popped: 5
+Queue empty? No
+Pushed: 20
+Final Queue contents (front → back): 10 15 20 
