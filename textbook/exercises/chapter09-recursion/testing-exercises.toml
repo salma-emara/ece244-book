@@ -34,6 +34,48 @@ void prefixsum(int* arr, int left, int right, int psum) {
 }
 '''
 
+main-function = '''
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;  // read number of elements
+    int* arr = new int[n];
+
+    for (int i = 0; i < n; ++i)
+        cin >> arr[i];  // read array elements
+
+    // Compute prefix sum
+    prefixsum(arr, 0, n - 1, 0);
+
+    // Print output
+    for (int i = 0; i < n; ++i) {
+        cout << arr[i];
+        if (i != n - 1)
+            cout << " ";
+    }
+    cout << endl;
+
+    delete[] arr;
+    return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q1.T1.in"
+output = "Q1.T1.out"
+
+[[exercises.testcases]]
+input = "Q1.T2.in"
+output = "Q1.T2.out"
+
+[[exercises.testcases]]
+input = "Q1.T3.in"
+output = "Q1.T3.out"
+
 
 [[exercises]]
 title = "Question 8 in Fall 2019 Final Exam"
@@ -70,3 +112,40 @@ void reverseArray(int* array, int left, int right) {
   }
 }
 '''
+
+main-function = '''
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;  // read number of elements
+    int* arr = new int[n];
+
+    for (int i = 0; i < n; ++i)
+        cin >> arr[i];  // read array elements
+
+    // Reverse the array
+    reverseArray(arr, 0, n - 1);
+
+    // Print output
+    for (int i = 0; i < n; ++i) {
+        cout << arr[i];
+        if (i != n - 1)
+            cout << " ";
+    }
+    cout << endl;
+
+    delete[] arr;
+    return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q2.T1.in"
+output = "Q2.T1.out"
+
+[[exercises.testcases]]
+input = "Q2.T2.in"
+output = "Q2.T2.out"
