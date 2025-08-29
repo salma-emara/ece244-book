@@ -54,7 +54,7 @@ title = "Question 3 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
 type = "multiple-choice"
-multipart= true
+multipart= false
 
 question = """
 
@@ -131,7 +131,7 @@ int main() {
 }
 ```
 
-1. What is the output produced by `cout` on line 14 of the code
+(1) What is the output produced by `cout` on line 14 of the code
 
 """
 
@@ -147,7 +147,7 @@ type = "multiple-choice"
 multipart= true
 
 question = """
-2. The program may have a problem with it. What is the problem, if any? Circle only one answer.
+(2) The program may have a problem with it. What is the problem, if any? Circle only one answer.
 """
 
 answer = [5]

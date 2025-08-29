@@ -25,7 +25,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": "Compared to C, passing by reference is introduced in C++. Both of the following two functions can be used to swap the value of two integers:\n\n```{code-block} cpp\nvoid swap_by_p(int* a, int* b); // swap version.1\nvoid swap_by_r(int& a, int& b); // swap version.2\n```\n\n1. Write the implementations for these two functions (no more than 4 lines of code for each function)\n\n```{code-block} cpp\nvoid swap_by_p(int* a, int* b) {\n\n}\nvoid swap_by_r(int& a, int& b) {\n\n}\n```\n",
+      "question": "Compared to C, passing by reference is introduced in C++. Both of the following two functions can be used to swap the value of two integers:\n\n```{code-block} cpp\nvoid swap_by_p(int* a, int* b); // swap version.1\nvoid swap_by_r(int& a, int& b); // swap version.2\n```\n\n(1) Write the implementations for these two functions (no more than 4 lines of code for each function)\n\n```{code-block} cpp\nvoid swap_by_p(int* a, int* b) {\n\n}\nvoid swap_by_r(int& a, int& b) {\n\n}\n```\n",
       "answer": "void swap_by_p(int* a, int* b) {\n  int temp = *a;\n  *a = *b;\n  *b = temp;\n}\n\nvoid swap_by_r(int& a, int& b) {\n  int temp = a;\n  a = b;\n  b = temp;\n}\n"
     },
     {
@@ -34,7 +34,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " 2. If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_p`.\n",
+      "question": "(2) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_p`.\n",
       "answer": "swap_by_p (&x, &y);\n"
     },
     {
@@ -43,7 +43,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " 3. If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_r`. \n",
+      "question": "(3) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_r`. \n",
       "answer": "swap_by_r (x, y);\n"
     },
     {
@@ -52,7 +52,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \nEllie writes a program to make a simple database for ECE students who like drinking soy milk from 2T2 to 2T6. She designs two classes: `student` and `ECE`, and puts them into different files below. The main function is in the `main.cpp`.\n\n**ECE.h**\n```\n#ifndefine ECE\n#define ECE\n\n#include \"student.h\"\n\nclass ECE{\n  ...\n};\n#endif\n```\n\n**ECE.cpp**\n```\n#include \"ECE.h\"\n\nECE::ECE(){\n  ...\n}\n```\n\n**student.h**\n```\n#include <string>\n\nclass Student{\n  ...\n};\n```\n\n**student.cpp**\n```\n#include \"student.h\"\n\nStudent::Student(){\n  ...     \n}\n```\n\n**main.cpp**\n```\n#include \"ECE.h\"\n#include \"student.h\"\nint main(){\n     ...\n}\n```\n\n1. Ellie tries to compile this program with g++. What's the Unix (i.e., terminal) command that compiles the entire program using one command, which generates an executable called `small_database`?\n\n",
+      "question": " \nEllie writes a program to make a simple database for ECE students who like drinking soy milk from 2T2 to 2T6. She designs two classes: `student` and `ECE`, and puts them into different files below. The main function is in the `main.cpp`.\n\n**ECE.h**\n```\n#ifndefine ECE\n#define ECE\n\n#include \"student.h\"\n\nclass ECE{\n  ...\n};\n#endif\n```\n\n**ECE.cpp**\n```\n#include \"ECE.h\"\n\nECE::ECE(){\n  ...\n}\n```\n\n**student.h**\n```\n#include <string>\n\nclass Student{\n  ...\n};\n```\n\n**student.cpp**\n```\n#include \"student.h\"\n\nStudent::Student(){\n  ...     \n}\n```\n\n**main.cpp**\n```\n#include \"ECE.h\"\n#include \"student.h\"\nint main(){\n     ...\n}\n```\n\n(1) Ellie tries to compile this program with g++. What's the Unix (i.e., terminal) command that compiles the entire program using one command, which generates an executable called `small_database`?\n\n",
       "answer": "g++ ECE.cpp student.cpp main.cpp -o small_database\n"
     },
     {
@@ -61,7 +61,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n2. However, it fails to compile. Can you point out the compile-time error and fix this error for her? \n",
+      "question": " \n(2) However, it fails to compile. Can you point out the compile-time error and fix this error for her? \n",
       "answer": "No header guard in student.h\n"
     },
     {
@@ -70,7 +70,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n3. With your help, Ellie has fixed the compile-time error. Now, Ellie wants to use separate compilation learned from ECE244 to compile her project. Write down all the Unix commands necessary to separately compile the above files and generate an executable `small_database`.\n",
+      "question": " \n(3) With your help, Ellie has fixed the compile-time error. Now, Ellie wants to use separate compilation learned from ECE244 to compile her project. Write down all the Unix commands necessary to separately compile the above files and generate an executable `small_database`.\n",
       "answer": "g++ -c student.cpp -o student.o\ng++ -c ECE.cpp -o ECE.o\ng++ -c main.cpp -o main.o\ng++ student.o ECE.o main.o -o small_database\n"
     },
     {
@@ -79,7 +79,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n4. Ellie then changes some code in `ECE.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files needed. Assume the generated executable is called `small_database`.\n",
+      "question": " \n(4) Ellie then changes some code in `ECE.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files needed. Assume the generated executable is called `small_database`.\n",
       "answer": "g++ -c ECE.cpp -o ECE.o\ng++ student.o ECE.o main.o -o small_database\n"
     },
     {
@@ -88,7 +88,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \nYou are given a program that has a main function and 3 classes: First, Second and Third. For each of these classes, you have a definition file and an implementation file. Thus, you have seven\nfiles in total: First.h, First.cpp, Second.h, Second.cpp, Third.h, Third.cpp and main.cpp. All the files exist in the same directory. \n\nThe first few lines of each file are shown below.\nThe rest of the contents of each file is irrelevant to the question and is shown as `...`. You may assume the definition/implementation files are error-free.\n\n**First.h**\n```\n#ifndef FIRST_H\n#define FIRST_H\nclass First {\n  ...\n};\n#endif\n```\n\n**First.cpp**\n```\n#include “First.h”\nFirst::First() {\n  ...\n}\n```\n\n**Second.h**\n```\n#ifndef SECOND_H\n#define SECOND_H\nclass Second {\n  ...\n};\n#endif\n```\n\n**Second.cpp**\n```\n#include “First.h”\n#include “Second.h”\nSecond::Second() {\n  ...\n}\n```\n\n**Third.h**\n```\n#ifndef THIRD_H\n#define THIRD_H\nclass Third {\n  ...\n};\n#endif\n```\n\n**Third.cpp**\n```\n#include “Second.h”\nThird::Third() {\n  ...\n}\n```\n\n**main.cpp**\n```\n#include “First.h”\n#include “Second.h”\n#include “Third.h”\nint main() {\n  ...\n}\n```\n\nThe files are to be separately compiled and then linked into a single executable called `main`.\n\n1. Write down the Unix commands necessary to separately compile the above files and generate the executable.\n",
+      "question": " \nYou are given a program that has a main function and 3 classes: First, Second and Third. For each of these classes, you have a definition file and an implementation file. Thus, you have seven\nfiles in total: First.h, First.cpp, Second.h, Second.cpp, Third.h, Third.cpp and main.cpp. All the files exist in the same directory. \n\nThe first few lines of each file are shown below.\nThe rest of the contents of each file is irrelevant to the question and is shown as `...`. You may assume the definition/implementation files are error-free.\n\n**First.h**\n```\n#ifndef FIRST_H\n#define FIRST_H\nclass First {\n  ...\n};\n#endif\n```\n\n**First.cpp**\n```\n#include “First.h”\nFirst::First() {\n  ...\n}\n```\n\n**Second.h**\n```\n#ifndef SECOND_H\n#define SECOND_H\nclass Second {\n  ...\n};\n#endif\n```\n\n**Second.cpp**\n```\n#include “First.h”\n#include “Second.h”\nSecond::Second() {\n  ...\n}\n```\n\n**Third.h**\n```\n#ifndef THIRD_H\n#define THIRD_H\nclass Third {\n  ...\n};\n#endif\n```\n\n**Third.cpp**\n```\n#include “Second.h”\nThird::Third() {\n  ...\n}\n```\n\n**main.cpp**\n```\n#include “First.h”\n#include “Second.h”\n#include “Third.h”\nint main() {\n  ...\n}\n```\n\nThe files are to be separately compiled and then linked into a single executable called `main`.\n\n(1) Write down the Unix commands necessary to separately compile the above files and generate the executable.\n",
       "answer": "g++ -c First.cpp -o First.o\ng++ -c Second.cpp -o Second.o\ng++ -c Third.cpp -o Third.o\ng++ -c main.cpp -o main.o\ng++ First.o Second.o Third.o main.o -o main\n"
     },
     {
@@ -97,7 +97,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n2. You modify the file `Second.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.\n",
+      "question": " \n(2) You modify the file `Second.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.\n",
       "answer": "g++ -c Second.cpp -o Second.o\ng++ First.o Second.o Third.o main.o -o main\n"
     },
     {
@@ -106,7 +106,7 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": " \n3. You modify the file `First.h`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.\n",
+      "question": " \n(3) You modify the file `First.h`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.\n",
       "answer": "g++ -c First.cpp -o First.o\ng++ -c Second.cpp -o Second.o\ng++ -c main.cpp -o main.o\ng++ First.o Second.o Third.o main.o -o main\n"
     }
   ]

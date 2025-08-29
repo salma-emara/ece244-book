@@ -89,7 +89,7 @@ void swap_by_p(int* a, int* b); // swap version.1
 void swap_by_r(int& a, int& b); // swap version.2
 ```
 
-1. Write the implementations for these two functions (no more than 4 lines of code for each function)
+(1) Write the implementations for these two functions (no more than 4 lines of code for each function)
 
 ```{code-block} cpp
 void swap_by_p(int* a, int* b) {
@@ -122,7 +122,7 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 2. If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_p`.
+question = """(2) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_p`.
 """
 
 answer = """
@@ -136,7 +136,7 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 3. If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_r`. 
+question = """(3) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_r`. 
 """
 
 answer = """
@@ -204,7 +204,7 @@ int main(){
 }
 ```
 
-1. Ellie tries to compile this program with g++. What's the Unix (i.e., terminal) command that compiles the entire program using one command, which generates an executable called `small_database`?
+(1) Ellie tries to compile this program with g++. What's the Unix (i.e., terminal) command that compiles the entire program using one command, which generates an executable called `small_database`?
 
 """
 
@@ -222,7 +222,7 @@ table = false
 multipart = true
 
 question = """ 
-2. However, it fails to compile. Can you point out the compile-time error and fix this error for her? 
+(2) However, it fails to compile. Can you point out the compile-time error and fix this error for her? 
 """
 
 answer = """
@@ -237,7 +237,7 @@ table = false
 multipart = true
 
 question = """ 
-3. With your help, Ellie has fixed the compile-time error. Now, Ellie wants to use separate compilation learned from ECE244 to compile her project. Write down all the Unix commands necessary to separately compile the above files and generate an executable `small_database`.
+(3) With your help, Ellie has fixed the compile-time error. Now, Ellie wants to use separate compilation learned from ECE244 to compile her project. Write down all the Unix commands necessary to separately compile the above files and generate an executable `small_database`.
 """
 
 answer = """
@@ -256,7 +256,7 @@ table = false
 multipart = true
 
 question = """ 
-4. Ellie then changes some code in `ECE.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files needed. Assume the generated executable is called `small_database`.
+(4) Ellie then changes some code in `ECE.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files needed. Assume the generated executable is called `small_database`.
 """
 
 answer = """
@@ -348,7 +348,7 @@ int main() {
 
 The files are to be separately compiled and then linked into a single executable called `main`.
 
-1. Write down the Unix commands necessary to separately compile the above files and generate the executable.
+(1) Write down the Unix commands necessary to separately compile the above files and generate the executable.
 """
 
 answer = """
@@ -368,7 +368,7 @@ table = false
 multipart = true
 
 question = """ 
-2. You modify the file `Second.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.
+(2) You modify the file `Second.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.
 """
 
 answer = """
@@ -384,7 +384,7 @@ table = false
 multipart = true
 
 question = """ 
-3. You modify the file `First.h`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.
+(3) You modify the file `First.h`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.
 """
 
 answer = """

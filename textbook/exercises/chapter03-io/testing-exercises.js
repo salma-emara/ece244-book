@@ -7,7 +7,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
-      "question": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n1.`\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
+      "question": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(1) `\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
       "answer": " \na = 1\n"
     },
     {
@@ -16,7 +16,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
-      "question": "2. `\"input.txt\"`\n<pre>\n  a32\n  b86\n  3\n</pre>\n",
+      "question": "(2) `\"input.txt\"`\n<pre>\n  a32\n  b86\n  3\n</pre>\n",
       "answer": " \nfailed..\nfailed..\na = 3\n"
     },
     {
@@ -25,7 +25,7 @@ let parsedObject;
       "table": false,
       "type": "explaination",
       "multipart": true,
-      "question": "3. `\"input.txt\"`\n<pre>\n  a32\n  b86 3\n</pre>\n",
+      "question": "(3) `\"input.txt\"`\n<pre>\n  a32\n  b86 3\n</pre>\n",
       "answer": " \nfailed..\nfailed..\nfailed..\nAnd it keeps repeating\n"
     },
     {
@@ -34,7 +34,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
-      "question": "Now you remove the `infile.clear()` from the code, so the program becomes:\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      // inFile.clear(); COMMENTED OUT\n      inFile.ignore(100, '\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\n1. `\"input.txt\"`\n<pre>\n1\n2\n3\n</pre>\n\n",
+      "question": "Now you remove the `infile.clear()` from the code, so the program becomes:\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      // inFile.clear(); COMMENTED OUT\n      inFile.ignore(100, '\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\n(1) `\"input.txt\"`\n<pre>\n1\n2\n3\n</pre>\n\n",
       "answer": " \na = 1\n"
     },
     {
@@ -43,7 +43,7 @@ let parsedObject;
       "table": false,
       "type": "explaination",
       "multipart": true,
-      "question": "2. `\"input.txt\"`\n<pre>\n  a32\n  b86\n  3\n</pre>\n",
+      "question": "(2) `\"input.txt\"`\n<pre>\n  a32\n  b86\n  3\n</pre>\n",
       "answer": " \nfailed..\nfailed..\nfailed..\nAnd it keeps repeating\n"
     },
     {
@@ -52,7 +52,7 @@ let parsedObject;
       "table": false,
       "type": "explaination",
       "multipart": true,
-      "question": "3. `\"input.txt\"`\n<pre>\n  a32\n  b86 3\n</pre>\n",
+      "question": "(3) `\"input.txt\"`\n<pre>\n  a32\n  b86 3\n</pre>\n",
       "answer": " \nfailed..\nfailed..\nfailed..\nAnd it keeps repeating\n"
     },
     {
@@ -81,7 +81,7 @@ let parsedObject;
       "table": false,
       "type": "multiple-choice",
       "multipart": true,
-      "question": "\nFor each of the following main functions, indicate the output produced in response to the user entering `1 2 3 4 five` on the keyboard followed by the `Enter` key. Choose only one answer.\n\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\nint main() {\n  int num = 0;\n  int sum = 0;\n  while (!cin.fail()) {\n    cin >> num;\n    sum = sum + num;\n  }\n  cout << sum << endl;\n  return (0);\n}\n```\n\nChoose one the following choices:\n\n",
+      "question": "\nFor each of the following main functions, indicate the output produced in response to the user entering `1 2 3 4 five` on the keyboard followed by the `Enter` key. Choose only one answer.\n\n(1)\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\nint main() {\n  int num = 0;\n  int sum = 0;\n  while (!cin.fail()) {\n    cin >> num;\n    sum = sum + num;\n  }\n  cout << sum << endl;\n  return (0);\n}\n```\n\nChoose one the following choices:\n\n",
       "answer": [
         2
       ],
@@ -101,7 +101,7 @@ let parsedObject;
       "table": false,
       "type": "multiple-choice",
       "multipart": true,
-      "question": "\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\nint main() {\n  int num = 0;\n  int sum = 0;\n  bool more = true;\n  while (more) {\n    cin >> num;\n    if (cin.fail())\n      more = false;\n    else\n      sum = sum + num;\n  }\n  cout << sum << endl;\n  return (0);\n}\n```\n\nChoose one the following choices:\n\n",
+      "question": "\n(2)\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\nint main() {\n  int num = 0;\n  int sum = 0;\n  bool more = true;\n  while (more) {\n    cin >> num;\n    if (cin.fail())\n      more = false;\n    else\n      sum = sum + num;\n  }\n  cout << sum << endl;\n  return (0);\n}\n```\n\nChoose one the following choices:\n\n",
       "answer": [
         1
       ],
