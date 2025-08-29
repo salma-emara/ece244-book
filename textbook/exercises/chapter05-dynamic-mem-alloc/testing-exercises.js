@@ -97,7 +97,7 @@ let parsedObject;
       "type": "function programming",
       "table": false,
       "multipart": true,
-      "question": "\n3. Implement the destructor for the `Vtuber` class. You should free all the dynamically allocated objects using `delete`. Remember to be consistent with your previous implementation, as the entire program should not trigger any segmentation fault.\n\n",
+      "question": "\n(3) Implement the destructor for the `Vtuber` class. You should free all the dynamically allocated objects using `delete`. Remember to be consistent with your previous implementation, as the entire program should not trigger any segmentation fault.\n\n",
       "starter-code": "Vtuber::~Vtuber() {\n\n  // Your code here\n  \n}\n",
       "answer": "Vtuber::~Vtuber() {\n  for (int i = 0; i < follower_max; i++) {\n    delete followers[i];  // delete NULL is safe;\n  }\n  delete[] followers;\n}\n"
     }
