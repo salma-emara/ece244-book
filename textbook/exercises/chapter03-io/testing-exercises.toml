@@ -37,7 +37,7 @@ int main() {
 
 Given the following contents of `"input.txt"`, write the output.
 
-1.`"input.txt"`
+(1) `"input.txt"`
 <pre>
   1
   2
@@ -58,7 +58,7 @@ type = "tracing"
 multipart= true
 
 question = """
-2. `"input.txt"`
+(2) `"input.txt"`
 <pre>
   a32
   b86
@@ -82,7 +82,7 @@ type = "explaination"
 multipart= true
 
 question = """
-3. `"input.txt"`
+(3) `"input.txt"`
 <pre>
   a32
   b86 3
@@ -133,7 +133,7 @@ int main() {
 }
 ```
 
-1. `"input.txt"`
+(1) `"input.txt"`
 <pre>
 1
 2
@@ -156,7 +156,7 @@ type = "explaination"
 multipart= true
 
 question = """
-2. `"input.txt"`
+(2) `"input.txt"`
 <pre>
   a32
   b86
@@ -180,7 +180,7 @@ type = "explaination"
 multipart= true
 
 question = """
-3. `"input.txt"`
+(3) `"input.txt"`
 <pre>
   a32
   b86 3
@@ -363,6 +363,7 @@ question = """
 
 For each of the following main functions, indicate the output produced in response to the user entering `1 2 3 4 five` on the keyboard followed by the `Enter` key. Choose only one answer.
 
+(1)
 ```{code-block} cpp
 #include <iostream>
 using namespace std;
@@ -403,6 +404,7 @@ multipart= true
 
 question = """
 
+(2)
 ```{code-block} cpp
 #include <iostream>
 using namespace std;
