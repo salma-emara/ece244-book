@@ -86,7 +86,7 @@ function generate_exercises(filename) {
             (_, lang, code) => {
                 const editorId = "editor-" + Math.random().toString(36).substr(2, 9);
                 pendingEditors.push({ id: editorId, code: code.trim(), lang: lang || "cpp" });
-                return `<div id="${editorId}" class="ace-editor-tracing"></div>`;
+                return `<pre><div id="${editorId}" class="ace-editor-tracing"></div></pre>`;
             }
         );
 
@@ -182,7 +182,9 @@ function generate_exercises(filename) {
 				const label = document.createElement("label");
 				label.setAttribute("for", input.id);
 				// label.innerHTML = `${String.fromCharCode(65 + j)}) ${choiceText}`;
-				label.innerHTML = `${choiceText}`;
+				const span = document.createElement("span");
+				span.innerHTML = md.renderInline(choiceText);
+				label.appendChild(span);
 
 				const container = document.createElement("div");
 				container.classList.add("choicesContainer");
@@ -193,6 +195,7 @@ function generate_exercises(filename) {
 			}
 
 			questionContentBox.appendChild(choicesElement);
+			if (window.MathJax) MathJax.typesetPromise([questionContentBox]);
 
 		} else if (type === "explaination" && ex.table) {
 			const table = document.createElement("table");
