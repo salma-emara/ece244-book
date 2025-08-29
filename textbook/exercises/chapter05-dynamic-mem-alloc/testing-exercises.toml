@@ -370,23 +370,30 @@ main-function = '''
 
 int main() {
   string vtuber_name;
-  getline(cin, vtuber_name);  // read full Vtuber name
-
+  getline(cin, vtuber_name);  // full Vtuber name
   Vtuber v(vtuber_name);
 
-  int n;
-  cin >> n;  // number of followers
-
-  for (int i = 0; i < n; i++) {
-      string name;
-      int age;
-      cin >> name >> age;
-      v.insert_follower(name, age);
+  string command;
+  while (cin >> command) {
+    if (command == "Insert") {
+      int n;
+      cin >> n;
+      for (int i = 0; i < n; i++) {
+        string name;
+        int age;
+        cin >> name >> age;
+        v.insert_follower(name, age);
+      }
+    } else {
+      cerr << "Unknown command: " << command << endl;
+      break;
+    }
   }
 
   v.print_followers();
   return 0;
 }
+
 '''
 
 
@@ -433,9 +440,137 @@ void Vtuber::remove_follower(const string& follower_name) {
     }
   }
   return;
-  }
+}
 """
 
+append-before = '''
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = _name;
+    age = _age;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+
+class Vtuber {
+ private:
+  string name;
+  Follower** followers;
+  int follower_max;
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name);
+
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name); // <--- DECLARE IT HERE
+
+  // Extra helper for testcases
+  void print_followers() const {
+    cout << "Vtuber: " << name << " has " << follower_num << " followers:" << endl;
+    for (int i = 0; i < follower_max; i++) {
+      if (followers[i] != NULL) {
+        cout << "- " << followers[i]->get_name()
+             << " (age " << followers[i]->get_age() << ")" << endl;
+      }
+    }
+  }
+};
+
+// Constructor from part (1)
+Vtuber::Vtuber(const string& _name) {
+  name = _name;
+  follower_max = 2;
+  follower_num = 0;
+  followers = new Follower*[follower_max];
+  for (int i = 0; i < follower_max; i++) {
+    followers[i] = NULL;
+  }
+}
+
+// insert_follower from part (2a)
+void Vtuber::insert_follower(const string& follower_name, int follower_age) {
+  follower_num++;
+  for (int i = 0; i < follower_max; i++) {
+    if (followers[i] == NULL) {
+      followers[i] = new Follower(follower_name, follower_age);
+      return;
+    }
+  }
+  Follower** new_followers = new Follower*[2 * follower_max];
+  for (int i = 0; i < follower_max; i++) {
+    new_followers[i] = followers[i];
+    new_followers[i + follower_max] = NULL;
+  }
+  new_followers[follower_max] = new Follower(follower_name, follower_age);
+  delete[] followers;
+  followers = new_followers;
+  follower_max *= 2;
+  return;
+}
+'''
+
+
+main-function = '''
+int main() {
+  string vtuber_name;
+  getline(cin, vtuber_name);
+  Vtuber v(vtuber_name);
+
+  string command;
+  while (cin >> command) {
+    if (command == "Insert") {
+      int n;
+      cin >> n;
+      for (int i = 0; i < n; i++) {
+        string name;
+        int age;
+        cin >> name >> age;
+        cout << "Inserting follower: " << name << " (age " << age << ")" << endl;
+        v.insert_follower(name, age);
+      }
+    } else if (command == "Remove") {
+      int n;
+      cin >> n;
+      for (int i = 0; i < n; i++) {
+        string name;
+        cin >> name;
+        cout << "Removing follower: " << name << endl;
+        v.remove_follower(name);
+      }
+    } else {
+      cout << "Unknown command: " << command << endl;
+    }
+  }
+
+  v.print_followers();
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q3.P2b.T1.in"
+output = "Q3.P2b.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P2b.T2.in"
+output = "Q3.P2b.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P2b.T3.in"
+output = "Q3.P2b.T3.out"
 
 [[exercises]]
 title = "Question 10 in Fall 2022 Midterm Exam"
@@ -466,3 +601,155 @@ Vtuber::~Vtuber() {
   delete[] followers;
 }
 '''
+
+append-before = '''
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+private:
+  string name;
+  int age;
+
+public:
+  static int alive_count;  // counts live objects for testcases
+
+  Follower(const string& _name, int _age) {
+      name = _name;
+      age = _age;
+      alive_count++;
+  }
+
+  ~Follower() {
+      alive_count--;
+  }
+
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+
+int Follower::alive_count = 0;
+
+class Vtuber {
+ private:
+  string name;
+  Follower** followers;
+  int follower_max;
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  ~Vtuber();
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name);
+
+  // Extra helper for testcases
+  void print_followers() const {
+    cout << "Vtuber: " << name << " has " << follower_num << " followers:" << endl;
+    for (int i = 0; i < follower_max; i++) {
+      if (followers[i] != NULL) {
+        cout << "- " << followers[i]->get_name()
+             << " (age " << followers[i]->get_age() << ")" << endl;
+      }
+    }
+  }
+};
+
+// Constructor from part (1)
+Vtuber::Vtuber(const string& _name) {
+  name = _name;
+  follower_max = 2;
+  follower_num = 0;
+  followers = new Follower*[follower_max];
+  for (int i = 0; i < follower_max; i++) {
+    followers[i] = NULL;
+  }
+}
+
+// insert_follower from part (2a)
+void Vtuber::insert_follower(const string& follower_name, int follower_age) {
+  follower_num++;
+  for (int i = 0; i < follower_max; i++) {
+    if (followers[i] == NULL) {
+      followers[i] = new Follower(follower_name, follower_age);
+      return;
+    }
+  }
+  Follower** new_followers = new Follower*[2 * follower_max];
+  for (int i = 0; i < follower_max; i++) {
+    new_followers[i] = followers[i];
+    new_followers[i + follower_max] = NULL;
+  }
+  new_followers[follower_max] = new Follower(follower_name, follower_age);
+  delete[] followers;
+  followers = new_followers;
+  follower_max *= 2;
+  return;
+}
+
+// remove_follower from part 2b
+void Vtuber::remove_follower(const string& follower_name) {
+  for (int i = 0; i < follower_max; i++) {
+    if (followers[i] == NULL)  // 3 marks on skipping NULL members
+      continue;
+    if (followers[i]->get_name() == follower_name) {
+      follower_num--;
+      delete followers[i];
+      followers[i] = NULL;
+      break;
+    }
+  }
+  return;
+}
+'''
+
+main-function = '''
+
+int main() {
+  string vtuber_name;
+  getline(cin, vtuber_name);
+  Vtuber* v = new Vtuber(vtuber_name);
+
+  string command;
+  while (cin >> command) {
+    if (command == "Insert") {
+      int n;
+      cin >> n;
+      for (int i = 0; i < n; i++) {
+        string name;
+        int age;
+        cin >> name >> age;
+        cout << "Inserting follower: " << name << " (age " << age << ")" << endl;
+        v->insert_follower(name, age);
+      }
+    } else if (command == "Remove") {
+      int n;
+      cin >> n;
+      for (int i = 0; i < n; i++) {
+        string name;
+        cin >> name;
+        cout << "Removing follower: " << name << endl;
+        v->remove_follower(name);
+      }
+    } else {
+      cout << "Unknown command: " << command << endl;
+    }
+  }
+
+  v->print_followers();
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q3.P3.T1.in"
+output = "Q3.P3.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T2.in"
+output = "Q3.P3.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T3.in"
+output = "Q3.P3.T3.out"

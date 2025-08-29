@@ -1,0 +1,12 @@
+Inserting follower: Student1 (age 20)
+Inserting follower: Student2 (age 19)
+Inserting follower: Student10124 (age 22)
+Inserting follower: Student124 (age 18)
+Inserting follower: Student128047 (age 21)
+Removing follower: Student10124
+Removing follower: Student1
+Removing follower: Student128047
+Removing follower: Student124
+Vtuber: ECE244 (Fall 2025) has 1 followers:
+- Student2 (age 19)
+Destructor works correctly!

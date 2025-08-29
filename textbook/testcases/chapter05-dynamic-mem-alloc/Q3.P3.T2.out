@@ -1,0 +1,10 @@
+Inserting follower: Ellie (age 20)
+Inserting follower: Katie (age 19)
+Inserting follower: Alex (age 4)
+Inserting follower: Nora (age 20)
+Removing follower: Katie
+Removing follower: Alex
+Vtuber: Burger AI has 2 followers:
+- Ellie (age 20)
+- Nora (age 20)
+Destructor works correctly!

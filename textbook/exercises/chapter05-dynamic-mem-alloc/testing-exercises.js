@@ -109,11 +109,11 @@ let parsedObject;
       "starter-code": "void Vtuber::insert_follower(const string& follower_name, \n                            int follower_age) {\n\n  // Your code here\n}\n",
       "answer": "void Vtuber::insert_follower(const string& follower_name, int follower_age) {\n  follower_num++;\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL) {\n      followers[i] = new Follower(follower_name, follower_age);\n      return;\n    }\n  }\n  Follower** new_followers = new Follower*[2 * follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    new_followers[i] = followers[i];\n    new_followers[i + follower_max] = NULL;\n  }\n  new_followers[follower_max] = new Follower(follower_name, follower_age);\n  delete[] followers;\n  followers = new_followers;\n  follower_max *= 2;\n  return;\n}\n",
       "append-before": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = _name;\n    age = _age;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\n\nclass Vtuber {\n private:\n  string name;\n  Follower** followers;\n  int follower_max;\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  void insert_follower(const string& follower_name, int follower_age);\n\n  // Extra helper for testcases\n  void print_followers() const {\n    cout << \"Vtuber: \" << name << \" has \" << follower_num << \" followers:\" << endl;\n    for (int i = 0; i < follower_max; i++) {\n      if (followers[i] != NULL) {\n        cout << \"- \" << followers[i]->get_name()\n             << \" (age \" << followers[i]->get_age() << \")\" << endl;\n      }\n    }\n  }\n};\n\n// Constructor from part (1)\nVtuber::Vtuber(const string& _name) {\n  name = _name;\n  follower_max = 2;\n  follower_num = 0;\n  followers = new Follower*[follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    followers[i] = NULL;\n  }\n}\n  \n",
-      "main-function": "\nint main() {\n  string vtuber_name;\n  getline(cin, vtuber_name);  // read full Vtuber name\n\n  Vtuber v(vtuber_name);\n\n  int n;\n  cin >> n;  // number of followers\n\n  for (int i = 0; i < n; i++) {\n      string name;\n      int age;\n      cin >> name >> age;\n      v.insert_follower(name, age);\n  }\n\n  v.print_followers();\n  return 0;\n}\n",
+      "main-function": "\nint main() {\n  string vtuber_name;\n  getline(cin, vtuber_name);  // full Vtuber name\n  Vtuber v(vtuber_name);\n\n  string command;\n  while (cin >> command) {\n    if (command == \"Insert\") {\n      int n;\n      cin >> n;\n      for (int i = 0; i < n; i++) {\n        string name;\n        int age;\n        cin >> name >> age;\n        v.insert_follower(name, age);\n      }\n    } else {\n      cerr << \"Unknown command: \" << command << endl;\n      break;\n    }\n  }\n\n  v.print_followers();\n  return 0;\n}\n\n",
       "testcases": [
         {
           "input": [
-            "Salma Emara\n2\nNora 2\nnora12495 5\n"
+            "Salma Emara\nInsert 2\nNora 2\nnora12495 5\n"
           ],
           "output": [
             "Vtuber: Salma Emara has 2 followers:\n- Nora (age 2)\n- nora12495 (age 5)\n"
@@ -121,7 +121,7 @@ let parsedObject;
         },
         {
           "input": [
-            "Burger AI\n4\nEllie 20\nKatie 19\nAlex 4\nNora 20\n\n\n"
+            "Burger AI\nInsert 4\nEllie 20\nKatie 19\nAlex 4\nNora 20"
           ],
           "output": [
             "Vtuber: Burger AI has 4 followers:\n- Ellie (age 20)\n- Katie (age 19)\n- Alex (age 4)\n- Nora (age 20)\n"
@@ -129,7 +129,7 @@ let parsedObject;
         },
         {
           "input": [
-            "ECE244 (Fall 2025)\n5\nStudent1 20\nStudent2 19\nStudent10124 22\nStudent124 18\nStudent128047 21"
+            "ECE244 (Fall 2025)\nInsert 5\nStudent1 20\nStudent2 19\nStudent10124 22\nStudent124 18\nStudent128047 21"
           ],
           "output": [
             "Vtuber: ECE244 (Fall 2025) has 5 followers:\n- Student1 (age 20)\n- Student2 (age 19)\n- Student10124 (age 22)\n- Student124 (age 18)\n- Student 128047 (age 21)"
@@ -145,7 +145,35 @@ let parsedObject;
       "multipart": true,
       "question": "b. For `remove_follower`, a follower name is given. If there is any follower in the array matching the name, you should remove it and free its memory using `delete`. You can assume the follower names are all unique.\n",
       "starter-code": "void Vtuber::remove_follower(const string& follower_name) {\n  // Your code here\n}\n",
-      "answer": "void Vtuber::remove_follower(const string& follower_name) {\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL)  // 3 marks on skipping NULL members\n      continue;\n    if (followers[i]->get_name() == follower_name) {  // 1 mark\n      follower_num--;                                 // 1 mark\n      delete followers[i];                            // 2 mark\n      followers[i] = NULL;                            // 1 mark\n      break;\n    }\n  }\n  return;\n  }\n"
+      "answer": "void Vtuber::remove_follower(const string& follower_name) {\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL)  // 3 marks on skipping NULL members\n      continue;\n    if (followers[i]->get_name() == follower_name) {  // 1 mark\n      follower_num--;                                 // 1 mark\n      delete followers[i];                            // 2 mark\n      followers[i] = NULL;                            // 1 mark\n      break;\n    }\n  }\n  return;\n}\n",
+      "append-before": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = _name;\n    age = _age;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\n\nclass Vtuber {\n private:\n  string name;\n  Follower** followers;\n  int follower_max;\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  void insert_follower(const string& follower_name, int follower_age);\n  void remove_follower(const string& follower_name); // <--- DECLARE IT HERE\n\n  // Extra helper for testcases\n  void print_followers() const {\n    cout << \"Vtuber: \" << name << \" has \" << follower_num << \" followers:\" << endl;\n    for (int i = 0; i < follower_max; i++) {\n      if (followers[i] != NULL) {\n        cout << \"- \" << followers[i]->get_name()\n             << \" (age \" << followers[i]->get_age() << \")\" << endl;\n      }\n    }\n  }\n};\n\n// Constructor from part (1)\nVtuber::Vtuber(const string& _name) {\n  name = _name;\n  follower_max = 2;\n  follower_num = 0;\n  followers = new Follower*[follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    followers[i] = NULL;\n  }\n}\n\n// insert_follower from part (2a)\nvoid Vtuber::insert_follower(const string& follower_name, int follower_age) {\n  follower_num++;\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL) {\n      followers[i] = new Follower(follower_name, follower_age);\n      return;\n    }\n  }\n  Follower** new_followers = new Follower*[2 * follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    new_followers[i] = followers[i];\n    new_followers[i + follower_max] = NULL;\n  }\n  new_followers[follower_max] = new Follower(follower_name, follower_age);\n  delete[] followers;\n  followers = new_followers;\n  follower_max *= 2;\n  return;\n}\n",
+      "main-function": "int main() {\n  string vtuber_name;\n  getline(cin, vtuber_name);\n  Vtuber v(vtuber_name);\n\n  string command;\n  while (cin >> command) {\n    if (command == \"Insert\") {\n      int n;\n      cin >> n;\n      for (int i = 0; i < n; i++) {\n        string name;\n        int age;\n        cin >> name >> age;\n        cout << \"Inserting follower: \" << name << \" (age \" << age << \")\" << endl;\n        v.insert_follower(name, age);\n      }\n    } else if (command == \"Remove\") {\n      int n;\n      cin >> n;\n      for (int i = 0; i < n; i++) {\n        string name;\n        cin >> name;\n        cout << \"Removing follower: \" << name << endl;\n        v.remove_follower(name);\n      }\n    } else {\n      cout << \"Unknown command: \" << command << endl;\n    }\n  }\n\n  v.print_followers();\n  return 0;\n}\n",
+      "testcases": [
+        {
+          "input": [
+            "Salma Emara\nInsert 2\nNora 2\nnora12495 5\nRemove 1\nnora12495"
+          ],
+          "output": [
+            "Inserting follower: Nora (age 2)\nInserting follower: nora12495 (age 5)\nRemoving follower: nora12495\nVtuber: Salma Emara has 1 followers:\n- Nora (age 2)\n\n"
+          ]
+        },
+        {
+          "input": [
+            "Burger AI\nInsert 4\nEllie 20\nKatie 19\nAlex 4\nNora 20\nRemove 2\nKatie\nAlex"
+          ],
+          "output": [
+            "Inserting follower: Ellie (age 20)\nInserting follower: Katie (age 19)\nInserting follower: Alex (age 4)\nInserting follower: Nora (age 20)\nRemoving follower: Katie\nRemoving follower: Alex\nVtuber: Burger AI has 2 followers:\n- Ellie (age 20)\n- Nora (age 20)\n"
+          ]
+        },
+        {
+          "input": [
+            "ECE244 (Fall 2025)\nInsert 5\nStudent1 20\nStudent2 19\nStudent10124 22\nStudent124 18\nStudent128047 21\nRemove 4\nStudent10124 \nStudent1 \nStudent128047 \nStudent124 \n\n"
+          ],
+          "output": [
+            "Inserting follower: Student1 (age 20)\nInserting follower: Student2 (age 19)\nInserting follower: Student10124 (age 22)\nInserting follower: Student124 (age 18)\nInserting follower: Student128047 (age 21)\nRemoving follower: Student10124\nRemoving follower: Student1\nRemoving follower: Student128047\nRemoving follower: Student124\nVtuber: ECE244 (Fall 2025) has 1 followers:\n- Student2 (age 19)\n"
+          ]
+        }
+      ]
     },
     {
       "title": "Question 10 in Fall 2022 Midterm Exam",
@@ -155,7 +183,35 @@ let parsedObject;
       "multipart": true,
       "question": "\n(3) Implement the destructor for the `Vtuber` class. You should free all the dynamically allocated objects using `delete`. Remember to be consistent with your previous implementation, as the entire program should not trigger any segmentation fault.\n\n",
       "starter-code": "Vtuber::~Vtuber() {\n\n  // Your code here\n  \n}\n",
-      "answer": "Vtuber::~Vtuber() {\n  for (int i = 0; i < follower_max; i++) {\n    delete followers[i];  // delete NULL is safe;\n  }\n  delete[] followers;\n}\n"
+      "answer": "Vtuber::~Vtuber() {\n  for (int i = 0; i < follower_max; i++) {\n    delete followers[i];  // delete NULL is safe;\n  }\n  delete[] followers;\n}\n",
+      "append-before": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Follower {\nprivate:\n  string name;\n  int age;\n\npublic:\n  static int alive_count;  // counts live objects for testcases\n\n  Follower(const string& _name, int _age) {\n      name = _name;\n      age = _age;\n      alive_count++;\n  }\n\n  ~Follower() {\n      alive_count--;\n  }\n\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\n\nint Follower::alive_count = 0;\n\nclass Vtuber {\n private:\n  string name;\n  Follower** followers;\n  int follower_max;\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  ~Vtuber();\n  void insert_follower(const string& follower_name, int follower_age);\n  void remove_follower(const string& follower_name);\n\n  // Extra helper for testcases\n  void print_followers() const {\n    cout << \"Vtuber: \" << name << \" has \" << follower_num << \" followers:\" << endl;\n    for (int i = 0; i < follower_max; i++) {\n      if (followers[i] != NULL) {\n        cout << \"- \" << followers[i]->get_name()\n             << \" (age \" << followers[i]->get_age() << \")\" << endl;\n      }\n    }\n  }\n};\n\n// Constructor from part (1)\nVtuber::Vtuber(const string& _name) {\n  name = _name;\n  follower_max = 2;\n  follower_num = 0;\n  followers = new Follower*[follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    followers[i] = NULL;\n  }\n}\n\n// insert_follower from part (2a)\nvoid Vtuber::insert_follower(const string& follower_name, int follower_age) {\n  follower_num++;\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL) {\n      followers[i] = new Follower(follower_name, follower_age);\n      return;\n    }\n  }\n  Follower** new_followers = new Follower*[2 * follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    new_followers[i] = followers[i];\n    new_followers[i + follower_max] = NULL;\n  }\n  new_followers[follower_max] = new Follower(follower_name, follower_age);\n  delete[] followers;\n  followers = new_followers;\n  follower_max *= 2;\n  return;\n}\n\n// remove_follower from part 2b\nvoid Vtuber::remove_follower(const string& follower_name) {\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL)  // 3 marks on skipping NULL members\n      continue;\n    if (followers[i]->get_name() == follower_name) {\n      follower_num--;\n      delete followers[i];\n      followers[i] = NULL;\n      break;\n    }\n  }\n  return;\n}\n",
+      "main-function": "\nint main() {\n  string vtuber_name;\n  getline(cin, vtuber_name);\n  Vtuber* v = new Vtuber(vtuber_name);\n\n  string command;\n  while (cin >> command) {\n    if (command == \"Insert\") {\n      int n;\n      cin >> n;\n      for (int i = 0; i < n; i++) {\n        string name;\n        int age;\n        cin >> name >> age;\n        cout << \"Inserting follower: \" << name << \" (age \" << age << \")\" << endl;\n        v->insert_follower(name, age);\n      }\n    } else if (command == \"Remove\") {\n      int n;\n      cin >> n;\n      for (int i = 0; i < n; i++) {\n        string name;\n        cin >> name;\n        cout << \"Removing follower: \" << name << endl;\n        v->remove_follower(name);\n      }\n    } else {\n      cout << \"Unknown command: \" << command << endl;\n    }\n  }\n\n  v->print_followers();\n}\n\n",
+      "testcases": [
+        {
+          "input": [
+            "Salma Emara\nInsert 2\nNora 2\nnora12495 5\nRemove 1\nnora12495"
+          ],
+          "output": [
+            "Inserting follower: Nora (age 2)\nInserting follower: nora12495 (age 5)\nRemoving follower: nora12495\nVtuber: Salma Emara has 1 followers:\n- Nora (age 2)\nDestructor works correctly!\n"
+          ]
+        },
+        {
+          "input": [
+            "Burger AI\nInsert 4\nEllie 20\nKatie 19\nAlex 4\nNora 20\nRemove 2\nKatie\nAlex"
+          ],
+          "output": [
+            "Inserting follower: Ellie (age 20)\nInserting follower: Katie (age 19)\nInserting follower: Alex (age 4)\nInserting follower: Nora (age 20)\nRemoving follower: Katie\nRemoving follower: Alex\nVtuber: Burger AI has 2 followers:\n- Ellie (age 20)\n- Nora (age 20)\nDestructor works correctly!\n"
+          ]
+        },
+        {
+          "input": [
+            "ECE244 (Fall 2025)\nInsert 5\nStudent1 20\nStudent2 19\nStudent10124 22\nStudent124 18\nStudent128047 21\nRemove 4\nStudent10124 \nStudent1 \nStudent128047 \nStudent124 \n\n"
+          ],
+          "output": [
+            "Inserting follower: Student1 (age 20)\nInserting follower: Student2 (age 19)\nInserting follower: Student10124 (age 22)\nInserting follower: Student124 (age 18)\nInserting follower: Student128047 (age 21)\nRemoving follower: Student10124\nRemoving follower: Student1\nRemoving follower: Student128047\nRemoving follower: Student124\nVtuber: ECE244 (Fall 2025) has 1 followers:\n- Student2 (age 19)\nDestructor works correctly!\n"
+          ]
+        }
+      ]
     }
   ]
 };
