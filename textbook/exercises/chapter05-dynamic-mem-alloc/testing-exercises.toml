@@ -123,8 +123,10 @@ question = """
 A Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.
 
 ```{code-block} cpp
+#include <iostream>
 #include <string>
 using namespace std;
+
 class Follower {
  private:
   string name;
@@ -132,8 +134,8 @@ class Follower {
 
  public:
   Follower(const string& _name, int _age) {
-    name = name_;
-    age = age_;
+    name = _name;
+    age = _age;
   }
   string get_name() const { return name; }
   int get_age() const { return age; }
@@ -191,6 +193,80 @@ Vtuber::Vtuber(const string& _name) {
 
 '''
 
+append-before = '''
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = _name;
+    age = _age;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+  
+};
+class Vtuber {
+ private:
+  string name;
+  Follower** followers;
+  int follower_max;
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+
+  // getters for testing
+  string get_name() const { return name; }
+  int get_follower_max() const { return follower_max; }
+  int get_follower_num() const { return follower_num; }
+  bool followers_all_null() const {
+    for (int i = 0; i < follower_max; i++) {
+      if (followers[i] != NULL) return false;
+    }
+    return true;
+  }
+
+};
+'''
+
+main-function = '''
+int main() {
+  string vtuber_name;
+  getline(cin, vtuber_name);
+
+  Vtuber v(vtuber_name);
+
+  cout << "Vtuber created: " << v.get_name() << endl;
+  cout << "Max followers allowed: " << v.get_follower_max() << endl;
+  cout << "Current number of followers: " << v.get_follower_num() << endl;
+  cout << "All followers initialized to NULL: "
+       << (v.followers_all_null() ? "Yes" : "No") << endl;
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q3.P1.T1.in"
+output = "Q3.P1.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P1.T2.in"
+output = "Q3.P1.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P1.T3.in"
+output = "Q3.P1.T3.out"
+
+
+
 [[exercises]]
 title = "Question 10 in Fall 2022 Midterm Exam"
 difficulty = "Challenging"
@@ -213,7 +289,7 @@ void Vtuber::insert_follower(const string& follower_name,
 }
 '''
 
-ansewr = '''
+answer = '''
 void Vtuber::insert_follower(const string& follower_name, int follower_age) {
   follower_num++;
   for (int i = 0; i < follower_max; i++) {
@@ -234,6 +310,98 @@ void Vtuber::insert_follower(const string& follower_name, int follower_age) {
   return;
 }
 '''
+
+append-before = '''
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = _name;
+    age = _age;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+
+class Vtuber {
+ private:
+  string name;
+  Follower** followers;
+  int follower_max;
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  void insert_follower(const string& follower_name, int follower_age);
+
+  // Extra helper for testcases
+  void print_followers() const {
+    cout << "Vtuber: " << name << " has " << follower_num << " followers:" << endl;
+    for (int i = 0; i < follower_max; i++) {
+      if (followers[i] != NULL) {
+        cout << "- " << followers[i]->get_name()
+             << " (age " << followers[i]->get_age() << ")" << endl;
+      }
+    }
+  }
+};
+
+// Constructor from part (1)
+Vtuber::Vtuber(const string& _name) {
+  name = _name;
+  follower_max = 2;
+  follower_num = 0;
+  followers = new Follower*[follower_max];
+  for (int i = 0; i < follower_max; i++) {
+    followers[i] = NULL;
+  }
+}
+  
+'''
+
+main-function = '''
+
+int main() {
+  string vtuber_name;
+  getline(cin, vtuber_name);  // read full Vtuber name
+
+  Vtuber v(vtuber_name);
+
+  int n;
+  cin >> n;  // number of followers
+
+  for (int i = 0; i < n; i++) {
+      string name;
+      int age;
+      cin >> name >> age;
+      v.insert_follower(name, age);
+  }
+
+  v.print_followers();
+  return 0;
+}
+'''
+
+
+[[exercises.testcases]]
+input = "Q3.P2a.T1.in"
+output = "Q3.P2a.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P2a.T2.in"
+output = "Q3.P2a.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P2a.T3.in"
+output = "Q3.P2a.T3.out"
+
 
 [[exercises]]
 title = "Question 10 in Fall 2022 Midterm Exam"
