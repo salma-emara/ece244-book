@@ -67,7 +67,39 @@ let parsedObject;
       "type": "function programming",
       "table": false,
       "multipart": true,
-      "question": "\nA Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.\n\n```{code-block} cpp\n#include <string>\nusing namespace std;\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = name_;\n    age = age_;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\nclass Vtuber {\n private:\n  // Vtuber Name\n  string name;\n  // Follower array with a variable size, each element should be a dynamically\n  // allocated object of class Follower.\n  Follower** followers;\n  // The size of follower array.\n  int follower_max;\n  // Number of followers\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  ~Vtuber();\n  void insert_follower(const string& follower_name, int follower_age);\n  void remove_follower(const string& follower_name);\n};\n\n```\n\nSpecifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. The following graph illustrates it.\n\n```{figure} _images/followers.png\n```\n\n1. Implement the constructor for `Vtuber`. Vtuber `name` should be initialized by `_name`, and `follower_max` should be initialized to 2. In addition, you should allocate an array called `followers` using `new`, with an initial size of 2 (the value of `follower_max`). Every element in this array should be a pointer to an object of class `Follower` and initialize all these pointers to `NULL`.\n\n    ```{code-block} cpp \n    Vtuber::Vtuber (const string& _name) {\n\n    }\n    ```\n\n    ````{admonition} Answer\n    :class: dropdown\n\n    ```{code-block} cpp\n    Vtuber::Vtuber(const string& _name) {\n      name = _name;\n      follower_max = 2;\n      follower_num = 0;\n      followers = new Follower*[follower_max];\n      for (int i = 0; i < follower_max; i++) {\n        followers[i] = NULL;\n      }\n    }\n    ```\n    ````\n\n"
+      "question": "\nA Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.\n\n```{code-block} cpp\n#include <string>\nusing namespace std;\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = name_;\n    age = age_;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\nclass Vtuber {\n private:\n  // Vtuber Name\n  string name;\n  // Follower array with a variable size, each element should be a dynamically\n  // allocated object of class Follower.\n  Follower** followers;\n  // The size of follower array.\n  int follower_max;\n  // Number of followers\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  ~Vtuber();\n  void insert_follower(const string& follower_name, int follower_age);\n  void remove_follower(const string& follower_name);\n};\n\n```\n\nSpecifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. The following graph illustrates it.\n\n```{figure} _images/followers.png\n```\n\n(1) Implement the constructor for `Vtuber`. Vtuber `name` should be initialized by `_name`, and `follower_max` should be initialized to 2. In addition, you should allocate an array called `followers` using `new`, with an initial size of 2 (the value of `follower_max`). Every element in this array should be a pointer to an object of class `Follower` and initialize all these pointers to `NULL`.\n",
+      "starter-code": "\nVtuber::Vtuber (const string& _name) {\n  \n  // Your code here\n\n}\n\n",
+      "answer": "\nVtuber::Vtuber(const string& _name) {\n  name = _name;\n  follower_max = 2;\n  follower_num = 0;\n  followers = new Follower*[follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    followers[i] = NULL;\n  }\n}\n\n"
+    },
+    {
+      "title": "Question 10 in Fall 2022 Midterm Exam",
+      "difficulty": "Challenging",
+      "type": "function programming",
+      "table": false,
+      "multipart": true,
+      "question": "\n(2) Every Vtuber in `Vtube` can get new followers or lose their current followers. This is implemented by two methods: `insert_follower` and `remove_follower`. Now you are asked to implement these two methods:\n\na. For insert_follower, a follower name and follower age are given. You need to create a dynamically allocated object of `Follower` and insert it into the followers array (in the first available location), using `new` operator. If the array is full, you should double `follower_max`, allocate a new follower array, and move all the data into this `new` array, and insert the `new` follower. Write the code below.\n",
+      "starter-code": "void Vtuber::insert_follower(const string& follower_name, \n                            int follower_age) {\n\n  // Your code here\n}\n",
+      "ansewr": "void Vtuber::insert_follower(const string& follower_name, int follower_age) {\n  follower_num++;\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL) {\n      followers[i] = new Follower(follower_name, follower_age);\n      return;\n    }\n  }\n  Follower** new_followers = new Follower*[2 * follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    new_followers[i] = followers[i];\n    new_followers[i + follower_max] = NULL;\n  }\n  new_followers[follower_max] = new Follower(follower_name, follower_age);\n  delete[] followers;\n  followers = new_followers;\n  follower_max *= 2;\n  return;\n}\n"
+    },
+    {
+      "title": "Question 10 in Fall 2022 Midterm Exam",
+      "difficulty": "Challenging",
+      "type": "function programming",
+      "table": false,
+      "multipart": true,
+      "question": "b. For `remove_follower`, a follower name is given. If there is any follower in the array matching the name, you should remove it and free its memory using `delete`. You can assume the follower names are all unique.\n",
+      "starter-code": "void Vtuber::remove_follower(const string& follower_name) {\n  // Your code here\n}\n",
+      "answer": "void Vtuber::remove_follower(const string& follower_name) {\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL)  // 3 marks on skipping NULL members\n      continue;\n    if (followers[i]->get_name() == follower_name) {  // 1 mark\n      follower_num--;                                 // 1 mark\n      delete followers[i];                            // 2 mark\n      followers[i] = NULL;                            // 1 mark\n      break;\n    }\n  }\n  return;\n  }\n"
+    },
+    {
+      "title": "Question 10 in Fall 2022 Midterm Exam",
+      "difficulty": "Challenging",
+      "type": "function programming",
+      "table": false,
+      "multipart": true,
+      "question": "\n3. Implement the destructor for the `Vtuber` class. You should free all the dynamically allocated objects using `delete`. Remember to be consistent with your previous implementation, as the entire program should not trigger any segmentation fault.\n\n",
+      "starter-code": "Vtuber::~Vtuber() {\n\n  // Your code here\n  \n}\n",
+      "answer": "Vtuber::~Vtuber() {\n  for (int i = 0; i < follower_max; i++) {\n    delete followers[i];  // delete NULL is safe;\n  }\n  delete[] followers;\n}\n"
     }
   ]
 };
