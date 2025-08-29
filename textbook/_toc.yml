@@ -71,6 +71,7 @@ parts:
       - file: chapters/chapter12-bst/intro.md
         sections:
           - file: chapters/chapter12-bst/exercises.md
+          - file: chapters/chapter12-bst/testing-exercises.md
       - file: chapters/chapter13-hash-tables/intro.md
         sections:
           - file: chapters/chapter13-hash-tables/exercises.md
