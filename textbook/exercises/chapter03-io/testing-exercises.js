@@ -62,18 +62,71 @@ let parsedObject;
       "type": "function programming",
       "multipart": false,
       "question": "Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using `cin`) and then immediately outputs the input integer (using `cout`), one integer per line. When a `'.'` character is encountered, the function prints the message `Done` on a line by itself and returns. If the user enters any characters other than integer digits or the `'.'`, the function prints the message `Error` on a line by itself and returns. You may assume the user will never enter `eof`.\n\nThus, for example, if the user enters `51 16 700 .`, the function prints:\n<pre>\n51\n16\n700\nDone\n</pre>\n\nHowever, if the user enters `101 21 13 abc 444`, the function prints:\n<pre>\n101\n21\n13\nError\n</pre>\n",
-      "starter-code": "\nvoid readInts() {\n\n  // Your code here\n\n}\n",
-      "answer": " \nvoid readInts() {\n  int num = 0;\n  string dot;\n  cin >> num;\n  while (!cin.fail()) {  // received a number\n    cout << num << endl;\n    cin >> num;\n  }\n  // then read a non-integer number\n  string c;\n  // need to clear fail flag before doing cin\n  cin.clear();\n  // Read in a string\n  cin >> c;\n  if (c == \".\") {\n    cout << \"Done\" << endl;\n  } else {\n    cout << \"Error\" << endl;\n  }\n} \n"
+      "starter-code": "#include <iostream>\n#include <string>\nusing namespace std;\n\nvoid readInts() {\n\n  // Your code here\n\n}\n",
+      "answer": "#include <iostream>\n#include <string>\nusing namespace std;\n\nvoid readInts() {\n  int num = 0;\n  string dot;\n  cin >> num;\n  while (!cin.fail()) {  // received a number\n    cout << num << endl;\n    cin >> num;\n  }\n  // then read a non-integer number\n  string c;\n  // need to clear fail flag before doing cin\n  cin.clear();\n  // Read in a string\n  cin >> c;\n  if (c == \".\") {\n    cout << \"Done\" << endl;\n  } else {\n    cout << \"Error\" << endl;\n  }\n} \n",
+      "main-function": "\nint main() {\n  readInts();\n  return 0;\n}\n\n",
+      "testcases": [
+        {
+          "input": [
+            "51 16 700 .\n"
+          ],
+          "output": [
+            "51\n16\n700\nDone"
+          ]
+        },
+        {
+          "input": [
+            "101 21 13 abc 444\n"
+          ],
+          "output": [
+            "101\n21\n13\nError\n"
+          ]
+        },
+        {
+          "input": [
+            ".\n"
+          ],
+          "output": [
+            "Done"
+          ]
+        }
+      ]
     },
     {
       "title": "Question 3 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
-      "type": "function programming",
+      "type": "programming",
       "multipart": false,
       "question": "\nConsider the following program that uses `stringstreams` to read a command. The command has the following format:\n<pre>\ncount intArg\n</pre>\n\nThe command word is `count` and `intArg` is an integer argument. The command must have only one integer argument, e.g `count 3`.\n\nThe function `handle_count` performs the reading of the integer value. If the integer is valid, it returns `true` and updates the value of `intArg`. Otherwise, it returns `false`.\n1. Determine the number of arguments and the type of each argument and indicate them in the code above in the prototype of the function, `handle_count`. Further, indicate what parameters are passed to the function when it is invoked. Write your answers where indicated in the code above.\n   \n    You may not modify main by adding or removing line, other than by indicating the formal arguments in the function prototype and actual arguments of the function invocation. \n\n2. Write the header and body of the `handle_count` function below so it performs as indicated above. \n",
-      "starter-code": "\n#include <iostream>\nusing namespace std;\n#include <sstream>\n#include <string>\n// function prototype\nbool handle_count( <fill in the blank> );\n\nint main() {\n  string line;\n  string command;\n  int intArg;\n  getline(cin, line);\n  stringstream lineStream(line);\n  lineStream >> command;\n  if (command == \"count\") {\n    if (handle_count( <fill in the blank> )) {\n      cout << \"Integer argument is \" << intArg << endl;\n      return (0);\n    } else {\n      cout << \"Invalid arguments\" << endl;\n      return (-1);\n    }\n  } else {\n    cout << \"Invalid command\" << endl;\n    return (-1);\n  }\n}\n\n",
-      "answer": "\nbool handle_count(stringstream& line, int& intArg) {\n  line >> intArg;\n  if (line.fail()) {\n    return false;\n  } \n  string dummy;\n  line >> dummy; \n  if (line.fail()) {\n    return true;\n  } else {\n    return false;\n  }\n}\n\nint main() {\n  string line;\n  string command;\n  int intArg;\n  getline(cin, line);\n  stringstream lineStream(line);\n  lineStream >> command;\n  if (command == \"count\") {\n    if (handle_count(lineStream, intArg)) {\n      cout << \"Integer argument is \" << intArg << endl;\n      return (0);\n    } else {\n      cout << \"Invalid arguments\" << endl;\n      return (-1);\n    }\n  } else {\n    cout << \"Invalid command\" << endl;\n    return (-1);\n  }\n}\n\n"
+      "starter-code": "\n#include <iostream>\nusing namespace std;\n#include <sstream>\n#include <string>\n// function prototype\nbool handle_count( < TO DO: fill in the blank > ){\n\n  // TO DO: write the body of handle_count\n}\n\nint main() {\n  string line;\n  string command;\n  int intArg;\n  getline(cin, line);\n  stringstream lineStream(line);\n  lineStream >> command;\n  if (command == \"count\") {\n    if (handle_count( <TO DO: ill in the blank> )) {\n      cout << \"Integer argument is \" << intArg << endl;\n      return (0);\n    } else {\n      cout << \"Invalid arguments\" << endl;\n      return (-1);\n    }\n  } else {\n    cout << \"Invalid command\" << endl;\n    return (-1);\n  }\n}\n\n",
+      "answer": "\nbool handle_count(stringstream& line, int& intArg) {\n  line >> intArg;\n  if (line.fail()) {\n    return false;\n  } \n  string dummy;\n  line >> dummy; \n  if (line.fail()) {\n    return true;\n  } else {\n    return false;\n  }\n}\n\nint main() {\n  string line;\n  string command;\n  int intArg;\n  getline(cin, line);\n  stringstream lineStream(line);\n  lineStream >> command;\n  if (command == \"count\") {\n    if (handle_count(lineStream, intArg)) {\n      cout << \"Integer argument is \" << intArg << endl;\n      return (0);\n    } else {\n      cout << \"Invalid arguments\" << endl;\n      return (-1);\n    }\n  } else {\n    cout << \"Invalid command\" << endl;\n    return (-1);\n  }\n}\n\n",
+      "testcases": [
+        {
+          "input": [
+            "count 5"
+          ],
+          "output": [
+            "Integer argument is 5"
+          ]
+        },
+        {
+          "input": [
+            "count 10"
+          ],
+          "output": [
+            "Integer argument is 5"
+          ]
+        },
+        {
+          "input": [
+            "count "
+          ],
+          "output": [
+            "Invalid arguments"
+          ]
+        }
+      ]
     },
     {
       "title": "Question 6 in Fall 2019 Midterm Exam",
@@ -122,8 +175,43 @@ let parsedObject;
       "type": "function programming",
       "multipart": false,
       "question": "Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using cin) and then immediately outputs the input integer (using cout), one integer per line.\n\nWhen the end-of-file is reached, the function prints the message `\"End of File Reached\"` on a line by itself before returning. If a non-integer is input the function should print the message\n`\"Invalid Input\"` on a line by itself, should discard the rest of the stream and should continue reading integers again until the end-of-file is reached. \n",
-      "starter-code": "void readInts() {\n  // Your code here\n}\n",
-      "answer": "\nvoid readInts() {\n  int num = 0;\n  cin >> num;\n  while (!cin.eof()) {  // received a number\n    if (cin.fail()) {\n      cin.clear();\n      cin.ignore(1000, '\\n');\n      cout << \"Invalid Input\" << endl;\n      cin >> num;\n    } else {\n      cout << num << endl;\n      cin >> num;\n    }\n  }\n  cout << \"End of File Reached\" << endl;\n}\n\n"
+      "starter-code": "#include <iostream>\nusing namespace std;\n\nvoid readInts() {\n  // Your code here\n}\n",
+      "answer": "#include <iostream>\nusing namespace std;\n\nvoid readInts() {\n  int num = 0;\n  cin >> num;\n  while (!cin.eof()) {  // received a number\n    if (cin.fail()) {\n      cin.clear();\n      cin.ignore(1000, '\\n');\n      cout << \"Invalid Input\" << endl;\n      cin >> num;\n    } else {\n      cout << num << endl;\n      cin >> num;\n    }\n  }\n  cout << \"End of File Reached\" << endl;\n}\n\n#include <iostream>\nusing namespace std;\n\n",
+      "main-function": "int main() {\n  readInts();\n  return 0;\n}\n",
+      "testcases": [
+        {
+          "input": [
+            "1 \n2 \n3 \n4 \n5\n"
+          ],
+          "output": [
+            "1\n2\n3\n4\n5\nEnd of File Reached\n"
+          ]
+        },
+        {
+          "input": [
+            "10 \n20 \nabc \n30\n"
+          ],
+          "output": [
+            "10\n20\nInvalid Input\n30\nEnd of File Reached\n"
+          ]
+        },
+        {
+          "input": [
+            "xyz \n5 \n6\n"
+          ],
+          "output": [
+            "Invalid Input\n5\n6\nEnd of File Reached\n"
+          ]
+        },
+        {
+          "input": [
+            "\n"
+          ],
+          "output": [
+            "End of File Reached\n"
+          ]
+        }
+      ]
     }
   ]
 };

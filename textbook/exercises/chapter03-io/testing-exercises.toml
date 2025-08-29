@@ -224,6 +224,9 @@ Error
 """
 
 starter-code = '''
+#include <iostream>
+#include <string>
+using namespace std;
 
 void readInts() {
 
@@ -232,7 +235,11 @@ void readInts() {
 }
 '''
 
-answer = """ 
+answer = '''
+#include <iostream>
+#include <string>
+using namespace std;
+
 void readInts() {
   int num = 0;
   string dot;
@@ -253,14 +260,36 @@ void readInts() {
     cout << "Error" << endl;
   }
 } 
-"""
+'''
+
+main-function = '''
+
+int main() {
+  readInts();
+  return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q2.T1.in"
+output = "Q2.T1.out"
+
+[[exercises.testcases]]
+input = "Q2.T2.in"
+output = "Q2.T2.out"
+
+[[exercises.testcases]]
+input = "Q2.T3.in"
+output = "Q2.T3.out"
+
 
 
 [[exercises]]
 title = "Question 3 in Fall 2018 Midterm Exam"
 difficulty = "Intermediate"
 table = false
-type = "function programming"
+type = "programming"
 multipart= false
 
 question = """
@@ -287,7 +316,10 @@ using namespace std;
 #include <sstream>
 #include <string>
 // function prototype
-bool handle_count( <fill in the blank> );
+bool handle_count( < TO DO: fill in the blank > ){
+
+  // TO DO: write the body of handle_count
+}
 
 int main() {
   string line;
@@ -297,7 +329,7 @@ int main() {
   stringstream lineStream(line);
   lineStream >> command;
   if (command == "count") {
-    if (handle_count( <fill in the blank> )) {
+    if (handle_count( <TO DO: ill in the blank> )) {
       cout << "Integer argument is " << intArg << endl;
       return (0);
     } else {
@@ -350,6 +382,19 @@ int main() {
 }
 
 '''
+
+
+[[exercises.testcases]]
+input = "Q3.T1.in"
+output = "Q3.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.T2.in"
+output = "Q3.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.T3.in"
+output = "Q3.T3.out"
 
 
 [[exercises]]
@@ -455,12 +500,17 @@ When the end-of-file is reached, the function prints the message `"End of File R
 """
 
 starter-code = '''
+#include <iostream>
+using namespace std;
+
 void readInts() {
   // Your code here
 }
 '''
 
 answer = '''
+#include <iostream>
+using namespace std;
 
 void readInts() {
   int num = 0;
@@ -478,5 +528,27 @@ void readInts() {
   }
   cout << "End of File Reached" << endl;
 }
-
 '''
+
+main-function = '''
+int main() {
+  readInts();
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q4.T1.in"
+output = "Q4.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.T2.in"
+output = "Q4.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.T3.in"
+output = "Q4.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.T4.in"
+output = "Q4.T4.out"
