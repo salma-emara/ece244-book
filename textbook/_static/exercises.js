@@ -81,7 +81,7 @@ function generate_exercises(filename) {
 
         // extract {code-block} and replace with placeholders
         let pendingEditors = [];
-        const questionHtmlWithPlaceholders = ex.question.replace(
+		let questionHtml = ex.question.replace(
             /```{code-block}\s*(\w+)?([\s\S]*?)```/g,
             (_, lang, code) => {
                 const editorId = "editor-" + Math.random().toString(36).substr(2, 9);
@@ -90,8 +90,14 @@ function generate_exercises(filename) {
             }
         );
 
+		// Replace {figure} with <img>
+		questionHtml = questionHtml.replace(
+			/```{figure}\s*(.*?)\n([\s\S]*?)```/g,
+			(_, path) => `<img src="${path.trim()}" class="exercise-figure"/>`
+		);
+
         const questionDiv = document.createElement("div");
-        questionDiv.innerHTML = md.render(questionHtmlWithPlaceholders);
+		questionDiv.innerHTML = md.render(questionHtml);
         questionContentBox.appendChild(questionDiv);
         form.appendChild(questionContentBox);
 

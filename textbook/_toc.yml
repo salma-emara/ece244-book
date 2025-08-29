@@ -43,6 +43,7 @@ parts:
       - file: chapters/chapter05-dynamic-mem-alloc/intro.md
         sections:
           - file: chapters/chapter05-dynamic-mem-alloc/exercises.md
+          - file: chapters/chapter05-dynamic-mem-alloc/testing-exercises.md
       - file: chapters/chapter06-operator-overloading/intro.md
         sections:
           - file: chapters/chapter06-operator-overloading/exercises.md
