@@ -635,6 +635,8 @@ function buildFilledTableHTML(headers, rows) {
 
 function updateResultMessage(messageElement, isCorrect, questionType, correctAnswer, customMessage = "", numPassed = 0, total = 0, testcaseContainer = null, hintContainer = null, studentCode = null) {
    
+	const md = window.markdownit({ html: true, linkify: true, typographer: true });
+
     if (customMessage) {
         messageElement.innerHTML = `<span style="color: #276be9;">${customMessage}</span>`;
         return;
@@ -757,10 +759,13 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 		solutionSummary.textContent = "Show Suggested Solution";
 
 		const solutionContent = document.createElement("div");
-		solutionContent.style.marginTop = "10px";
+		solutionContent.classList.add("solution-box");
 
 		if (correctAnswer.solutionTableHTML) solutionContent.innerHTML = correctAnswer.solutionTableHTML
-		else solutionContent.innerHTML = `<pre>${escapeHtml(correctAnswer)}</pre>`;
+		else {
+			solutionContent.innerHTML = md.render(correctAnswer);
+			if (window.MathJax) MathJax.typesetPromise([solutionContent]);
+		}
 
 		solutionDetails.appendChild(solutionSummary);
 		solutionDetails.appendChild(solutionContent);
