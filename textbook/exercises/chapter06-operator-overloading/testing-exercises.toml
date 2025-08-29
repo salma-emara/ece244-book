@@ -81,6 +81,7 @@ class Foo {
   int getPriv() const { return priv; }
   void setPriv(int pv) { priv = pv; }
 };
+```
 
 Compiling the above definition/implementation results in one or more errors.
 Re-write the class so it is error-free. Write your answer (the entire definition/implementation) 
