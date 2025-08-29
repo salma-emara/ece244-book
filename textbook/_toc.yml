@@ -67,6 +67,7 @@ parts:
       - file: chapters/chapter11-inheritance/intro.md
         sections:
           - file: chapters/chapter11-inheritance/exercises.md
+          - file: chapters/chapter11-inheritance/testing-exercises.md
       - file: chapters/chapter12-bst/intro.md
         sections:
           - file: chapters/chapter12-bst/exercises.md
