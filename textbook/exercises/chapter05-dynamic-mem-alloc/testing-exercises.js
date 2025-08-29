@@ -67,9 +67,37 @@ let parsedObject;
       "type": "function programming",
       "table": false,
       "multipart": true,
-      "question": "\nA Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.\n\n```{code-block} cpp\n#include <string>\nusing namespace std;\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = name_;\n    age = age_;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\nclass Vtuber {\n private:\n  // Vtuber Name\n  string name;\n  // Follower array with a variable size, each element should be a dynamically\n  // allocated object of class Follower.\n  Follower** followers;\n  // The size of follower array.\n  int follower_max;\n  // Number of followers\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  ~Vtuber();\n  void insert_follower(const string& follower_name, int follower_age);\n  void remove_follower(const string& follower_name);\n};\n\n```\n\nSpecifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. The following graph illustrates it.\n\n```{figure} _images/followers.png\n```\n\n(1) Implement the constructor for `Vtuber`. Vtuber `name` should be initialized by `_name`, and `follower_max` should be initialized to 2. In addition, you should allocate an array called `followers` using `new`, with an initial size of 2 (the value of `follower_max`). Every element in this array should be a pointer to an object of class `Follower` and initialize all these pointers to `NULL`.\n",
+      "question": "\nA Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.\n\n```{code-block} cpp\n#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = _name;\n    age = _age;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\nclass Vtuber {\n private:\n  // Vtuber Name\n  string name;\n  // Follower array with a variable size, each element should be a dynamically\n  // allocated object of class Follower.\n  Follower** followers;\n  // The size of follower array.\n  int follower_max;\n  // Number of followers\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  ~Vtuber();\n  void insert_follower(const string& follower_name, int follower_age);\n  void remove_follower(const string& follower_name);\n};\n\n```\n\nSpecifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. The following graph illustrates it.\n\n```{figure} _images/followers.png\n```\n\n(1) Implement the constructor for `Vtuber`. Vtuber `name` should be initialized by `_name`, and `follower_max` should be initialized to 2. In addition, you should allocate an array called `followers` using `new`, with an initial size of 2 (the value of `follower_max`). Every element in this array should be a pointer to an object of class `Follower` and initialize all these pointers to `NULL`.\n",
       "starter-code": "\nVtuber::Vtuber (const string& _name) {\n  \n  // Your code here\n\n}\n\n",
-      "answer": "\nVtuber::Vtuber(const string& _name) {\n  name = _name;\n  follower_max = 2;\n  follower_num = 0;\n  followers = new Follower*[follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    followers[i] = NULL;\n  }\n}\n\n"
+      "answer": "\nVtuber::Vtuber(const string& _name) {\n  name = _name;\n  follower_max = 2;\n  follower_num = 0;\n  followers = new Follower*[follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    followers[i] = NULL;\n  }\n}\n\n",
+      "append-before": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = _name;\n    age = _age;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n  \n};\nclass Vtuber {\n private:\n  string name;\n  Follower** followers;\n  int follower_max;\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n\n  // getters for testing\n  string get_name() const { return name; }\n  int get_follower_max() const { return follower_max; }\n  int get_follower_num() const { return follower_num; }\n  bool followers_all_null() const {\n    for (int i = 0; i < follower_max; i++) {\n      if (followers[i] != NULL) return false;\n    }\n    return true;\n  }\n\n};\n",
+      "main-function": "int main() {\n  string vtuber_name;\n  getline(cin, vtuber_name);\n\n  Vtuber v(vtuber_name);\n\n  cout << \"Vtuber created: \" << v.get_name() << endl;\n  cout << \"Max followers allowed: \" << v.get_follower_max() << endl;\n  cout << \"Current number of followers: \" << v.get_follower_num() << endl;\n  cout << \"All followers initialized to NULL: \"\n       << (v.followers_all_null() ? \"Yes\" : \"No\") << endl;\n\n  return 0;\n}\n",
+      "testcases": [
+        {
+          "input": [
+            "Salma Emara"
+          ],
+          "output": [
+            "Vtuber created: Salma Emara\nMax followers allowed: 2\nCurrent number of followers: 0\nAll followers initialized to NULL: Yes\n"
+          ]
+        },
+        {
+          "input": [
+            "Burger AI"
+          ],
+          "output": [
+            "Vtuber created: Burger AI\nMax followers allowed: 2\nCurrent number of followers: 0\nAll followers initialized to NULL: Yes\n"
+          ]
+        },
+        {
+          "input": [
+            "ECE244 (Fall 2025)"
+          ],
+          "output": [
+            "Vtuber created: ECE244 (Fall 2025)\nMax followers allowed: 2\nCurrent number of followers: 0\nAll followers initialized to NULL: Yes\n"
+          ]
+        }
+      ]
     },
     {
       "title": "Question 10 in Fall 2022 Midterm Exam",
@@ -79,7 +107,35 @@ let parsedObject;
       "multipart": true,
       "question": "\n(2) Every Vtuber in `Vtube` can get new followers or lose their current followers. This is implemented by two methods: `insert_follower` and `remove_follower`. Now you are asked to implement these two methods:\n\na. For insert_follower, a follower name and follower age are given. You need to create a dynamically allocated object of `Follower` and insert it into the followers array (in the first available location), using `new` operator. If the array is full, you should double `follower_max`, allocate a new follower array, and move all the data into this `new` array, and insert the `new` follower. Write the code below.\n",
       "starter-code": "void Vtuber::insert_follower(const string& follower_name, \n                            int follower_age) {\n\n  // Your code here\n}\n",
-      "ansewr": "void Vtuber::insert_follower(const string& follower_name, int follower_age) {\n  follower_num++;\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL) {\n      followers[i] = new Follower(follower_name, follower_age);\n      return;\n    }\n  }\n  Follower** new_followers = new Follower*[2 * follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    new_followers[i] = followers[i];\n    new_followers[i + follower_max] = NULL;\n  }\n  new_followers[follower_max] = new Follower(follower_name, follower_age);\n  delete[] followers;\n  followers = new_followers;\n  follower_max *= 2;\n  return;\n}\n"
+      "answer": "void Vtuber::insert_follower(const string& follower_name, int follower_age) {\n  follower_num++;\n  for (int i = 0; i < follower_max; i++) {\n    if (followers[i] == NULL) {\n      followers[i] = new Follower(follower_name, follower_age);\n      return;\n    }\n  }\n  Follower** new_followers = new Follower*[2 * follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    new_followers[i] = followers[i];\n    new_followers[i + follower_max] = NULL;\n  }\n  new_followers[follower_max] = new Follower(follower_name, follower_age);\n  delete[] followers;\n  followers = new_followers;\n  follower_max *= 2;\n  return;\n}\n",
+      "append-before": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Follower {\n private:\n  string name;\n  int age;\n\n public:\n  Follower(const string& _name, int _age) {\n    name = _name;\n    age = _age;\n  }\n  string get_name() const { return name; }\n  int get_age() const { return age; }\n};\n\nclass Vtuber {\n private:\n  string name;\n  Follower** followers;\n  int follower_max;\n  int follower_num;\n\n public:\n  Vtuber(const string& _name);\n  void insert_follower(const string& follower_name, int follower_age);\n\n  // Extra helper for testcases\n  void print_followers() const {\n    cout << \"Vtuber: \" << name << \" has \" << follower_num << \" followers:\" << endl;\n    for (int i = 0; i < follower_max; i++) {\n      if (followers[i] != NULL) {\n        cout << \"- \" << followers[i]->get_name()\n             << \" (age \" << followers[i]->get_age() << \")\" << endl;\n      }\n    }\n  }\n};\n\n// Constructor from part (1)\nVtuber::Vtuber(const string& _name) {\n  name = _name;\n  follower_max = 2;\n  follower_num = 0;\n  followers = new Follower*[follower_max];\n  for (int i = 0; i < follower_max; i++) {\n    followers[i] = NULL;\n  }\n}\n  \n",
+      "main-function": "\nint main() {\n  string vtuber_name;\n  getline(cin, vtuber_name);  // read full Vtuber name\n\n  Vtuber v(vtuber_name);\n\n  int n;\n  cin >> n;  // number of followers\n\n  for (int i = 0; i < n; i++) {\n      string name;\n      int age;\n      cin >> name >> age;\n      v.insert_follower(name, age);\n  }\n\n  v.print_followers();\n  return 0;\n}\n",
+      "testcases": [
+        {
+          "input": [
+            "Salma Emara\n2\nNora 2\nnora12495 5\n"
+          ],
+          "output": [
+            "Vtuber: Salma Emara has 2 followers:\n- Nora (age 2)\n- nora12495 (age 5)\n"
+          ]
+        },
+        {
+          "input": [
+            "Burger AI\n4\nEllie 20\nKatie 19\nAlex 4\nNora 20\n\n\n"
+          ],
+          "output": [
+            "Vtuber: Burger AI has 4 followers:\n- Ellie (age 20)\n- Katie (age 19)\n- Alex (age 4)\n- Nora (age 20)\n"
+          ]
+        },
+        {
+          "input": [
+            "ECE244 (Fall 2025)\n5\nStudent1 20\nStudent2 19\nStudent10124 22\nStudent124 18\nStudent128047 21"
+          ],
+          "output": [
+            "Vtuber: ECE244 (Fall 2025) has 5 followers:\n- Student1 (age 20)\n- Student2 (age 19)\n- Student10124 (age 22)\n- Student124 (age 18)\n- Student 128047 (age 21)"
+          ]
+        }
+      ]
     },
     {
       "title": "Question 10 in Fall 2022 Midterm Exam",

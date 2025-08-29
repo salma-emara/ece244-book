@@ -5,7 +5,7 @@ table = false
 type = "tracing"
 multipart= true
 
-question = """
+question = '''
 Consider the following program.
 
 ```{code-block} cpp
@@ -25,7 +25,7 @@ int main() {
     if (inFile.fail()) {
       cout << "failed.." << endl;
       inFile.clear();
-      inFile.ignore(100, '\\n');
+      inFile.ignore(100, '\n');
       continue;
     }
     cout << "a = " << a << endl;
@@ -43,7 +43,7 @@ Given the following contents of `"input.txt"`, write the output.
   2
   3
 </pre>
-"""
+'''
 
 answer = """ 
 a = 1
