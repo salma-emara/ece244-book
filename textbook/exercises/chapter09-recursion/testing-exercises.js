@@ -7,7 +7,7 @@ let parsedObject;
       "table": false,
       "type": "function programming",
       "multipart": false,
-      "question": "Write a recursive function that replaces each element of an array of positive integers with its **prefix sum**. The prefix sum of an element is the sum of the element and all the elements that are at smaller indices than it. For example, for the 4-element array, `int arr[] = {1, 2, 3, 4};`, the function replaces the elements of the array to be `{1, 3, 6, 10}`. \n\nThe function has the following prototype: \n<pre>\n`void prefixsum(int* arr, int left, int right, int psum);`\n</pre>\nand is initially invoked for an array `A` as follows: `prefix(arr, 0, n-1, 0);`.\n\n",
+      "question": "Write a recursive function that replaces each element of an array of positive integers with its **prefix sum**. The prefix sum of an element is the sum of the element and all the elements that are at smaller indices than it. For example, for the 4-element array, `int arr[] = {1, 2, 3, 4};`, the function replaces the elements of the array to be `{1, 3, 6, 10}`. \n\nThe function has the following prototype: \n<pre>\nvoid prefixsum(int* arr, int left, int right, int psum);\n</pre>\nand is initially invoked for an array `A` as follows: `prefix(arr, 0, n-1, 0);`.\n\n",
       "starter-code": "void prefixsum(int* arr, int left, int right, int psum){\n\n  // Your code here!\n\n}\n",
       "answer": "void prefixsum(int* arr, int left, int right, int psum) {\n  if (left > right)\n    return;\n  psum += arr[left];\n  arr[left] = psum;\n  prefixsum(arr, left + 1, right, psum);\n}\n"
     },
