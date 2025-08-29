@@ -84,8 +84,7 @@ class Foo {
 ```
 
 Compiling the above definition/implementation results in one or more errors.
-Re-write the class so it is error-free. Write your answer (the entire definition/implementation) 
-in the box below. 
+Re-write the class so it is error-free. 
 
 """
 
@@ -132,6 +131,51 @@ class Foo {
 };
 
 '''
+
+main-function = '''
+#include <iostream>
+using namespace std;
+
+int main() {
+  int aval, bval, newval;
+  cin >> aval >> bval >> newval;
+
+  Foo a(aval);
+  Foo b(bval);
+
+  cout << "Testing copy constructor:" << endl;
+  Foo c = a; 
+  cout << "c copies a = " << c.getPriv() << endl;
+
+  cout << "Testing assignment operator:" << endl;
+  c = b;
+  cout << "c after assignment from b = " << c.getPriv() << endl;
+
+  cout << "Testing setter/getter:" << endl;
+  c.setPriv(newval);
+  cout << "c after setPriv = " << c.getPriv() << endl;
+  cout << "a remains = " << a.getPriv() << endl;
+
+  cout << "Testing self-assignment:" << endl;
+  c = c;
+  cout << "c after self-assign = " << c.getPriv() << endl;
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q2.T1.in"
+output = "Q2.T1.out"
+
+[[exercises.testcases]]
+input = "Q2.T2.in"
+output = "Q2.T2.out"
+
+[[exercises.testcases]]
+input = "Q2.T3.in"
+output = "Q2.T3.out"
+
 
 [[exercises]]
 title = "Modified Version of Question 9 in Fall 2018 Midterm Exam"
@@ -265,13 +309,15 @@ class vector_2d {
   double get_x() const { return x; }
   double get_y() const { return y; }
   
-  // Add overloaded operator+= here
+  // TO DO: Implement overloaded operator+= here
+
+
 };
 '''
 
 answer = '''
 
-vector_2d& vector_2d::operator+=(const vector_2d& rhs) {
+vector_2d& operator+=(const vector_2d& rhs) {
   // need to do the changes on the members of the lhs object
   x += rhs.x;
   y += rhs.y;
@@ -287,6 +333,49 @@ which is equivalent to:
 `a += b;`
 
 '''
+
+main-function = '''
+#include <iostream>
+using namespace std;
+
+int main() {
+  double ax, ay, bx, by, cx, cy;
+  cin >> ax >> ay >> bx >> by >> cx >> cy;
+
+  vector_2d a(ax, ay);
+  vector_2d b(bx, by);
+  vector_2d c(cx, cy);
+
+  cout << "Initial vectors:" << endl;
+  cout << "a = <" << a.get_x() << ", " << a.get_y() << ">" << endl;
+  cout << "b = <" << b.get_x() << ", " << b.get_y() << ">" << endl;
+  cout << "c = <" << c.get_x() << ", " << c.get_y() << ">" << endl;
+
+  cout << "\nTesting a += b:" << endl;
+  a += b;
+  cout << "a = <" << a.get_x() << ", " << a.get_y() << ">" << endl;
+  cout << "b = <" << b.get_x() << ", " << b.get_y() << ">" << endl;
+
+  cout << "\nTesting chained (a += b) += c:" << endl;
+  (a += b) += c;
+  cout << "a = <" << a.get_x() << ", " << a.get_y() << ">" << endl;
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q4.T1.in"
+output = "Q4.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.T2.in"
+output = "Q4.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.T3.in"
+output = "Q4.T3.out"
+
 
 [[exercises]]
 title = "Modified Version of Question 14 in Fall 2019 Midterm Exam"
@@ -428,3 +517,49 @@ Fraction Fraction::operator*(int x) {
 }
 
 '''
+
+main-function = '''
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n1, d1, n2, d2, k;
+    cin >> n1 >> d1 >> n2 >> d2 >> k;
+
+    Fraction X(n1, d1);
+    Fraction Y(n2, d2);
+
+    cout << "Initial fractions:" << endl;
+    cout << "X = ";
+    X.print();
+    cout << "Y = ";
+    Y.print();
+    cout << "Integer k = " << k << endl;
+
+    cout << "\nTesting Fraction * Fraction:" << endl;
+    Fraction Z = X * Y;
+    cout << "Z = X * Y = ";
+    Z.print();
+
+    cout << "\nTesting Fraction * int:" << endl;
+    Fraction W = X * k;
+    cout << "W = X * k = ";
+    W.print();
+
+    return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q5.T1.in"
+output = "Q5.T1.out"
+
+[[exercises.testcases]]
+input = "Q5.T2.in"
+output = "Q5.T2.out"
+
+[[exercises.testcases]]
+input = "Q5.T3.in"
+output = "Q5.T3.out"
