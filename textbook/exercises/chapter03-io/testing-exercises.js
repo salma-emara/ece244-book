@@ -7,7 +7,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
-      "question": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(1) `\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
+      "question": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(1) `\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
       "answer": " \na = 1\n"
     },
     {
@@ -176,7 +176,7 @@ let parsedObject;
       "multipart": false,
       "question": "Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using cin) and then immediately outputs the input integer (using cout), one integer per line.\n\nWhen the end-of-file is reached, the function prints the message `\"End of File Reached\"` on a line by itself before returning. If a non-integer is input the function should print the message\n`\"Invalid Input\"` on a line by itself, should discard the rest of the stream and should continue reading integers again until the end-of-file is reached. \n",
       "starter-code": "#include <iostream>\nusing namespace std;\n\nvoid readInts() {\n  // Your code here\n}\n",
-      "answer": "#include <iostream>\nusing namespace std;\n\nvoid readInts() {\n  int num = 0;\n  cin >> num;\n  while (!cin.eof()) {  // received a number\n    if (cin.fail()) {\n      cin.clear();\n      cin.ignore(1000, '\\n');\n      cout << \"Invalid Input\" << endl;\n      cin >> num;\n    } else {\n      cout << num << endl;\n      cin >> num;\n    }\n  }\n  cout << \"End of File Reached\" << endl;\n}\n\n#include <iostream>\nusing namespace std;\n\n",
+      "answer": "#include <iostream>\nusing namespace std;\n\nvoid readInts() {\n  int num = 0;\n  cin >> num;\n  while (!cin.eof()) {  // received a number\n    if (cin.fail()) {\n      cin.clear();\n      cin.ignore(1000, '\\n');\n      cout << \"Invalid Input\" << endl;\n      cin >> num;\n    } else {\n      cout << num << endl;\n      cin >> num;\n    }\n  }\n  cout << \"End of File Reached\" << endl;\n}\n",
       "main-function": "int main() {\n  readInts();\n  return 0;\n}\n",
       "testcases": [
         {

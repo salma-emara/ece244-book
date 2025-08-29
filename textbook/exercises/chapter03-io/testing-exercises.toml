@@ -25,7 +25,7 @@ int main() {
     if (inFile.fail()) {
       cout << "failed.." << endl;
       inFile.clear();
-      inFile.ignore(100, '\n');
+      inFile.ignore(100, '\\n');
       continue;
     }
     cout << "a = " << a << endl;
