@@ -92,8 +92,11 @@ function generate_exercises(filename) {
 
 		// Replace {figure} with <img>
 		questionHtml = questionHtml.replace(
-			/```{figure}\s*(.*?)\n([\s\S]*?)```/g,
-			(_, path) => `<img src="${path.trim()}" class="exercise-figure"/>`
+			/```{figure}\s*([\s\S]*?)```/g,
+			(_, path) => {
+				const fullPath = "../../" + path.trim();
+				return `<img src="${fullPath}" class="exercise-figure"/>`;
+			}
 		);
 
         const questionDiv = document.createElement("div");
