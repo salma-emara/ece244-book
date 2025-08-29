@@ -575,7 +575,7 @@ async function handle_output_submission(form, messageElement, questionType, corr
 	}
 
     const traceInputs = form.querySelectorAll(".trace-textarea, .explaination-textarea");
-    const traceInput = traceInputs[multipartIndex] || null;
+    const traceInput = traceInputs[multipartIndex - traceInputs.length] || null;
     const userAnswer = traceInput ? traceInput.value.trim() : "";
 
 	if (!userAnswer) {
