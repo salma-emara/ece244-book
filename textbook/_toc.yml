@@ -55,6 +55,7 @@ parts:
       - file: chapters/chapter08-linked-lists/intro.md
         sections:
           - file: chapters/chapter08-linked-lists/exercises.md
+          - file: chapters/chapter08-linked-lists/testing-exercises.md
       - file: chapters/chapter09-recursion/intro.md
         sections:
           - file: chapters/chapter09-recursion/exercises.md
