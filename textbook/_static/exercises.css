@@ -13,8 +13,8 @@
     font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace;
     font-size: 14px;
     height: auto;
-    min-height: 50px;
     line-height: 18px;
+    padding-top: 5px;
 }
 
 .trace-label {
