@@ -63,6 +63,7 @@ parts:
       - file: chapters/chapter10-complexity-analysis/intro.md
         sections:
           - file: chapters/chapter10-complexity-analysis/exercises.md
+          - file: chapters/chapter10-complexity-analysis/testing-exercises.md
       - file: chapters/chapter11-inheritance/intro.md
         sections:
           - file: chapters/chapter11-inheritance/exercises.md
