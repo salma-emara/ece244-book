@@ -519,6 +519,7 @@ async function handle_prog_submission(form, messageElement, inputArray, expected
 
     const testcaseResults = actualOutput.map((output, idx) => {
         const expected = (expectedOutput[idx] && expectedOutput[idx][0]) || "";
+		output = decodeHtmlEntities(output);
         const passed = normalizeOutput(expected) === normalizeOutput(output);
         return { expected, actual: output, passed };
     });
@@ -823,7 +824,8 @@ function getTestcasesContainer(form, inputArray, outputArray, actualOutput ) {
 		testcaseDiv.style.display = "none";
 
 		const expected = (outputArray[i] && outputArray[i][0]) || "";
-		const actual = actualOutput[i] || "";
+		let actual = actualOutput[i] || "";
+		actual = decodeHtmlEntities(actual);
 		const passed = (normalizeOutput(expected) == normalizeOutput(actual));
 
 		if (inputArray[i] != ""){
@@ -890,14 +892,23 @@ function normalizeOutput(str) {
         .toLowerCase();     
 }
 
+function decodeHtmlEntities(str) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = str;
+    return txt.value;
+}
+
 function diffCheckExercises(expected, actual) {
+	
+	actual = decodeHtmlEntities(actual);
     if (expected === actual) return {expectedResult: expected, actualResult: actual};
 
     let expectedResult = "";
     let actualResult = "";
 
-    const expectedWords = expected.match(/[^\s]+|\s+/g) || [];
-    const actualWords = actual.match(/[^\s]+|\s+/g) || [];
+	const expectedWords = expected.match(/<|>|\w+|[^\w\s]|[\s]+/g) || [];
+	const actualWords   = actual.match(/<|>|\w+|[^\w\s]|[\s]+/g) || [];
+
     const length = Math.max(expectedWords.length, actualWords.length);
 
     for (let i = 0; i < length; i++) {
