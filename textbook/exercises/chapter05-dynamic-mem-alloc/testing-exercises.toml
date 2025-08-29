@@ -1,0 +1,191 @@
+[[exercises]]
+title = "Question 3 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+table = false
+type = "explaination"
+multipart= false
+
+question = """
+
+Consider the following C++ function:
+
+```{code-block} cpp
+void AvadaKedavra(int n) {
+  int size = n + 1;
+  int* q = NULL;
+  for (int i = 0; i < 3; ++i) {
+    q = new int[size];
+  }
+}
+```
+
+If somewhere in your main function you call `AvadaKedavra(1)`. Based on the memory layout discussed during the lecture, answer this question: from the time this function starts to execute to the time right before it returns, how many bytes are newly allocated on the stack and the heap, respectively?
+
+You may assume:
+1. all variables are put in the main memory.
+2. an `int` takes 4 bytes
+3. we have a 32-bit machine
+
+"""
+
+answer = """
+
+Stack
+
+`n`: 4 bytes
+
+`size`: 4 bytes
+
+`q`: 4 bytes
+
+`i`: 4 bytes
+
+Total: 16 bytes
+
+Heap
+`n` is 1, `size` is 2
+
+The loop iterates 3 times, each time it allocates 2 integers. 
+
+Total is 3 * 2 * 4 bytes = 24 bytes.
+
+"""
+
+
+[[exercises]]
+title = "Question 9 in Fall 2021 Midterm Exam"
+difficulty = "Intermediate"
+type = "explaination"
+table = true
+
+question = """
+Consider the code shown below. You can assume it compiles with no errors and runs. 
+
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+
+int a = 0;
+int* b = &a;
+int** c = &b;
+
+int* foo(int** d) {
+  (**d)++;
+  b = *d;
+  int* e = new int;
+  *e = 10;
+  return e;
+}
+
+int main() {
+  int* g = nullptr;
+  int* f = new int;
+  *f = 5;
+  a++;
+
+  // Point 1
+
+  g = foo(&f);
+  a++;
+  (*g)++;
+
+  // Point 2
+
+  return 0;
+}
+
+```
+
+In the table below, give the values of the variables indicated in the table columns when program execution reaches each of the two points, Point 1 and Point 2. If a value cannot be obtained due to dereferencing a `nullptr` pointer, write `nullptr` (but assume the program does not stop).
+
+"""
+
+headers = ["Point", "a", "*b", "**c", "*g", "*f"]  
+rows = [
+  ["Point 1", "", "", "", "", ""],
+  ["Point 2", "", "", "", "", ""],
+]
+
+answer = [
+  ["Point 1", "1", "1", "1", "nullptr", "5"],
+  ["Point 2", "2", "6", "6", "11", "6"],
+]
+
+[[exercises]]
+title = "Question 10 in Fall 2022 Midterm Exam"
+difficulty = "Challenging"
+type = "function programming"
+table = false
+multipart = true
+
+question = """
+
+A Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.
+
+```{code-block} cpp
+#include <string>
+using namespace std;
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = name_;
+    age = age_;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+class Vtuber {
+ private:
+  // Vtuber Name
+  string name;
+  // Follower array with a variable size, each element should be a dynamically
+  // allocated object of class Follower.
+  Follower** followers;
+  // The size of follower array.
+  int follower_max;
+  // Number of followers
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  ~Vtuber();
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name);
+};
+
+```
+
+Specifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. The following graph illustrates it.
+
+```{figure} ./images/followers.png
+```
+
+1. Implement the constructor for `Vtuber`. Vtuber `name` should be initialized by `_name`, and `follower_max` should be initialized to 2. In addition, you should allocate an array called `followers` using `new`, with an initial size of 2 (the value of `follower_max`). Every element in this array should be a pointer to an object of class `Follower` and initialize all these pointers to `NULL`.
+
+    ```{code-block} cpp 
+    Vtuber::Vtuber (const string& _name) {
+
+    }
+    ```
+
+    ````{admonition} Answer
+    :class: dropdown
+
+    ```{code-block} cpp
+    Vtuber::Vtuber(const string& _name) {
+      name = _name;
+      follower_max = 2;
+      follower_num = 0;
+      followers = new Follower*[follower_max];
+      for (int i = 0; i < follower_max; i++) {
+        followers[i] = NULL;
+      }
+    }
+    ```
+    ````
+
+"""
