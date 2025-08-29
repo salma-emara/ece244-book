@@ -212,3 +212,12 @@ button:hover{
     margin-top: 10px;
     margin-left: 15px;
 }
+
+.solution-box {
+    padding: 10px;                
+    border: 1px solid #ccc;       
+    border-radius: 8px;          
+    background-color: #f3f4f5;   
+    white-space: pre-wrap;         
+    margin-top: 10px;
+}
