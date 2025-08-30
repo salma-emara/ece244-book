@@ -98,7 +98,7 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(2) How many integers exist in memory in the form of a memory leak when execution\nreaches Point A in the main function above? Write your answer in the box below.\n",
-      "answer": "Z initially had p and q pointing to two integers, and we lost access to them when we pointed to p and q from the object returned by value in `Z = X.funnyMultiply(Y);`.\n\nAnother two integers were lost in `W.print().funnyMultiply(V).print();` after returning from `funnyMultiply` function. \n\nTotal, we have 4 integers in the memory exist in the form of a memory leak. \n"
+      "answer": "Z initially had p and q pointing to two integers, and we lost access to them when we pointed to p and q from the object \nreturned by value in `Z = X.funnyMultiply(Y);`.\n\nAnother two integers were lost in `W.print().funnyMultiply(V).print();` after returning from `funnyMultiply` function. \n\nTotal, we have 4 integers in the memory exist in the form of a memory leak. \n"
     }
   ]
 };
