@@ -349,10 +349,42 @@ let parsedObject;
       "testcases": [
         {
           "input": [
-            "10 20 30 40 50\n2\n"
+            "10 20 30 40 50"
           ],
           "output": [
             "traversing list\n10 20 30 40 50 \n"
+          ]
+        },
+        {
+          "input": [
+            "-1 0 999\n"
+          ],
+          "output": [
+            "traversing list\n-1 0 999 \n"
+          ]
+        },
+        {
+          "input": [
+            "1 2"
+          ],
+          "output": [
+            "traversing list\n1 2 \n"
+          ]
+        },
+        {
+          "input": [
+            "5 "
+          ],
+          "output": [
+            "traversing list\n5 \n"
+          ]
+        },
+        {
+          "input": [
+            "\n"
+          ],
+          "output": [
+            "traversing list\n"
           ]
         }
       ]
@@ -376,6 +408,38 @@ let parsedObject;
           "output": [
             "Traversing list:\n10 20 30 40 50\nAfter deletion:\n10 20 40 50\n"
           ]
+        },
+        {
+          "input": [
+            "-5 -3 -1 0 2 4 delete -3\n"
+          ],
+          "output": [
+            "Traversing list:\n-5 -3 -1 0 2 4 \nAfter deletion:\n-5 -3 0 2 4 \n"
+          ]
+        },
+        {
+          "input": [
+            "5 delete 5\n"
+          ],
+          "output": [
+            "Traversing list:\n5 \nAfter deletion:\n"
+          ]
+        },
+        {
+          "input": [
+            "delete"
+          ],
+          "output": [
+            "Traversing list:\n"
+          ]
+        },
+        {
+          "input": [
+            "1 2 delete 1\n"
+          ],
+          "output": [
+            "Traversing list:\n1 2 \nAfter deletion:\n1 \n"
+          ]
         }
       ]
     },
@@ -397,6 +461,46 @@ let parsedObject;
           ],
           "output": [
             "Traversing list: 10 20 30 40 50 \nList is circular? false"
+          ]
+        },
+        {
+          "input": [
+            "1 2 3 4 C\n"
+          ],
+          "output": [
+            "Traversing list: 1 2 3 4 \nList is circular? true\n"
+          ]
+        },
+        {
+          "input": [
+            "10 C\n"
+          ],
+          "output": [
+            "Traversing list: 10 \nList is circular? true\n"
+          ]
+        },
+        {
+          "input": [
+            "10\n"
+          ],
+          "output": [
+            "Traversing list: 10 \nList is circular? false\n"
+          ]
+        },
+        {
+          "input": [
+            "-5 -2 -1 \n"
+          ],
+          "output": [
+            "Traversing list: -5 -2 -1 \nList is circular? false\n"
+          ]
+        },
+        {
+          "input": [
+            "-3 -1 0 2 5 C\n"
+          ],
+          "output": [
+            "Traversing list: -3 -1 0 2 5 \nList is circular? true\n"
           ]
         }
       ]
