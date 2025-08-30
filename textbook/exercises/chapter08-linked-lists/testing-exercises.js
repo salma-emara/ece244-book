@@ -133,7 +133,7 @@ let parsedObject;
       "table": false,
       "type": "function programming",
       "multipart": true,
-      "question": "\nYou are provided with an implementation of a `linkedList` class as well as a `listNode` class. The `linkedList` class is shown below, you may assum every function is correctly implemented. \n\n```{code-block} cpp\nclass linkedList {\n private:\n  listNode* head;\n\n public:\n  linkedList();\n  linkedList(const linkedList& other);\n  ~linkedList();\n  linkedList& operator=(const linkedList& rhs);\n  /*creates a new head with key k and updates the linked list accordingly*/\n  void insertKeyatHead(int k);\n\n  /*creates a new node at tail with value k*/\n  void insertKeyatTail(int k);\n\n  // if the list is empty the following functions\n  // return false and do nothing, otherwise they perform the\n  // mentioned tasks, update their arguments with the key\n  // of deleted node, and return true\n  bool deleteTail(int& k);  // deletes the node at tail\n  bool deleteHead(int& k);  // deletes the node at head\n};\n```\n\nWe wish to implement a `myQueue` class that represents a *queue*. A queue is a data structure in which all insertions are done on one end, called the *back* and all deletions are done on another end called the *front*. The `myQueue` class looks has the following definition:\n\n```{code-block} cpp\nclass myQueue {\n private:\n  linkedList data; /* lined list */\n public:\n  myQueue();             /* create an empty queue */\n  void push_back(int k); /* insert node with key k at back */\n  int pop_front();       /* remove node at front, return its key */\n  int front();           /* return key of node at front */\n  bool isempty();        /* return true if queue is empty */\n};\n```\n\nYou are required to implement the following functions of the queue class to have the mentioned functionality. Note that the only private data member of `myQueue` is a `linkedList` named `data`. \n\n(1) Implement the `void push_back(int k)` function. In this function, a new node with value of `k` is added at the back of the queue.\n\n",
+      "question": "\nYou are provided with an implementation of a `linkedList` class as well as a `listNode` class. The `linkedList` class is shown below, you may assum every function is correctly implemented. \n\n```{code-block} cpp\nclass linkedList {\n private:\n  listNode* head;\n\n public:\n  linkedList();\n  linkedList(const linkedList& other);\n  ~linkedList();\n  linkedList& operator=(const linkedList& rhs);\n  /*creates a new head with key k and updates the linked list accordingly*/\n  void insertKeyatHead(int k);\n\n  /*creates a new node at tail with value k*/\n  void insertKeyatTail(int k);\n\n  // if the list is empty the following functions\n  // return false and do nothing, otherwise they perform the\n  // mentioned tasks, update their arguments with the key\n  // of deleted node, and return true\n  bool deleteTail(int& k);  // deletes the node at tail\n  bool deleteHead(int& k);  // deletes the node at head\n};\n```\n\nWe wish to implement a `myQueue` class that represents a *queue*. A queue is a data structure in which all insertions are done on one end, called the *back* and all deletions are done on another end called the *front*. The `myQueue` class looks has the following definition:\n\n```{code-block} cpp\nclass myQueue {\n private:\n  linkedList data; /* lined list */\n public:\n  myQueue();             /* create an empty queue */\n  void push_back(int k); /* insert node with key k at back */\n  int pop_front();       /* remove node at front, return its key */\n  int front();           /* return key of node at front */\n  bool isempty();        /* return true if queue is empty */\n};\n```\n\nYou are required to implement the following functions of the queue class to have the mentioned functionality. Note that the only private data member of `myQueue` is a `linkedList` named `data`. \n\n(1) Implement the `void myQueue::push_back(int k);` function. In this function, a new node with value of `k` is added at the back of the queue.\n\n",
       "starter-code": "void myQueue::push_back(int k){\n\n}\n",
       "answer": "void myQueue::push_back(int k){\n  data.insertKeyatTail(k);\n}\n",
       "append-before": "#include <iostream>\nusing namespace std;\n\nclass listNode {\n public:\n  int key;\n  listNode* next;\n  listNode(int k) : key(k), next(nullptr) {}\n};\n\nclass linkedList {\nprivate:\n  listNode* head;\n\npublic:\n  // Default constructor\n  linkedList() : head(nullptr) {}\n\n  // Copy constructor\n  linkedList(const linkedList& other) {\n    head = nullptr;\n    listNode* temp = other.head;\n    listNode** ptr = &head;\n    while (temp) {\n      *ptr = new listNode(temp->key);\n      ptr = &((*ptr)->next);\n      temp = temp->next;\n    }\n  }\n\n  // Destructor\n  ~linkedList() {\n    listNode* curr = head;\n    while (curr) {\n      listNode* next = curr->next;\n      delete curr;\n      curr = next;\n    }\n  }\n\n  // Assignment operator\n  linkedList& operator=(const linkedList& rhs) {\n    if (this == &rhs) return *this; // self-assignment check\n\n    // Delete existing nodes\n    listNode* curr = head;\n    while (curr) {\n      listNode* next = curr->next;\n      delete curr;\n      curr = next;\n    }\n    head = nullptr;\n\n    // Deep copy from rhs\n    listNode* temp = rhs.head;\n    listNode** ptr = &head;\n    while (temp) {\n      *ptr = new listNode(temp->key);\n      ptr = &((*ptr)->next);\n      temp = temp->next;\n    }\n    return *this;\n  }\n\n  // Insert at head\n  void insertKeyatHead(int k) {\n    listNode* node = new listNode(k);\n    node->next = head;\n    head = node;\n  }\n\n  // Insert at tail\n  void insertKeyatTail(int k) {\n    listNode* node = new listNode(k);\n    if (!head) {\n      head = node;\n      return;\n    }\n    listNode* temp = head;\n    while (temp->next) temp = temp->next;\n    temp->next = node;\n  }\n\n  // Delete head node\n  bool deleteHead(int& k) {\n    if (!head) return false;\n    listNode* temp = head;\n    k = temp->key;\n    head = head->next;\n    delete temp;\n    return true;\n  }\n\n  bool deleteTail(int& k) {\n    if (!head) return false;\n    if (!head->next) { // only one node\n      k = head->key;\n      delete head;\n      head = nullptr;\n      return true;\n    }\n    listNode* temp = head;\n    while (temp->next->next) temp = temp->next;\n    k = temp->next->key;\n    delete temp->next;\n    temp->next = nullptr;\n    return true;\n  }\n\n  listNode* getHead() { return head; }\n  bool isEmpty() { return head == nullptr; }\n};\n\nclass myQueue {\n private:\n  linkedList data;  // linked list\n\n public:\n  myQueue() {}\n  void push_back(int k);\n\n  void printQueue() {\n    listNode* temp = data.getHead();\n    cout << \"Queue contents (front → back): \";\n    while (temp) {\n      cout << temp->key << \" \";\n      temp = temp->next;\n    }\n    cout << endl;\n  }\n\n};\n",
@@ -146,6 +146,30 @@ let parsedObject;
           "output": [
             "Pushed: 5\nPushed: 10\nPushed: 15\nPushed: 20\nQueue contents (front → back): 5 10 15 20\n"
           ]
+        },
+        {
+          "input": [
+            "0\n-5\n-5\n42\n42\n999999999\n"
+          ],
+          "output": [
+            "Pushed: 0\nPushed: -5\nPushed: -5\nPushed: 42\nPushed: 42\nPushed: 999999999\nQueue contents (front → back): 0 -5 -5 42 42 999999999 \n"
+          ]
+        },
+        {
+          "input": [
+            "7\n"
+          ],
+          "output": [
+            "Pushed: 7\nQueue contents (front → back): 7 \n"
+          ]
+        },
+        {
+          "input": [
+            "5\n10\n15\n"
+          ],
+          "output": [
+            "Pushed: 5\nPushed: 10\nPushed: 15\nQueue contents (front → back): 5 10 15 \n"
+          ]
         }
       ]
     },
@@ -155,7 +179,7 @@ let parsedObject;
       "table": false,
       "type": "function programming",
       "multipart": true,
-      "question": "(2) Implement the `int front()` function. In this function, the value of the key of the front node in the queue is returned and no updated happen to the queue. If the queue is empty `-1` is returned. \n",
+      "question": "(2) Implement the `int myQueue::front()` function. In this function, the value of the key of the front node in the queue is returned and no updated happen to the queue. If the queue is empty `-1` is returned. \n",
       "starter-code": "int myQueue::front(){\n\n}\n",
       "answer": "int myQueue::front(){\n  int d;\n  bool isDeleted = data.deleteHead(d);\n  if (isDeleted == false) {\n    return -1;\n  } else {\n    data.insertKeyatHead(d);\n    return d;\n  }\n}\n",
       "append-before": "#include <iostream>\nusing namespace std;\n\nclass listNode {\n public:\n  int key;\n  listNode* next;\n  listNode(int k) : key(k), next(nullptr) {}\n};\n\nclass linkedList {\nprivate:\n  listNode* head;\n\npublic:\n  // Default constructor\n  linkedList() : head(nullptr) {}\n\n  // Copy constructor\n  linkedList(const linkedList& other) {\n    head = nullptr;\n    listNode* temp = other.head;\n    listNode** ptr = &head;\n    while (temp) {\n      *ptr = new listNode(temp->key);\n      ptr = &((*ptr)->next);\n      temp = temp->next;\n    }\n  }\n\n  // Destructor\n  ~linkedList() {\n    listNode* curr = head;\n    while (curr) {\n      listNode* next = curr->next;\n      delete curr;\n      curr = next;\n    }\n  }\n\n  // Assignment operator\n  linkedList& operator=(const linkedList& rhs) {\n    if (this == &rhs) return *this; // self-assignment check\n\n    // Delete existing nodes\n    listNode* curr = head;\n    while (curr) {\n      listNode* next = curr->next;\n      delete curr;\n      curr = next;\n    }\n    head = nullptr;\n\n    // Deep copy from rhs\n    listNode* temp = rhs.head;\n    listNode** ptr = &head;\n    while (temp) {\n      *ptr = new listNode(temp->key);\n      ptr = &((*ptr)->next);\n      temp = temp->next;\n    }\n    return *this;\n  }\n\n  // Insert at head\n  void insertKeyatHead(int k) {\n    listNode* node = new listNode(k);\n    node->next = head;\n    head = node;\n  }\n\n  // Insert at tail\n  void insertKeyatTail(int k) {\n    listNode* node = new listNode(k);\n    if (!head) {\n      head = node;\n      return;\n    }\n    listNode* temp = head;\n    while (temp->next) temp = temp->next;\n    temp->next = node;\n  }\n\n  // Delete head node\n  bool deleteHead(int& k) {\n    if (!head) return false;\n    listNode* temp = head;\n    k = temp->key;\n    head = head->next;\n    delete temp;\n    return true;\n  }\n\n  bool deleteTail(int& k) {\n    if (!head) return false;\n    if (!head->next) { // only one node\n      k = head->key;\n      delete head;\n      head = nullptr;\n      return true;\n    }\n    listNode* temp = head;\n    while (temp->next->next) temp = temp->next;\n    k = temp->next->key;\n    delete temp->next;\n    temp->next = nullptr;\n    return true;\n  }\n\n  listNode* getHead() { return head; }\n  bool isEmpty() { return head == nullptr; }\n};\n\nclass myQueue {\n private:\n  linkedList data;  // linked list\n\n public:\n  myQueue() {}\n  // push_back from Part (1)\n  void push_back(int k) { data.insertKeyatTail(k); }\n  int front();\n\n  void printQueue() {\n    listNode* temp = data.getHead();\n    cout << \"Queue contents (front → back): \";\n    while (temp) {\n      cout << temp->key << \" \";\n      temp = temp->next;\n    }\n    cout << endl;\n  }\n\n};\n",
@@ -167,6 +191,30 @@ let parsedObject;
           ],
           "output": [
             "Pushed: 5\nPushed: 10\nPushed: 15\nPushed: 20\nFront of queue: 5\n"
+          ]
+        },
+        {
+          "input": [
+            "\n"
+          ],
+          "output": [
+            "Front of queue: -1\n"
+          ]
+        },
+        {
+          "input": [
+            "7\n"
+          ],
+          "output": [
+            "Pushed: 7\nFront of queue: 7\n"
+          ]
+        },
+        {
+          "input": [
+            "0\n-5\n-5\n42\n42\n999999999\n"
+          ],
+          "output": [
+            "Pushed: 0\nPushed: -5\nPushed: -5\nPushed: 42\nPushed: 42\nPushed: 999999999\nFront of queue: 0\n"
           ]
         }
       ]
@@ -181,7 +229,7 @@ let parsedObject;
       "starter-code": "bool myQueue::isempty(){\n\n}\n",
       "answer": "bool myQueue::isempty(){\n  int d;\n  bool isDeleted = data.deleteHead(d);\n  if (isDeleted == false) {\n    return true;\n  } else {\n    data.insertKeyatHead(d);\n      return false;\n  }\n}\n",
       "append-before": "#include <iostream>\nusing namespace std;\n\nclass listNode {\n public:\n  int key;\n  listNode* next;\n  listNode(int k) : key(k), next(nullptr) {}\n};\n\nclass linkedList {\nprivate:\n  listNode* head;\n\npublic:\n  // Default constructor\n  linkedList() : head(nullptr) {}\n\n  // Copy constructor\n  linkedList(const linkedList& other) {\n    head = nullptr;\n    listNode* temp = other.head;\n    listNode** ptr = &head;\n    while (temp) {\n      *ptr = new listNode(temp->key);\n      ptr = &((*ptr)->next);\n      temp = temp->next;\n    }\n  }\n\n  // Destructor\n  ~linkedList() {\n    listNode* curr = head;\n    while (curr) {\n      listNode* next = curr->next;\n      delete curr;\n      curr = next;\n    }\n  }\n\n  // Assignment operator\n  linkedList& operator=(const linkedList& rhs) {\n    if (this == &rhs) return *this; // self-assignment check\n\n    // Delete existing nodes\n    listNode* curr = head;\n    while (curr) {\n      listNode* next = curr->next;\n      delete curr;\n      curr = next;\n    }\n    head = nullptr;\n\n    // Deep copy from rhs\n    listNode* temp = rhs.head;\n    listNode** ptr = &head;\n    while (temp) {\n      *ptr = new listNode(temp->key);\n      ptr = &((*ptr)->next);\n      temp = temp->next;\n    }\n    return *this;\n  }\n\n  // Insert at head\n  void insertKeyatHead(int k) {\n    listNode* node = new listNode(k);\n    node->next = head;\n    head = node;\n  }\n\n  // Insert at tail\n  void insertKeyatTail(int k) {\n    listNode* node = new listNode(k);\n    if (!head) {\n      head = node;\n      return;\n    }\n    listNode* temp = head;\n    while (temp->next) temp = temp->next;\n    temp->next = node;\n  }\n\n  // Delete head node\n  bool deleteHead(int& k) {\n    if (!head) return false;\n    listNode* temp = head;\n    k = temp->key;\n    head = head->next;\n    delete temp;\n    return true;\n  }\n\n  bool deleteTail(int& k) {\n    if (!head) return false;\n    if (!head->next) { // only one node\n      k = head->key;\n      delete head;\n      head = nullptr;\n      return true;\n    }\n    listNode* temp = head;\n    while (temp->next->next) temp = temp->next;\n    k = temp->next->key;\n    delete temp->next;\n    temp->next = nullptr;\n    return true;\n  }\n  \n  listNode* getHead() { return head; }\n  bool isEmpty() { return head == nullptr; }\n\n};\n\nclass myQueue {\n private:\n  linkedList data;  // linked list\n\n public:\n  myQueue() {}\n  // push_back from Part (1)\n  void push_back(int k) { \n    data.insertKeyatTail(k); \n    }\n\n  // front() from Part (2)\n  int front() {\n    int d;\n    bool deleted = data.deleteHead(d);\n    if (!deleted) return -1;\n    data.insertKeyatHead(d);\n    return d;\n  }\n\n  bool isempty();\n\n  void printQueue() {\n    listNode* temp = data.getHead();\n    cout << \"Queue contents (front → back): \";\n    while (temp) {\n      cout << temp->key << \" \";\n      temp = temp->next;\n    }\n    cout << endl;\n  }\n\n};\n",
-      "main-function": "\nint main() {\n  myQueue q;\n\n  cout << \"Queue empty? \" << (q.isempty() ? \"Yes\" : \"No\") << endl;\n\n  int val;\n  while (cin >> val) {      // read numbers from input until EOF\n      q.push_back(val);\n      cout << \"Pushed: \" << val << endl;\n  }\n\n  cout << \"Queue empty? \" << (q.isempty() ? \"Yes\" : \"No\") << endl;\n\n  q.printQueue();\n\n  return 0;\n}\n\n",
+      "main-function": "\nint main() {\n  myQueue q;\n\n  cout << \"Queue empty? \" << (q.isempty() ? \"Yes\" : \"No\") << endl;\n\n  int val;\n  while (cin >> val) {      // read numbers from input until EOF\n      q.push_back(val);\n      cout << \"Pushed: \" << val << endl;\n  }\n\n  cout << \"Queue empty? \" << (q.isempty() ? \"Yes\" : \"No\") << endl;\n\n  q.printQueue();\n\n  return 0;\n}\n",
       "testcases": [
         {
           "input": [
@@ -189,6 +237,30 @@ let parsedObject;
           ],
           "output": [
             "Queue empty? Yes\nPushed: 5\nPushed: 10\nPushed: 15\nPushed: 20\nQueue empty? No\nQueue contents (front → back): 5 10 15 20\n"
+          ]
+        },
+        {
+          "input": [
+            "0\n-1\n999999999\n"
+          ],
+          "output": [
+            "Queue empty? Yes\nPushed: 0\nPushed: -1\nPushed: 999999999\nQueue empty? No\nQueue contents (front → back): 0 -1 999999999 \n"
+          ]
+        },
+        {
+          "input": [
+            "\n"
+          ],
+          "output": [
+            "Queue empty? Yes\nQueue empty? Yes\nQueue contents (front → back): \n"
+          ]
+        },
+        {
+          "input": [
+            "10\n20\n30\n"
+          ],
+          "output": [
+            "Queue empty? Yes\nPushed: 10\nPushed: 20\nPushed: 30\nQueue empty? No\nQueue contents (front → back): 10 20 30 \n"
           ]
         }
       ]
@@ -211,6 +283,54 @@ let parsedObject;
           ],
           "output": [
             "Pushed: 5\nPushed: 10\nPushed: 15\nFront: 5\nPopped: 5\nQueue empty? No\nPushed: 20\nFinal Queue contents (front → back): 10 15 20 \n"
+          ]
+        },
+        {
+          "input": [
+            "Push 0\nPush -7\nPush 999999999\nPop\nEmpty\nFront\n"
+          ],
+          "output": [
+            "Pushed: 0\nPushed: -7\nPushed: 999999999\nPopped: 0\nQueue empty? No\nFront: -7\nFinal Queue contents (front → back): -7 999999999 \n"
+          ]
+        },
+        {
+          "input": [
+            "Push 10\nPush 20\nFront\nPop\nFront\nPop\nFront\n"
+          ],
+          "output": [
+            "Pushed: 10\nPushed: 20\nFront: 10\nPopped: 10\nFront: 20\nPopped: 20\nQueue is empty!\nFinal Queue contents (front → back): \n"
+          ]
+        },
+        {
+          "input": [
+            "Push 1\nPush 2\nPush 3\nPop\nPop\nPop\nPop\n"
+          ],
+          "output": [
+            "Pushed: 1\nPushed: 2\nPushed: 3\nPopped: 1\nPopped: 2\nPopped: 3\nQueue is empty!\nFinal Queue contents (front → back): \n"
+          ]
+        },
+        {
+          "input": [
+            "Push 1\nPush 2\nPush 3\nPop\nPop\nPop\nPop\n"
+          ],
+          "output": [
+            "Pushed: 1\nPushed: 2\nPushed: 3\nPopped: 1\nPopped: 2\nPopped: 3\nQueue is empty!\nFinal Queue contents (front → back): \n"
+          ]
+        },
+        {
+          "input": [
+            "Push 5\nPop\nEmpty\n"
+          ],
+          "output": [
+            "Pushed: 5\nPopped: 5\nQueue empty? Yes\nFinal Queue contents (front → back): \n"
+          ]
+        },
+        {
+          "input": [
+            "Pop\nEmpty\n"
+          ],
+          "output": [
+            "Queue is empty!\nQueue empty? Yes\nFinal Queue contents (front → back): \n"
           ]
         }
       ]

@@ -246,6 +246,9 @@ input = "Q2.T4.in"
 output = "Q2.T4.out"
 
 
+
+
+
 [[exercises]]
 title = "Question 8 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
@@ -299,7 +302,7 @@ class myQueue {
 
 You are required to implement the following functions of the queue class to have the mentioned functionality. Note that the only private data member of `myQueue` is a `linkedList` named `data`. 
 
-(1) Implement the `void push_back(int k)` function. In this function, a new node with value of `k` is added at the back of the queue.
+(1) Implement the `void myQueue::push_back(int k);` function. In this function, a new node with value of `k` is added at the back of the queue.
 
 '''
 
@@ -473,6 +476,22 @@ int main() {
 input = "Q3.P1.T1.in"
 output = "Q3.P1.T1.out"
 
+[[exercises.testcases]]
+input = "Q3.P1.T2.in"
+output = "Q3.P1.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P1.T3.in"
+output = "Q3.P1.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P1.T4.in"
+output = "Q3.P1.T4.out"
+
+
+
+
+
 
 
 [[exercises]]
@@ -483,7 +502,7 @@ type = "function programming"
 multipart= true
 
 question = '''
-(2) Implement the `int front()` function. In this function, the value of the key of the front node in the queue is returned and no updated happen to the queue. If the queue is empty `-1` is returned. 
+(2) Implement the `int myQueue::front()` function. In this function, the value of the key of the front node in the queue is returned and no updated happen to the queue. If the queue is empty `-1` is returned. 
 '''
 
 starter-code = '''
@@ -666,6 +685,18 @@ int main() {
 [[exercises.testcases]]
 input = "Q3.P2.T1.in"
 output = "Q3.P2.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P2.T2.in"
+output = "Q3.P2.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P2.T3.in"
+output = "Q3.P2.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P2.T4.in"
+output = "Q3.P2.T4.out"
 
 
 
@@ -868,12 +899,23 @@ int main() {
 
   return 0;
 }
-
 '''
 
 [[exercises.testcases]]
 input = "Q3.P3.T1.in"
 output = "Q3.P3.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T2.in"
+output = "Q3.P3.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T3.in"
+output = "Q3.P3.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T4.in"
+output = "Q3.P3.T4.out"
 
 
 
@@ -1105,7 +1147,29 @@ int main() {
 input = "Q3.P4.T1.in"
 output = "Q3.P4.T1.out"
 
+[[exercises.testcases]]
+input = "Q3.P4.T2.in"
+output = "Q3.P4.T2.out"
 
+[[exercises.testcases]]
+input = "Q3.P4.T3.in"
+output = "Q3.P4.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T4.in"
+output = "Q3.P4.T4.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T4.in"
+output = "Q3.P4.T4.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T5.in"
+output = "Q3.P4.T5.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T6.in"
+output = "Q3.P4.T6.out"
 
 [[exercises]]
 title = "Question 6 in Fall 2019 Final Exam"
