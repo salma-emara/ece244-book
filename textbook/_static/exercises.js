@@ -117,7 +117,7 @@ function generate_exercises(filename) {
 			
 			editor.setOptions({
 				readOnly: true,
-				showGutter: lineCount > 5,
+				showGutter: lineCount > 3,
 				wrap: true,
 				maxLines: Infinity,
 				fontSize: "14px",

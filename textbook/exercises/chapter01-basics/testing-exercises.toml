@@ -5,7 +5,7 @@ type = "explaination"
 table = false
 multipart= false
 
-question = """
+question = '''
 When you compile the following program, what happens? If there is an error, explain what the error is (one sentence max).
 
 ```{code-block} cpp 
@@ -21,11 +21,11 @@ void hello(int i) {
   return;
 }
 ```
-"""
+'''
 
-answer = """ 
+answer = ''' 
 There will be a compilation error because hello() is called before it's declared.
-"""
+'''
 
 
 [[exercises]]
@@ -35,7 +35,7 @@ table = false
 type = "tracing"
 multipart= false
 
-question = """
+question = '''
 Consider the following program. Write down the output
 
 ```{code-block} cpp
@@ -63,13 +63,13 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """ 
+answer = '''
 4
 4
 8
-"""
+'''
 
 
 
@@ -77,43 +77,128 @@ answer = """
 [[exercises]]
 title = "Question 6 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
-type = "explaination"
+type = "function programming"
 table = false
 multipart = true
 
-question = """
+question = '''
 Compared to C, passing by reference is introduced in C++. Both of the following two functions can be used to swap the value of two integers:
 
 ```{code-block} cpp
-void swap_by_p(int* a, int* b); // swap version.1
-void swap_by_r(int& a, int& b); // swap version.2
+void swap_by_p(int* a, int* b); // swap version 1
+void swap_by_r(int& a, int& b); // swap version 2
 ```
 
 (1) Write the implementations for these two functions (no more than 4 lines of code for each function)
 
-```{code-block} cpp
+a. Version 1
+'''
+starter-code = '''
 void swap_by_p(int* a, int* b) {
+  
+  // Your code here
 
 }
-void swap_by_r(int& a, int& b) {
+'''
 
-}
-```
-"""
-
-answer = """
+answer = '''
 void swap_by_p(int* a, int* b) {
   int temp = *a;
   *a = *b;
   *b = temp;
 }
+'''
+main-function = '''
+#include <iostream>
+using namespace std;
 
+int main() {
+  int a, b;
+  while (cin >> a >> b) {
+    cout << "Before: " << a << " " << b << endl;
+    swap_by_p(&a, &b);
+    cout << "After: " << a << " " << b << endl;
+  }
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q3.T1.in"
+output = "Q3.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.T2.in"
+output = "Q3.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.T3.in"
+output = "Q3.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.T4.in"
+output = "Q3.T4.out"
+
+
+
+[[exercises]]
+title = "Question 6 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+type = "function programming"
+table = false
+multipart = true
+
+question = '''
+b. Version 2
+'''
+starter-code = '''
+void swap_by_r(int& a, int& b) {
+
+  // Your code here
+
+}
+'''
+
+answer = '''
 void swap_by_r(int& a, int& b) {
   int temp = a;
   a = b;
   b = temp;
 }
-"""
+'''
+main-function = '''
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a, b;
+  while (cin >> a >> b) {
+    cout << "Before: " << a << " " << b << endl;
+    swap_by_r(a, b);
+    cout << "After: " << a << " " << b << endl;
+  }
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q3.T1.in"
+output = "Q3.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.T2.in"
+output = "Q3.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.T3.in"
+output = "Q3.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.T4.in"
+output = "Q3.T4.out"
+
+
+
 
 [[exercises]]
 title = "Question 6 in Fall 2022 Midterm Exam"
@@ -122,8 +207,8 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """(2) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_p`.
-"""
+question = '''(2) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_p`.
+'''
 
 answer = """
 swap_by_p (&x, &y);
@@ -136,12 +221,12 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """(3) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_r`. 
-"""
+question = '''(3) If given two int variables `x` and `y`, write a function call that swaps the value of `x` and `y`, using `swap_by_r`. 
+'''
 
-answer = """
+answer = '''
 swap_by_r (x, y);
-"""
+'''
 
 
 
@@ -152,11 +237,11 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 
+question = '''
 Ellie writes a program to make a simple database for ECE students who like drinking soy milk from 2T2 to 2T6. She designs two classes: `student` and `ECE`, and puts them into different files below. The main function is in the `main.cpp`.
 
 **ECE.h**
-```
+```{code-block} cpp
 #ifndefine ECE
 #define ECE
 
@@ -169,7 +254,7 @@ class ECE{
 ```
 
 **ECE.cpp**
-```
+```{code-block} cpp
 #include "ECE.h"
 
 ECE::ECE(){
@@ -178,7 +263,7 @@ ECE::ECE(){
 ```
 
 **student.h**
-```
+```{code-block} cpp
 #include <string>
 
 class Student{
@@ -187,7 +272,7 @@ class Student{
 ```
 
 **student.cpp**
-```
+```{code-block} cpp
 #include "student.h"
 
 Student::Student(){
@@ -196,7 +281,7 @@ Student::Student(){
 ```
 
 **main.cpp**
-```
+```{code-block} cpp
 #include "ECE.h"
 #include "student.h"
 int main(){
@@ -206,11 +291,11 @@ int main(){
 
 (1) Ellie tries to compile this program with g++. What's the Unix (i.e., terminal) command that compiles the entire program using one command, which generates an executable called `small_database`?
 
-"""
+'''
 
-answer = """
+answer = '''
 g++ ECE.cpp student.cpp main.cpp -o small_database
-"""
+'''
 
 
 
@@ -221,13 +306,13 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 
+question = '''
 (2) However, it fails to compile. Can you point out the compile-time error and fix this error for her? 
-"""
+'''
 
-answer = """
+answer = '''
 No header guard in student.h
-"""
+'''
 
 [[exercises]]
 title = "Question 7 in Fall 2022 Midterm Exam"
@@ -236,17 +321,19 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 
+question = '''
 (3) With your help, Ellie has fixed the compile-time error. Now, Ellie wants to use separate compilation learned from ECE244 to compile her project. Write down all the Unix commands necessary to separately compile the above files and generate an executable `small_database`.
-"""
+'''
 
-answer = """
+answer = '''
 g++ -c student.cpp -o student.o
-g++ -c ECE.cpp -o ECE.o
-g++ -c main.cpp -o main.o
-g++ student.o ECE.o main.o -o small_database
-"""
 
+g++ -c ECE.cpp -o ECE.o
+
+g++ -c main.cpp -o main.o
+
+g++ student.o ECE.o main.o -o small_database
+'''
 
 [[exercises]]
 title = "Question 7 in Fall 2022 Midterm Exam"
@@ -255,14 +342,15 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 
+question = '''
 (4) Ellie then changes some code in `ECE.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files needed. Assume the generated executable is called `small_database`.
-"""
+'''
 
-answer = """
+answer = '''
 g++ -c ECE.cpp -o ECE.o
+
 g++ student.o ECE.o main.o -o small_database
-"""
+'''
 
 
 
@@ -274,7 +362,7 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 
+question = '''
 You are given a program that has a main function and 3 classes: First, Second and Third. For each of these classes, you have a definition file and an implementation file. Thus, you have seven
 files in total: First.h, First.cpp, Second.h, Second.cpp, Third.h, Third.cpp and main.cpp. All the files exist in the same directory. 
 
@@ -282,7 +370,7 @@ The first few lines of each file are shown below.
 The rest of the contents of each file is irrelevant to the question and is shown as `...`. You may assume the definition/implementation files are error-free.
 
 **First.h**
-```
+```{code-block} cpp
 #ifndef FIRST_H
 #define FIRST_H
 class First {
@@ -292,7 +380,7 @@ class First {
 ```
 
 **First.cpp**
-```
+```{code-block} cpp
 #include “First.h”
 First::First() {
   ...
@@ -300,7 +388,7 @@ First::First() {
 ```
 
 **Second.h**
-```
+```{code-block} cpp
 #ifndef SECOND_H
 #define SECOND_H
 class Second {
@@ -310,7 +398,7 @@ class Second {
 ```
 
 **Second.cpp**
-```
+```{code-block} cpp
 #include “First.h”
 #include “Second.h”
 Second::Second() {
@@ -319,7 +407,7 @@ Second::Second() {
 ```
 
 **Third.h**
-```
+```{code-block} cpp
 #ifndef THIRD_H
 #define THIRD_H
 class Third {
@@ -329,7 +417,7 @@ class Third {
 ```
 
 **Third.cpp**
-```
+```{code-block} cpp
 #include “Second.h”
 Third::Third() {
   ...
@@ -337,7 +425,7 @@ Third::Third() {
 ```
 
 **main.cpp**
-```
+```{code-block} cpp
 #include “First.h”
 #include “Second.h”
 #include “Third.h”
@@ -349,15 +437,19 @@ int main() {
 The files are to be separately compiled and then linked into a single executable called `main`.
 
 (1) Write down the Unix commands necessary to separately compile the above files and generate the executable.
-"""
+'''
 
-answer = """
+answer = '''
 g++ -c First.cpp -o First.o
+
 g++ -c Second.cpp -o Second.o
+
 g++ -c Third.cpp -o Third.o
+
 g++ -c main.cpp -o main.o
+
 g++ First.o Second.o Third.o main.o -o main
-"""
+'''
 
 
 [[exercises]]
@@ -367,14 +459,15 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 
+question = '''
 (2) You modify the file `Second.cpp`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.
-"""
+'''
 
-answer = """
+answer = '''
 g++ -c Second.cpp -o Second.o
+
 g++ First.o Second.o Third.o main.o -o main
-"""
+'''
 
 [[exercises]]
 title = "Question 2 Fall 2018 Midterm Exam"
@@ -383,13 +476,16 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """ 
+question = '''
 (3) You modify the file `First.h`. Write down the Unix commands necessary to regenerate the executable by compiling the smallest number of files possible.
-"""
+'''
 
-answer = """
+answer = '''
 g++ -c First.cpp -o First.o
+
 g++ -c Second.cpp -o Second.o
+
 g++ -c main.cpp -o main.o
+
 g++ First.o Second.o Third.o main.o -o main
-"""
+'''
