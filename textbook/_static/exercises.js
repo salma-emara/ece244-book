@@ -401,19 +401,35 @@ function generate_exercises(filename) {
 					selectedIndices.length === correctIndices.length &&
 					correctIndices.every(idx => selectedIndices.includes(idx));
 
-				if (ex.explanations && ex.explanations.length > 0) {
-					const explanationHTML = `
-					<details style="margin-top: 10px;">
-						<summary style="cursor: pointer;">Show Explanation</summary>
-						<div style="margin-top: 5px;">
-							${ex.explanations.join('<br>')}
-						</div>
-					</details>
-					`;
-					
+				if (ex.explanation){
+
+					const explanationText = Array.isArray(ex.explanation)
+						? ex.explanation.join("\n\n")
+						: ex.explanation;
+
+					const explanationDetails = document.createElement("details");
+					explanationDetails.style.marginTop = "10px";
+
+					const explanationSummary = document.createElement("summary");
+					explanationSummary.textContent = "Show Explanation";
+					explanationSummary.style.cursor = "pointer";
+
+					const explanationContent = document.createElement("div");
+					explanationContent.classList.add("solution-box");
+					explanationContent.style.marginTop = "5px";
+					explanationContent.innerHTML = md.render(explanationText);
+
+					explanationDetails.appendChild(explanationSummary);
+					explanationDetails.appendChild(explanationContent);
+
 					resultMessage.innerHTML = isCorrect
-						? `<span style="color: green;">Correct!</span><br>${explanationHTML}`
-						: `<span style="color: red;">Incorrect.</span><br>${explanationHTML}`;
+						? `<span style="color: green;">Correct!</span>`
+						: `<span style="color: red;">Incorrect.</span>`;
+
+					resultMessage.appendChild(explanationDetails);
+
+					if (window.MathJax) MathJax.typesetPromise([explanationContent]);
+			
 				} else {
 					resultMessage.innerHTML = isCorrect
 						? `<span style="color: green;">Correct!</span>`
@@ -725,28 +741,26 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
                 </details>
             `;
 
-if (ex && ex.explanation) {
-    const explanationDetails = document.createElement("details");
-    explanationDetails.style.marginTop = "10px";
+		if (ex && ex.explanation) {
+			const explanationDetails = document.createElement("details");
+			explanationDetails.style.marginTop = "10px";
 
-    const explanationSummary = document.createElement("summary");
-    explanationSummary.textContent = "Show Explanation";
-    explanationSummary.style.cursor = "pointer";
+			const explanationSummary = document.createElement("summary");
+			explanationSummary.textContent = "Show Explanation";
+			explanationSummary.style.cursor = "pointer";
 
-    // solution-box only wraps the content, not the summary
-    const explanationContent = document.createElement("div");
-    explanationContent.classList.add("solution-box");
-    explanationContent.style.marginTop = "5px";
-    explanationContent.innerHTML = md.render(ex.explanation);
+			// solution-box only wraps the content, not the summary
+			const explanationContent = document.createElement("div");
+			explanationContent.classList.add("solution-box");
+			explanationContent.style.marginTop = "5px";
+			explanationContent.innerHTML = md.render(ex.explanation);
 
-    explanationDetails.appendChild(explanationSummary);
-    explanationDetails.appendChild(explanationContent);
-    messageElement.appendChild(explanationDetails);
+			explanationDetails.appendChild(explanationSummary);
+			explanationDetails.appendChild(explanationContent);
+			messageElement.appendChild(explanationDetails);
 
-    if (window.MathJax) MathJax.typesetPromise([explanationContent]);
-}
-
-
+			if (window.MathJax) MathJax.typesetPromise([explanationContent]);
+		}
 
 		// feedback container
 		if (hintContainer) {
