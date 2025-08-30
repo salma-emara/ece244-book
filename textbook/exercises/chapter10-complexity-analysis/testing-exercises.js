@@ -8,7 +8,7 @@ let parsedObject;
       "type": "explaination",
       "multipart": true,
       "question": "For each code snippet, specify the worst case complexity using the Big-O notation. \n\n```{code-block} cpp\nfor (int i = 0; i < n; i++) {\n  for (int j = 0; j * j < n; j++) {\n    // some code with o(1)\n  }\n}\n```\n",
-      "answer": "Think of it as $n \\times (j^2 < n \\rightarrow j < \\sqrt{n} = ) \\sqrt{n} = n^\\frac{3}{2}$\n\n$O(n^\\frac{3}{2})$\n"
+      "answer": "Think of it as $n \\\\times (j^2 < n \\\\rightarrow j < \\\\sqrt{n} = ) \\\\sqrt{n} = n^\\\\frac{3}{2}$\n\n$O(n^\\\\frac{3}{2})$\n"
     },
     {
       "title": "Question 16 in Fall 2021 Final Exam",
@@ -17,7 +17,7 @@ let parsedObject;
       "type": "explaination",
       "multipart": true,
       "question": "```{code-block} cpp\nfor (int i = 0; i < n; i++) {\n  for (int j = 0; j * j < 1000000; j++) {\n    // some code with O(1)\n  }\n}\n```\n",
-      "answer": "Think of it as $n \\times 1000000 = n$\n\n$O(n)$\n"
+      "answer": "Think of it as $n \\\\times 1000000 = n$\n\n$O(n)$\n"
     },
     {
       "title": "Question 16 in Fall 2021 Final Exam",
@@ -26,7 +26,7 @@ let parsedObject;
       "type": "explaination",
       "multipart": true,
       "question": "```{code-block} cpp\nfor(int i = 1; i < n ; i = i*2){\n  for(int j = 0; j < n; j++){\n    // some code with O(1)\n  }\n}\n```\n",
-      "answer": "The outer loop goes from 1, 2, 4, 8, 16 ...\n\nTo reach $n$, this takes $\\log(n)$ steps.\n\nThink of it as $\\log(n) \\times n$\n\n$O(n\\log(n))$\n"
+      "answer": "The outer loop goes from 1, 2, 4, 8, 16 ...\n\nTo reach $n$, this takes $\\\\log(n)$ steps.\n\nThink of it as $\\\\log(n) \\\\times n$\n\n$O(n\\\\log(n))$\n"
     },
     {
       "title": "Question 17 in Fall 2021 Final Exam",
@@ -42,9 +42,7 @@ let parsedObject;
         "Yes",
         "No"
       ],
-      "explanations": [
-        "Yes"
-      ]
+      "explanation": "Yes"
     },
     {
       "title": "Question 17 in Fall 2021 Final Exam",
@@ -60,9 +58,7 @@ let parsedObject;
         "Yes",
         "No"
       ],
-      "explanations": [
-        "Yes"
-      ]
+      "explanation": "Yes"
     },
     {
       "title": "Question 17 in Fall 2021 Final Exam",
