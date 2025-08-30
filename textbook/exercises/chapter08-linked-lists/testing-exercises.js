@@ -12,15 +12,13 @@ let parsedObject;
         1
       ],
       "choices": [
-        "1. `Nothing`",
-        "2. `cout << h->key << endl;`",
-        "3. `cout << ptr->key << endl;`",
-        "4. `cout << (*h)->key << endl;`",
-        "5. `cout << (*ptr)->key;`"
+        "(1) `Nothing`",
+        "(2) `cout << h->key << endl;`",
+        "(3) `cout << ptr->key << endl;`",
+        "(4) `cout << (*h)->key << endl;`",
+        "(5) `cout << (*ptr)->key;`"
       ],
-      "explanations": [
-        "2. `cout << h->key << endl;`"
-      ]
+      "explanation": "(2) `cout << h->key << endl;`"
     },
     {
       "title": "Question 6 in Fall 2021 Final Exam",
@@ -37,15 +35,13 @@ let parsedObject;
         4
       ],
       "choices": [
-        "1. true",
-        "2. `ptr != nullptr`",
-        "3. `*ptr == nullptr`",
-        "4. `*ptr != h`",
-        "5. `ptr != *h`"
+        "(1) true",
+        "(3) `ptr != nullptr`",
+        "(3) `*ptr == nullptr`",
+        "(4) `*ptr != h`",
+        "(5) `ptr != *h`"
       ],
-      "explanations": [
-        "All are incorrect. The correct answer is `*ptr != nullptr`"
-      ]
+      "explanation": "All are incorrect. The correct answer is `*ptr != nullptr`"
     },
     {
       "title": "Question 6 in Fall 2021 Final Exam",
@@ -58,15 +54,13 @@ let parsedObject;
         4
       ],
       "choices": [
-        "1. true",
-        "2. `ptr != nullptr`",
-        "3. `*ptr == nullptr`",
-        "4. `*ptr != h`",
-        "5. `ptr != *h`"
+        "(1) true",
+        "(2) `ptr != nullptr`",
+        "(3) `*ptr == nullptr`",
+        "(4) `*ptr != h`",
+        "(5) `ptr != *h`"
       ],
-      "explanations": [
-        "5. `cout << (*ptr)->key << endl;`"
-      ]
+      "explanation": "(5) `cout << (*ptr)->key << endl;`"
     },
     {
       "title": "Question 6 in Fall 2021 Final Exam",
@@ -79,15 +73,13 @@ let parsedObject;
         1
       ],
       "choices": [
-        "1. Nothing",
-        "2. `ptr = &((*ptr)->next);`",
-        "3. `ptr = (*ptr)->next;`",
-        "4. `ptr = ptr->next;`",
-        "5. `ptr = (*ptr).next;`"
+        "(1)Nothing",
+        "(2) `ptr = &((*ptr)->next);`",
+        "(3) `ptr = (*ptr)->next;`",
+        "(4) `ptr = ptr->next;`",
+        "(5) `ptr = (*ptr).next;`"
       ],
-      "explanations": [
-        "2. `ptr = &((*ptr)->next);"
-      ]
+      "explanation": " (2) `ptr = &((*ptr)->next);`"
     },
     {
       "title": "Question 7 in Fall 2021 Final Exam",
