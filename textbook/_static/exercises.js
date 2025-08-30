@@ -593,7 +593,9 @@ async function handle_output_submission(form, messageElement, questionType, corr
 		0,  // numPassed
 		0,  // total
 		null, // testcaseContainer
-		feedbackContainer 
+		feedbackContainer,
+		null, // studentCode
+		exercise    // ✅ pass the whole exercise object
 	);
 	return;
 }
@@ -628,7 +630,7 @@ function buildFilledTableHTML(headers, rows) {
 	return table.outerHTML;
 }
 
-function updateResultMessage(messageElement, isCorrect, questionType, correctAnswer, customMessage = "", numPassed = 0, total = 0, testcaseContainer = null, hintContainer = null, studentCode = null) {
+function updateResultMessage(messageElement, isCorrect, questionType, correctAnswer, customMessage = "", numPassed = 0, total = 0, testcaseContainer = null, hintContainer = null, studentCode = null, ex = null) {
    
 	const md = window.markdownit({ html: true, linkify: true, typographer: true });
 
@@ -722,6 +724,29 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
                     </div>
                 </details>
             `;
+
+if (ex && ex.explanation) {
+    const explanationDetails = document.createElement("details");
+    explanationDetails.style.marginTop = "10px";
+
+    const explanationSummary = document.createElement("summary");
+    explanationSummary.textContent = "Show Explanation";
+    explanationSummary.style.cursor = "pointer";
+
+    // solution-box only wraps the content, not the summary
+    const explanationContent = document.createElement("div");
+    explanationContent.classList.add("solution-box");
+    explanationContent.style.marginTop = "5px";
+    explanationContent.innerHTML = md.render(ex.explanation);
+
+    explanationDetails.appendChild(explanationSummary);
+    explanationDetails.appendChild(explanationContent);
+    messageElement.appendChild(explanationDetails);
+
+    if (window.MathJax) MathJax.typesetPromise([explanationContent]);
+}
+
+
 
 		// feedback container
 		if (hintContainer) {
