@@ -1,0 +1,10 @@
+Insert user1
+Insert user2
+ChangeName user2 user3
+Insert user2
+ChangeName user3 user1
+ChangeName user3 124user
+ChangeName 124user user1
+Insert $%saf 
+ChangeName $%saf user
+ChangeName $%saf helloworld
