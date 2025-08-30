@@ -45,10 +45,9 @@ Given the following contents of `"input.txt"`, write the output.
 </pre>
 '''
 
-answer = """ 
+answer = '''
 a = 1
-"""
-
+'''
 
 [[exercises]]
 title = "Question 5 in Fall 2022 Midterm Exam"
@@ -57,20 +56,22 @@ table = false
 type = "tracing"
 multipart= true
 
-question = """
+question = '''
 (2) `"input.txt"`
 <pre>
   a32
   b86
   3
 </pre>
-"""
+'''
 
-answer = """ 
+answer = '''
 failed..
+
 failed..
+
 a = 3
-"""
+'''
 
 
 
@@ -81,20 +82,23 @@ table = false
 type = "explaination"
 multipart= true
 
-question = """
+question = '''
 (3) `"input.txt"`
 <pre>
-  a32
-  b86 3
+a32
+b86 3
 </pre>
-"""
+'''
 
-answer = """ 
+answer = '''
 failed..
+
 failed..
+
 failed..
+
 And it keeps repeating
-"""
+'''
 
 
 [[exercises]]
@@ -104,7 +108,7 @@ table = false
 type = "tracing"
 multipart= true
 
-question = """
+question = '''
 Now you remove the `infile.clear()` from the code, so the program becomes:
 
 ```{code-block} cpp
@@ -139,12 +143,11 @@ int main() {
 2
 3
 </pre>
+'''
 
-"""
-
-answer = """ 
+answer = '''
 a = 1
-"""
+'''
 
 
 
@@ -155,21 +158,24 @@ table = false
 type = "explaination"
 multipart= true
 
-question = """
+question = '''
 (2) `"input.txt"`
 <pre>
-  a32
-  b86
-  3
+a32
+b86
+3
 </pre>
-"""
+'''
 
-answer = """ 
+answer = '''
 failed..
+
 failed..
+
 failed..
+
 And it keeps repeating
-"""
+'''
 
 
 [[exercises]]
@@ -179,20 +185,23 @@ table = false
 type = "explaination"
 multipart= true
 
-question = """
+question = '''
 (3) `"input.txt"`
 <pre>
-  a32
-  b86 3
+a32
+b86 3
 </pre>
-"""
+'''
 
-answer = """ 
+answer = '''
 failed..
+
 failed..
+
 failed..
+
 And it keeps repeating
-"""
+'''
 
 
 
@@ -203,7 +212,7 @@ table = false
 type = "function programming"
 multipart= false
 
-question = """
+question = '''
 Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using `cin`) and then immediately outputs the input integer (using `cout`), one integer per line. When a `'.'` character is encountered, the function prints the message `Done` on a line by itself and returns. If the user enters any characters other than integer digits or the `'.'`, the function prints the message `Error` on a line by itself and returns. You may assume the user will never enter `eof`.
 
 Thus, for example, if the user enters `51 16 700 .`, the function prints:
@@ -221,13 +230,9 @@ However, if the user enters `101 21 13 abc 444`, the function prints:
 13
 Error
 </pre>
-"""
+'''
 
 starter-code = '''
-#include <iostream>
-#include <string>
-using namespace std;
-
 void readInts() {
 
   // Your code here
@@ -236,10 +241,6 @@ void readInts() {
 '''
 
 answer = '''
-#include <iostream>
-#include <string>
-using namespace std;
-
 void readInts() {
   int num = 0;
   string dot;
@@ -263,6 +264,9 @@ void readInts() {
 '''
 
 main-function = '''
+#include <iostream>
+#include <string>
+using namespace std;
 
 int main() {
   readInts();
@@ -292,7 +296,7 @@ table = false
 type = "programming"
 multipart= false
 
-question = """
+question = '''
 
 Consider the following program that uses `stringstreams` to read a command. The command has the following format:
 <pre>
@@ -301,24 +305,30 @@ count intArg
 
 The command word is `count` and `intArg` is an integer argument. The command must have only one integer argument, e.g `count 3`.
 
-The function `handle_count` performs the reading of the integer value. If the integer is valid, it returns `true` and updates the value of `intArg`. Otherwise, it returns `false`.
-1. Determine the number of arguments and the type of each argument and indicate them in the code above in the prototype of the function, `handle_count`. Further, indicate what parameters are passed to the function when it is invoked. Write your answers where indicated in the code above.
-   
-    You may not modify main by adding or removing line, other than by indicating the formal arguments in the function prototype and actual arguments of the function invocation. 
+The function `handle_count` performs the reading of the integer value. If the integer is valid, it returns `true` and 
+updates the value of `intArg`. Otherwise, it returns `false`.
 
-2. Write the header and body of the `handle_count` function below so it performs as indicated above. 
-"""
+(1) Determine the number of arguments and the type of each argument and indicate them in the code above in the 
+prototype of the function, `handle_count`. Further, indicate what parameters are passed to the function when it 
+is invoked. 
+   
+You may not modify main by adding or removing line, other than by indicating the formal arguments 
+in the function prototype and actual arguments of the function invocation. 
+
+(2) Write the header and body of the `handle_count` function below so it performs as indicated above. 
+'''
 
 starter-code = '''
-
 #include <iostream>
 using namespace std;
 #include <sstream>
 #include <string>
+
 // function prototype
 bool handle_count( < TO DO: fill in the blank > ){
 
   // TO DO: write the body of handle_count
+
 }
 
 int main() {
@@ -345,6 +355,10 @@ int main() {
 '''
 
 answer = '''
+#include <iostream>
+using namespace std;
+#include <sstream>
+#include <string>
 
 bool handle_count(stringstream& line, int& intArg) {
   line >> intArg;
@@ -404,7 +418,7 @@ table = false
 type = "multiple-choice"
 multipart= true
 
-question = """
+question = '''
 
 For each of the following main functions, indicate the output produced in response to the user entering `1 2 3 4 five` on the keyboard followed by the `Enter` key. Choose only one answer.
 
@@ -426,7 +440,7 @@ int main() {
 
 Choose one the following choices:
 
-"""
+'''
 
 answer = [2]
 
@@ -437,7 +451,9 @@ choices = [
   "None; the program runs in an infinite loop"
 ]
 
-explanations = ["14, The last loop when `five` is entered, `num` is unchanged and 4 will be added to `sum` again. However, in some compilers, `sum` may be printed to be 10, as the complier will set `num` to 0 when `cin.fail()` is raised. This means, **2. 10** is considered correct too."]
+explanation = '''**14**, The last loop when `five` is entered, `num` is unchanged and 4 will be added to `sum` again. 
+However, in some compilers, `sum` may be printed to be 10, as the complier will set `num` to 0 when `cin.fail()` 
+is raised. This means, **10** is considered correct too.'''
 
 
 [[exercises]]
@@ -447,7 +463,7 @@ table = false
 type = "multiple-choice"
 multipart= true
 
-question = """
+question = '''
 
 (2)
 ```{code-block} cpp
@@ -471,7 +487,7 @@ int main() {
 
 Choose one the following choices:
 
-"""
+'''
 
 answer = [1]
 
@@ -482,7 +498,7 @@ choices = [
   "None; the program runs in an infinite loop"
 ]
 
-explanations = ["10"]
+explanation = '''10'''
 
 
 [[exercises]]
@@ -492,26 +508,22 @@ table = false
 type = "function programming"
 multipart= false
 
-question = """
+question = '''
 Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using cin) and then immediately outputs the input integer (using cout), one integer per line.
 
 When the end-of-file is reached, the function prints the message `"End of File Reached"` on a line by itself before returning. If a non-integer is input the function should print the message
 `"Invalid Input"` on a line by itself, should discard the rest of the stream and should continue reading integers again until the end-of-file is reached. 
-"""
+'''
 
 starter-code = '''
-#include <iostream>
-using namespace std;
-
 void readInts() {
+
   // Your code here
+
 }
 '''
 
 answer = '''
-#include <iostream>
-using namespace std;
-
 void readInts() {
   int num = 0;
   cin >> num;
@@ -530,6 +542,10 @@ void readInts() {
 }
 '''
 
+append-before = '''
+#include <iostream>
+using namespace std;
+'''
 main-function = '''
 int main() {
   readInts();
