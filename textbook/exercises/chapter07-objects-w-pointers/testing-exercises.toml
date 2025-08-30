@@ -5,7 +5,7 @@ table = false
 type = "explaination"
 multipart= true
 
-question = """
+question = '''
 
 Consider a (non-member) function called `doIt`, which takes a single object of type `DayOfYear` and returns a single object also of type `DayOfYear`. You may assume that the class `DayOfYear` is correctly implemented and that `DayOfYear.h` is included. Which of the
 following implementations of this function is problem-free? 
@@ -18,11 +18,11 @@ DayOfYear doIt(DayOfYear& arg) {
   return (arg);
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 Has no problem. We return `arg` by value and we create a copy of `arg` using copy constructor.
-"""
+'''
 
 
 
@@ -33,7 +33,7 @@ table = false
 type = "explaination"
 multipart= true
 
-question = """
+question = '''
 (2)
 ```{code-block} cpp
 DayOfYear doIt(DayOfYear& arg) {
@@ -42,11 +42,11 @@ DayOfYear doIt(DayOfYear& arg) {
   return (temp);
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 Has no problem. We return `temp` by value and we create a copy of `temp` using copy constructor.
-"""
+'''
 
 [[exercises]]
 title = "Question 5 in Fall 2019 Midterm Exam"
@@ -55,7 +55,7 @@ table = false
 type = "explaination"
 multipart= true
 
-question = """
+question = '''
 (3)
 ```{code-block} cpp
 DayOfYear& doIt(DayOfYear& arg) {
@@ -64,13 +64,13 @@ DayOfYear& doIt(DayOfYear& arg) {
   return (*this);
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 Has a problem, because in the question it says `doIt` is a non-member function. Since this is a pointer to an 
 object on which the member function is invoked, it can only be accessed in a member function. In short, we 
 cannot access `this` in `doIt` function.
-"""
+'''
 
 [[exercises]]
 title = "Question 5 in Fall 2019 Midterm Exam"
@@ -79,7 +79,7 @@ table = false
 type = "explaination"
 multipart= true
 
-question = """
+question = '''
 (4)
 ```{code-block} cpp
 DayOfYear& doIt(DayOfYear& arg) {
@@ -88,14 +88,14 @@ DayOfYear& doIt(DayOfYear& arg) {
   return (temp);
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 Has a problem, but it is quite tricky. `temp` is a local only to the function `doIt` since it was defined only
 inside the function. `temp` will go out of scope or disappear from the memory the moment we return from `doIt`
 function. If we return `temp` by reference, and `temp` actually is non-existing after the function call, the 
 behavior is undefined if we try accessing whatever `doIt` returns.
-"""
+'''
 
 
 [[exercises]]
@@ -105,7 +105,7 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 Consider the following class definition and implementation.
 
 ```{code-block} cpp
@@ -171,7 +171,7 @@ int main() {
 Statement 6) in main. Write your answer in the table below.
 
 a. Statement 1:
-"""
+'''
 
 answer = "24 45"
 
@@ -182,12 +182,12 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 b. Statement 2:
-"""
-answer = """
+'''
+answer = '''
 1 2
-"""
+'''
 
 [[exercises]]
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
@@ -196,12 +196,12 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 c. Statement 3:
-"""
-answer = """
+'''
+answer = '''
 3 5
-"""
+'''
 
 [[exercises]]
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
@@ -210,12 +210,12 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 d. Statement 4:
-"""
-answer = """
+'''
+answer = '''
 7 8
-"""
+'''
 
 [[exercises]]
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
@@ -224,13 +224,13 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 e. Statement 5:
-"""
-answer = """
+'''
+answer = '''
 6 12 
 12 36
-"""
+'''
 
 [[exercises]]
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
@@ -239,12 +239,12 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 f. Statement 6:
-"""
-answer = """
+'''
+answer = '''
 6 12 
-"""
+'''
 
 [[exercises]]
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
@@ -253,17 +253,19 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """
+question = '''
 (2) How many integers exist in memory in the form of a memory leak when execution
 reaches Point A in the main function above? Write your answer in the box below.
-"""
-answer = """
-Z initially had p and q pointing to two integers, and we lost access to them when we pointed to p and q from the object returned by value in `Z = X.funnyMultiply(Y);`.
+'''
+
+answer = '''
+Z initially had p and q pointing to two integers, and we lost access to them when we pointed to p and q from the object 
+returned by value in `Z = X.funnyMultiply(Y);`.
 
 Another two integers were lost in `W.print().funnyMultiply(V).print();` after returning from `funnyMultiply` function. 
 
 Total, we have 4 integers in the memory exist in the form of a memory leak. 
-"""
+'''
 
 
 
