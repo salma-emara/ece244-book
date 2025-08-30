@@ -1171,6 +1171,9 @@ output = "Q3.P4.T5.out"
 input = "Q3.P4.T6.in"
 output = "Q3.P4.T6.out"
 
+
+
+
 [[exercises]]
 title = "Question 6 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
@@ -1258,6 +1261,25 @@ int main() {
 [[exercises.testcases]]
 input = "Q4.P1.T1.in"
 output = "Q4.P1.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T2.in"
+output = "Q4.P1.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T3.in"
+output = "Q4.P1.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T4.in"
+output = "Q4.P1.T4.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T5.in"
+output = "Q4.P1.T5.out"
+
+
+
 
 
 [[exercises]]
@@ -1375,6 +1397,23 @@ int main() {
 input = "Q4.P2.T1.in"
 output = "Q4.P2.T1.out"
 
+[[exercises.testcases]]
+input = "Q4.P2.T2.in"
+output = "Q4.P2.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.P2.T3.in"
+output = "Q4.P2.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.P2.T4.in"
+output = "Q4.P2.T4.out"
+
+[[exercises.testcases]]
+input = "Q4.P2.T5.in"
+output = "Q4.P2.T5.out"
+
+
 
 [[exercises]]
 title = "Question 6 in Fall 2019 Final Exam"
@@ -1480,3 +1519,23 @@ int main() {
 [[exercises.testcases]]
 input = "Q4.P3.T1.in"
 output = "Q4.P3.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T2.in"
+output = "Q4.P3.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T3.in"
+output = "Q4.P3.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T4.in"
+output = "Q4.P3.T4.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T5.in"
+output = "Q4.P3.T5.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T6.in"
+output = "Q4.P3.T6.out"
