@@ -1,0 +1,6 @@
+Queue empty? Yes
+Pushed: 0
+Pushed: -1
+Pushed: 999999999
+Queue empty? No
+Queue contents (front → back): 0 -1 999999999 

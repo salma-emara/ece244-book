@@ -1,0 +1,6 @@
+Push 0
+Push -7
+Push 999999999
+Pop
+Empty
+Front
