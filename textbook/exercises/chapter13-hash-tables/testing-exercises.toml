@@ -150,16 +150,14 @@ You can define helper functions if you find them useful. You can make helpers as
 '''
 
 starter-code = '''
-// Implement bool HashTable::insert(const string& name), and define
-// any helper functions here.
-
 Implement bool HashTable::insert(const string& name){
 
+  // Your code here
 
 }
 '''
 
-answer = """
+answer = '''
 
 bool HashTable::insert(const string& name) {
   if (this->exist(name)) {
@@ -203,7 +201,7 @@ bool HashTable::insert(const string& name) {
   return true;
 }
 
-"""
+'''
 
 append-before = '''
 #include <iostream>
@@ -362,12 +360,12 @@ type = "function programming"
 table = false
 multipart = true
 
-question = """
+question = '''
 
 (2) Implement the `remove` method. Return true if the given name exists and is successfully removed, otherwise, 
 return false. Your code should not trigger any segmentation fault, and it should not leak memory.
 
-"""
+'''
 
 starter-code = '''
 bool HashTable::remove(const string& name) {
@@ -597,14 +595,14 @@ type = "function programming"
 table = false
 multipart = true
 
-question = """
+question = '''
 
 (3) Implement the `change_name` method. It removes the `old_name` and inserts the
 `new_name`. Return true if successful. Otherwise, it returns false either when the `old_name`
 doesn’t exist, or the `new_name` is the same as any existing name. Your code should not trigger
 any segmentation fault, and it should not leak memory. Hint: you can use the function you
 implemented in the previous questions.
-"""
+'''
 
 starter-code = '''
 bool HashTable::change_name(const string& old_name, const string& new_name) {
@@ -852,11 +850,11 @@ type = "function programming"
 table = false
 multipart = true
 
-question = """
+question = '''
 
 (4) Implement the destructor of `HashTable`. It should deallocate the table array and all
 the lists. Your code should not trigger any segmentation fault, and it should not leak memory.
-"""
+'''
 
 starter-code = '''
 HashTable::~HashTable() {
