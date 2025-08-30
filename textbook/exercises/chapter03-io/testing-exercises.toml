@@ -67,9 +67,7 @@ question = '''
 
 answer = '''
 failed..
-
 failed..
-
 a = 3
 '''
 
@@ -545,6 +543,7 @@ void readInts() {
 append-before = '''
 #include <iostream>
 using namespace std;
+
 '''
 main-function = '''
 int main() {

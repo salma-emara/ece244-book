@@ -17,7 +17,7 @@ let parsedObject;
       "type": "tracing",
       "multipart": true,
       "question": "(2) `\"input.txt\"`\n<pre>\n  a32\n  b86\n  3\n</pre>\n",
-      "answer": "failed..\n\nfailed..\n\na = 3\n"
+      "answer": "failed..\nfailed..\na = 3\n"
     },
     {
       "title": "Question 5 in Fall 2022 Midterm Exam",
@@ -173,7 +173,7 @@ let parsedObject;
       "question": "Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using cin) and then immediately outputs the input integer (using cout), one integer per line.\n\nWhen the end-of-file is reached, the function prints the message `\"End of File Reached\"` on a line by itself before returning. If a non-integer is input the function should print the message\n`\"Invalid Input\"` on a line by itself, should discard the rest of the stream and should continue reading integers again until the end-of-file is reached. \n",
       "starter-code": "void readInts() {\n\n  // Your code here\n\n}\n",
       "answer": "void readInts() {\n  int num = 0;\n  cin >> num;\n  while (!cin.eof()) {  // received a number\n    if (cin.fail()) {\n      cin.clear();\n      cin.ignore(1000, '\\n');\n      cout << \"Invalid Input\" << endl;\n      cin >> num;\n    } else {\n      cout << num << endl;\n      cin >> num;\n    }\n  }\n  cout << \"End of File Reached\" << endl;\n}\n",
-      "append-before": "#include <iostream>\nusing namespace std;\n",
+      "append-before": "#include <iostream>\nusing namespace std;\n\n",
       "main-function": "int main() {\n  readInts();\n  return 0;\n}\n",
       "testcases": [
         {
