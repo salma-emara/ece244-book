@@ -5,7 +5,7 @@ table = false
 type = "explaination"
 multipart= false
 
-question = """
+question = '''
 
 Consider the definition of a class called `Nova`, which is in the file `Nova.h`.
 
@@ -41,20 +41,25 @@ int main() {
 ```
 What members of the class Nova must exist for the above code to compile with no errors? Give variable declarations and/or method prototypes in the table below. Note that you may or may not need to fill every row in the table. 
 
-"""
+'''
 
-answer = """
+answer = '''
 Nova(int, double);
+
 int it;
+
 void setAll(int,double);
+
 Nova operator+(Nova&)
+
 bool operator!=(Nova&)
 
 No need for destructor as we don't dynamically allocate space in the object.
-No need for a copy constructor in `Nova b(a)` since one is given by default.
-No need for `operator=` in `*p = a + b`
 
-"""
+No need for a copy constructor in `Nova b(a)` since one is given by default.
+
+No need for `operator=` in `*p = a + b`
+'''
 
 
 [[exercises]]
@@ -63,7 +68,7 @@ difficulty = "Intermediate"
 type = "function programming"
 table = false
 
-question = """
+question = '''
 The following is the definition/implementation of a class called `Foo`.
 
 ```{code-block} cpp
@@ -86,7 +91,7 @@ class Foo {
 Compiling the above definition/implementation results in one or more errors.
 Re-write the class so it is error-free. 
 
-"""
+'''
 
 starter-code = '''
 
@@ -109,11 +114,14 @@ class Foo {
 
 answer = '''
 
-1. The copy constructor should take its argument as a const reference. Otherwise, it will call itself infinitely. Line 7 changed to add `&` after `const Foo`. 
+1. The copy constructor should take its argument as a const reference. Otherwise, 
+it will call itself infinitely. Line 7 changed to add `&` after `const Foo`. 
 
-2. The assignment operator (operator=) should not be declared `const` as we want to change `priv` in line 8.
+2. The assignment operator (operator=) should not be declared `const` as we want 
+to change `priv` in line 8.
 
-3. The assignment operator (operator=) returns `Foo&`, while `this` is `Foo*` type. Change `this` to `*this` in line 10.
+3. The assignment operator (operator=) returns `Foo&`, while `this` is `Foo*` type. 
+Change `this` to `*this` in line 10.
 
 class Foo {
  private:
@@ -129,7 +137,6 @@ class Foo {
   int getPriv() const { return priv; }
   void setPriv(int pv) { priv = pv; }
 };
-
 '''
 
 main-function = '''
@@ -184,7 +191,7 @@ table = false
 type = "tracing"
 multipart= false
 
-question = """
+question = '''
 
 Consider the following definition/implementation of a class called `Shape` that appears in the file: `Shape.h`.
 
@@ -251,8 +258,8 @@ int main() {
 
 What is the output of the program? 
 
-"""
-answer = """
+'''
+answer = '''
 Constructor 2 5
 Constructor 3 5
 Constructor 3 5
@@ -265,13 +272,84 @@ Operator= 0
 Destructor 
 5
 Constructor 3 5
-5
 Destructor 
 5
+5
 Destructor 
 Destructor 
 Destructor 
-"""
+'''
+
+
+[[exercises]]
+title = "Question 8 in Fall 2021 Midterm Exam"
+difficulty = "Intermediate"
+table = false
+type = "explaination"
+multipart= false
+
+question = '''
+Consider the definition of a class called `Mystery`, which is in the file `Mystery.h`.  
+
+**Mystery.h**
+
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+
+class Mystery {
+ private:
+  // Private members not shown
+
+ public:
+  // Public members not shown
+};
+```
+
+Now consider the following program that uses the `Mystery` class. The program compiles and runs correctly.
+
+**main.cpp**
+```{code-block} cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+#include "Mystery.h"
+
+int main() {
+  string n = "hello";
+  Mystery x(3, n);
+  Mystery* p = new Mystery(n, 4);
+  Mystery y(x);
+  x.invert(1, n);
+  if (x == y)
+    x = y / *p;
+  delete p;
+
+  return 0;
+}
+```
+
+What public members of the class Mystery **must exist** (either written by the programmer or given by C++) for the above code to compile with no errors? Non-member functions are not allowed. Write necessary variable declarations and/or method prototypes.
+'''
+
+answer = '''
+`Mystery(const Mystery&);` // used here: Mystery y(x);
+
+`Mystery(string, int);` // used here: Mystery(n, 4)
+
+`Mystery(int, string);` // used here: Mystery x(3, n);
+
+`void invert(int, string);` // used here: x.invert(1, n)
+
+`bool operator==(const Mystery& right);` // used here: x == y
+
+`Mystery operator/(const Mystery& right);` // used here: y / *p;
+
+`Mystery& operator=(const Mystery&);` // used here: x = y;
+
+`~Mystery();` // used here: delete p;
+'''
 
 
 [[exercises]]
@@ -281,7 +359,7 @@ table = false
 type = "function programming"
 multipart= false
 
-question = """
+question = '''
 Vector is widely used in the engineering and science world. Suppose we create a class called `vector_2d`. It can be used to represent a 2D 
 vector, with `x` and `y` as its values. The partial code of this vector is given below.
 
@@ -289,7 +367,7 @@ Implement `operator+=` for `vector_2d`, as a member function.
 
 If `a = <x1, y1>` and `b = <x2, y2>`, after `a += b`, `a` becomes `<x1 + x2, y1 + y2>` whereas `b` is unchanged. Write no more than 5 lines of code.
 
-"""
+'''
 
 starter-code = '''
 class vector_2d {
@@ -384,7 +462,7 @@ table = false
 type = "function programming"
 multipart= true
 
-question = """
+question = '''
 
 The following class is used to create objects that represent ordinary fractions `n/d`, consisting of a numerator `n` and a denominator `d`.
 
@@ -444,14 +522,14 @@ Write the implementation of the two overloaded operator functions as members of 
 Fraction. Clearly show the function header and its body.
 
 1. Overload the multiplication operator `*` as a member of the class `Fraction` to be
-able to perform the first multiply operation (see comment above). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
+able to perform the first multiply operation (see comments below). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
 
 2. Overload the multiplication operator `*` as a member of the class `Fraction` to be
-able to perform the second multiply operation (see comment above). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
+able to perform the second multiply operation (see comments below). Be sure to indicate both the header and the body of the method. You need not worry about using const modifiers.
 
-"""
+'''
 
-starter-code = """
+starter-code = '''
 
 #include <iostream>
 using namespace std;
@@ -495,7 +573,7 @@ void Fraction::print() {
 // TODO: Implement operator overloads below
 
 
-"""
+'''
 
 answer = '''
 
@@ -549,7 +627,6 @@ int main() {
 
     return 0;
 }
-
 '''
 
 [[exercises.testcases]]
