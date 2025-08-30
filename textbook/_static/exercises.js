@@ -445,7 +445,7 @@ function generate_exercises(filename) {
 
 			if (isProgrammingQuestion) {
 
-				const existingTestcaseContainer = form.querySelector(".testcase-container");
+				const existingTestcaseContainer = form.querySelector(`.testcase-container[data-part-index="${thisPartIndex}"]`);
 				if (existingTestcaseContainer) existingTestcaseContainer.remove();
 
 				const existingHintContainer = form.querySelector(".hint-container");
@@ -508,7 +508,7 @@ function generate_exercises(filename) {
 				}
 
 				let hintContainer = await generate_hints(form, studentCode, expectedOutput, actualOutput, ex.question, []);
-				handle_prog_submission(form, resultMessage, inputArray, expectedOutput, actualOutput, correctAnswer, type, hintContainer, studentCode);
+				handle_prog_submission(form, resultMessage, inputArray, expectedOutput, actualOutput, correctAnswer, type, hintContainer, studentCode, thisPartIndex);
 
 			} else if (type === "explaination" && ex.table){
 				
@@ -530,7 +530,7 @@ function removeMainFunction(code) {
 }
 
 
-async function handle_prog_submission(form, messageElement, inputArray, expectedOutput, actualOutput, correctAnswer, questionType, hintContainer, studentCode) {
+async function handle_prog_submission(form, messageElement, inputArray, expectedOutput, actualOutput, correctAnswer, questionType, hintContainer, studentCode, thisPartIndex) {
     const totalTestcases = actualOutput.length;
 
     const testcaseResults = actualOutput.map((output, idx) => {
@@ -543,7 +543,7 @@ async function handle_prog_submission(form, messageElement, inputArray, expected
     const numTestcasesPassed = testcaseResults.filter(tc => tc.passed).length;
     const isCorrect = numTestcasesPassed === totalTestcases;
 
-    const testcaseContainer = getTestcasesContainer(form, inputArray, expectedOutput, actualOutput, testcaseResults);
+	const testcaseContainer = getTestcasesContainer(form, inputArray, expectedOutput, actualOutput, thisPartIndex);
 
 	if (isCorrect) hintContainer = null;
     updateResultMessage(messageElement, isCorrect, questionType, correctAnswer, "", numTestcasesPassed, totalTestcases, testcaseContainer, hintContainer, studentCode);
@@ -835,12 +835,13 @@ function escapeHtml(text) {
 	return div.innerHTML;
 }
 
-function getTestcasesContainer(form, inputArray, outputArray, actualOutput ) {
-	const existingTestcaseContainer = form.querySelector(".testcase-container");
-	if (existingTestcaseContainer) existingTestcaseContainer.remove();
+function getTestcasesContainer(form, inputArray, outputArray, actualOutput, partIndex) {
+    const existingTestcaseContainer = form.querySelector(`.testcase-container[data-part-index="${partIndex}"]`);
+    if (existingTestcaseContainer) existingTestcaseContainer.remove();
 
 	const testcaseContainer = document.createElement("div");
 	testcaseContainer.classList.add("testcase-container");
+	testcaseContainer.dataset.partIndex = partIndex; 
 
 	const testcaseButtonContainer = document.createElement("div");
 	testcaseButtonContainer.classList.add("testcase-button-container");
