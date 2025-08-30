@@ -24,9 +24,9 @@ let parsedObject;
       "difficulty": "Easy",
       "type": "tracing",
       "table": false,
-      "multipart": false,
+      "multipart": true,
       "question": "(3) Statement: `secondOne c ( \"N\");`\n",
-      "answer": "Constructor 1 of firstOne done<br>Constructor 1 of secondOne done\n"
+      "answer": "Constructor 1 of firstOne done \nConstructor 1 of secondOne done\n"
     },
     {
       "title": "Question 11 in Fall 2018 Final Exam",
@@ -35,7 +35,7 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(4) Statement: `secondOne d(8);`\n",
-      "answer": "Constructor 2 of firstOne done<br>Constructor 2 of secondOne done\n"
+      "answer": "Constructor 2 of firstOne done\nConstructor 2 of secondOne done\n"
     },
     {
       "title": "Question 14 in Fall 2019 Final Exam",
@@ -100,17 +100,18 @@ let parsedObject;
       "type": "explaination",
       "table": false,
       "multipart": true,
-      "question": "\nConsider the following base and derived classes. They compile with no errors.\n\n```{code-block} cpp\n#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Dessert {\n protected:\n  int price = 0;\n\n public:\n  Dessert() { cout << \"we have dessert\n\"; }\n  ~Dessert() { cout << \"no more dessert\n\"; }\n  void print() { cout << \"dessert unknown\n\"; }\n  virtual int cost() = 0;\n};\n\nclass Candy : public Dessert {\n protected:\n  int weight_in_grams;\n\n public:\n  Candy(int grams, int per_gram) {\n    weight_in_grams = grams;\n    price = per_gram;\n    cout << \"we have candy\n\";\n  }\n  ~Candy() { cout << \"no more candy\n\"; }\n  void print() {\n    cout << \"Candy: \" << weight_in_grams << \" grams, at \" << price\n         << \" cents per gram\n\";\n  }\n  virtual int cost() { return weight_in_grams * price; }\n};\n\nclass Cookies : public Dessert {\n protected:\n  int num_dozens;\n\n public:\n  Cookies(int dozens, int per_dozen) {\n    num_dozens = dozens;\n    price = per_dozen;\n    cout << \"We have cookies\n\";\n  }\n  ~Cookies() { cout << \"no more cookies\n\"; }\n  void print() {\n    cout << \"Cookies: \" << num_dozens << \"dozens, at \" << price\n         << \" cents per dozen\n\";\n  }\n  virtual int cost() { return num_dozens * price; }\n};\n\nclass IceCream : public Dessert {\n protected:\n  string flavor = \"vanilla\";\n  int scoops;\n\n public:\n  IceCream(string fly, int scps, int per_scoop) {\n    flavor = fly;\n    scoops = scps;\n    price = per_scoop;\n    cout << \"we have \" << flavor << \" Ice Cream\n\";\n  }\n  ~IceCream() { cout << \"no more ice cream\n\"; }\n  void print() {\n    cout << \"Ice Cream: \" << scoops << \" scoops, at \" << price\n         << \" cents per scoop\n \";\n  }\n  virtual int cost() { return scoops * price; }\n};\n\nclass Sundae : public IceCream {\n protected:\n  int topings_cost;\n\n public:\n  Sundae(string flv, int scps, int per_scoop, int tps)\n      : IceCream(flv, scps, per_scoop) {\n    topings_cost = tps;\n    cout << \" with topings\n\";\n  }\n  ~Sundae() { cout << \"no more sundae\n\"; }\n  void print() {\n    IceCream::print();\n    cout << \" topings cost is: \" << topings_cost << endl;\n  }\n  virtual int cost() { return scoops * price + topings_cost; }\n};\n```\n\nConsider each of the following `main` functions that use the above classes. You may assume that each `main` function includes the code of the classes above, including the `#include`'s and the `using namespace std;`\n\nFor each `main` function, indicate if the function compiles with no errors or not (ignore warnings). If the function compiles with no errors, then indicate the output produced by the function?\n\n(1) Does the program compile with no errors? If it does compile with no errors, what is the output produced by the execution?\n```{code-block} cpp\nint main() {\n  Dessert a;\n  Cookies b(2, 300);\n  IceCream c(\"Vanilla\", 2, 350);\n  return 0;\n}\n```\n",
+      "question": "\nConsider the following base and derived classes. They compile with no errors.\n\n```{code-block} cpp\n#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Dessert {\n protected:\n  int price = 0;\n\n public:\n  Dessert() { cout << \"we have dessert\\n\"; }\n  ~Dessert() { cout << \"no more dessert\\n\"; }\n  void print() { cout << \"dessert unknown\\n\"; }\n  virtual int cost() = 0;\n};\n\nclass Candy : public Dessert {\n protected:\n  int weight_in_grams;\n\n public:\n  Candy(int grams, int per_gram) {\n    weight_in_grams = grams;\n    price = per_gram;\n    cout << \"we have candy\\n\";\n  }\n  ~Candy() { cout << \"no more candy\\n\"; }\n  void print() {\n    cout << \"Candy: \" << weight_in_grams << \" grams, at \" << price\n         << \" cents per gram\\n\";\n  }\n  virtual int cost() { return weight_in_grams * price; }\n};\n\nclass Cookies : public Dessert {\n protected:\n  int num_dozens;\n\n public:\n  Cookies(int dozens, int per_dozen) {\n    num_dozens = dozens;\n    price = per_dozen;\n    cout << \"We have cookies\\n\";\n  }\n  ~Cookies() { cout << \"no more cookies\\n\"; }\n  void print() {\n    cout << \"Cookies: \" << num_dozens << \"dozens, at \" << price\n         << \" cents per dozen\\n\";\n  }\n  virtual int cost() { return num_dozens * price; }\n};\n\nclass IceCream : public Dessert {\n protected:\n  string flavor = \"vanilla\";\n  int scoops;\n\n public:\n  IceCream(string fly, int scps, int per_scoop) {\n    flavor = fly;\n    scoops = scps;\n    price = per_scoop;\n    cout << \"we have \" << flavor << \" Ice Cream\\n\";\n  }\n  ~IceCream() { cout << \"no more ice cream\\n\"; }\n  void print() {\n    cout << \"Ice Cream: \" << scoops << \" scoops, at \" << price\n         << \" cents per scoop\\n \";\n  }\n  virtual int cost() { return scoops * price; }\n};\n\nclass Sundae : public IceCream {\n protected:\n  int topings_cost;\n\n public:\n  Sundae(string flv, int scps, int per_scoop, int tps)\n      : IceCream(flv, scps, per_scoop) {\n    topings_cost = tps;\n    cout << \" with topings\\n\";\n  }\n  ~Sundae() { cout << \"no more sundae\\n\"; }\n  void print() {\n    IceCream::print();\n    cout << \" topings cost is: \" << topings_cost << endl;\n  }\n  virtual int cost() { return scoops * price + topings_cost; }\n};\n```\n\nConsider each of the following `main` functions that use the above classes. You may assume that each `main` function includes the code of the classes above, including the `#include`'s and the `using namespace std;`\n\nFor each `main` function, indicate if the function compiles with no errors or not (ignore warnings). If the function compiles with no errors, then indicate the output produced by the function?\n\n(1) Does the program compile with no errors? If it does compile with no errors, what is the output produced by the execution?\n```{code-block} cpp\nint main() {\n  Dessert a;\n  Cookies b(2, 300);\n  IceCream c(\"Vanilla\", 2, 350);\n  return 0;\n}\n```\n",
       "answer": "No, it doesn't compile.\n\nWe cannot create objects of abstract classes. \n"
     },
     {
       "title": "Question 12 in Fall 2018 Final Exam",
       "difficulty": "Intermediate",
-      "type": "explaination",
+      "type": "tracing",
       "table": false,
       "multipart": true,
       "question": "\n(2) Does the program compile with no errors? If it does compile with no errors, what is the output produced by the execution?\n\n```{code-block} cpp\nint main() {\n  Dessert* pc;\n  IceCream* pi;\n  pc = new Cookies(2, 250);\n  pi = new IceCream(\"mint\", 1, 250);\n  delete pc;\n  delete pi;\n  return 0;\n}\n```\n",
-      "answer": "Yes, the program compiles.\n\n**Output:** <pre>\nwe have dessert\nWe have cookies\nwe have dessert\nwe have mint Ice Cream\nno more dessert\nno more ice cream\nno more dessert\n</pre>\n\n\n`delete pc` calls the destructor of `Desert` only as `pc` is a pointer of type `Desert`. We cannot access the destructor of `Cookies` through `pc`.\n\n`delete pi` calls the destructor of `IceCream` first, then the destructor of `Desert`. `pi` is of type `IceCream`, and through it we can access both destructors.\n\n"
+      "answer": "we have dessert\nWe have cookies\nwe have dessert\nwe have mint Ice Cream\nno more dessert\nno more ice cream\nno more dessert\n",
+      "explanation": "Yes, the program compiles\n\n`delete pc` calls the destructor of `Desert` only as `pc` is a pointer of type `Desert`.\n We cannot access the destructor of `Cookies` through `pc`.\n\n`delete pi` calls the destructor of `IceCream` first, then the destructor of `Desert`. `pi` is of \ntype `IceCream`, and through it we can access both destructors.\n"
     },
     {
       "title": "Question 12 in Fall 2018 Final Exam",
@@ -124,17 +125,18 @@ let parsedObject;
     {
       "title": "Question 12 in Fall 2018 Final Exam",
       "difficulty": "Intermediate",
-      "type": "explaination",
+      "type": "tracing",
       "table": false,
       "multipart": true,
       "question": "(4) Does the program compile with no errors? If it does compile with no errors, what is the output produced by the execution?\n\n```{code-block} cpp\nint main() {\n  Dessert* ps = new IceCream(\"vanilla\", 2, 350);\n  cout << ps->cost() << endl;\n  return 0;\n}\n```\n",
-      "answer": "Yes, the program compiles.\n\n**Output** <pre>\nwe have dessert\nwe have vanilla Ice Cream\n700\n</pre> \n\n`ps->cost()` will call the `cost()` of `IceCream` as `cost()` is a virtual function, hence `ps` will call the function according to the type of the object, not the pointer.\n"
+      "answer": "we have dessert\nwe have vanilla Ice Cream\n700\n",
+      "explanation": "Yes, the program compiles\n\n`ps->cost()` will call the `cost()` of `IceCream` as `cost()` is a virtual function, hence `ps` will \ncall the function according to the type of the object, not the pointer.\n"
     },
     {
       "title": "Question 15 in Fall 2019 Final Exam",
       "difficulty": "Easy",
       "type": "explaination",
-      "table": false,
+      "table": true,
       "multipart": false,
       "question": "\nConsider the following class definitions.\n\n```{code-block} cpp\nclass BaseC {\n private:\n  int a;\n  void help();\n\n protected:\n  int b;\n\n public:\n  int c;\n  int d;\n  void print();\n};\n\nclass DerivedC : public BaseC {\n private:\n  int x;\n  void nohelp();\n\n public:\n  int w;\n  int z;\n  void noprint();\n};\n```\n\nThe following declaration appears in the `nohelp` member function of the class `DerivedC`. \n\n```{code-block} cpp\nDerivedC derived;\n```\n\nIndicate whether the following statements is correct code (i.e., compiles with no errors), or incorrect code (i.e., generates a compile time\nerror). Assume the statements in the rows of the table also appear in the `nohelp` member function of the class `DerivedC`.\n\n",
       "headers": [
@@ -193,8 +195,9 @@ let parsedObject;
       "type": "tracing",
       "table": false,
       "multipart": true,
-      "question": "Consider the following base and derived classes. They compile with no errors.\n\n```{code-block} cpp\n#include <iostream>\n#include <string>\n\nusing namespace std;\n\nclass CircuitElement {\n protected:\n  int code;\n\n public:\n  CircuitElement() { cout << \"circuit element\n\"; }\n  CircuitElement(int c) {\n    code = c;\n    cout << \"circuit element with code\n\";\n  }\n  ~CircuitElement() { cout << \"no circuit element\n\"; }\n  float getPower() { return 0.0; }\n  virtual void print() { cout << \"error\n\"; }\n};\n\nclass Resistor : public CircuitElement {\n protected:\n  int resistance;\n\n public:\n  Resistor(int r) {\n    code = 1;\n    resistance = r;\n    cout << \"resistor\n\";\n  }\n  ~Resistor() { cout << \"no resistor\n\"; }\n  float getPower() { return 0.0; }\n  void print() { cout << \"Resistor: \" << resistance << endl; }\n};\n\nclass Capacitor : public CircuitElement {\n protected:\n  int capacitance;\n\n public:\n  Capacitor(int c) : CircuitElement(2) {\n    capacitance = c;\n    cout << \"capacitor\n\";\n  }\n  float getPower() { return 0.0; }\n  ~Capacitor() { cout << \"no capacitor\n\"; }\n  void print() { cout << \"Capacitor: \" << capacitance << endl; }\n};\n\nclass PowerResistor : public Resistor {\n protected:\n  float power;\n\n public:\n  PowerResistor(int r, float p) : Resistor(r) {\n    power = p;\n    cout << \"power resistor\n\";\n  }\n  ~PowerResistor() { cout << \"no power resistor\n\"; }\n  float getPower() { return power; }\n  virtual float powerResistance() { return (power * resistance); }\n  void print() {\n    Resistor::print();\n    cout << \"Power resistor: \" << power << endl;\n  }\n};\n\nclass PowerCapacitor : public Capacitor {\n protected:\n  float power;\n\n public:\n  PowerCapacitor(int c, float p) : Capacitor(c) {\n    power = p;\n    cout << \"power capacitor\n\";\n  }\n  ~PowerCapacitor() { cout << \"no power capacitor\n\"; }\n  float getPower() { return power; }\n  virtual float powerCapacitance() { return (power * capacitance); }\n  void print() {\n    Capacitor::print();\n    cout << \"Power capacitor: \" << power << endl;\n  }\n};\n```\n\nConsider each of the following main functions that use the above classes. You may assume that each main function includes the code of the classes above, including the `#include`'s and the `using namespace std;`.\n\nFor each main function, if the function compiles with no errors (ignore warnings), then write the output produced by the function. If the function compiles with errors, then write: \"compile errors\". \n\n(1)\n```{code-block} cpp\n  int main() {\n    Capacitor c(150);\n    PowerResistor p(180, 350);\n    return 0;\n  }\n```\n",
-      "answer": "circuit element with code\ncapacitor\ncircuit element\nresistor\npower resistor\nno power resistor\nno resistor\nno circuit element\nno capacitor\nno circuit element\n"
+      "question": "Consider the following base and derived classes. They compile with no errors.\n\n```{code-block} cpp\n#include <iostream>\n#include <string>\n\nusing namespace std;\n\nclass CircuitElement {\n protected:\n  int code;\n\n public:\n  CircuitElement() { cout << \"circuit element\\n\"; }\n  CircuitElement(int c) {\n    code = c;\n    cout << \"circuit element with code\\n\";\n  }\n  ~CircuitElement() { cout << \"no circuit element\\n\"; }\n  float getPower() { return 0.0; }\n  virtual void print() { cout << \"error\\n\"; }\n};\n\nclass Resistor : public CircuitElement {\n protected:\n  int resistance;\n\n public:\n  Resistor(int r) {\n    code = 1;\n    resistance = r;\n    cout << \"resistor\\n\";\n  }\n  ~Resistor() { cout << \"no resistor\\n\"; }\n  float getPower() { return 0.0; }\n  void print() { cout << \"Resistor: \" << resistance << endl; }\n};\n\nclass Capacitor : public CircuitElement {\n protected:\n  int capacitance;\n\n public:\n  Capacitor(int c) : CircuitElement(2) {\n    capacitance = c;\n    cout << \"capacitor\\n\";\n  }\n  float getPower() { return 0.0; }\n  ~Capacitor() { cout << \"no capacitor\\n\"; }\n  void print() { cout << \"Capacitor: \" << capacitance << endl; }\n};\n\nclass PowerResistor : public Resistor {\n protected:\n  float power;\n\n public:\n  PowerResistor(int r, float p) : Resistor(r) {\n    power = p;\n    cout << \"power resistor\\n\";\n  }\n  ~PowerResistor() { cout << \"no power resistor\\n\"; }\n  float getPower() { return power; }\n  virtual float powerResistance() { return (power * resistance); }\n  void print() {\n    Resistor::print();\n    cout << \"Power resistor: \" << power << endl;\n  }\n};\n\nclass PowerCapacitor : public Capacitor {\n protected:\n  float power;\n\n public:\n  PowerCapacitor(int c, float p) : Capacitor(c) {\n    power = p;\n    cout << \"power capacitor\\n\";\n  }\n  ~PowerCapacitor() { cout << \"no power capacitor\\n\"; }\n  float getPower() { return power; }\n  virtual float powerCapacitance() { return (power * capacitance); }\n  void print() {\n    Capacitor::print();\n    cout << \"Power capacitor: \" << power << endl;\n  }\n};\n```\n\nConsider each of the following main functions that use the above classes. You may assume that each main function includes the code of the classes above, including the `#include`'s and the `using namespace std;`.\n\nFor each main function, if the function compiles with no errors (ignore warnings), then write the output \nproduced by the function. If the function compiles with errors, then write: `compile errors`\n\n(1)\n```{code-block} cpp\n  int main() {\n    Capacitor c(150);\n    PowerResistor p(180, 350);\n    return 0;\n  }\n```\n",
+      "answer": "circuit element with code\ncapacitor\ncircuit element\nresistor\npower resistor\nno power resistor\nno resistor\nno circuit element\nno capacitor\nno circuit element\n",
+      "explanation": "We assume that `p` is destructed before `c`.\n"
     },
     {
       "title": "Question 16 in Fall 2019 Final Exam",
@@ -203,25 +206,28 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(2)\n```{code-block} cpp\nint main() {\n  CircuitElement* pr;\n  pr = new PowerResistor(200, 250);\n  delete pr;\n  return 0;\n}\n```\n",
-      "answer": "circuit element\nresistor\npower resistor\nno circuit element\n"
+      "answer": "circuit element\nresistor\npower resistor\nno circuit element\n",
+      "explanation": "The tricky part is that `delete pr` will execute the destructor of the type of `pr`, since \nthe destructor is not a `virtual` function.\n"
     },
     {
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
-      "type": "explaination",
+      "type": "tracing",
       "table": false,
       "multipart": true,
       "question": "(3)\n```{code-block} cpp\nint main() {\n  Capacitor* c;\n  c = new CircuitElement(5);\n  delete c;\n  return 0;\n}\n```\n",
-      "answer": "compile errors\n\nline `c = new CircuitElement(5);`, you cannot make a pointer to a derived object `c` point to a base object `CircuitElement`.\n"
+      "answer": "compile errors\n",
+      "explanation": "line `c = new CircuitElement(5);`, you cannot make a pointer to a derived object `c` point to a base object `CircuitElement`.\n"
     },
     {
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
-      "type": "explaination",
+      "type": "tracing",
       "table": false,
       "multipart": true,
       "question": "(4)\n```{code-block} cpp\nint main() {\n  PowerResistor* pr;\n  Resistor* r;\n  r = new Resistor(450);\n  pr = r;\n  delete pr;\n  return 0;\n}\n```\n",
-      "answer": "compile errors\n\nline `pr = r;`, as `pr` is a pointer of derived object that cannot point to a base object.\n"
+      "answer": "compile errors\n",
+      "explanation": "line `pr = r;`, as `pr` is a pointer of derived object that cannot point to a base object.\n"
     },
     {
       "title": "Question 16 in Fall 2019 Final Exam",
@@ -230,7 +236,8 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(5)\n```{code-block} cpp\nint main() {\n  PowerResistor r(250, 1000);\n  CircuitElement e;\n  e = r;\n  return 0;\n}\n```\n",
-      "answer": "circuit element\nresistor\npower resistor\ncircuit element\nno circuit element\nno power resistor\nno resistor\nno circuit element\n"
+      "answer": "circuit element\nresistor\npower resistor\ncircuit element\nno circuit element\nno power resistor\nno resistor\nno circuit element\n",
+      "explanation": "We assume we destruct `e` then `p`. It is possible to do `e = r` as `e` is a base object and `r` is derived.\n"
     },
     {
       "title": "Question 16 in Fall 2019 Final Exam",
@@ -239,7 +246,8 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(6)\n```{code-block} cpp\nint main() {\n  CircuitElement* e = new PowerCapacitor(500, 1000);\n  e->print();\n  return 0;\n} \n```\n",
-      "answer": "circuit element with code\ncapacitor\npower capacitor\nCapacitor: 500\nPower capacitor: 1000\n"
+      "answer": "circuit element with code\ncapacitor\npower capacitor\nCapacitor: 500\nPower capacitor: 1000\n",
+      "explanation": "We can make a base object point to a derived object, hence `CircuitElement* e = new PowerCapacitor(500, 1000);` \nis possible. \n    \nSince the `print()` function is virtual in `CircuitElement`, it is virtual in all derived classes. \nTherefore when `e->print()` is executed, the `print()` function of the object `e` is pointing, which \nis `PowerCapacitor` to is called.\n"
     },
     {
       "title": "Question 16 in Fall 2019 Final Exam",
@@ -248,16 +256,18 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(7)\n```{code-block} cpp\nint main() {\n  Capacitor* c = new PowerCapacitor(300, 100);\n  cout << c->getPower() << endl;\n  return 0;\n}\n```\n",
-      "answer": "circuit element with code\ncapacitor\npower capacitor\n0\n"
+      "answer": "circuit element with code\ncapacitor\npower capacitor\n0\n",
+      "explanation": "The `getPower` function is not virtual, therefore when `c->getPower()` is called we call \nthe getPower function of Capacitor -- the type of `c`.\n\nSince the memory is dynamically allocated and not freed, no destructors are called before \nreturning from `main`.\n"
     },
     {
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
-      "type": "explaination",
+      "type": "tracing",
       "table": false,
       "multipart": true,
       "question": "(8)\n```{code-block} cpp\nint main() {\n  PowerResistor pr(20, 100);\n  Resistor* r = &pr;\n  cout << r->powerResistance() << endl;\n  return 0;\n  }\n```\n",
-      "answer": "compile errors\n\nThe error exists at `r->powerResistance()`. `powerResistance()` is not a virtual function, hence when `r->powerResistance()` is executed, `powerResistance()` of `Resistor` is called. There is no member named `powerResistance` in `Resistor` class. \n"
+      "answer": "compile errors\n",
+      "explanation": "The error exists at `r->powerResistance()`. `powerResistance()` is not a virtual function, hence \nwhen `r->powerResistance()` is executed, `powerResistance()` of `Resistor` is called. There is no \nmember named `powerResistance` in `Resistor` class. \n"
     },
     {
       "title": "Question 5 in Fall 2022 Final Exam",
@@ -275,7 +285,8 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(2) Now, an array named `student_list` is declared and initialized as follows. Write the output generated by `std::cout`. \n```{code-block} cpp\nstudent* student_list[4] = {\n  new cs_student(\"Leo\", 0, 10), \n  new ece_student(\"Bill\", 1, 11, 0),\n  new mie_student(\"Ellie\", 2, 12), \n  new ece_student(\"Haley\", 3, 13, 1)\n  };\n```\n",
-      "answer": "student\ncs student\nstudent\neng student\nece student\nstudent\neng student\nmie student\nstudent\neng student\nece student\n"
+      "answer": "student\ncs student\nstudent\neng student\nece student\nstudent\neng student\nmie student\nstudent\neng student\nece student\n",
+      "explanation": "`new cs_student(\"Leo\", 0, 10)` would call the constructor of the base class `student`, then derived \nclass `cs_student`. This prints. \n<pre>\nstudent\ncs student\n</pre>\n\n`new ece_student(\"Bill\", 1, 11, 0)` would call the constructor of the base class `student`, \nthen `eng_student`, then `ece_student`. This prints. \n<pre>\nstudent\neng student\nece student\n</pre>\n\nThe same idea follows for `new mie_student(\"Ellie\", 2, 12)` and `new ece_student(\"Haley\", 3, 13, 1)`.\n"
     },
     {
       "title": "Question 5 in Fall 2022 Final Exam",
@@ -284,7 +295,8 @@ let parsedObject;
       "table": false,
       "multipart": true,
       "question": "(3) After the `student_list` initialized in question 2, the following `for` loops will be executed. What will be the output generated by these two loops? \n```{code-block} cpp\ncout << \"Department: \" << endl;\nfor (int i = 0; i < 4; ++i) {\n  student_list[i]->print_department();\n}\ncout << \"Server: \" << endl;\nfor (int i = 0; i < 4; ++i) {\n  student_list[i]->print_server();\n}\n```\n",
-      "answer": "Department: \nLeo is an cs student.\nBill is an ece student.\nEllie is a mie student.\nHaley is an ece student.\nServer: \nLeo logs into markus.\nBill logs into ug.\nEllie logs into ecf.\nHaley logs into ug.\n"
+      "answer": "Department: \nLeo is an cs student.\nBill is an ece student.\nEllie is a mie student.\nHaley is an ece student.\nServer: \nLeo logs into markus.\nBill logs into ug.\nEllie logs into ecf.\nHaley logs into ug.\n",
+      "explanation": "Since `print_department();` and `print_server()` are virtual functions, the function \ninvoked would be determined based on the type `student_list[i]` points to. In the `student_list` \narray, we have CS, ECE, MIE and ECE, and these would be the objects on which the functions get invoked.\n"
     }
   ]
 };
