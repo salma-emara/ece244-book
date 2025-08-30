@@ -62,7 +62,7 @@ answer = """
 [[exercises]]
 title = "Question 9 in Fall 2022 Final Exam"
 difficulty = "Intermediate"
-type = "programming"
+type = "function programming"
 table = false
 multipart = false
 
@@ -97,7 +97,7 @@ bool is_symmetric_helper(TreeNode* left, TreeNode* right){
 }
 
 bool is_symmetric(TreeNode* root) {
-  if (root == NULL) {
+  if (root == nullptr) {
     return true;
   }
   return is_symmetric_helper(root->left, root->right);
@@ -107,7 +107,7 @@ bool is_symmetric(TreeNode* root) {
 answer = '''
 
 bool is_symmetric_helper(TreeNode* left, TreeNode* right) {
-  if (left != NULL && right != NULL) {
+  if (left != nullptr && right != nullptr) {
     if (left->data == right->data) {
       return is_symmetric_helper(left->left, right->right) &&
              is_symmetric_helper(right->left, left->right);
@@ -115,7 +115,7 @@ bool is_symmetric_helper(TreeNode* left, TreeNode* right) {
       return false;
     }
   } else {
-    if (left == NULL && right == NULL) {
+    if (left == nullptr && right == nullptr) {
       return true;
     } else {
       return false;
@@ -124,3 +124,90 @@ bool is_symmetric_helper(TreeNode* left, TreeNode* right) {
 }
 
 '''
+
+main-function = '''
+
+#include <iostream>
+#include <queue>
+using namespace std;
+
+
+/* Helper function to allocate a node */
+
+TreeNode* makeNode(int val) {
+  TreeNode* node = new TreeNode;
+  node->data = val;
+  node->left = nullptr;
+  node->right = nullptr;
+  return node;
+}
+
+/* Helper function to build tree */
+TreeNode* buildTree(int n) {
+  if (n == 0) return nullptr;
+  int val;
+  cin >> val;
+  if (val == -1) return nullptr;
+
+  TreeNode* root = makeNode(val);
+  queue<TreeNode*> q;
+  q.push(root);
+
+  int count = 1;
+  while (!q.empty() && count < n) {
+    TreeNode* node = q.front();
+    q.pop();
+
+    int leftVal, rightVal;
+
+    if (count < n) {
+      cin >> leftVal;
+      count++;
+      if (leftVal != -1) {
+        node->left = makeNode(leftVal);
+        q.push(node->left);
+      }
+    }
+
+    if (count < n) {
+      cin >> rightVal;
+      count++;
+      if (rightVal != -1) {
+        node->right = makeNode(rightVal);
+        q.push(node->right);
+      }
+    }
+  }
+
+  return root;
+}
+
+int main() {
+  int n;
+  cin >> n;  // number of nodes in level-order
+  TreeNode* root = buildTree(n);
+
+  if (is_symmetric(root))
+    cout << "tree IS symmetric" << endl;
+  else
+    cout << "tree IS NOT symmetric" << endl;
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q2.T1.in"
+output = "Q2.T1.out"
+
+[[exercises.testcases]]
+input = "Q2.T2.in"
+output = "Q2.T2.out"
+
+[[exercises.testcases]]
+input = "Q2.T3.in"
+output = "Q2.T3.out"
+
+[[exercises.testcases]]
+input = "Q2.T4.in"
+output = "Q2.T4.out"
