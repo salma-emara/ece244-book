@@ -77,7 +77,7 @@ Indicate what each statement in the above `main` function prints, using the tabl
 (1) Statement: `firstOne a;`
 
 '''
-answer = """Constructor 1 of firstOne done"""
+answer = '''Constructor 1 of firstOne done'''
 
 [[exercises]]
 title = "Question 11 in Fall 2018 Final Exam"
@@ -86,25 +86,11 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (2) Statement: `firstOne b("G");`
-"""
-answer = """
-Constructor 2 of firstOne done """
-
-[[exercises]]
-title = "Question 11 in Fall 2018 Final Exam"
-difficulty = "Easy"
-type = "tracing"
-table = false
-multipart = false
-
-question = """
-(3) Statement: `secondOne c ( "N");`
-"""
-answer = """
-Constructor 1 of firstOne done<br>Constructor 1 of secondOne done
-"""
+'''
+answer = '''
+Constructor 2 of firstOne done '''
 
 [[exercises]]
 title = "Question 11 in Fall 2018 Final Exam"
@@ -113,12 +99,28 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
+(3) Statement: `secondOne c ( "N");`
+'''
+answer = '''
+Constructor 1 of firstOne done 
+Constructor 1 of secondOne done
+'''
+
+[[exercises]]
+title = "Question 11 in Fall 2018 Final Exam"
+difficulty = "Easy"
+type = "tracing"
+table = false
+multipart = true
+
+question = '''
 (4) Statement: `secondOne d(8);`
-"""
-answer = """
-Constructor 2 of firstOne done<br>Constructor 2 of secondOne done
-"""
+'''
+answer = '''
+Constructor 2 of firstOne done
+Constructor 2 of secondOne done
+'''
 
 [[exercises]]
 title = "Question 14 in Fall 2019 Final Exam"
@@ -127,7 +129,7 @@ type = "explaination"
 table = true
 multipart = true
 
-question = """
+question = '''
 Consider the following class definitions and implementations of classes, `Shape` and `Circle`. They are followed by a main function that utilizes these classes. 
 
 ```{code-block} cpp
@@ -180,7 +182,7 @@ int main() {
 Indicate which of the following statements that appear in the main function compile with no errors or produce a compile time error. 
 
 Indicate also the reason in the table below. 
-"""
+'''
 
 headers = ["Code Snippet", "Compiles?", "Reason"]  
 rows = [
@@ -198,6 +200,8 @@ answer = [
 ]
 
 
+
+
 [[exercises]]
 title = "Question 12 in Fall 2018 Final Exam"
 difficulty = "Intermediate"
@@ -205,7 +209,7 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """
+question = '''
 
 Consider the following base and derived classes. They compile with no errors.
 
@@ -313,24 +317,24 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 No, it doesn't compile.
 
 We cannot create objects of abstract classes. 
-"""
+'''
 
 
 [[exercises]]
 title = "Question 12 in Fall 2018 Final Exam"
 difficulty = "Intermediate"
-type = "explaination"
+type = "tracing"
 table = false
 multipart = true
 
 
-question = """
+question = '''
 
 (2) Does the program compile with no errors? If it does compile with no errors, what is the output produced by the execution?
 
@@ -345,12 +349,9 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
-Yes, the program compiles.
-
-**Output:** <pre>
+answer = '''
 we have dessert
 We have cookies
 we have dessert
@@ -358,14 +359,17 @@ we have mint Ice Cream
 no more dessert
 no more ice cream
 no more dessert
-</pre>
+'''
 
+explanation = '''
+Yes, the program compiles
 
-`delete pc` calls the destructor of `Desert` only as `pc` is a pointer of type `Desert`. We cannot access the destructor of `Cookies` through `pc`.
+`delete pc` calls the destructor of `Desert` only as `pc` is a pointer of type `Desert`.
+ We cannot access the destructor of `Cookies` through `pc`.
 
-`delete pi` calls the destructor of `IceCream` first, then the destructor of `Desert`. `pi` is of type `IceCream`, and through it we can access both destructors.
-
-"""
+`delete pi` calls the destructor of `IceCream` first, then the destructor of `Desert`. `pi` is of 
+type `IceCream`, and through it we can access both destructors.
+'''
 
 [[exercises]]
 title = "Question 12 in Fall 2018 Final Exam"
@@ -374,7 +378,7 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """
+question = '''
 (3) Does the program compile with no errors? If it does compile with no errors, what is the output produced by the execution?
 
 ```{code-block} cpp
@@ -386,23 +390,23 @@ int main() {
   delete ps;
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 No, the program doesn't compile.
 
 `ps = pi;` is not valid. `Sundae` is derived from `IceCream`. `ps` cannot point to an object `IceCream`, as it cannot access its members that don't exist. 
-"""
+'''
 
 
 [[exercises]]
 title = "Question 12 in Fall 2018 Final Exam"
 difficulty = "Intermediate"
-type = "explaination"
+type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (4) Does the program compile with no errors? If it does compile with no errors, what is the output produced by the execution?
 
 ```{code-block} cpp
@@ -412,29 +416,30 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
-Yes, the program compiles.
-
-**Output** <pre>
+answer = '''
 we have dessert
 we have vanilla Ice Cream
 700
-</pre> 
+'''
 
-`ps->cost()` will call the `cost()` of `IceCream` as `cost()` is a virtual function, hence `ps` will call the function according to the type of the object, not the pointer.
-"""
+explanation = '''
+Yes, the program compiles
+
+`ps->cost()` will call the `cost()` of `IceCream` as `cost()` is a virtual function, hence `ps` will 
+call the function according to the type of the object, not the pointer.
+'''
 
 
 [[exercises]]
 title = "Question 15 in Fall 2019 Final Exam"
 difficulty = "Easy"
 type = "explaination"
-table = false
+table = true
 multipart = false
 
-question = """
+question = '''
 
 Consider the following class definitions.
 
@@ -474,7 +479,7 @@ DerivedC derived;
 Indicate whether the following statements is correct code (i.e., compiles with no errors), or incorrect code (i.e., generates a compile time
 error). Assume the statements in the rows of the table also appear in the `nohelp` member function of the class `DerivedC`.
 
-"""
+'''
 
 headers = ["Statement", "Correct/incorrect?", "Reason"]  
 rows = [
@@ -500,7 +505,7 @@ table = false
 multipart = true
 
 
-question = """
+question = '''
 Consider the following base and derived classes. They compile with no errors.
 
 ```{code-block} cpp
@@ -592,7 +597,8 @@ class PowerCapacitor : public Capacitor {
 
 Consider each of the following main functions that use the above classes. You may assume that each main function includes the code of the classes above, including the `#include`'s and the `using namespace std;`.
 
-For each main function, if the function compiles with no errors (ignore warnings), then write the output produced by the function. If the function compiles with errors, then write: "compile errors". 
+For each main function, if the function compiles with no errors (ignore warnings), then write the output 
+produced by the function. If the function compiles with errors, then write: `compile errors`
 
 (1)
 ```{code-block} cpp
@@ -602,9 +608,9 @@ For each main function, if the function compiles with no errors (ignore warnings
     return 0;
   }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 circuit element with code
 capacitor
 circuit element
@@ -615,7 +621,11 @@ no resistor
 no circuit element
 no capacitor
 no circuit element
-"""
+'''
+
+explanation = '''
+We assume that `p` is destructed before `c`.
+'''
 
 
 [[exercises]]
@@ -625,7 +635,7 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (2)
 ```{code-block} cpp
 int main() {
@@ -635,24 +645,29 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 circuit element
 resistor
 power resistor
 no circuit element
-"""
+'''
+
+explanation = '''
+The tricky part is that `delete pr` will execute the destructor of the type of `pr`, since 
+the destructor is not a `virtual` function.
+'''
 
 
 [[exercises]]
 title = "Question 16 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
-type = "explaination"
+type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (3)
 ```{code-block} cpp
 int main() {
@@ -662,23 +677,24 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 compile errors
+'''
 
+explanation = '''
 line `c = new CircuitElement(5);`, you cannot make a pointer to a derived object `c` point to a base object `CircuitElement`.
-"""
-
+'''
 
 [[exercises]]
 title = "Question 16 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
-type = "explaination"
+type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (4)
 ```{code-block} cpp
 int main() {
@@ -690,13 +706,14 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 compile errors
-
+'''
+explanation = '''
 line `pr = r;`, as `pr` is a pointer of derived object that cannot point to a base object.
-"""
+'''
 
 [[exercises]]
 title = "Question 16 in Fall 2019 Final Exam"
@@ -705,7 +722,7 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (5)
 ```{code-block} cpp
 int main() {
@@ -715,9 +732,9 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 circuit element
 resistor
 power resistor
@@ -726,7 +743,10 @@ no circuit element
 no power resistor
 no resistor
 no circuit element
-"""
+'''
+explanation = '''
+We assume we destruct `e` then `p`. It is possible to do `e = r` as `e` is a base object and `r` is derived.
+'''
 
 [[exercises]]
 title = "Question 16 in Fall 2019 Final Exam"
@@ -735,7 +755,7 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (6)
 ```{code-block} cpp
 int main() {
@@ -744,15 +764,23 @@ int main() {
   return 0;
 } 
 ```
-"""
+'''
 
-answer = """
+answer = '''
 circuit element with code
 capacitor
 power capacitor
 Capacitor: 500
 Power capacitor: 1000
-"""
+'''
+explanation = '''
+We can make a base object point to a derived object, hence `CircuitElement* e = new PowerCapacitor(500, 1000);` 
+is possible. 
+    
+Since the `print()` function is virtual in `CircuitElement`, it is virtual in all derived classes. 
+Therefore when `e->print()` is executed, the `print()` function of the object `e` is pointing, which 
+is `PowerCapacitor` to is called.
+'''
 
 
 [[exercises]]
@@ -762,7 +790,7 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (7)
 ```{code-block} cpp
 int main() {
@@ -771,24 +799,32 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 circuit element with code
 capacitor
 power capacitor
 0
-"""
+'''
+
+explanation = '''
+The `getPower` function is not virtual, therefore when `c->getPower()` is called we call 
+the getPower function of Capacitor -- the type of `c`.
+
+Since the memory is dynamically allocated and not freed, no destructors are called before 
+returning from `main`.
+'''
 
 
 [[exercises]]
 title = "Question 16 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
-type = "explaination"
+type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (8)
 ```{code-block} cpp
 int main() {
@@ -798,13 +834,16 @@ int main() {
   return 0;
   }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 compile errors
-
-The error exists at `r->powerResistance()`. `powerResistance()` is not a virtual function, hence when `r->powerResistance()` is executed, `powerResistance()` of `Resistor` is called. There is no member named `powerResistance` in `Resistor` class. 
-"""
+'''
+explanation = '''
+The error exists at `r->powerResistance()`. `powerResistance()` is not a virtual function, hence 
+when `r->powerResistance()` is executed, `powerResistance()` of `Resistor` is called. There is no 
+member named `powerResistance` in `Resistor` class. 
+'''
 
 
 [[exercises]]
@@ -814,7 +853,7 @@ type = "explaination"
 table = false
 multipart = true
 
-question = """
+question = '''
 
 The University of Toronto wants to manage students from different departments using a C++ program. Students from all departments will share the following base class:
 
@@ -914,12 +953,12 @@ cs_student A("A", 0, 10);
 ece_student B("B", 1, 11, 0);
 eng_student H("H", 3, 13);
 ```
-"""
+'''
 
-answer = """
+answer = '''
 `student` class is an abstract function. `eng_student` inherits from `student` class; however, it is an 
 abstract class too as it did not implement `print_department` pure virtual function that was in `student` class. 
-"""
+'''
 
 
 [[exercises]]
@@ -929,7 +968,7 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (2) Now, an array named `student_list` is declared and initialized as follows. Write the output generated by `std::cout`. 
 ```{code-block} cpp
 student* student_list[4] = {
@@ -939,9 +978,9 @@ student* student_list[4] = {
   new ece_student("Haley", 3, 13, 1)
   };
 ```
-"""
+'''
 
-answer = """
+answer = '''
 student
 cs student
 student
@@ -953,7 +992,26 @@ mie student
 student
 eng student
 ece student
-"""
+'''
+
+explanation = '''
+`new cs_student("Leo", 0, 10)` would call the constructor of the base class `student`, then derived 
+class `cs_student`. This prints. 
+<pre>
+student
+cs student
+</pre>
+
+`new ece_student("Bill", 1, 11, 0)` would call the constructor of the base class `student`, 
+then `eng_student`, then `ece_student`. This prints. 
+<pre>
+student
+eng student
+ece student
+</pre>
+
+The same idea follows for `new mie_student("Ellie", 2, 12)` and `new ece_student("Haley", 3, 13, 1)`.
+'''
 
 
 [[exercises]]
@@ -963,7 +1021,7 @@ type = "tracing"
 table = false
 multipart = true
 
-question = """
+question = '''
 (3) After the `student_list` initialized in question 2, the following `for` loops will be executed. What will be the output generated by these two loops? 
 ```{code-block} cpp
 cout << "Department: " << endl;
@@ -975,9 +1033,9 @@ for (int i = 0; i < 4; ++i) {
   student_list[i]->print_server();
 }
 ```
-"""
+'''
 
-answer = """
+answer = '''
 Department: 
 Leo is an cs student.
 Bill is an ece student.
@@ -988,4 +1046,10 @@ Leo logs into markus.
 Bill logs into ug.
 Ellie logs into ecf.
 Haley logs into ug.
-"""
+'''
+
+explanation = '''
+Since `print_department();` and `print_server()` are virtual functions, the function 
+invoked would be determined based on the type `student_list[i]` points to. In the `student_list` 
+array, we have CS, ECE, MIE and ECE, and these would be the objects on which the functions get invoked.
+'''
