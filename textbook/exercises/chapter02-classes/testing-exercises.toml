@@ -5,7 +5,7 @@ table = false
 type = "tracing"
 multipart= false
 
-question = """
+question = '''
 Consider the class definition shown below. Assume that `iostream` and `string` are included, and that the `std namespace` is used. Also assume that the class is correctly implemented.
 
 ```{code-block} cpp
@@ -45,9 +45,9 @@ int main() {
 }
 
 ```
-"""
+'''
 
-answer = """ 
+answer = '''
 A new book is added.
 Book Pride and Prejudice is added.
 A new book is added.
@@ -58,7 +58,49 @@ A new book is added.
 Book Wuthering heights is removed.
 Book ECE244 is removed.
 Book ECE244 is removed.
-"""
+'''
+
+explanation = '''
+<pre>
+A new book is added. 
+</pre>
+declaring `b2` calls the default constructor
+<pre>
+Book Pride and Prejudice is added.
+</pre>
+`new` calls the second constructor
+<pre>
+A new book is added.
+</pre>
+`new` calls default constructor for `b1`
+<pre>
+Book Wuthering heights is added.
+</pre>
+`b4` declaration calls the second constructor
+<pre>
+Book Pride and Prejudice is removed.
+</pre>
+`delete b3` would call the destructor for what `b3` is pointing at.
+<pre>
+A new book is added.
+A new book is added.
+</pre>
+`new Book[2]` calls the default constructor twice.
+<pre>
+Book Wuthering heights is removed.
+</pre>
+`b4` goes out of scope and destructor is called.
+<pre>
+Book ECE244 is removed.
+</pre>
+`delete b1` would call the default destructor. 
+<pre>
+Book ECE244 is removed.
+</pre>
+Default destructor for `b2` is called as we return from `main`, and `b2` goes out of scope.
+
+We don't have `delete b5`, and hence the destructor is not called for the two-element array. 
+'''
 
 
 [[exercises]]
@@ -68,7 +110,7 @@ table = false
 type = "explaination"
 multipart= false
 
-question = """
+question = '''
 Consider the following C++ program. There are three statements in the main function: A, B, and C. Which of these three statements will trigger compile-time errors?
 
 ```{code-block} cpp
@@ -92,7 +134,7 @@ int main() {
   return 0;
 }
 ```
-"""
+'''
 
 answer = """ 
 A, C
@@ -111,7 +153,7 @@ table = false
 type = "tracing"
 multipart= false
 
-question = """
+question = '''
 Consider the following definition/implementation of a class called `Shape` that appears in the file: `Shape.h`.
 
 **Shape.h**
@@ -161,7 +203,7 @@ int main() {
 ```
 
 What is the output of the program? 
-"""
+'''
 
 answer = """ 
 Constructor 2 5
