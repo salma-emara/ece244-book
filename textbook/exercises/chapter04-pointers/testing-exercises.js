@@ -40,7 +40,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
-      "question": "Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.\n\n```{code-block} cpp\n:linenos:\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int* first_ptr;\n  int* second_ptr;\n  int** p_ptr;\n  first_ptr = new int;\n  second_ptr = new int;\n  p_ptr = &first_ptr;\n  *first_ptr = 4;\n  *second_ptr = 8;\n  second_ptr = *p_ptr;\n  cout << *first_ptr << \" \" << *second_ptr << endl;\n  delete first_ptr;\n  delete second_ptr;\n  delete *p_ptr;\n  return (0);\n}\n```\n\n(1) What is the output produced by `cout` on line 14 of the code\n\n",
+      "question": "Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.\n\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int* first_ptr;\n  int* second_ptr;\n  int** p_ptr;\n  first_ptr = new int;\n  second_ptr = new int;\n  p_ptr = &first_ptr;\n  *first_ptr = 4;\n  *second_ptr = 8;\n  second_ptr = *p_ptr;\n  cout << *first_ptr << \" \" << *second_ptr << endl;\n  delete first_ptr;\n  delete second_ptr;\n  delete *p_ptr;\n  return (0);\n}\n```\n\n(1) What is the output produced by `cout` on line 14 of the code\n\n",
       "answer": "4 4\n"
     },
     {

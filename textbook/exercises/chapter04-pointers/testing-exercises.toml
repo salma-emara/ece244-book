@@ -111,7 +111,6 @@ question = '''
 Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.
 
 ```{code-block} cpp
-:linenos:
 #include <iostream>
 using namespace std;
 
