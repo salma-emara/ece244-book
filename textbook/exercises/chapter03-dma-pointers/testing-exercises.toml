@@ -1,5 +1,5 @@
 [[exercises]]
-question-id = "chapter-05-Q1"
+question-id = "chapter-03-Q1"
 title = "Question 9 in Fall 2022 Midterm Exam"
 difficulty = "Intermediate"
 table = false
@@ -50,7 +50,7 @@ Check Point 2
 '''
 
 [[exercises]]
-question-id = "chapter-05-Q2"
+question-id = "chapter-03-Q2"
 title = "Question 3 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -103,7 +103,7 @@ explanation = '''
 
 
 [[exercises]]
-question-id = "chapter-05-Q3"
+question-id = "chapter-03-Q3"
 title = "Question 4 in Fall 2018 Midterm Exam"
 difficulty = "Intermediate"
 table = false
@@ -144,7 +144,7 @@ answer = '''
 '''
 
 [[exercises]]
-question-id = "chapter-05-Q4"
+question-id = "chapter-03-Q4"
 title = "Question 4 in Fall 2018 Midterm Exam"
 difficulty = "Intermediate"
 table = false
@@ -176,7 +176,7 @@ are all pointing to an `int` with 4, while there are three deletes for the same 
 
 
 [[exercises]]
-question-id = "chapter-05-Q5"
+question-id = "chapter-03-Q5"
 title = "Question 2 in Fall 2017 Midterm Exam"
 difficulty = "Intermediate"
 table = false
@@ -244,7 +244,7 @@ Printing object `a` would output `(3,3)` due to the previous `a.increment_x()` c
 
 
 [[exercises]]
-question-id = "chapter-03-Q1"
+question-id = "chapter-03-Q6"
 title = "Question 3 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 table = false
@@ -300,7 +300,7 @@ Total is 3 * 2 * 4 bytes = 24 bytes.
 
 
 [[exercises]]
-question-id = "chapter-03-Q2"
+question-id = "chapter-03-Q7"
 title = "Question 9 in Fall 2021 Midterm Exam"
 difficulty = "Intermediate"
 type = "explaination"
@@ -365,7 +365,7 @@ answer = [
 
 
 [[exercises]]
-question-id = "chapter-03-Q3"
+question-id = "chapter-03-Q8"
 title = "Question 10 in Fall 2022 Midterm Exam"
 difficulty = "Challenging"
 type = "function programming"
@@ -523,7 +523,7 @@ output = "Q3.P1.T3.out"
 
 
 [[exercises]]
-question-id = "chapter-03-Q4"
+question-id = "chapter-03-Q9"
 title = "Question 10 in Fall 2022 Midterm Exam"
 difficulty = "Challenging"
 type = "function programming"
@@ -668,7 +668,7 @@ output = "Q3.P2a.T3.out"
 
 
 [[exercises]]
-question-id = "chapter-03-Q5"
+question-id = "chapter-03-Q10"
 title = "Question 10 in Fall 2022 Midterm Exam"
 difficulty = "Challenging"
 type = "function programming"
@@ -830,7 +830,7 @@ input = "Q3.P2b.T3.in"
 output = "Q3.P2b.T3.out"
 
 [[exercises]]
-question-id = "chapter-03-Q6"
+question-id = "chapter-03-Q11"
 title = "Question 10 in Fall 2022 Midterm Exam"
 difficulty = "Challenging"
 type = "explaination"
