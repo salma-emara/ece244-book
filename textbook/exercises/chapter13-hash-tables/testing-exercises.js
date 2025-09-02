@@ -126,40 +126,11 @@ let parsedObject;
     {
       "title": "Question 10 in Fall 2022 Final Exam",
       "difficulty": "Challenging",
-      "type": "function programming",
+      "type": "explaination",
       "table": false,
       "multipart": true,
       "question": "\n(4) Implement the destructor of `HashTable`. It should deallocate the table array and all\nthe lists. Your code should not trigger any segmentation fault, and it should not leak memory.\n",
-      "starter-code": "HashTable::~HashTable() {\n\n  // Your code here\n\n}  \n",
-      "answer": "HashTable::~HashTable() {\n  for (int i = 0; i < table_slot_size; i++) {\n    delete table[i];\n  }\n  delete[] table;\n}\n",
-      "append-before": "#include <iostream>\n#include <string>\nusing namespace std;\n\nstatic int linkedlist_alive_count = 0;\n\nclass ListNode {\n public:\n  ListNode(const string& name_) {\n    name = name_;\n    next = NULL;\n    linkedlist_alive_count++;\n  };\n  string name;\n  ListNode* next;\n};\n\nclass LinkedList {\n private:\n  ListNode* head;\n\n public:\n  LinkedList() { head = NULL; }\n\n  bool is_empty() { return head == NULL; }\n\n  void insert(ListNode* node) {\n    node->next = head;\n    head = node;\n  }\n\n  ListNode* remove(const string& name) {\n    ListNode* curr = head;\n    ListNode* prev = NULL;\n    while (curr != NULL) {\n      if (curr->name == name) {\n        if (prev == NULL) {\n          head = curr->next;\n        } else {\n          prev->next = curr->next;\n        }\n        curr->next = NULL;\n        return curr;\n      }\n      prev = curr;\n      curr = curr->next;\n    }\n    return NULL;\n  }\n\n  bool find(const string& name) {\n    ListNode* curr = head;\n    while (curr != NULL) {\n      if (curr->name == name) return true;\n      curr = curr->next;\n    }\n    return false;\n  }\n\n  ListNode* pop_head() {\n    if (head == NULL) return NULL;\n    ListNode* n = head;\n    head = head->next;\n    n->next = NULL;\n    return n;\n  }\n\n  ~LinkedList() {\n    while (head != NULL) {\n      ListNode* tmp = head;\n      head = head->next;\n      delete tmp;\n      linkedlist_alive_count--;\n    }\n  }\n};\n\nint string_hash(const string& name) {\n  unsigned long hash = 5381;\n  for (char c : name) {\n    hash = ((hash << 5) + hash) + c;\n  }\n  return (int)(hash & 0x7fffffff);\n}\n\n#define INIT_CAPACITY 32\nclass HashTable {\n private:\n  LinkedList** table;\n  int table_slot_size;\n  int num_elements;\n  int get_hash_index(const string& name) {\n    return string_hash(name) % table_slot_size;\n  }\n\n public:\n  HashTable() {\n    table = new LinkedList*[INIT_CAPACITY];\n    table_slot_size = INIT_CAPACITY;\n    num_elements = 0;\n    for (int i = 0; i < table_slot_size; ++i) {\n      table[i] = NULL;\n    }\n  }\n\n  bool exist(const string& name) {\n    int idx = this->get_hash_index(name);\n    if (table[idx] == NULL) {\n      return false;\n    }\n    return table[idx]->find(name);\n  }\n\n  // insert function from part (1)\n  bool insert(const string& name) {\n    if (this->exist(name)) {\n      return false;  // found!\n  }\n\n  if (num_elements + 1 >= table_slot_size / 2) {\n    table_slot_size = table_slot_size * 2;\n    LinkedList** newTable = new LinkedList*[table_slot_size];\n    for (int i = 0; i < table_slot_size; i++) {\n      newTable[i] = nullptr;\n    }\n\n    for (int i = 0; i < table_slot_size / 2; ++i) {\n      if (table[i] != NULL) {\n        ListNode* n = table[i]->pop_head();\n        while (n != NULL) {\n          int idx = get_hash_index(n->name);\n          if (newTable[idx] == NULL) {\n            newTable[idx] = new LinkedList;  // msh\n          }\n          newTable[idx]->insert(n);\n          n = table[i]->pop_head();\n        }\n        delete table[i];\n      }\n    }\n    delete[] table;\n    table = newTable;\n    }\n\n    int idx = this->get_hash_index(name);\n\n    if (table[idx] == NULL) {\n      table[idx] = new LinkedList;  // msh\n    }\n    ListNode* n = new ListNode(name);\n    table[idx]->insert(n);\n    num_elements++;\n    return true;\n  }\n\n  // insert function from part (2)\n  bool remove(const string& name){\n    if (this->exist(name)) {\n      int idx = this->get_hash_index(name);\n      ListNode* removeNode = table[idx]->remove(name);\n      delete removeNode;\n      num_elements--;\n      return true;\n    }\n    // not found!\n    return false;\n  }\n\n  // change name function from part (3)\n  bool change_name(const string& old_name, const string& new_name){\n    if (this->exist(old_name) && !this->exist(new_name)) {\n      // change name!\n      this->remove(old_name);\n      this->insert(new_name);\n      return true;\n    } else if (this->exist(old_name) && this->exist(new_name)) {\n      // don't change name\n      return false;\n    } else if (!this->exist(old_name)) {\n      // din't find\n      return false;\n    } else {\n      // not needed!\n      return false;\n    }\n  }\n  \n  ~HashTable();\n\n};\n",
-      "main-function": "int main() {\n\n  {\n    HashTable ht;\n    string cmd;\n\n    while (cin >> cmd) {\n      if (cmd == \"Insert\") {\n        string name;\n        cin >> name;\n        bool ok = ht.insert(name);\n        cout << (ok ? \"Inserted \" : \"Failed to insert \") << name << \"\\n\";\n      } else if (cmd == \"Remove\") {\n        string name;\n        cin >> name;\n        bool ok = ht.remove(name);\n        cout << (ok ? \"Removed \" : \"Did not find \") << name << \"\\n\";\n      } else if (cmd == \"ChangeName\") {\n        string oldn, newn;\n        cin >> oldn >> newn;\n        bool ok = ht.change_name(oldn, newn);\n        cout << (ok ? \"Changed \" : \"Failed to change \") << oldn << \"->\" << newn << \"\\n\";\n      }\n    }\n    cout << \"Alive LinkedLists before delete: \" << linkedlist_alive_count << \"\\n\";\n  }\n  \n  cout << \"Alive LinkedLists after delete: \" << linkedlist_alive_count << \"\\n\";\n\n  return 0;\n}\n",
-      "testcases": [
-        {
-          "input": [
-            "Insert Salma\nInsert Emara\nInsert Nora \nInsert Liu"
-          ],
-          "output": [
-            "Inserted Salma\nInserted Emara\nInserted Nora\nInserted Liu\nAlive LinkedLists before delete: 4\nAlive LinkedLists after delete: 0"
-          ]
-        },
-        {
-          "input": [
-            "Insert Burger\nInsert Pizza\nInsert Fries\nInsert fRies\nInsert Wings\nInsert wiNgs\nInsert burger\nInsert piZzA\nInsert wings\n"
-          ],
-          "output": [
-            "Inserted Burger\nInserted Pizza\nInserted Fries\nInserted fRies\nInserted Wings\nInserted wiNgs\nInserted burger\nInserted piZzA\nInserted wings\nAlive LinkedLists before delete: 9\nAlive LinkedLists after delete: 0"
-          ]
-        },
-        {
-          "input": [
-            "Insert rOSe1\nInsert Rose41\nInsert ROse1\nInsert 5125rOSe\nInsert ROSE124\nInsert 510rosE"
-          ],
-          "output": [
-            "Inserted rOSe1\nInserted Rose41\nInserted ROse1\nInserted 5125rOSe\nInserted ROSE124\nInserted 510rosE\nAlive LinkedLists before delete: 6\nAlive LinkedLists after delete: 0"
-          ]
-        }
-      ]
+      "answer": "<code>\nHashTable::~HashTable() {\n\nfor (int i = 0; i < table_slot_size; i++) {\n\ndelete table[i];\n\n}\n\ndelete[] table;\n\n}\n</code>\n"
     }
   ]
 };
