@@ -852,7 +852,7 @@ async function handle_submission(formId, answer, hint, filename, outputArray, is
             header.textContent = "Hints";
             container.appendChild(header);
 
-            let hintContainer = await generate_hints(form, originalCode, outputArray, actualOutput, questionPrompt, previousHints);
+            let hintContainer = await generate_hints(0, form, originalCode, outputArray, actualOutput, questionPrompt, previousHints);
 
             container.appendChild(hintContainer);
             form.appendChild(container);

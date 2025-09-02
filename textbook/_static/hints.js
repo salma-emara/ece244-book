@@ -24,8 +24,9 @@ async function getChatCompletion(prompt) {
 }
 
 
-async function generate_hints(form, originalCode, outputArray, actualOutput, questionPrompt, previousHints) {
+async function generate_hints(questionID, form, originalCode, outputArray, actualOutput, questionPrompt, previousHints) {
 
+    console.log("question-id: ", questionID);
     // check if hints already exists
     let hintContainer = form.querySelector(".hint-container");
     let hintInfoContainer, anotherHint;
@@ -173,7 +174,9 @@ async function generate_hints(form, originalCode, outputArray, actualOutput, que
 
 }
 
-async function get_feedback(form, messageElement, exercise, studentRows, userAnswer, previousFeedback = []) {
+async function get_feedback(questionID, form, messageElement, exercise, studentRows, userAnswer, previousFeedback = []) {
+    
+    console.log("question-id: ", questionID);
 
     let question = exercise.question;
     let headers = exercise.headers;
