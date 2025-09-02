@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-09-Q1"
 title = "Question 16 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -24,6 +25,7 @@ $O(n^\\frac{3}{2})$
 '''
 
 [[exercises]]
+question-id = "chapter-09-Q2"
 title = "Question 16 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -47,6 +49,7 @@ $O(n)$
 '''
 
 [[exercises]]
+question-id = "chapter-09-Q3"
 title = "Question 16 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -74,6 +77,7 @@ $O(n\\log(n))$
 '''
 
 [[exercises]]
+question-id = "chapter-09-Q4"
 title = "Question 17 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -122,6 +126,7 @@ explanation = '''Yes'''
 
 
 [[exercises]]
+question-id = "chapter-09-Q5"
 title = "Question 17 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -144,6 +149,7 @@ explanation = '''Yes'''
 
 
 [[exercises]]
+question-id = "chapter-09-Q6"
 title = "Question 17 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -159,6 +165,7 @@ $O(2^n)$
 '''
 
 [[exercises]]
+question-id = "chapter-09-Q7"
 title = "Question 17 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false

@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-06-Q1"
 title = "Question 5 in Fall 2019 Midterm Exam"
 difficulty = "Easy"
 table = false
@@ -27,6 +28,7 @@ Has no problem. We return `arg` by value and we create a copy of `arg` using cop
 
 
 [[exercises]]
+question-id = "chapter-06-Q2"
 title = "Question 5 in Fall 2019 Midterm Exam"
 difficulty = "Easy"
 table = false
@@ -49,6 +51,7 @@ Has no problem. We return `temp` by value and we create a copy of `temp` using c
 '''
 
 [[exercises]]
+question-id = "chapter-06-Q3"
 title = "Question 5 in Fall 2019 Midterm Exam"
 difficulty = "Easy"
 table = false
@@ -73,6 +76,7 @@ cannot access `this` in `doIt` function.
 '''
 
 [[exercises]]
+question-id = "chapter-06-Q4"
 title = "Question 5 in Fall 2019 Midterm Exam"
 difficulty = "Easy"
 table = false
@@ -99,6 +103,7 @@ behavior is undefined if we try accessing whatever `doIt` returns.
 
 
 [[exercises]]
+question-id = "chapter-06-Q5"
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 type = "tracing"
@@ -176,6 +181,7 @@ a. Statement 1:
 answer = "24 45"
 
 [[exercises]]
+question-id = "chapter-06-Q6"
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 type = "tracing"
@@ -190,6 +196,7 @@ answer = '''
 '''
 
 [[exercises]]
+question-id = "chapter-06-Q7"
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 type = "tracing"
@@ -204,6 +211,7 @@ answer = '''
 '''
 
 [[exercises]]
+question-id = "chapter-06-Q8"
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 type = "tracing"
@@ -218,6 +226,7 @@ answer = '''
 '''
 
 [[exercises]]
+question-id = "chapter-06-Q9"
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 type = "tracing"
@@ -233,6 +242,7 @@ answer = '''
 '''
 
 [[exercises]]
+question-id = "chapter-06-Q10"
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 type = "tracing"
@@ -247,6 +257,7 @@ answer = '''
 '''
 
 [[exercises]]
+question-id = "chapter-06-Q11"
 title = "Modified Version of Question 5 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 type = "explaination"

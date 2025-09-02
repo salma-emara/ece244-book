@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-09-Q1",
       "title": "Question 16 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": "Think of it as $n \\\\times (j^2 < n \\\\rightarrow j < \\\\sqrt{n} = ) \\\\sqrt{n} = n^\\\\frac{3}{2}$\n\n$O(n^\\\\frac{3}{2})$\n"
     },
     {
+      "question-id": "chapter-09-Q2",
       "title": "Question 16 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -20,6 +22,7 @@ let parsedObject;
       "answer": "Think of it as $n \\\\times 1000000 = n$\n\n$O(n)$\n"
     },
     {
+      "question-id": "chapter-09-Q3",
       "title": "Question 16 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -29,6 +32,7 @@ let parsedObject;
       "answer": "The outer loop goes from 1, 2, 4, 8, 16 ...\n\nTo reach $n$, this takes $\\\\log(n)$ steps.\n\nThink of it as $\\\\log(n) \\\\times n$\n\n$O(n\\\\log(n))$\n"
     },
     {
+      "question-id": "chapter-09-Q4",
       "title": "Question 17 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -45,6 +49,7 @@ let parsedObject;
       "explanation": "Yes"
     },
     {
+      "question-id": "chapter-09-Q5",
       "title": "Question 17 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -61,6 +66,7 @@ let parsedObject;
       "explanation": "Yes"
     },
     {
+      "question-id": "chapter-09-Q6",
       "title": "Question 17 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -70,6 +76,7 @@ let parsedObject;
       "answer": "$O(2^n)$\n"
     },
     {
+      "question-id": "chapter-09-Q7",
       "title": "Question 17 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,

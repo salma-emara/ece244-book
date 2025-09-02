@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-11-Q1"
 title = "Question 10 in Fall 2021 Final Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -24,6 +25,7 @@ answer = '''
 '''
 
 [[exercises]]
+question-id = "chapter-11-Q2"
 title = "Question 10 in Fall 2021 Final Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -42,6 +44,7 @@ answer = '''
 
 
 [[exercises]]
+question-id = "chapter-11-Q3"
 title = "Question 10 in Fall 2021 Final Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -60,6 +63,7 @@ answer = '''
 
 
 [[exercises]]
+question-id = "chapter-11-Q4"
 title = "Question 9 in Fall 2022 Final Exam"
 difficulty = "Intermediate"
 type = "function programming"

@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-02-Q1",
       "title": "Question 7 in Fall 2021 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -12,6 +13,7 @@ let parsedObject;
       "explanation": "<pre>\nA new book is added. \n</pre>\ndeclaring `b2` calls the default constructor\n<pre>\nBook Pride and Prejudice is added.\n</pre>\n`new` calls the second constructor\n<pre>\nA new book is added.\n</pre>\n`new` calls default constructor for `b1`\n<pre>\nBook Wuthering heights is added.\n</pre>\n`b4` declaration calls the second constructor\n<pre>\nBook Pride and Prejudice is removed.\n</pre>\n`delete b3` would call the destructor for what `b3` is pointing at.\n<pre>\nA new book is added.\nA new book is added.\n</pre>\n`new Book[2]` calls the default constructor twice.\n<pre>\nBook Wuthering heights is removed.\n</pre>\n`b4` goes out of scope and destructor is called.\n<pre>\nBook ECE244 is removed.\n</pre>\n`delete b1` would call the default destructor. \n<pre>\nBook ECE244 is removed.\n</pre>\nDefault destructor for `b2` is called as we return from `main`, and `b2` goes out of scope.\n\nWe don't have `delete b5`, and hence the destructor is not called for the two-element array. \n"
     },
     {
+      "question-id": "chapter-02-Q2",
       "title": "Question 1 in Fall 2022 Midterm Exam ",
       "difficulty": "Easy",
       "table": false,
@@ -21,6 +23,7 @@ let parsedObject;
       "answer": " \nA, C\n\nIn statement A, `num_student` is a private data member and cannot be accessed outside the class. \nIn statement C, `get_num_instructor()` is a private function member, and cannot be accessed outside the class. \n\n"
     },
     {
+      "question-id": "chapter-02-Q3",
       "title": "Question 7 in Fall 2021 Midterm Exam",
       "difficulty": "Easy",
       "table": false,

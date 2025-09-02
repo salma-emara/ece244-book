@@ -33,7 +33,7 @@ parts:
           - file: chapters/chapter03-dma-pointers/dma.md
           - file: chapters/chapter03-dma-pointers/why-destructor.md
           - file: chapters/chapter03-dma-pointers/testing-exercises.md
-      - file: chapters/chapter03-io/intro.md
+      - file: chapters/chapter04-io/intro.md
         sections:
           - file: chapters/chapter04-io/exercises.md
           - file: chapters/chapter04-io/testing-exercises.md

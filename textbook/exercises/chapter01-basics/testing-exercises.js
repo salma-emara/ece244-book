@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-01-Q1",
       "title": "Question 2 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": " \nThere will be a compilation error because hello() is called before it's declared.\n"
     },
     {
+      "question-id": "chapter-01-Q2",
       "title": "Question 4 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -20,6 +22,7 @@ let parsedObject;
       "answer": "4\n4\n8\n"
     },
     {
+      "question-id": "chapter-01-Q3",
       "title": "Question 6 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "function programming",
@@ -65,6 +68,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-01-Q4",
       "title": "Question 6 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "function programming",
@@ -110,6 +114,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-01-Q5",
       "title": "Question 6 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -119,6 +124,7 @@ let parsedObject;
       "answer": "swap_by_p (&x, &y);\n"
     },
     {
+      "question-id": "chapter-01-Q6",
       "title": "Question 6 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -128,6 +134,7 @@ let parsedObject;
       "answer": "swap_by_r (x, y);\n"
     },
     {
+      "question-id": "chapter-01-Q7",
       "title": "Question 7 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -137,6 +144,7 @@ let parsedObject;
       "answer": "g++ ECE.cpp student.cpp main.cpp -o small_database\n"
     },
     {
+      "question-id": "chapter-01-Q8",
       "title": "Question 7 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -146,6 +154,7 @@ let parsedObject;
       "answer": "No header guard in student.h\n"
     },
     {
+      "question-id": "chapter-01-Q9",
       "title": "Question 7 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -155,6 +164,7 @@ let parsedObject;
       "answer": "g++ -c student.cpp -o student.o\n\ng++ -c ECE.cpp -o ECE.o\n\ng++ -c main.cpp -o main.o\n\ng++ student.o ECE.o main.o -o small_database\n"
     },
     {
+      "question-id": "chapter-01-Q10",
       "title": "Question 7 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -164,6 +174,7 @@ let parsedObject;
       "answer": "g++ -c ECE.cpp -o ECE.o\n\ng++ student.o ECE.o main.o -o small_database\n"
     },
     {
+      "question-id": "chapter-01-Q11",
       "title": "Question 2 Fall 2018 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -173,6 +184,7 @@ let parsedObject;
       "answer": "g++ -c First.cpp -o First.o\n\ng++ -c Second.cpp -o Second.o\n\ng++ -c Third.cpp -o Third.o\n\ng++ -c main.cpp -o main.o\n\ng++ First.o Second.o Third.o main.o -o main\n"
     },
     {
+      "question-id": "chapter-01-Q12",
       "title": "Question 2 Fall 2018 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -182,6 +194,7 @@ let parsedObject;
       "answer": "g++ -c Second.cpp -o Second.o\n\ng++ First.o Second.o Third.o main.o -o main\n"
     },
     {
+      "question-id": "chapter-01-Q13",
       "title": "Question 2 Fall 2018 Midterm Exam",
       "difficulty": "Easy",
       "type": "explaination",

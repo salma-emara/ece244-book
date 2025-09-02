@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-11-Q1",
       "title": "Question 10 in Fall 2021 Final Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": "1 2 3 4 5 6 7\n\n**(NLR)** Nodes are visited recursively printing root node, left subtree then right subtree. This means when you print the left subtree, print it also by starting with the root, left node, then right node. \n\n"
     },
     {
+      "question-id": "chapter-11-Q2",
       "title": "Question 10 in Fall 2021 Final Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -20,6 +22,7 @@ let parsedObject;
       "answer": "3 2 4 1 5 7 6\n\n**(LNR)** Nodes are visited recursively printing left subtree, root node, then right subtree. This means when you print the left subtree, print it also by starting with the left node, root node, then right node. \n"
     },
     {
+      "question-id": "chapter-11-Q3",
       "title": "Question 10 in Fall 2021 Final Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -29,6 +32,7 @@ let parsedObject;
       "answer": "3 4 2 7 6 5 1\n\n**(LRN)** Nodes are visited recursively printing left subtree, right subtree, then root node. This means when you print the left subtree, print it also by starting with the left node, right node, then root node. \n"
     },
     {
+      "question-id": "chapter-11-Q4",
       "title": "Question 9 in Fall 2022 Final Exam",
       "difficulty": "Intermediate",
       "type": "function programming",

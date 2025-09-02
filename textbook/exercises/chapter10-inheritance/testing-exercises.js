@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-10-Q1",
       "title": "Question 11 in Fall 2018 Final Exam",
       "difficulty": "Easy",
       "type": "tracing",
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": "Constructor 1 of firstOne done"
     },
     {
+      "question-id": "chapter-10-Q2",
       "title": "Question 11 in Fall 2018 Final Exam",
       "difficulty": "Easy",
       "type": "tracing",
@@ -20,6 +22,7 @@ let parsedObject;
       "answer": "Constructor 2 of firstOne done "
     },
     {
+      "question-id": "chapter-10-Q3",
       "title": "Question 11 in Fall 2018 Final Exam",
       "difficulty": "Easy",
       "type": "tracing",
@@ -29,6 +32,7 @@ let parsedObject;
       "answer": "Constructor 1 of firstOne done \nConstructor 1 of secondOne done\n"
     },
     {
+      "question-id": "chapter-10-Q4",
       "title": "Question 11 in Fall 2018 Final Exam",
       "difficulty": "Easy",
       "type": "tracing",
@@ -38,6 +42,7 @@ let parsedObject;
       "answer": "Constructor 2 of firstOne done\nConstructor 2 of secondOne done\n"
     },
     {
+      "question-id": "chapter-10-Q5",
       "title": "Question 14 in Fall 2019 Final Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -95,6 +100,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-10-Q6",
       "title": "Question 12 in Fall 2018 Final Exam",
       "difficulty": "Intermediate",
       "type": "explaination",
@@ -104,6 +110,7 @@ let parsedObject;
       "answer": "No, it doesn't compile.\n\nWe cannot create objects of abstract classes. \n"
     },
     {
+      "question-id": "chapter-10-Q7",
       "title": "Question 12 in Fall 2018 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -114,6 +121,7 @@ let parsedObject;
       "explanation": "Yes, the program compiles\n\n`delete pc` calls the destructor of `Desert` only as `pc` is a pointer of type `Desert`.\n We cannot access the destructor of `Cookies` through `pc`.\n\n`delete pi` calls the destructor of `IceCream` first, then the destructor of `Desert`. `pi` is of \ntype `IceCream`, and through it we can access both destructors.\n"
     },
     {
+      "question-id": "chapter-10-Q8",
       "title": "Question 12 in Fall 2018 Final Exam",
       "difficulty": "Intermediate",
       "type": "explaination",
@@ -123,6 +131,7 @@ let parsedObject;
       "answer": "No, the program doesn't compile.\n\n`ps = pi;` is not valid. `Sundae` is derived from `IceCream`. `ps` cannot point to an object `IceCream`, as it cannot access its members that don't exist. \n"
     },
     {
+      "question-id": "chapter-10-Q9",
       "title": "Question 12 in Fall 2018 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -133,6 +142,7 @@ let parsedObject;
       "explanation": "Yes, the program compiles\n\n`ps->cost()` will call the `cost()` of `IceCream` as `cost()` is a virtual function, hence `ps` will \ncall the function according to the type of the object, not the pointer.\n"
     },
     {
+      "question-id": "chapter-10-Q10",
       "title": "Question 15 in Fall 2019 Final Exam",
       "difficulty": "Easy",
       "type": "explaination",
@@ -190,6 +200,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-10-Q11",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -200,6 +211,7 @@ let parsedObject;
       "explanation": "We assume that `p` is destructed before `c`.\n"
     },
     {
+      "question-id": "chapter-10-Q12",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -210,6 +222,7 @@ let parsedObject;
       "explanation": "The tricky part is that `delete pr` will execute the destructor of the type of `pr`, since \nthe destructor is not a `virtual` function.\n"
     },
     {
+      "question-id": "chapter-10-Q13",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -220,6 +233,7 @@ let parsedObject;
       "explanation": "line `c = new CircuitElement(5);`, you cannot make a pointer to a derived object `c` point to a base object `CircuitElement`.\n"
     },
     {
+      "question-id": "chapter-10-Q14",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -230,6 +244,7 @@ let parsedObject;
       "explanation": "line `pr = r;`, as `pr` is a pointer of derived object that cannot point to a base object.\n"
     },
     {
+      "question-id": "chapter-10-Q15",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -240,6 +255,7 @@ let parsedObject;
       "explanation": "We assume we destruct `e` then `p`. It is possible to do `e = r` as `e` is a base object and `r` is derived.\n"
     },
     {
+      "question-id": "chapter-10-Q16",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -250,6 +266,7 @@ let parsedObject;
       "explanation": "We can make a base object point to a derived object, hence `CircuitElement* e = new PowerCapacitor(500, 1000);` \nis possible. \n    \nSince the `print()` function is virtual in `CircuitElement`, it is virtual in all derived classes. \nTherefore when `e->print()` is executed, the `print()` function of the object `e` is pointing, which \nis `PowerCapacitor` to is called.\n"
     },
     {
+      "question-id": "chapter-10-Q17",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -260,6 +277,7 @@ let parsedObject;
       "explanation": "The `getPower` function is not virtual, therefore when `c->getPower()` is called we call \nthe getPower function of Capacitor -- the type of `c`.\n\nSince the memory is dynamically allocated and not freed, no destructors are called before \nreturning from `main`.\n"
     },
     {
+      "question-id": "chapter-10-Q18",
       "title": "Question 16 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -270,6 +288,7 @@ let parsedObject;
       "explanation": "The error exists at `r->powerResistance()`. `powerResistance()` is not a virtual function, hence \nwhen `r->powerResistance()` is executed, `powerResistance()` of `Resistor` is called. There is no \nmember named `powerResistance` in `Resistor` class. \n"
     },
     {
+      "question-id": "chapter-10-Q19",
       "title": "Question 5 in Fall 2022 Final Exam",
       "difficulty": "Intermediate",
       "type": "explaination",
@@ -279,6 +298,7 @@ let parsedObject;
       "answer": "`student` class is an abstract function. `eng_student` inherits from `student` class; however, it is an \nabstract class too as it did not implement `print_department` pure virtual function that was in `student` class. \n"
     },
     {
+      "question-id": "chapter-10-Q20",
       "title": "Question 5 in Fall 2022 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -289,6 +309,7 @@ let parsedObject;
       "explanation": "`new cs_student(\"Leo\", 0, 10)` would call the constructor of the base class `student`, then derived \nclass `cs_student`. This prints. \n<pre>\nstudent\ncs student\n</pre>\n\n`new ece_student(\"Bill\", 1, 11, 0)` would call the constructor of the base class `student`, \nthen `eng_student`, then `ece_student`. This prints. \n<pre>\nstudent\neng student\nece student\n</pre>\n\nThe same idea follows for `new mie_student(\"Ellie\", 2, 12)` and `new ece_student(\"Haley\", 3, 13, 1)`.\n"
     },
     {
+      "question-id": "chapter-10-Q21",
       "title": "Question 5 in Fall 2022 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",

@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-02-Q1"
 title = "Question 7 in Fall 2021 Midterm Exam"
 difficulty = "Easy"
 table = false
@@ -104,6 +105,7 @@ We don't have `delete b5`, and hence the destructor is not called for the two-el
 
 
 [[exercises]]
+question-id = "chapter-02-Q2"
 title = "Question 1 in Fall 2022 Midterm Exam "
 difficulty = "Easy"
 table = false
@@ -147,6 +149,7 @@ In statement C, `get_num_instructor()` is a private function member, and cannot 
 
 
 [[exercises]]
+question-id = "chapter-02-Q3"
 title = "Question 7 in Fall 2021 Midterm Exam"
 difficulty = "Easy"
 table = false

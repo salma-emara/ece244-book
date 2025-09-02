@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-05-Q1"
 title = "Question 9 in Fall 2022 Midterm Exam"
 difficulty = "Intermediate"
 table = false
@@ -49,6 +50,7 @@ Check Point 2
 '''
 
 [[exercises]]
+question-id = "chapter-05-Q2"
 title = "Question 3 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -101,6 +103,7 @@ explanation = '''
 
 
 [[exercises]]
+question-id = "chapter-05-Q3"
 title = "Question 4 in Fall 2018 Midterm Exam"
 difficulty = "Intermediate"
 table = false
@@ -141,6 +144,7 @@ answer = '''
 '''
 
 [[exercises]]
+question-id = "chapter-05-Q4"
 title = "Question 4 in Fall 2018 Midterm Exam"
 difficulty = "Intermediate"
 table = false
@@ -172,6 +176,7 @@ are all pointing to an `int` with 4, while there are three deletes for the same 
 
 
 [[exercises]]
+question-id = "chapter-05-Q5"
 title = "Question 2 in Fall 2017 Midterm Exam"
 difficulty = "Intermediate"
 table = false
