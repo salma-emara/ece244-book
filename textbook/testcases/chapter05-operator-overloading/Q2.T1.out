@@ -1,0 +1,9 @@
+Testing copy constructor:
+c copies a = 10
+Testing assignment operator:
+c after assignment from b = 15
+Testing setter/getter:
+c after setPriv = 20
+a remains = 10
+Testing self-assignment:
+c after self-assign = 20
