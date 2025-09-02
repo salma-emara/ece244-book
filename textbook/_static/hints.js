@@ -50,7 +50,7 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
         anotherHint.classList.add("another-hint");
         hintContainer.appendChild(anotherHint);
         
-        quizUserID = getOrCreateQuizUserID();
+        quizUserID = getOrCreateUserID();
 
         // set user id properties
         gtag('set', {
@@ -214,6 +214,12 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         countdown++;
         localStorage.setItem(hintKey, countdown);
 
+        gtag('event', 'testing_hint_requests', {
+            event_category: 'Quiz Interaction',
+            event_label: `${questionID}`,
+            quiz_user_id: quizUserID,
+            debug_mode: true
+        });
         console.log(`Hint count for ${hintKey}:`, countdown);
 
         if (anotherFeedback.textContent === "Get Feedback") {
