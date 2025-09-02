@@ -31,7 +31,7 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
     let hintContainer = form.querySelector(".hint-container");
     let hintInfoContainer, anotherHint;
 
-    // let quizUserID;
+    let quizUserID;
 
     if (!hintContainer){ // initial setup
 
@@ -183,6 +183,8 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
     // check if feedback already exists
     let feedbackContainer = messageElement.querySelector(".hint-container");
     let feedbackInfoContainer, anotherFeedback;
+
+    let quizUserID;
 
     if (!feedbackContainer){ // initial setup
 
