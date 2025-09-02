@@ -3,4 +3,6 @@ Inserting follower: nora12495 (age 5)
 Removing follower: nora12495
 Vtuber: Salma Emara has 1 followers:
 - Nora (age 2)
-Destructor works correctly!
+Followers alive before delete: 1
+Followers alive after delete: 0
+Array pointer correctly reset to nullptr after delete

@@ -872,3 +872,242 @@ HashTable::~HashTable() {
   delete[] table;
 }
 '''
+
+append-before = '''
+#include <iostream>
+#include <string>
+using namespace std;
+
+static int linkedlist_alive_count = 0;
+
+class ListNode {
+ public:
+  ListNode(const string& name_) {
+    name = name_;
+    next = NULL;
+    linkedlist_alive_count++;
+  };
+  string name;
+  ListNode* next;
+};
+
+class LinkedList {
+ private:
+  ListNode* head;
+
+ public:
+  LinkedList() { head = NULL; }
+
+  bool is_empty() { return head == NULL; }
+
+  void insert(ListNode* node) {
+    node->next = head;
+    head = node;
+  }
+
+  ListNode* remove(const string& name) {
+    ListNode* curr = head;
+    ListNode* prev = NULL;
+    while (curr != NULL) {
+      if (curr->name == name) {
+        if (prev == NULL) {
+          head = curr->next;
+        } else {
+          prev->next = curr->next;
+        }
+        curr->next = NULL;
+        return curr;
+      }
+      prev = curr;
+      curr = curr->next;
+    }
+    return NULL;
+  }
+
+  bool find(const string& name) {
+    ListNode* curr = head;
+    while (curr != NULL) {
+      if (curr->name == name) return true;
+      curr = curr->next;
+    }
+    return false;
+  }
+
+  ListNode* pop_head() {
+    if (head == NULL) return NULL;
+    ListNode* n = head;
+    head = head->next;
+    n->next = NULL;
+    return n;
+  }
+
+  ~LinkedList() {
+    while (head != NULL) {
+      ListNode* tmp = head;
+      head = head->next;
+      delete tmp;
+      linkedlist_alive_count--;
+    }
+  }
+};
+
+int string_hash(const string& name) {
+  unsigned long hash = 5381;
+  for (char c : name) {
+    hash = ((hash << 5) + hash) + c;
+  }
+  return (int)(hash & 0x7fffffff);
+}
+
+#define INIT_CAPACITY 32
+class HashTable {
+ private:
+  LinkedList** table;
+  int table_slot_size;
+  int num_elements;
+  int get_hash_index(const string& name) {
+    return string_hash(name) % table_slot_size;
+  }
+
+ public:
+  HashTable() {
+    table = new LinkedList*[INIT_CAPACITY];
+    table_slot_size = INIT_CAPACITY;
+    num_elements = 0;
+    for (int i = 0; i < table_slot_size; ++i) {
+      table[i] = NULL;
+    }
+  }
+
+  bool exist(const string& name) {
+    int idx = this->get_hash_index(name);
+    if (table[idx] == NULL) {
+      return false;
+    }
+    return table[idx]->find(name);
+  }
+
+  // insert function from part (1)
+  bool insert(const string& name) {
+    if (this->exist(name)) {
+      return false;  // found!
+  }
+
+  if (num_elements + 1 >= table_slot_size / 2) {
+    table_slot_size = table_slot_size * 2;
+    LinkedList** newTable = new LinkedList*[table_slot_size];
+    for (int i = 0; i < table_slot_size; i++) {
+      newTable[i] = nullptr;
+    }
+
+    for (int i = 0; i < table_slot_size / 2; ++i) {
+      if (table[i] != NULL) {
+        ListNode* n = table[i]->pop_head();
+        while (n != NULL) {
+          int idx = get_hash_index(n->name);
+          if (newTable[idx] == NULL) {
+            newTable[idx] = new LinkedList;  // msh
+          }
+          newTable[idx]->insert(n);
+          n = table[i]->pop_head();
+        }
+        delete table[i];
+      }
+    }
+    delete[] table;
+    table = newTable;
+    }
+
+    int idx = this->get_hash_index(name);
+
+    if (table[idx] == NULL) {
+      table[idx] = new LinkedList;  // msh
+    }
+    ListNode* n = new ListNode(name);
+    table[idx]->insert(n);
+    num_elements++;
+    return true;
+  }
+
+  // insert function from part (2)
+  bool remove(const string& name){
+    if (this->exist(name)) {
+      int idx = this->get_hash_index(name);
+      ListNode* removeNode = table[idx]->remove(name);
+      delete removeNode;
+      num_elements--;
+      return true;
+    }
+    // not found!
+    return false;
+  }
+
+  // change name function from part (3)
+  bool change_name(const string& old_name, const string& new_name){
+    if (this->exist(old_name) && !this->exist(new_name)) {
+      // change name!
+      this->remove(old_name);
+      this->insert(new_name);
+      return true;
+    } else if (this->exist(old_name) && this->exist(new_name)) {
+      // don't change name
+      return false;
+    } else if (!this->exist(old_name)) {
+      // din't find
+      return false;
+    } else {
+      // not needed!
+      return false;
+    }
+  }
+  
+  ~HashTable();
+
+};
+'''
+
+main-function = '''
+int main() {
+
+  {
+    HashTable ht;
+    string cmd;
+
+    while (cin >> cmd) {
+      if (cmd == "Insert") {
+        string name;
+        cin >> name;
+        bool ok = ht.insert(name);
+        cout << (ok ? "Inserted " : "Failed to insert ") << name << "\n";
+      } else if (cmd == "Remove") {
+        string name;
+        cin >> name;
+        bool ok = ht.remove(name);
+        cout << (ok ? "Removed " : "Did not find ") << name << "\n";
+      } else if (cmd == "ChangeName") {
+        string oldn, newn;
+        cin >> oldn >> newn;
+        bool ok = ht.change_name(oldn, newn);
+        cout << (ok ? "Changed " : "Failed to change ") << oldn << "->" << newn << "\n";
+      }
+    }
+    cout << "Alive LinkedLists before delete: " << linkedlist_alive_count << "\n";
+  }
+  
+  cout << "Alive LinkedLists after delete: " << linkedlist_alive_count << "\n";
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q4.T1.in"
+output = "Q4.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.T2.in"
+output = "Q4.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.T3.in"
+output = "Q4.T3.out"

@@ -9,4 +9,6 @@ Removing follower: Student128047
 Removing follower: Student124
 Vtuber: ECE244 (Fall 2025) has 1 followers:
 - Student2 (age 19)
-Destructor works correctly!
+Followers alive before delete: 1
+Followers alive after delete: 0
+Array pointer correctly reset to nullptr after delete
