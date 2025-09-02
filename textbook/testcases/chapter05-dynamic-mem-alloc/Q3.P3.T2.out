@@ -7,4 +7,6 @@ Removing follower: Alex
 Vtuber: Burger AI has 2 followers:
 - Ellie (age 20)
 - Nora (age 20)
-Destructor works correctly!
+Followers alive before delete: 2
+Followers alive after delete: 0
+Array pointer correctly reset to nullptr after delete

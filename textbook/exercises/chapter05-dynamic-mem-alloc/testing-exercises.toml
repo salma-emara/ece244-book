@@ -744,7 +744,15 @@ int main() {
     }
   }
 
+  // Print before destructor
   v->print_followers();
+  cout << "Followers alive before delete: " << Follower::alive_count << endl;
+
+  delete v;  // destructor called here
+
+  // After destructor, alive_count should be 0
+  cout << "Followers alive after delete: " << Follower::alive_count << endl;
+
 }
 
 '''
