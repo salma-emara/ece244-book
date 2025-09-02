@@ -19,8 +19,12 @@ function walkChaptersAndAddIds() {
     for (let i = 0; i < lines.length; i++) {
       if (lines[i].trim() === "[[exercises]]") {
         exerciseIndex++;
-        // Look ahead to see if there's already a question-id
-        const hasId = lines.slice(i + 1, i + 5).some(l => l.trim().startsWith("question-id"));
+
+        // Check if this exercise already has a question-id anywhere before the next exercise
+        let nextExerciseIndex = lines.slice(i + 1).findIndex(l => l.trim() === "[[exercises]]");
+        let sliceEnd = nextExerciseIndex === -1 ? lines.length : i + 1 + nextExerciseIndex;
+        const hasId = lines.slice(i + 1, sliceEnd).some(l => l.trim().startsWith("question-id"));
+
         if (!hasId) {
           const chapterNum = chapterFolder.match(/^chapter(\d+)/)?.[1];
           const qid = `chapter-${chapterNum}-Q${exerciseIndex}`;
