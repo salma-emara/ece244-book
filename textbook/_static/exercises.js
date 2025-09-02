@@ -496,6 +496,10 @@ function generate_exercises(filename) {
 
 				}
 
+				resultMessage.innerHTML = "";
+				resultMessage.style.color = "";       // reset to default
+				resultMessage.style.fontWeight = "";  // reset to default
+
 				let actualOutput = await runTestCases(codeRunner, inputArray, resultMessage, studentCode);
 
 				if (actualOutput.includes("Please try again")) {
