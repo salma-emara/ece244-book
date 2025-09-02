@@ -39,6 +39,7 @@ parts:
           - file: chapters/chapter04-io/testing-exercises.md
       - file: chapters/chapter05-operator-overloading/intro.md
         sections:
+          - file: chapters/chapter05-operator-overloading/exercises.md
           - file: chapters/chapter05-operator-overloading/testing-exercises.md
       - file: chapters/chapter06-objects-w-pointers/intro.md
         sections:
