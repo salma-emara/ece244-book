@@ -6,4 +6,4 @@ Headings in this page classify the exercises into different categories: **[Easy]
 
 {{code_runner_quizzes}}
 
-{{exercise_embed | replace("%%FILENAME%%", "chapter08-linked-lists/testing-exercises") }}
+{{exercise_embed | replace("%%FILENAME%%", "chapter12-hash-tables/testing-exercises") }}
