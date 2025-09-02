@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-08-Q1"
 title = "Question 9 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -78,6 +79,7 @@ output = "Q1.T3.out"
 
 
 [[exercises]]
+question-id = "chapter-08-Q2"
 title = "Question 8 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 table = false

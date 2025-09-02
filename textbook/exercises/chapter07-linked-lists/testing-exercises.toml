@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-07-Q1"
 title = "Question 6 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -54,6 +55,7 @@ explanation = '''(2) `cout << h->key << endl;`'''
 
 
 [[exercises]]
+question-id = "chapter-07-Q2"
 title = "Question 6 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -77,6 +79,7 @@ choices = [
 explanation = '''All are incorrect. The correct answer is `*ptr != nullptr`'''
 
 [[exercises]]
+question-id = "chapter-07-Q3"
 title = "Question 6 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -100,6 +103,7 @@ choices = [
 explanation = '''(5) `cout << (*ptr)->key << endl;`'''
 
 [[exercises]]
+question-id = "chapter-07-Q4"
 title = "Question 6 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -124,6 +128,7 @@ explanation = ''' (2) `ptr = &((*ptr)->next);`'''
 
 
 [[exercises]]
+question-id = "chapter-07-Q5"
 title = "Question 7 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -250,6 +255,7 @@ output = "Q2.T4.out"
 
 
 [[exercises]]
+question-id = "chapter-07-Q6"
 title = "Question 8 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -495,6 +501,7 @@ output = "Q3.P1.T4.out"
 
 
 [[exercises]]
+question-id = "chapter-07-Q7"
 title = "Question 8 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -701,6 +708,7 @@ output = "Q3.P2.T4.out"
 
 
 [[exercises]]
+question-id = "chapter-07-Q8"
 title = "Question 8 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -920,6 +928,7 @@ output = "Q3.P3.T4.out"
 
 
 [[exercises]]
+question-id = "chapter-07-Q9"
 title = "Question 8 in Fall 2021 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -1175,6 +1184,7 @@ output = "Q3.P4.T6.out"
 
 
 [[exercises]]
+question-id = "chapter-07-Q10"
 title = "Question 6 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -1283,6 +1293,7 @@ output = "Q4.P1.T5.out"
 
 
 [[exercises]]
+question-id = "chapter-07-Q11"
 title = "Question 6 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 table = false
@@ -1416,6 +1427,7 @@ output = "Q4.P2.T5.out"
 
 
 [[exercises]]
+question-id = "chapter-07-Q12"
 title = "Question 6 in Fall 2019 Final Exam"
 difficulty = "Intermediate"
 table = false

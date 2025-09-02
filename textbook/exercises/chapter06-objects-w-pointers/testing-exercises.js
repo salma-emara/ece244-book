@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-06-Q1",
       "title": "Question 5 in Fall 2019 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": "Has no problem. We return `arg` by value and we create a copy of `arg` using copy constructor.\n"
     },
     {
+      "question-id": "chapter-06-Q2",
       "title": "Question 5 in Fall 2019 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -20,6 +22,7 @@ let parsedObject;
       "answer": "Has no problem. We return `temp` by value and we create a copy of `temp` using copy constructor.\n"
     },
     {
+      "question-id": "chapter-06-Q3",
       "title": "Question 5 in Fall 2019 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -29,6 +32,7 @@ let parsedObject;
       "answer": "Has a problem, because in the question it says `doIt` is a non-member function. Since this is a pointer to an \nobject on which the member function is invoked, it can only be accessed in a member function. In short, we \ncannot access `this` in `doIt` function.\n"
     },
     {
+      "question-id": "chapter-06-Q4",
       "title": "Question 5 in Fall 2019 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -38,6 +42,7 @@ let parsedObject;
       "answer": "Has a problem, but it is quite tricky. `temp` is a local only to the function `doIt` since it was defined only\ninside the function. `temp` will go out of scope or disappear from the memory the moment we return from `doIt`\nfunction. If we return `temp` by reference, and `temp` actually is non-existing after the function call, the \nbehavior is undefined if we try accessing whatever `doIt` returns.\n"
     },
     {
+      "question-id": "chapter-06-Q5",
       "title": "Modified Version of Question 5 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -47,6 +52,7 @@ let parsedObject;
       "answer": "24 45"
     },
     {
+      "question-id": "chapter-06-Q6",
       "title": "Modified Version of Question 5 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -56,6 +62,7 @@ let parsedObject;
       "answer": "1 2\n"
     },
     {
+      "question-id": "chapter-06-Q7",
       "title": "Modified Version of Question 5 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -65,6 +72,7 @@ let parsedObject;
       "answer": "3 5\n"
     },
     {
+      "question-id": "chapter-06-Q8",
       "title": "Modified Version of Question 5 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -74,6 +82,7 @@ let parsedObject;
       "answer": "7 8\n"
     },
     {
+      "question-id": "chapter-06-Q9",
       "title": "Modified Version of Question 5 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -83,6 +92,7 @@ let parsedObject;
       "answer": "6 12 \n12 36\n"
     },
     {
+      "question-id": "chapter-06-Q10",
       "title": "Modified Version of Question 5 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "tracing",
@@ -92,6 +102,7 @@ let parsedObject;
       "answer": "6 12 \n"
     },
     {
+      "question-id": "chapter-06-Q11",
       "title": "Modified Version of Question 5 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "type": "explaination",

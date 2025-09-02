@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-12-Q1",
       "title": "Question 10 in Fall 2022 Final Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -40,6 +41,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-12-Q2",
       "title": "Question 10 in Fall 2022 Final Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -86,6 +88,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-12-Q3",
       "title": "Question 10 in Fall 2022 Final Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -124,6 +127,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-12-Q4",
       "title": "Question 10 in Fall 2022 Final Exam",
       "difficulty": "Challenging",
       "type": "explaination",

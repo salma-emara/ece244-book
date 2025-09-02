@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-07-Q1",
       "title": "Question 6 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -21,6 +22,7 @@ let parsedObject;
       "explanation": "(2) `cout << h->key << endl;`"
     },
     {
+      "question-id": "chapter-07-Q2",
       "title": "Question 6 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -44,6 +46,7 @@ let parsedObject;
       "explanation": "All are incorrect. The correct answer is `*ptr != nullptr`"
     },
     {
+      "question-id": "chapter-07-Q3",
       "title": "Question 6 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -63,6 +66,7 @@ let parsedObject;
       "explanation": "(5) `cout << (*ptr)->key << endl;`"
     },
     {
+      "question-id": "chapter-07-Q4",
       "title": "Question 6 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -82,6 +86,7 @@ let parsedObject;
       "explanation": " (2) `ptr = &((*ptr)->next);`"
     },
     {
+      "question-id": "chapter-07-Q5",
       "title": "Question 7 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -128,6 +133,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-07-Q6",
       "title": "Question 8 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -174,6 +180,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-07-Q7",
       "title": "Question 8 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -220,6 +227,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-07-Q8",
       "title": "Question 8 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -266,6 +274,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-07-Q9",
       "title": "Question 8 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -336,6 +345,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-07-Q10",
       "title": "Question 6 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -390,6 +400,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-07-Q11",
       "title": "Question 6 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -444,6 +455,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-07-Q12",
       "title": "Question 6 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "table": false,

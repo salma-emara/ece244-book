@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-04-Q1",
       "title": "Question 5 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": "a = 1\n"
     },
     {
+      "question-id": "chapter-04-Q2",
       "title": "Question 5 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -20,6 +22,7 @@ let parsedObject;
       "answer": "failed..\nfailed..\na = 3\n"
     },
     {
+      "question-id": "chapter-04-Q3",
       "title": "Question 5 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -29,6 +32,7 @@ let parsedObject;
       "answer": "failed..\n\nfailed..\n\nfailed..\n\nAnd it keeps repeating\n"
     },
     {
+      "question-id": "chapter-04-Q4",
       "title": "Question 5 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -38,6 +42,7 @@ let parsedObject;
       "answer": "a = 1\n"
     },
     {
+      "question-id": "chapter-04-Q5",
       "title": "Question 5 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -47,6 +52,7 @@ let parsedObject;
       "answer": "failed..\n\nfailed..\n\nfailed..\n\nAnd it keeps repeating\n"
     },
     {
+      "question-id": "chapter-04-Q6",
       "title": "Question 5 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -56,6 +62,7 @@ let parsedObject;
       "answer": "failed..\n\nfailed..\n\nfailed..\n\nAnd it keeps repeating\n"
     },
     {
+      "question-id": "chapter-04-Q7",
       "title": "Question 2 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -93,6 +100,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-04-Q8",
       "title": "Question 3 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -129,6 +137,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-04-Q9",
       "title": "Question 6 in Fall 2019 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -147,6 +156,7 @@ let parsedObject;
       "explanation": "**14**, The last loop when `five` is entered, `num` is unchanged and 4 will be added to `sum` again. \nHowever, in some compilers, `sum` may be printed to be 10, as the complier will set `num` to 0 when `cin.fail()` \nis raised. This means, **10** is considered correct too."
     },
     {
+      "question-id": "chapter-04-Q10",
       "title": "Question 6 in Fall 2019 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -165,6 +175,7 @@ let parsedObject;
       "explanation": "10"
     },
     {
+      "question-id": "chapter-04-Q11",
       "title": "Question 7 in Fall 2019 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,

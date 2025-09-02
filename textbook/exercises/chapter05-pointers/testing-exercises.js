@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-05-Q1",
       "title": "Question 9 in Fall 2022 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": "0\n2\n4\nCheck Point 1\n1\nCheck Point 2\n"
     },
     {
+      "question-id": "chapter-05-Q2",
       "title": "Question 3 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -35,6 +37,7 @@ let parsedObject;
       "explanation": "(4) `cout << *p;`\n\n(5) `cout << **t;`\n\n(8) `cout << (**s) / 2;` "
     },
     {
+      "question-id": "chapter-05-Q3",
       "title": "Question 4 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -44,6 +47,7 @@ let parsedObject;
       "answer": "4 4\n"
     },
     {
+      "question-id": "chapter-05-Q4",
       "title": "Question 4 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -65,6 +69,7 @@ let parsedObject;
       "explanation": "The program has a memory leak because in line 13, it changes what `second_ptr` is pointing \nto without freeing up the memory space it was pointing to.`second_ptr`, `first_ptr`, and `*p_ptr` \nare all pointing to an `int` with 4, while there are three deletes for the same memory space."
     },
     {
+      "question-id": "chapter-05-Q5",
       "title": "Question 2 in Fall 2017 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,

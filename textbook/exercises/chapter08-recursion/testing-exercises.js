@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-08-Q1",
       "title": "Question 9 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -39,6 +40,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-08-Q2",
       "title": "Question 8 in Fall 2019 Final Exam",
       "difficulty": "Intermediate",
       "table": false,

@@ -2,6 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
+      "question-id": "chapter-03-Q1",
       "title": "Question 3 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -11,6 +12,7 @@ let parsedObject;
       "answer": "\n**Stack**\n\n`n`: 4 bytes\n\n`size`: 4 bytes\n\n`q`: 4 bytes\n\n`i`: 4 bytes\n\nTotal: 16 bytes\n\n----------------\n**Heap**\n\n`n` is 1, `size` is 2\n\nThe loop iterates 3 times, each time it allocates 2 integers. \n\nTotal is 3 * 2 * 4 bytes = 24 bytes.\n"
     },
     {
+      "question-id": "chapter-03-Q2",
       "title": "Question 9 in Fall 2021 Midterm Exam",
       "difficulty": "Intermediate",
       "type": "explaination",
@@ -62,6 +64,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-03-Q3",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -100,6 +103,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-03-Q4",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -138,6 +142,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-03-Q5",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -176,6 +181,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-03-Q6",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "explaination",
@@ -185,6 +191,7 @@ let parsedObject;
       "answer": "<code>\nVtuber::~Vtuber() {\n\nfor (int i = 0; i < follower_max; i++) {\n\ndelete followers[i];  // delete NULL is safe;\n\n}\n\ndelete[] followers;\n\n}\n</code>\n"
     },
     {
+      "question-id": "chapter-03-Q7",
       "title": "Question 2 in Fall 2019 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -194,6 +201,7 @@ let parsedObject;
       "answer": "Nova(int, double);\n\nint it;\n\nvoid setAll(int,double);\n\nNova operator+(Nova&)\n\nbool operator!=(Nova&)\n\nNo need for destructor as we don't dynamically allocate space in the object.\n\nNo need for a copy constructor in `Nova b(a)` since one is given by default.\n\nNo need for `operator=` in `*p = a + b`\n"
     },
     {
+      "question-id": "chapter-03-Q8",
       "title": "Question 7 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "type": "function programming",
@@ -230,6 +238,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-03-Q9",
       "title": "Modified Version of Question 9 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -239,6 +248,7 @@ let parsedObject;
       "answer": "Constructor 2 5\nConstructor 3 5\nConstructor 3 5\nOperator= 5\nDestructor \nConstructor 1 0\nConstructor 1 0\nConstructor 3 5\nOperator= 0\nDestructor \n5\nConstructor 3 5\nDestructor \n5\n5\nDestructor \nDestructor \nDestructor \n"
     },
     {
+      "question-id": "chapter-03-Q10",
       "title": "Question 8 in Fall 2021 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -248,6 +258,7 @@ let parsedObject;
       "answer": "`Mystery(const Mystery&);` // used here: Mystery y(x);\n\n`Mystery(string, int);` // used here: Mystery(n, 4)\n\n`Mystery(int, string);` // used here: Mystery x(3, n);\n\n`void invert(int, string);` // used here: x.invert(1, n)\n\n`bool operator==(const Mystery& right);` // used here: x == y\n\n`Mystery operator/(const Mystery& right);` // used here: y / *p;\n\n`Mystery& operator=(const Mystery&);` // used here: x = y;\n\n`~Mystery();` // used here: delete p;\n"
     },
     {
+      "question-id": "chapter-03-Q11",
       "title": "Question 8 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "table": false,
@@ -285,6 +296,7 @@ let parsedObject;
       ]
     },
     {
+      "question-id": "chapter-03-Q12",
       "title": "Modified Version of Question 14 in Fall 2019 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,

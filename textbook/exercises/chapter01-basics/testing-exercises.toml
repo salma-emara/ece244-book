@@ -1,4 +1,5 @@
 [[exercises]]
+question-id = "chapter-01-Q1"
 title = "Question 2 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -29,6 +30,7 @@ There will be a compilation error because hello() is called before it's declared
 
 
 [[exercises]]
+question-id = "chapter-01-Q2"
 title = "Question 4 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 table = false
@@ -75,6 +77,7 @@ answer = '''
 
 
 [[exercises]]
+question-id = "chapter-01-Q3"
 title = "Question 6 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "function programming"
@@ -142,6 +145,7 @@ output = "Q3.T4.out"
 
 
 [[exercises]]
+question-id = "chapter-01-Q4"
 title = "Question 6 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "function programming"
@@ -201,6 +205,7 @@ output = "Q3.T4.out"
 
 
 [[exercises]]
+question-id = "chapter-01-Q5"
 title = "Question 6 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -215,6 +220,7 @@ swap_by_p (&x, &y);
 """
 
 [[exercises]]
+question-id = "chapter-01-Q6"
 title = "Question 6 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -231,6 +237,7 @@ swap_by_r (x, y);
 
 
 [[exercises]]
+question-id = "chapter-01-Q7"
 title = "Question 7 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -300,6 +307,7 @@ g++ ECE.cpp student.cpp main.cpp -o small_database
 
 
 [[exercises]]
+question-id = "chapter-01-Q8"
 title = "Question 7 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -315,6 +323,7 @@ No header guard in student.h
 '''
 
 [[exercises]]
+question-id = "chapter-01-Q9"
 title = "Question 7 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -336,6 +345,7 @@ g++ student.o ECE.o main.o -o small_database
 '''
 
 [[exercises]]
+question-id = "chapter-01-Q10"
 title = "Question 7 in Fall 2022 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -356,6 +366,7 @@ g++ student.o ECE.o main.o -o small_database
 
 
 [[exercises]]
+question-id = "chapter-01-Q11"
 title = "Question 2 Fall 2018 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -453,6 +464,7 @@ g++ First.o Second.o Third.o main.o -o main
 
 
 [[exercises]]
+question-id = "chapter-01-Q12"
 title = "Question 2 Fall 2018 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"
@@ -470,6 +482,7 @@ g++ First.o Second.o Third.o main.o -o main
 '''
 
 [[exercises]]
+question-id = "chapter-01-Q13"
 title = "Question 2 Fall 2018 Midterm Exam"
 difficulty = "Easy"
 type = "explaination"

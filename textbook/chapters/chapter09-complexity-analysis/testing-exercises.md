@@ -6,6 +6,6 @@ Headings in this page classify the exercises into different categories: **[Easy]
 
 {{code_runner_quizzes}}
 
-{{exercise_embed | replace("%%FILENAME%%", "chapter10-complexity-analysis/testing-exercises") }}
+{{exercise_embed | replace("%%FILENAME%%", "chapter09-complexity-analysis/testing-exercises") }}
 
 In-progress!
