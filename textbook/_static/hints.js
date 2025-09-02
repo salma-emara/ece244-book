@@ -200,6 +200,16 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         anotherFeedback.textContent = "Get Feedback";
         anotherFeedback.classList.add("another-hint");
         feedbackContainer.appendChild(anotherFeedback);
+        
+        quizUserID = getOrCreateUserID();
+
+        // set user id properties
+        gtag('set', {
+            user_properties: {
+                user_id_property: quizUserID
+            }
+        });
+
 
     } else {
         feedbackInfoContainer = feedbackContainer.querySelector(".hint-info-container");
