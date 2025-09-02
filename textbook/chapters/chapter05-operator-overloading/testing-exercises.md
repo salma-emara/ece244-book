@@ -6,4 +6,4 @@ Headings in this page classify the exercises into different categories: **[Easy]
 
 {{code_runner_quizzes}}
 
-{{exercise_embed | replace("%%FILENAME%%", "chapter05-pointers/testing-exercises") }}
+{{exercise_embed | replace("%%FILENAME%%", "chapter05-operator-overloading/testing-exercises") }}
