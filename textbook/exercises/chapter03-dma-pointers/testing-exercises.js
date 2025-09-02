@@ -2,7 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
-      "question-id": "chapter-05-Q1",
+      "question-id": "chapter-03-Q1",
       "title": "Question 9 in Fall 2022 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -12,7 +12,7 @@ let parsedObject;
       "answer": "0\n2\n4\nCheck Point 1\n1\nCheck Point 2\n"
     },
     {
-      "question-id": "chapter-05-Q2",
+      "question-id": "chapter-03-Q2",
       "title": "Question 3 in Fall 2021 Final Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -37,7 +37,7 @@ let parsedObject;
       "explanation": "(4) `cout << *p;`\n\n(5) `cout << **t;`\n\n(8) `cout << (**s) / 2;` "
     },
     {
-      "question-id": "chapter-05-Q3",
+      "question-id": "chapter-03-Q3",
       "title": "Question 4 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -47,7 +47,7 @@ let parsedObject;
       "answer": "4 4\n"
     },
     {
-      "question-id": "chapter-05-Q4",
+      "question-id": "chapter-03-Q4",
       "title": "Question 4 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -69,7 +69,7 @@ let parsedObject;
       "explanation": "The program has a memory leak because in line 13, it changes what `second_ptr` is pointing \nto without freeing up the memory space it was pointing to.`second_ptr`, `first_ptr`, and `*p_ptr` \nare all pointing to an `int` with 4, while there are three deletes for the same memory space."
     },
     {
-      "question-id": "chapter-05-Q5",
+      "question-id": "chapter-03-Q5",
       "title": "Question 2 in Fall 2017 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -80,7 +80,7 @@ let parsedObject;
       "explanation": "<pre>\n(3,4)\n</pre>\nRecall, `this` is a pointer to the object itself. \n\n\n`a.increment_x()` is evaluated first, and would increment the `x` of object `a` making `x` of `a` equal to 3. This would return a new object with `x = 3` and `y = 3`. On this new object, you would call `increment_y()`, which would increment `y` to 4 and return a new object with `x = 3` and `y = 4`. Printing this new object would produce `(3,4)`.\n<pre>\n(3,3)\n</pre>\nPrinting object `a` would output `(3,3)` due to the previous `a.increment_x()` call. \n"
     },
     {
-      "question-id": "chapter-03-Q1",
+      "question-id": "chapter-03-Q6",
       "title": "Question 3 in Fall 2022 Midterm Exam",
       "difficulty": "Easy",
       "table": false,
@@ -90,7 +90,7 @@ let parsedObject;
       "answer": "\n**Stack**\n\n`n`: 4 bytes\n\n`size`: 4 bytes\n\n`q`: 4 bytes\n\n`i`: 4 bytes\n\nTotal: 16 bytes\n\n----------------\n**Heap**\n\n`n` is 1, `size` is 2\n\nThe loop iterates 3 times, each time it allocates 2 integers. \n\nTotal is 3 * 2 * 4 bytes = 24 bytes.\n"
     },
     {
-      "question-id": "chapter-03-Q2",
+      "question-id": "chapter-03-Q7",
       "title": "Question 9 in Fall 2021 Midterm Exam",
       "difficulty": "Intermediate",
       "type": "explaination",
@@ -142,7 +142,7 @@ let parsedObject;
       ]
     },
     {
-      "question-id": "chapter-03-Q3",
+      "question-id": "chapter-03-Q8",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -181,7 +181,7 @@ let parsedObject;
       ]
     },
     {
-      "question-id": "chapter-03-Q4",
+      "question-id": "chapter-03-Q9",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -220,7 +220,7 @@ let parsedObject;
       ]
     },
     {
-      "question-id": "chapter-03-Q5",
+      "question-id": "chapter-03-Q10",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "function programming",
@@ -259,7 +259,7 @@ let parsedObject;
       ]
     },
     {
-      "question-id": "chapter-03-Q6",
+      "question-id": "chapter-03-Q11",
       "title": "Question 10 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "type": "explaination",
