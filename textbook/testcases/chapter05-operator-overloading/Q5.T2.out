@@ -1,9 +1,11 @@
-Testing copy constructor:
-c copies a = 5
-Testing assignment operator:
-c after assignment from b = 5
-Testing setter/getter:
-c after setPriv = 100
-a remains = 5
-Testing self-assignment:
-c after self-assign = 100
+Initial vectors:
+a = <0, 0>
+b = <-1, -2>
+c = <10, 20>
+
+Testing a += b:
+a = <-1, -2>
+b = <-1, -2>
+
+Testing chained (a += b) += c:
+a = <8, 16>

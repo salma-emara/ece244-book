@@ -174,16 +174,16 @@ int main() {
 '''
 
 [[exercises.testcases]]
-input = "Q5.T1.in"
-output = "Q5.T1.out"
+input = "Q2.T1.in"
+output = "Q2.T1.out"
 
 [[exercises.testcases]]
-input = "Q5.T2.in"
-output = "Q5.T2.out"
+input = "Q2.T2.in"
+output = "Q2.T2.out"
 
 [[exercises.testcases]]
-input = "Q5.T3.in"
-output = "Q5.T3.out"
+input = "Q2.T3.in"
+output = "Q2.T3.out"
 
 
 [[exercises]]
@@ -448,16 +448,16 @@ int main() {
 '''
 
 [[exercises.testcases]]
-input = "Q8.T1.in"
-output = "Q8.T1.out"
+input = "Q5.T1.in"
+output = "Q5.T1.out"
 
 [[exercises.testcases]]
-input = "Q8.T2.in"
-output = "Q8.T2.out"
+input = "Q5.T2.in"
+output = "Q5.T2.out"
 
 [[exercises.testcases]]
-input = "Q8.T3.in"
-output = "Q8.T3.out"
+input = "Q5.T3.in"
+output = "Q5.T3.out"
 
 
 [[exercises]]
@@ -636,13 +636,13 @@ int main() {
 '''
 
 [[exercises.testcases]]
-input = "Q9.T1.in"
-output = "Q9.T1.out"
+input = "Q6.T1.in"
+output = "Q6.T1.out"
 
 [[exercises.testcases]]
-input = "Q9.T2.in"
-output = "Q9.T2.out"
+input = "Q6.T2.in"
+output = "Q6.T2.out"
 
 [[exercises.testcases]]
-input = "Q9.T3.in"
-output = "Q9.T3.out"
+input = "Q6.T3.in"
+output = "Q6.T3.out"
