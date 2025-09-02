@@ -45,15 +45,20 @@ What members of the class Nova must exist for the above code to compile with no 
 '''
 
 answer = '''
-Nova(int, double);
+`Nova(int, double);`
 
-int it;
 
-void setAll(int,double);
+`int it;`
 
-Nova operator+(Nova&)
 
-bool operator!=(Nova&)
+`void setAll(int,double);`
+
+
+`Nova operator+(Nova&)`
+
+
+`bool operator!=(Nova&)`
+
 
 No need for destructor as we don't dynamically allocate space in the object.
 

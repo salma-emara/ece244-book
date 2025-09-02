@@ -9,7 +9,7 @@ let parsedObject;
       "type": "explaination",
       "multipart": false,
       "question": "\nConsider the definition of a class called `Nova`, which is in the file `Nova.h`.\n\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\nclass Nova {\n private:\n // Private members not shown\n public:\n // Public members not shown\n};\n```\n\nNow consider the following program that uses the `Nova` class. The program compiles and runs correctly.\n\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\n#include “Nova.h”\nint main() {\n  Nova a(3, 8.1);\n  Nova* p;\n  Nova b(a);\n  ++a.it;\n  a.setAll(1, 7.8);\n  p = new Nova(9, 12.7);\n  if (a != b)\n    *p = a + b;\n  delete p;\n  return 0;\n}\n```\nWhat members of the class Nova must exist for the above code to compile with no errors? Give variable declarations and/or method prototypes in the table below. Note that you may or may not need to fill every row in the table. \n\n",
-      "answer": "Nova(int, double);\n\nint it;\n\nvoid setAll(int,double);\n\nNova operator+(Nova&)\n\nbool operator!=(Nova&)\n\nNo need for destructor as we don't dynamically allocate space in the object.\n\nNo need for a copy constructor in `Nova b(a)` since one is given by default.\n\nNo need for `operator=` in `*p = a + b`\n"
+      "answer": "`Nova(int, double);`\n\n\n`int it;`\n\n\n`void setAll(int,double);`\n\n\n`Nova operator+(Nova&)`\n\n\n`bool operator!=(Nova&)`\n\n\nNo need for destructor as we don't dynamically allocate space in the object.\n\nNo need for a copy constructor in `Nova b(a)` since one is given by default.\n\nNo need for `operator=` in `*p = a + b`\n"
     },
     {
       "question-id": "chapter-05-Q2",
