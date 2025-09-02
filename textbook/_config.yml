@@ -44,6 +44,28 @@ launch_buttons:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  extra_footer: |
+
+    <!-- Global GA initialization -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGSK006L98"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      function getOrCreateUserID() {
+        let uid = localStorage.getItem("user_id");
+        if (!uid) {
+          uid = "anon-" + Math.random().toString(36).substr(2, 10);
+          localStorage.setItem("user_id", uid);
+        }
+        return uid;
+      }
+
+      const userID = getOrCreateUserID();
+  
+    </script>
+
   use_issues_button: true
   use_repository_button: true
   #Add highlight and annotate feature

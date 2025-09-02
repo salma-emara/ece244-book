@@ -50,22 +50,21 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
         anotherHint.classList.add("another-hint");
         hintContainer.appendChild(anotherHint);
         
-        // quizUserID = getOrCreateQuizUserID();
+        quizUserID = getOrCreateQuizUserID();
 
         // set user id properties
-        // gtag('set', {
-        //     user_properties: {
-        //         user_id_property: quizUserID
-        //     }
-        // });
+        gtag('set', {
+            user_properties: {
+                user_id_property: quizUserID
+            }
+        });
 
     } else {
         hintInfoContainer = hintContainer.querySelector(".hint-info-container");
         anotherHint = hintContainer.querySelector(".another-hint");
     }
 
-    const filename = window.quizFilename || "unknown";
-    const hintKey = `countdown${filename}_${form.id}`;
+    const hintKey = `hint-clicked-${questionID}`;
     let countdown = parseInt(localStorage.getItem(hintKey) || "0");
 
     anotherHint.onclick = async () => {
@@ -73,14 +72,13 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
         countdown++;
         localStorage.setItem(hintKey, countdown);
 
-        // gtag('event', 'testing_hint_requests', {
-        //     event_category: 'Quiz Interaction',
-        //     event_label: `Hint Click - ${filename}_${form.id}`,
-        //     quiz_user_id: quizUserID,
-        //     debug_mode: true
-        // });
-
-        console.log(`Hint count for ${filename}_${form.id}:`, countdown);
+        gtag('event', 'testing_hint_requests', {
+            event_category: 'Quiz Interaction',
+            event_label: `${questionID}`,
+            quiz_user_id: quizUserID,
+            debug_mode: true
+        });
+        console.log(`Hint count for ${hintKey}:`, countdown);
 
         if (anotherHint.textContent === "Get Hint") {
             anotherHint.textContent = "Get New Hint";
@@ -208,8 +206,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         anotherFeedback = feedbackContainer.querySelector(".another-hint");
     }
 
-    const filename = window.quizFilename || "unknown";
-    const hintKey = `countdown${filename}_${form.id}`;
+    const hintKey = `hint-clicked-${questionID}`;
     let countdown = parseInt(localStorage.getItem(hintKey) || "0");
 
     anotherFeedback.onclick = async () => {
@@ -217,7 +214,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         countdown++;
         localStorage.setItem(hintKey, countdown);
 
-        console.log(`Hint count for ${filename}_${form.id}:`, countdown);
+        console.log(`Hint count for ${hintKey}:`, countdown);
 
         if (anotherFeedback.textContent === "Get Feedback") {
             anotherFeedback.textContent = "Get More Feedback";
