@@ -2,7 +2,7 @@ let parsedObject;
   parsedObject = {
   "exercises": [
     {
-      "question-id": "chapter-03-Q7",
+      "question-id": "chapter-05-Q1",
       "title": "Question 2 in Fall 2019 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -12,7 +12,7 @@ let parsedObject;
       "answer": "Nova(int, double);\n\nint it;\n\nvoid setAll(int,double);\n\nNova operator+(Nova&)\n\nbool operator!=(Nova&)\n\nNo need for destructor as we don't dynamically allocate space in the object.\n\nNo need for a copy constructor in `Nova b(a)` since one is given by default.\n\nNo need for `operator=` in `*p = a + b`\n"
     },
     {
-      "question-id": "chapter-03-Q8",
+      "question-id": "chapter-05-Q2",
       "title": "Question 7 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "type": "function programming",
@@ -49,7 +49,7 @@ let parsedObject;
       ]
     },
     {
-      "question-id": "chapter-03-Q9",
+      "question-id": "chapter-05-Q3",
       "title": "Modified Version of Question 9 in Fall 2018 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -59,7 +59,7 @@ let parsedObject;
       "answer": "Constructor 2 5\nConstructor 3 5\nConstructor 3 5\nOperator= 5\nDestructor \nConstructor 1 0\nConstructor 1 0\nConstructor 3 5\nOperator= 0\nDestructor \n5\nConstructor 3 5\nDestructor \n5\n5\nDestructor \nDestructor \nDestructor \n"
     },
     {
-      "question-id": "chapter-03-Q10",
+      "question-id": "chapter-05-Q4",
       "title": "Question 8 in Fall 2021 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
@@ -69,7 +69,7 @@ let parsedObject;
       "answer": "`Mystery(const Mystery&);` // used here: Mystery y(x);\n\n`Mystery(string, int);` // used here: Mystery(n, 4)\n\n`Mystery(int, string);` // used here: Mystery x(3, n);\n\n`void invert(int, string);` // used here: x.invert(1, n)\n\n`bool operator==(const Mystery& right);` // used here: x == y\n\n`Mystery operator/(const Mystery& right);` // used here: y / *p;\n\n`Mystery& operator=(const Mystery&);` // used here: x = y;\n\n`~Mystery();` // used here: delete p;\n"
     },
     {
-      "question-id": "chapter-03-Q11",
+      "question-id": "chapter-05-Q5",
       "title": "Question 8 in Fall 2022 Midterm Exam",
       "difficulty": "Challenging",
       "table": false,
@@ -107,7 +107,7 @@ let parsedObject;
       ]
     },
     {
-      "question-id": "chapter-03-Q12",
+      "question-id": "chapter-05-Q6",
       "title": "Modified Version of Question 14 in Fall 2019 Midterm Exam",
       "difficulty": "Intermediate",
       "table": false,
