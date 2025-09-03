@@ -21,16 +21,15 @@ function generate_exercises(filename) {
 	let currentMultipartForm = null;
 	let multipartIndex = 0;
 
-	ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
-	
 	let quizUserID;
-		
+
 	gtag('set', {
-	user_properties: {
-			user_id_property: userID
+		user_properties: {
+			user_id_property: quizUserID
 		}
 	});
 
+	ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
 
 	for (let i = 0; i < exercises.length; i++) {
 		const ex = exercises[i];
