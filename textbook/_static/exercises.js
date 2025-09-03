@@ -22,6 +22,15 @@ function generate_exercises(filename) {
 	let multipartIndex = 0;
 
 	ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
+	
+	let quizUserID;
+		
+	gtag('set', {
+	user_properties: {
+			user_id_property: userID
+		}
+	});
+
 
 	for (let i = 0; i < exercises.length; i++) {
 		const ex = exercises[i];
@@ -383,8 +392,6 @@ function generate_exercises(filename) {
 
 		});
 
-		let quizUserID;
-		
 		submitButton.addEventListener("click", async function () {
 
 			gtag('event', 'submit_button_clicked', {

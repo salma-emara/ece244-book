@@ -206,11 +206,11 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         quizUserID = getOrCreateUserID();
 
         // set user id properties
-        // gtag('set', {
-        //     user_properties: {
-        //         user_id_property: quizUserID
-        //     }
-        // });
+        gtag('set', {
+            user_properties: {
+                user_id_property: quizUserID
+            }
+        });
 
 
     } else {
