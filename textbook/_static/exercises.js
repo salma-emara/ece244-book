@@ -385,12 +385,6 @@ function generate_exercises(filename) {
 
 		let quizUserID;
 		
-		gtag('set', {
-            user_properties: {
-                user_id_property: quizUserID
-            }
-        });
-
 		submitButton.addEventListener("click", async function () {
 
 			gtag('event', 'submit_button_clicked', {
