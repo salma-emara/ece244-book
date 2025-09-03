@@ -383,7 +383,22 @@ function generate_exercises(filename) {
 
 		});
 
+		let quizUserID;
+		
+		gtag('set', {
+            user_properties: {
+                user_id_property: quizUserID
+            }
+        });
+
 		submitButton.addEventListener("click", async function () {
+
+			gtag('event', 'submit_button_clicked', {
+				event_category: 'Quiz Interaction',
+				event_label: `submit-${questionID}`,
+				quiz_user_id: quizUserID,
+				debug_mode: true
+			});s
 
 			resultMessage.style.display = "block";
 
