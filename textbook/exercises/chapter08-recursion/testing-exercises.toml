@@ -1,0 +1,153 @@
+[[exercises]]
+question-id = "chapter-08-Q1"
+title = "Question 9 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= false
+
+question = '''
+Write a recursive function that replaces each element of an array of positive integers with its **prefix sum**. The prefix sum of an element is the sum of the element and all the elements that are at smaller indices than it. For example, for the 4-element array, `int arr[] = {1, 2, 3, 4};`, the function replaces the elements of the array to be `{1, 3, 6, 10}`. 
+
+The function has the following prototype: 
+<pre>
+void prefixsum(int* arr, int left, int right, int psum);
+</pre>
+and is initially invoked for an array `A` as follows: `prefix(arr, 0, n-1, 0);`.
+
+'''
+
+starter-code = '''
+void prefixsum(int* arr, int left, int right, int psum){
+
+  // Your code here!
+
+}
+'''
+
+answer = '''
+void prefixsum(int* arr, int left, int right, int psum) {
+  if (left > right)
+    return;
+  psum += arr[left];
+  arr[left] = psum;
+  prefixsum(arr, left + 1, right, psum);
+}
+'''
+
+main-function = '''
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;  // read number of elements
+    int* arr = new int[n];
+
+    for (int i = 0; i < n; ++i)
+        cin >> arr[i];  // read array elements
+
+    // Compute prefix sum
+    prefixsum(arr, 0, n - 1, 0);
+
+    // Print output
+    for (int i = 0; i < n; ++i) {
+        cout << arr[i];
+        if (i != n - 1)
+            cout << " ";
+    }
+    cout << endl;
+
+    delete[] arr;
+    return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q1.T1.in"
+output = "Q1.T1.out"
+
+[[exercises.testcases]]
+input = "Q1.T2.in"
+output = "Q1.T2.out"
+
+[[exercises.testcases]]
+input = "Q1.T3.in"
+output = "Q1.T3.out"
+
+
+[[exercises]]
+question-id = "chapter-08-Q2"
+title = "Question 8 in Fall 2019 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= false
+
+question = '''
+Write a recursive function called `reverseArray` that reverses an n-element array in-place, i.e., without using an additional array. For example, given `int arr[] = {1, 2, 3, 4, 5, 6, 7};`, the function changes the array to have `{7, 6, 5, 4, 3, 2, 1}`.
+
+That is, the `reverseArray` function swaps elements `a[i]` with element `a[n - i - 1]`. For an n-element array, the function is called like this: `reverseArray(a, 0, n-1);`.
+
+Write your answer below. You are not allowed to use any loops in your solution.
+'''
+
+starter-code = '''
+void reverseArray(int* array, int left, int right) {
+
+  // Your code here!
+
+}
+'''
+
+answer = '''
+void reverseArray(int* array, int left, int right) {
+  if (left >= right)
+    return;
+  int tmp = array[left];
+  array[left] = array[right];
+  array[right] = tmp;
+  if (right - left > 1) {
+    reverseArray(array, left + 1, right - 1);
+  }
+}
+'''
+
+main-function = '''
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;  // read number of elements
+    int* arr = new int[n];
+
+    for (int i = 0; i < n; ++i)
+        cin >> arr[i];  // read array elements
+
+    // Reverse the array
+    reverseArray(arr, 0, n - 1);
+
+    // Print output
+    for (int i = 0; i < n; ++i) {
+        cout << arr[i];
+        if (i != n - 1)
+            cout << " ";
+    }
+    cout << endl;
+
+    delete[] arr;
+    return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q2.T1.in"
+output = "Q2.T1.out"
+
+[[exercises.testcases]]
+input = "Q2.T2.in"
+output = "Q2.T2.out"
