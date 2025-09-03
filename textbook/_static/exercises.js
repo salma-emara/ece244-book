@@ -395,7 +395,7 @@ function generate_exercises(filename) {
 
 			gtag('event', 'submit_button_clicked', {
 				event_category: 'Quiz Interaction',
-				event_label: `submit-${questionID}`,
+				event_label: `submit-${ex["question-id"]}`,
 				quiz_user_id: quizUserID,
 				debug_mode: true
 			});
