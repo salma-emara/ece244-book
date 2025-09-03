@@ -21,14 +21,6 @@ function generate_exercises(filename) {
 	let currentMultipartForm = null;
 	let multipartIndex = 0;
 
-	let quizUserID = getOrCreateUserID();
-
-	gtag('set', {
-		user_properties: {
-			user_id_property: quizUserID
-		}
-	});
-
 	ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/');
 
 	for (let i = 0; i < exercises.length; i++) {
@@ -391,7 +383,18 @@ function generate_exercises(filename) {
 
 		});
 
+		let quizUserID;
+
 		submitButton.addEventListener("click", async function () {
+
+			quizUserID = getOrCreateUserID();
+
+			gtag('set', {
+				user_properties: {
+					user_id_property: quizUserID
+				}
+			});
+
 
 			gtag('event', 'submit_button_clicked', {
 				event_category: 'Quiz Interaction',
