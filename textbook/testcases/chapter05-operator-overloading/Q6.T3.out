@@ -1,0 +1,10 @@
+Initial fractions:
+X = 2/1
+Y = 3/1
+Integer k = 5
+
+Testing Fraction * Fraction:
+Z = X * Y = 6/1
+
+Testing Fraction * int:
+W = X * k = 10/5

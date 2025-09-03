@@ -1,0 +1,8 @@
+Before: 0 0
+After: 0 0
+Before: 0 10
+After: 10 0
+Before: -1 -1
+After: -1 -1
+Before: 999999999 -999999999
+After: -999999999 999999999

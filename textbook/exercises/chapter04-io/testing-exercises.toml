@@ -1,0 +1,580 @@
+[[exercises]]
+question-id = "chapter-04-Q1"
+title = "Question 5 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+table = false
+type = "tracing"
+multipart= true
+
+question = '''
+Consider the following program.
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      inFile.clear();
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+
+Given the following contents of `"input.txt"`, write the output.
+
+(1) `"input.txt"`
+<pre>
+  1
+  2
+  3
+</pre>
+'''
+
+answer = '''
+a = 1
+'''
+
+[[exercises]]
+question-id = "chapter-04-Q2"
+title = "Question 5 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+table = false
+type = "tracing"
+multipart= true
+
+question = '''
+(2) `"input.txt"`
+<pre>
+  a32
+  b86
+  3
+</pre>
+'''
+
+answer = '''
+failed..
+failed..
+a = 3
+'''
+
+
+
+[[exercises]]
+question-id = "chapter-04-Q3"
+title = "Question 5 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+table = false
+type = "explaination"
+multipart= true
+
+question = '''
+(3) `"input.txt"`
+<pre>
+a32
+b86 3
+</pre>
+'''
+
+answer = '''
+failed..
+
+failed..
+
+failed..
+
+And it keeps repeating
+'''
+
+
+[[exercises]]
+question-id = "chapter-04-Q4"
+title = "Question 5 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+table = false
+type = "tracing"
+multipart= true
+
+question = '''
+Now you remove the `infile.clear()` from the code, so the program becomes:
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      // inFile.clear(); COMMENTED OUT
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+
+(1) `"input.txt"`
+<pre>
+1
+2
+3
+</pre>
+'''
+
+answer = '''
+a = 1
+'''
+
+
+
+[[exercises]]
+question-id = "chapter-04-Q5"
+title = "Question 5 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+table = false
+type = "explaination"
+multipart= true
+
+question = '''
+(2) `"input.txt"`
+<pre>
+a32
+b86
+3
+</pre>
+'''
+
+answer = '''
+failed..
+
+failed..
+
+failed..
+
+And it keeps repeating
+'''
+
+
+[[exercises]]
+question-id = "chapter-04-Q6"
+title = "Question 5 in Fall 2022 Midterm Exam"
+difficulty = "Easy"
+table = false
+type = "explaination"
+multipart= true
+
+question = '''
+(3) `"input.txt"`
+<pre>
+a32
+b86 3
+</pre>
+'''
+
+answer = '''
+failed..
+
+failed..
+
+failed..
+
+And it keeps repeating
+'''
+
+
+
+[[exercises]]
+question-id = "chapter-04-Q7"
+title = "Question 2 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= false
+
+question = '''
+Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using `cin`) and then immediately outputs the input integer (using `cout`), one integer per line. When a `'.'` character is encountered, the function prints the message `Done` on a line by itself and returns. If the user enters any characters other than integer digits or the `'.'`, the function prints the message `Error` on a line by itself and returns. You may assume the user will never enter `eof`.
+
+Thus, for example, if the user enters `51 16 700 .`, the function prints:
+<pre>
+51
+16
+700
+Done
+</pre>
+
+However, if the user enters `101 21 13 abc 444`, the function prints:
+<pre>
+101
+21
+13
+Error
+</pre>
+'''
+
+starter-code = '''
+void readInts() {
+
+  // Your code here
+
+}
+'''
+
+answer = '''
+void readInts() {
+  int num = 0;
+  string dot;
+  cin >> num;
+  while (!cin.fail()) {  // received a number
+    cout << num << endl;
+    cin >> num;
+  }
+  // then read a non-integer number
+  string c;
+  // need to clear fail flag before doing cin
+  cin.clear();
+  // Read in a string
+  cin >> c;
+  if (c == ".") {
+    cout << "Done" << endl;
+  } else {
+    cout << "Error" << endl;
+  }
+} 
+'''
+
+main-function = '''
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  readInts();
+  return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q2.T1.in"
+output = "Q2.T1.out"
+
+[[exercises.testcases]]
+input = "Q2.T2.in"
+output = "Q2.T2.out"
+
+[[exercises.testcases]]
+input = "Q2.T3.in"
+output = "Q2.T3.out"
+
+
+
+[[exercises]]
+question-id = "chapter-04-Q8"
+title = "Question 3 in Fall 2018 Midterm Exam"
+difficulty = "Intermediate"
+table = false
+type = "programming"
+multipart= false
+
+question = '''
+
+Consider the following program that uses `stringstreams` to read a command. The command has the following format:
+<pre>
+count intArg
+</pre>
+
+The command word is `count` and `intArg` is an integer argument. The command must have only one integer argument, e.g `count 3`.
+
+The function `handle_count` performs the reading of the integer value. If the integer is valid, it returns `true` and 
+updates the value of `intArg`. Otherwise, it returns `false`.
+
+(1) Determine the number of arguments and the type of each argument and indicate them in the code above in the 
+prototype of the function, `handle_count`. Further, indicate what parameters are passed to the function when it 
+is invoked. 
+   
+You may not modify main by adding or removing line, other than by indicating the formal arguments 
+in the function prototype and actual arguments of the function invocation. 
+
+(2) Write the header and body of the `handle_count` function below so it performs as indicated above. 
+'''
+
+starter-code = '''
+#include <iostream>
+using namespace std;
+#include <sstream>
+#include <string>
+
+// function prototype
+bool handle_count( < TO DO: fill in the blank > ){
+
+  // TO DO: write the body of handle_count
+
+}
+
+int main() {
+  string line;
+  string command;
+  int intArg;
+  getline(cin, line);
+  stringstream lineStream(line);
+  lineStream >> command;
+  if (command == "count") {
+    if (handle_count( <TO DO: ill in the blank> )) {
+      cout << "Integer argument is " << intArg << endl;
+      return (0);
+    } else {
+      cout << "Invalid arguments" << endl;
+      return (-1);
+    }
+  } else {
+    cout << "Invalid command" << endl;
+    return (-1);
+  }
+}
+
+'''
+
+answer = '''
+#include <iostream>
+using namespace std;
+#include <sstream>
+#include <string>
+
+bool handle_count(stringstream& line, int& intArg) {
+  line >> intArg;
+  if (line.fail()) {
+    return false;
+  } 
+  string dummy;
+  line >> dummy; 
+  if (line.fail()) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+int main() {
+  string line;
+  string command;
+  int intArg;
+  getline(cin, line);
+  stringstream lineStream(line);
+  lineStream >> command;
+  if (command == "count") {
+    if (handle_count(lineStream, intArg)) {
+      cout << "Integer argument is " << intArg << endl;
+      return (0);
+    } else {
+      cout << "Invalid arguments" << endl;
+      return (-1);
+    }
+  } else {
+    cout << "Invalid command" << endl;
+    return (-1);
+  }
+}
+
+'''
+
+
+[[exercises.testcases]]
+input = "Q3.T1.in"
+output = "Q3.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.T2.in"
+output = "Q3.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.T3.in"
+output = "Q3.T3.out"
+
+
+[[exercises]]
+question-id = "chapter-04-Q9"
+title = "Question 6 in Fall 2019 Midterm Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = '''
+
+For each of the following main functions, indicate the output produced in response to the user entering `1 2 3 4 five` on the keyboard followed by the `Enter` key. Choose only one answer.
+
+(1)
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+int main() {
+  int num = 0;
+  int sum = 0;
+  while (!cin.fail()) {
+    cin >> num;
+    sum = sum + num;
+  }
+  cout << sum << endl;
+  return (0);
+}
+```
+
+Choose one the following choices:
+
+'''
+
+answer = [2]
+
+choices = [
+  "6",
+  "10",
+  "14",
+  "None; the program runs in an infinite loop"
+]
+
+explanation = '''**14**, The last loop when `five` is entered, `num` is unchanged and 4 will be added to `sum` again. 
+However, in some compilers, `sum` may be printed to be 10, as the complier will set `num` to 0 when `cin.fail()` 
+is raised. This means, **10** is considered correct too.'''
+
+
+[[exercises]]
+question-id = "chapter-04-Q10"
+title = "Question 6 in Fall 2019 Midterm Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = '''
+
+(2)
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+int main() {
+  int num = 0;
+  int sum = 0;
+  bool more = true;
+  while (more) {
+    cin >> num;
+    if (cin.fail())
+      more = false;
+    else
+      sum = sum + num;
+  }
+  cout << sum << endl;
+  return (0);
+}
+```
+
+Choose one the following choices:
+
+'''
+
+answer = [1]
+
+choices = [
+  "6",
+  "10",
+  "14",
+  "None; the program runs in an infinite loop"
+]
+
+explanation = '''10'''
+
+
+[[exercises]]
+question-id = "chapter-04-Q11"
+title = "Question 7 in Fall 2019 Midterm Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= false
+
+question = '''
+Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using cin) and then immediately outputs the input integer (using cout), one integer per line.
+
+When the end-of-file is reached, the function prints the message `"End of File Reached"` on a line by itself before returning. If a non-integer is input the function should print the message
+`"Invalid Input"` on a line by itself, should discard the rest of the stream and should continue reading integers again until the end-of-file is reached. 
+'''
+
+starter-code = '''
+void readInts() {
+
+  // Your code here
+
+}
+'''
+
+answer = '''
+void readInts() {
+  int num = 0;
+  cin >> num;
+  while (!cin.eof()) {  // received a number
+    if (cin.fail()) {
+      cin.clear();
+      cin.ignore(1000, '\n');
+      cout << "Invalid Input" << endl;
+      cin >> num;
+    } else {
+      cout << num << endl;
+      cin >> num;
+    }
+  }
+  cout << "End of File Reached" << endl;
+}
+'''
+
+append-before = '''
+#include <iostream>
+using namespace std;
+
+'''
+main-function = '''
+int main() {
+  readInts();
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q4.T1.in"
+output = "Q4.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.T2.in"
+output = "Q4.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.T3.in"
+output = "Q4.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.T4.in"
+output = "Q4.T4.out"

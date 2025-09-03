@@ -20,49 +20,55 @@ parts:
           - file: chapters/chapter01-basics/pass-to-functions.md
           - file: chapters/chapter01-basics/separate-compilation.md
           - file: chapters/chapter01-basics/exercises.md
+          - file: chapters/chapter01-basics/testing-exercises.md
       - file: chapters/chapter02-classes/intro.md
         sections:
           - file: chapters/chapter02-classes/structs-and-classes.md
           - file: chapters/chapter02-classes/constructors.md
           - file: chapters/chapter02-classes/destructors.md
           - file: chapters/chapter02-classes/exercises.md
+          - file: chapters/chapter02-classes/testing-exercises.md
       - file: chapters/chapter03-dma-pointers/intro.md
         sections:
           - file: chapters/chapter03-dma-pointers/dma.md
           - file: chapters/chapter03-dma-pointers/why-destructor.md
-      - file: chapters/chapter03-io/intro.md
+          - file: chapters/chapter03-dma-pointers/testing-exercises.md
+      - file: chapters/chapter04-io/intro.md
         sections:
-          - file: chapters/chapter03-io/exercises.md
-      - file: chapters/chapter04-pointers/intro.md
+          - file: chapters/chapter04-io/exercises.md
+          - file: chapters/chapter04-io/testing-exercises.md
+      - file: chapters/chapter05-operator-overloading/intro.md
         sections:
-          - file: chapters/chapter04-pointers/exercises.md
-      - file: chapters/chapter05-dynamic-mem-alloc/intro.md
+          - file: chapters/chapter05-operator-overloading/exercises.md
+          - file: chapters/chapter05-operator-overloading/testing-exercises.md
+      - file: chapters/chapter06-objects-w-pointers/intro.md
         sections:
-          - file: chapters/chapter05-dynamic-mem-alloc/exercises.md
-      - file: chapters/chapter06-operator-overloading/intro.md
+          - file: chapters/chapter06-objects-w-pointers/exercises.md
+          - file: chapters/chapter06-objects-w-pointers/testing-exercises.md
+      - file: chapters/chapter07-linked-lists/intro.md
         sections:
-          - file: chapters/chapter06-operator-overloading/exercises.md
-      - file: chapters/chapter07-objects-w-pointers/intro.md
+          - file: chapters/chapter07-linked-lists/exercises.md
+          - file: chapters/chapter07-linked-lists/testing-exercises.md
+      - file: chapters/chapter08-recursion/intro.md
         sections:
-          - file: chapters/chapter07-objects-w-pointers/exercises.md
-      - file: chapters/chapter08-linked-lists/intro.md
+          - file: chapters/chapter08-recursion/exercises.md
+          - file: chapters/chapter08-recursion/testing-exercises.md
+      - file: chapters/chapter09-complexity-analysis/intro.md
         sections:
-          - file: chapters/chapter08-linked-lists/exercises.md
-      - file: chapters/chapter09-recursion/intro.md
+          - file: chapters/chapter09-complexity-analysis/exercises.md
+          - file: chapters/chapter09-complexity-analysis/testing-exercises.md
+      - file: chapters/chapter10-inheritance/intro.md
         sections:
-          - file: chapters/chapter09-recursion/exercises.md
-      - file: chapters/chapter10-complexity-analysis/intro.md
+          - file: chapters/chapter10-inheritance/exercises.md
+          - file: chapters/chapter10-inheritance/testing-exercises.md
+      - file: chapters/chapter11-bst/intro.md
         sections:
-          - file: chapters/chapter10-complexity-analysis/exercises.md
-      - file: chapters/chapter11-inheritance/intro.md
+          - file: chapters/chapter11-bst/exercises.md
+          - file: chapters/chapter11-bst/testing-exercises.md
+      - file: chapters/chapter12-hash-tables/intro.md
         sections:
-          - file: chapters/chapter11-inheritance/exercises.md
-      - file: chapters/chapter12-bst/intro.md
-        sections:
-          - file: chapters/chapter12-bst/exercises.md
-      - file: chapters/chapter13-hash-tables/intro.md
-        sections:
-          - file: chapters/chapter13-hash-tables/exercises.md
+          - file: chapters/chapter12-hash-tables/exercises.md
+          - file: chapters/chapter12-hash-tables/testing-exercises.md
   - caption: "Hidden Pages"
     hidden: true
     chapters:

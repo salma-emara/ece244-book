@@ -1,0 +1,1553 @@
+[[exercises]]
+question-id = "chapter-07-Q1"
+title = "Question 6 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = '''
+The following is the definition of the class `ListNode` which represents a node in a linked list. All the members are public for simplicity. The head node of the linked list is pointed to by `head`.
+
+```{code-block} cpp
+class ListNode {
+ public:
+  int key;
+  ListNode* next;
+};
+
+ListNode* head;
+```
+
+The following is a non-member function to traverse the linked list. However, some content from the function is removed, as shown by the comments. What are the removed lines?
+
+```{code-block} cpp
+// Non-member function invoked as traverse(head)
+
+void traverse(ListNode* h) {
+  if (h == nullptr)
+    return;
+  ListNode** ptr = &(h->next);
+  // Line 1 removed
+
+  while (<condition removed>) {
+    // Line 2 removed
+    // Line 3 removed
+  }
+}
+```
+
+(1) What should `Line 1 removed` be replaced with? Choose one answer.
+
+'''
+
+answer = [1]
+
+choices = [
+  "(1) `Nothing`",
+  "(2) `cout << h->key << endl;`",
+  "(3) `cout << ptr->key << endl;`",
+  "(4) `cout << (*h)->key << endl;`",
+  "(5) `cout << (*ptr)->key;`"
+]
+
+explanation = '''(2) `cout << h->key << endl;`'''
+
+
+[[exercises]]
+question-id = "chapter-07-Q2"
+title = "Question 6 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = '''
+(2) What should the `<condition removed>` be? Choose one answer.
+'''
+
+answer = [0,1,2,3,4]
+
+choices = [
+  "(1) true",
+  "(3) `ptr != nullptr`",
+  "(3) `*ptr == nullptr`",
+  "(4) `*ptr != h`",
+  "(5) `ptr != *h`"
+]
+
+explanation = '''All are incorrect. The correct answer is `*ptr != nullptr`'''
+
+[[exercises]]
+question-id = "chapter-07-Q3"
+title = "Question 6 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = '''
+(3) What should `Line 2 removed` be replaced with? Choose one answer.
+'''
+
+answer = [4]
+
+choices = [
+  "(1) true",
+  "(2) `ptr != nullptr`",
+  "(3) `*ptr == nullptr`",
+  "(4) `*ptr != h`",
+  "(5) `ptr != *h`"
+]
+
+explanation = '''(5) `cout << (*ptr)->key << endl;`'''
+
+[[exercises]]
+question-id = "chapter-07-Q4"
+title = "Question 6 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "multiple-choice"
+multipart= true
+
+question = '''
+(3) What should `Line 2 removed` be replaced with? Choose one answer.
+'''
+
+answer = [1]
+
+choices = [
+  "(1)Nothing",
+  "(2) `ptr = &((*ptr)->next);`",
+  "(3) `ptr = (*ptr)->next;`",
+  "(4) `ptr = ptr->next;`",
+  "(5) `ptr = (*ptr).next;`"
+]
+
+explanation = ''' (2) `ptr = &((*ptr)->next);`'''
+
+
+[[exercises]]
+question-id = "chapter-07-Q5"
+title = "Question 7 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= false
+
+question = '''
+It is desired to implement an efficient deletion function in a linked list. You are given a linked list pointed to by `head` and a pointer `ptr` to a node in a linked list, which is guaranteed not to be the last node on the list (*i.e.*, not the tail node ). Write a function `removeNode` that removes this node from the list. You should not iterate the nodes in the list. 
+
+You may assume the following is the definition of the class, `ListNode`. The head node of the linked list is pointed to by `head`.
+
+```{code-block} cpp
+class ListNode {
+ public:
+  int key;
+  ListNode* next;
+};
+ListNode* head;
+```
+
+Write your answer below. You are not allowed to change the function's argument or return type. 
+'''
+
+starter-code = '''
+void removeNode(ListNode* node){
+    
+    // Write your code here!
+
+}
+'''
+
+answer = '''
+
+void removeNode(ListNode* node) {
+  ListNode* next = node->next;
+  node->key = next->key;
+  node->next = next->next;
+  delete next;
+}
+
+'''
+append-before = '''
+class ListNode {
+ public:
+  int key;
+  ListNode* next;
+};
+ListNode* head;
+'''
+
+main-function = '''
+#include <iostream>
+using namespace std;
+
+void printList(ListNode* h) {
+  while (h != nullptr) {
+    cout << h->key;
+    if (h->next) cout << " -> ";
+    h = h->next;
+  }
+  cout << endl;
+}
+
+int main() {
+  int N, idx;
+  cin >> N >> idx;
+
+  // Build list for testcases
+  head = nullptr;
+  ListNode* tail = nullptr;
+  for (int i = 0; i < N; i++) {
+    int val;
+    cin >> val;
+    ListNode* newNode = new ListNode;
+    newNode->key = val;
+    newNode->next = nullptr;
+    if (head == nullptr) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      tail->next = newNode;
+      tail = newNode;
+    }
+  }
+
+  cout << "Original list:" << endl;
+  printList(head);
+
+  // Get pointer to node idx
+  ListNode* target = head;
+  for (int i = 0; i < idx; i++) {
+    target = target->next;
+  }
+
+  cout << "Deleting node at index " << idx
+       << " (value " << target->key << "):" << endl;
+
+  removeNode(target);
+
+  printList(head);
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q2.T1.in"
+output = "Q2.T1.out"
+
+[[exercises.testcases]]
+input = "Q2.T2.in"
+output = "Q2.T2.out"
+
+[[exercises.testcases]]
+input = "Q2.T3.in"
+output = "Q2.T3.out"
+
+[[exercises.testcases]]
+input = "Q2.T4.in"
+output = "Q2.T4.out"
+
+
+
+
+
+[[exercises]]
+question-id = "chapter-07-Q6"
+title = "Question 8 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= true
+
+question = '''
+
+You are provided with an implementation of a `linkedList` class as well as a `listNode` class. The `linkedList` class is shown below, you may assum every function is correctly implemented. 
+
+```{code-block} cpp
+class linkedList {
+ private:
+  listNode* head;
+
+ public:
+  linkedList();
+  linkedList(const linkedList& other);
+  ~linkedList();
+  linkedList& operator=(const linkedList& rhs);
+  /*creates a new head with key k and updates the linked list accordingly*/
+  void insertKeyatHead(int k);
+
+  /*creates a new node at tail with value k*/
+  void insertKeyatTail(int k);
+
+  // if the list is empty the following functions
+  // return false and do nothing, otherwise they perform the
+  // mentioned tasks, update their arguments with the key
+  // of deleted node, and return true
+  bool deleteTail(int& k);  // deletes the node at tail
+  bool deleteHead(int& k);  // deletes the node at head
+};
+```
+
+We wish to implement a `myQueue` class that represents a *queue*. A queue is a data structure in which all insertions are done on one end, called the *back* and all deletions are done on another end called the *front*. The `myQueue` class looks has the following definition:
+
+```{code-block} cpp
+class myQueue {
+ private:
+  linkedList data; /* lined list */
+ public:
+  myQueue();             /* create an empty queue */
+  void push_back(int k); /* insert node with key k at back */
+  int pop_front();       /* remove node at front, return its key */
+  int front();           /* return key of node at front */
+  bool isempty();        /* return true if queue is empty */
+};
+```
+
+You are required to implement the following functions of the queue class to have the mentioned functionality. Note that the only private data member of `myQueue` is a `linkedList` named `data`. 
+
+(1) Implement the `void myQueue::push_back(int k);` function. In this function, a new node with value of `k` is added at the back of the queue.
+
+'''
+
+starter-code = '''
+void myQueue::push_back(int k){
+
+}
+'''
+
+answer = '''
+void myQueue::push_back(int k){
+  data.insertKeyatTail(k);
+}
+'''
+
+
+append-before = '''
+#include <iostream>
+using namespace std;
+
+class listNode {
+ public:
+  int key;
+  listNode* next;
+  listNode(int k) : key(k), next(nullptr) {}
+};
+
+class linkedList {
+private:
+  listNode* head;
+
+public:
+  // Default constructor
+  linkedList() : head(nullptr) {}
+
+  // Copy constructor
+  linkedList(const linkedList& other) {
+    head = nullptr;
+    listNode* temp = other.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+  }
+
+  // Destructor
+  ~linkedList() {
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+  }
+
+  // Assignment operator
+  linkedList& operator=(const linkedList& rhs) {
+    if (this == &rhs) return *this; // self-assignment check
+
+    // Delete existing nodes
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+    head = nullptr;
+
+    // Deep copy from rhs
+    listNode* temp = rhs.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+    return *this;
+  }
+
+  // Insert at head
+  void insertKeyatHead(int k) {
+    listNode* node = new listNode(k);
+    node->next = head;
+    head = node;
+  }
+
+  // Insert at tail
+  void insertKeyatTail(int k) {
+    listNode* node = new listNode(k);
+    if (!head) {
+      head = node;
+      return;
+    }
+    listNode* temp = head;
+    while (temp->next) temp = temp->next;
+    temp->next = node;
+  }
+
+  // Delete head node
+  bool deleteHead(int& k) {
+    if (!head) return false;
+    listNode* temp = head;
+    k = temp->key;
+    head = head->next;
+    delete temp;
+    return true;
+  }
+
+  bool deleteTail(int& k) {
+    if (!head) return false;
+    if (!head->next) { // only one node
+      k = head->key;
+      delete head;
+      head = nullptr;
+      return true;
+    }
+    listNode* temp = head;
+    while (temp->next->next) temp = temp->next;
+    k = temp->next->key;
+    delete temp->next;
+    temp->next = nullptr;
+    return true;
+  }
+
+  listNode* getHead() { return head; }
+  bool isEmpty() { return head == nullptr; }
+};
+
+class myQueue {
+ private:
+  linkedList data;  // linked list
+
+ public:
+  myQueue() {}
+  void push_back(int k);
+
+  void printQueue() {
+    listNode* temp = data.getHead();
+    cout << "Queue contents (front → back): ";
+    while (temp) {
+      cout << temp->key << " ";
+      temp = temp->next;
+    }
+    cout << endl;
+  }
+
+};
+'''
+
+main-function = '''
+int main() {
+  myQueue q;
+  int x;
+
+  // Read until end-of-file (Ctrl+D or file input)
+  while (cin >> x) {
+      q.push_back(x);
+      cout << "Pushed: " << x << endl;
+  }
+
+  // Print the queue at the end
+  q.printQueue();
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q3.P1.T1.in"
+output = "Q3.P1.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P1.T2.in"
+output = "Q3.P1.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P1.T3.in"
+output = "Q3.P1.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P1.T4.in"
+output = "Q3.P1.T4.out"
+
+
+
+
+
+
+
+[[exercises]]
+question-id = "chapter-07-Q7"
+title = "Question 8 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= true
+
+question = '''
+(2) Implement the `int myQueue::front()` function. In this function, the value of the key of the front node in the queue is returned and no updated happen to the queue. If the queue is empty `-1` is returned. 
+'''
+
+starter-code = '''
+int myQueue::front(){
+
+}
+'''
+
+answer = '''
+int myQueue::front(){
+  int d;
+  bool isDeleted = data.deleteHead(d);
+  if (isDeleted == false) {
+    return -1;
+  } else {
+    data.insertKeyatHead(d);
+    return d;
+  }
+}
+'''
+
+append-before = '''
+#include <iostream>
+using namespace std;
+
+class listNode {
+ public:
+  int key;
+  listNode* next;
+  listNode(int k) : key(k), next(nullptr) {}
+};
+
+class linkedList {
+private:
+  listNode* head;
+
+public:
+  // Default constructor
+  linkedList() : head(nullptr) {}
+
+  // Copy constructor
+  linkedList(const linkedList& other) {
+    head = nullptr;
+    listNode* temp = other.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+  }
+
+  // Destructor
+  ~linkedList() {
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+  }
+
+  // Assignment operator
+  linkedList& operator=(const linkedList& rhs) {
+    if (this == &rhs) return *this; // self-assignment check
+
+    // Delete existing nodes
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+    head = nullptr;
+
+    // Deep copy from rhs
+    listNode* temp = rhs.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+    return *this;
+  }
+
+  // Insert at head
+  void insertKeyatHead(int k) {
+    listNode* node = new listNode(k);
+    node->next = head;
+    head = node;
+  }
+
+  // Insert at tail
+  void insertKeyatTail(int k) {
+    listNode* node = new listNode(k);
+    if (!head) {
+      head = node;
+      return;
+    }
+    listNode* temp = head;
+    while (temp->next) temp = temp->next;
+    temp->next = node;
+  }
+
+  // Delete head node
+  bool deleteHead(int& k) {
+    if (!head) return false;
+    listNode* temp = head;
+    k = temp->key;
+    head = head->next;
+    delete temp;
+    return true;
+  }
+
+  bool deleteTail(int& k) {
+    if (!head) return false;
+    if (!head->next) { // only one node
+      k = head->key;
+      delete head;
+      head = nullptr;
+      return true;
+    }
+    listNode* temp = head;
+    while (temp->next->next) temp = temp->next;
+    k = temp->next->key;
+    delete temp->next;
+    temp->next = nullptr;
+    return true;
+  }
+
+  listNode* getHead() { return head; }
+  bool isEmpty() { return head == nullptr; }
+};
+
+class myQueue {
+ private:
+  linkedList data;  // linked list
+
+ public:
+  myQueue() {}
+  // push_back from Part (1)
+  void push_back(int k) { data.insertKeyatTail(k); }
+  int front();
+
+  void printQueue() {
+    listNode* temp = data.getHead();
+    cout << "Queue contents (front → back): ";
+    while (temp) {
+      cout << temp->key << " ";
+      temp = temp->next;
+    }
+    cout << endl;
+  }
+
+};
+'''
+
+main-function = '''
+
+int main() {
+  myQueue q;
+  int x;
+
+  // Push values
+  while (cin >> x) {
+    q.push_back(x);
+    cout << "Pushed: " << x << endl;
+  }
+
+  // Print front
+  cout << "Front of queue: " << q.front() << endl;
+
+  return 0;
+}
+
+'''
+
+
+[[exercises.testcases]]
+input = "Q3.P2.T1.in"
+output = "Q3.P2.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P2.T2.in"
+output = "Q3.P2.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P2.T3.in"
+output = "Q3.P2.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P2.T4.in"
+output = "Q3.P2.T4.out"
+
+
+
+[[exercises]]
+question-id = "chapter-07-Q8"
+title = "Question 8 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= true
+
+question = '''
+(3) Implement the `bool isempty()` function which returns `true` if there are no nodes in the queue and `false` otherwise. 
+'''
+
+starter-code = '''
+bool myQueue::isempty(){
+
+}
+'''
+
+answer = '''
+bool myQueue::isempty(){
+  int d;
+  bool isDeleted = data.deleteHead(d);
+  if (isDeleted == false) {
+    return true;
+  } else {
+    data.insertKeyatHead(d);
+      return false;
+  }
+}
+'''
+
+append-before = '''
+#include <iostream>
+using namespace std;
+
+class listNode {
+ public:
+  int key;
+  listNode* next;
+  listNode(int k) : key(k), next(nullptr) {}
+};
+
+class linkedList {
+private:
+  listNode* head;
+
+public:
+  // Default constructor
+  linkedList() : head(nullptr) {}
+
+  // Copy constructor
+  linkedList(const linkedList& other) {
+    head = nullptr;
+    listNode* temp = other.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+  }
+
+  // Destructor
+  ~linkedList() {
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+  }
+
+  // Assignment operator
+  linkedList& operator=(const linkedList& rhs) {
+    if (this == &rhs) return *this; // self-assignment check
+
+    // Delete existing nodes
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+    head = nullptr;
+
+    // Deep copy from rhs
+    listNode* temp = rhs.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+    return *this;
+  }
+
+  // Insert at head
+  void insertKeyatHead(int k) {
+    listNode* node = new listNode(k);
+    node->next = head;
+    head = node;
+  }
+
+  // Insert at tail
+  void insertKeyatTail(int k) {
+    listNode* node = new listNode(k);
+    if (!head) {
+      head = node;
+      return;
+    }
+    listNode* temp = head;
+    while (temp->next) temp = temp->next;
+    temp->next = node;
+  }
+
+  // Delete head node
+  bool deleteHead(int& k) {
+    if (!head) return false;
+    listNode* temp = head;
+    k = temp->key;
+    head = head->next;
+    delete temp;
+    return true;
+  }
+
+  bool deleteTail(int& k) {
+    if (!head) return false;
+    if (!head->next) { // only one node
+      k = head->key;
+      delete head;
+      head = nullptr;
+      return true;
+    }
+    listNode* temp = head;
+    while (temp->next->next) temp = temp->next;
+    k = temp->next->key;
+    delete temp->next;
+    temp->next = nullptr;
+    return true;
+  }
+  
+  listNode* getHead() { return head; }
+  bool isEmpty() { return head == nullptr; }
+
+};
+
+class myQueue {
+ private:
+  linkedList data;  // linked list
+
+ public:
+  myQueue() {}
+  // push_back from Part (1)
+  void push_back(int k) { 
+    data.insertKeyatTail(k); 
+    }
+
+  // front() from Part (2)
+  int front() {
+    int d;
+    bool deleted = data.deleteHead(d);
+    if (!deleted) return -1;
+    data.insertKeyatHead(d);
+    return d;
+  }
+
+  bool isempty();
+
+  void printQueue() {
+    listNode* temp = data.getHead();
+    cout << "Queue contents (front → back): ";
+    while (temp) {
+      cout << temp->key << " ";
+      temp = temp->next;
+    }
+    cout << endl;
+  }
+
+};
+'''
+
+main-function = '''
+
+int main() {
+  myQueue q;
+
+  cout << "Queue empty? " << (q.isempty() ? "Yes" : "No") << endl;
+
+  int val;
+  while (cin >> val) {      // read numbers from input until EOF
+      q.push_back(val);
+      cout << "Pushed: " << val << endl;
+  }
+
+  cout << "Queue empty? " << (q.isempty() ? "Yes" : "No") << endl;
+
+  q.printQueue();
+
+  return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q3.P3.T1.in"
+output = "Q3.P3.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T2.in"
+output = "Q3.P3.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T3.in"
+output = "Q3.P3.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P3.T4.in"
+output = "Q3.P3.T4.out"
+
+
+
+[[exercises]]
+question-id = "chapter-07-Q9"
+title = "Question 8 in Fall 2021 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= true
+
+question = '''
+(4) Implement the `int pop_front()` function. In this function, the value of the key of the front of the queue is returned and the node at front is removed from the queue. If the queue is empty, `-1` is returned. 
+'''
+
+starter-code = '''
+int myQueue::pop_front(){
+
+}
+'''
+
+answer = '''
+int myQueue::pop_front(){
+  int d;
+  bool isDeleted = data.deleteHead(d);
+  if (isDeleted == false) {
+    return -1;
+  } else {
+    return d;
+  } 
+}
+'''
+
+append-before = '''
+#include <iostream>
+using namespace std;
+
+class listNode {
+ public:
+  int key;
+  listNode* next;
+  listNode(int k) : key(k), next(nullptr) {}
+};
+
+class linkedList {
+private:
+  listNode* head;
+
+public:
+  // Default constructor
+  linkedList() : head(nullptr) {}
+
+  // Copy constructor
+  linkedList(const linkedList& other) {
+    head = nullptr;
+    listNode* temp = other.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+  }
+
+  // Destructor
+  ~linkedList() {
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+  }
+
+  // Assignment operator
+  linkedList& operator=(const linkedList& rhs) {
+    if (this == &rhs) return *this; // self-assignment check
+
+    // Delete existing nodes
+    listNode* curr = head;
+    while (curr) {
+      listNode* next = curr->next;
+      delete curr;
+      curr = next;
+    }
+    head = nullptr;
+
+    // Deep copy from rhs
+    listNode* temp = rhs.head;
+    listNode** ptr = &head;
+    while (temp) {
+      *ptr = new listNode(temp->key);
+      ptr = &((*ptr)->next);
+      temp = temp->next;
+    }
+    return *this;
+  }
+
+  // Insert at head
+  void insertKeyatHead(int k) {
+    listNode* node = new listNode(k);
+    node->next = head;
+    head = node;
+  }
+
+  // Insert at tail
+  void insertKeyatTail(int k) {
+    listNode* node = new listNode(k);
+    if (!head) {
+      head = node;
+      return;
+    }
+    listNode* temp = head;
+    while (temp->next) temp = temp->next;
+    temp->next = node;
+  }
+
+  // Delete head node
+  bool deleteHead(int& k) {
+    if (!head) return false;
+    listNode* temp = head;
+    k = temp->key;
+    head = head->next;
+    delete temp;
+    return true;
+  }
+
+  bool deleteTail(int& k) {
+    if (!head) return false;
+    if (!head->next) { // only one node
+      k = head->key;
+      delete head;
+      head = nullptr;
+      return true;
+    }
+    listNode* temp = head;
+    while (temp->next->next) temp = temp->next;
+    k = temp->next->key;
+    delete temp->next;
+    temp->next = nullptr;
+    return true;
+  }
+  
+  listNode* getHead() { return head; }
+  bool isEmpty() { return head == nullptr; }
+
+};
+
+class myQueue {
+ private:
+  linkedList data;  // linked list
+
+ public:
+  myQueue() {}
+  // push_back from Part (1)
+  void push_back(int k) { 
+    data.insertKeyatTail(k); 
+    }
+
+  // front() from Part (2)
+  int front() {
+    int d;
+    bool deleted = data.deleteHead(d);
+    if (!deleted) return -1;
+    data.insertKeyatHead(d);
+    return d;
+  }
+
+  // isempty() from Part (3)
+  bool isempty(){
+    int d;
+    bool isDeleted = data.deleteHead(d);
+    if (isDeleted == false) {
+      return true;
+    } else {
+      data.insertKeyatHead(d);
+        return false;
+    }
+  }
+
+  int pop_front();
+
+  void printQueue() {
+    listNode* temp = data.getHead();
+    cout << "Queue contents (front → back): ";
+    while (temp) {
+      cout << temp->key << " ";
+      temp = temp->next;
+    }
+    cout << endl;
+  }
+
+};
+'''
+
+main-function = '''
+
+int main() {
+    myQueue q;
+
+    string command;
+    while (cin >> command) {
+        if (command == "Push") {
+            int x;
+            cin >> x;
+            cout << "Pushed: " << x << endl;
+            q.push_back(x);
+        } else if (command == "Pop") {
+            int val = q.pop_front();
+            if (val == -1) cout << "Queue is empty!" << endl;
+            else cout << "Popped: " << val << endl;
+        } else if (command == "Front") {
+            int val = q.front();
+            if (val == -1) cout << "Queue is empty!" << endl;
+            else cout << "Front: " << val << endl;
+        } else if (command == "Empty") {
+            cout << "Queue empty? " << (q.isempty() ? "Yes" : "No") << endl;
+        }
+    }
+
+    cout << "Final ";
+    q.printQueue();
+
+    return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q3.P4.T1.in"
+output = "Q3.P4.T1.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T2.in"
+output = "Q3.P4.T2.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T3.in"
+output = "Q3.P4.T3.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T4.in"
+output = "Q3.P4.T4.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T4.in"
+output = "Q3.P4.T4.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T5.in"
+output = "Q3.P4.T5.out"
+
+[[exercises.testcases]]
+input = "Q3.P4.T6.in"
+output = "Q3.P4.T6.out"
+
+
+
+
+[[exercises]]
+question-id = "chapter-07-Q10"
+title = "Question 6 in Fall 2019 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= true
+
+question = '''
+Circular linked lists are a variation on linked lists described in class. In a circular linked list, the next field in the last node in the list is not set to NULL (or nullptr). Rather, the field is made to point to the first node in the list, hence the name "circular". An example of a circular linked list is
+shown below.
+
+Consider the class `ListNode` shown below. It represents a node in a circular linked list. It is similar to the one described in class and that you implemented in the labs, but all members are public for simplicity. The declaration of a head pointer, which points to the head of the list, is also shown.
+
+```{code-block} cpp
+class ListNode {
+ public:
+  int id;
+  ListNode* next;
+};
+ListNode* head;
+```
+
+
+```{figure} _images/circular-linked-list.png
+```
+
+(1) Write a non-member function traverse `ListNode* h` that traverses the linked list. The function is invoked as `traverse(head)` to start the traversal at the head of the list. In the traversal, visiting a node is simply printing its `id` field to `cout`.
+'''
+
+starter-code = '''
+void traverse(ListNode* h) {
+
+}
+'''
+
+answer = '''
+void traverse(ListNode* h) {
+  if (h == nullptr)
+    return;
+  ListNode* curr = h;
+  cout << curr->id << " ";
+  curr = curr->next;
+  while (curr != h) {
+    cout << curr->id << " ";
+    curr = curr->next;
+  }
+}
+'''
+
+append-before = '''
+#include <iostream>
+using namespace std;
+
+class ListNode {
+public:
+    int id;
+    ListNode* next;
+    ListNode(int _id) : id(_id), next(nullptr) {}
+};
+ListNode* head;
+
+'''
+
+main-function = '''
+int main() {
+    int id;
+    ListNode* prev = nullptr;
+    while (cin >> id) {
+        ListNode* node = new ListNode(id);
+        if (!head) head = node;
+        if (prev) prev->next = node;
+        prev = node;
+    }
+
+    if (prev) prev->next = head; // make circular if list not empty
+    
+    cout << "traversing list" << endl;
+    traverse(head);
+
+    return 0;
+}
+
+'''
+
+[[exercises.testcases]]
+input = "Q4.P1.T1.in"
+output = "Q4.P1.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T2.in"
+output = "Q4.P1.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T3.in"
+output = "Q4.P1.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T4.in"
+output = "Q4.P1.T4.out"
+
+[[exercises.testcases]]
+input = "Q4.P1.T5.in"
+output = "Q4.P1.T5.out"
+
+
+
+
+
+[[exercises]]
+question-id = "chapter-07-Q11"
+title = "Question 6 in Fall 2019 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= true
+
+question = '''
+(2) Write a non-member function `deleteNode(ListNode*& h, ListNode* p)` that deletes the node *after the one pointed to by p* from the circular list pointed to by h. The function is invoked as `deleteNode(head, ptr)`, where `ptr` is guaranteed to point to one of the nodes on the list.
+'''
+
+starter-code = '''
+void deleteNode(ListNode*& h, ListNode* p) {
+
+}
+'''
+
+answer = '''
+
+void deleteNode(ListNode*& h, ListNode* p) {
+  if (h == nullptr)
+    return;
+  if (h->next == h) {  // one element, guaranteed p == h
+    delete h;
+    h = nullptr;
+    return;
+  }
+  
+  if (p->next == h) {
+    h = h->next;
+  }
+  
+  ListNode* next = p->next;
+  p->next = next->next;
+  delete next;
+}
+'''
+
+append-before = '''
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+class ListNode {
+public:
+    int id;
+    ListNode* next;
+    ListNode(int _id) : id(_id), next(nullptr) {}
+};
+ListNode* head;
+
+// traverse from Part (1)
+void traverse(ListNode* h) {
+  if (h == nullptr)
+    return;
+  ListNode* curr = h;
+  cout << curr->id << " ";
+  curr = curr->next;
+  while (curr != h) {
+    cout << curr->id << " ";
+    curr = curr->next;
+  }
+}
+
+'''
+main-function = '''
+int main() {
+    string line;
+    ListNode* tail = nullptr;
+
+    getline(cin, line);
+    stringstream ss(line);
+    string token;
+    int val;
+
+    // Read all node values until "delete"
+    while (ss >> token) {
+        if (token == "delete") break;
+        val = stoi(token);
+        ListNode* node = new ListNode(val);
+        if (!head) {
+            head = node;
+            tail = node;
+            tail->next = head; // circular
+        } else {
+            tail->next = node;
+            tail = node;
+            tail->next = head; // maintain circular
+        }
+    }
+
+    // Print list before deletion
+    cout << "Traversing list:" << endl;
+    traverse(head);
+    cout << endl;
+
+    // Read value after which to delete
+    if (ss >> val) {
+        ListNode* ptr = head;
+        while (ptr->id != val) ptr = ptr->next;  // assume val exists
+        deleteNode(head, ptr);
+
+        cout << "After deletion:" << endl;
+        traverse(head);
+        cout << endl;
+    }
+
+    return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q4.P2.T1.in"
+output = "Q4.P2.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.P2.T2.in"
+output = "Q4.P2.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.P2.T3.in"
+output = "Q4.P2.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.P2.T4.in"
+output = "Q4.P2.T4.out"
+
+[[exercises.testcases]]
+input = "Q4.P2.T5.in"
+output = "Q4.P2.T5.out"
+
+
+
+[[exercises]]
+question-id = "chapter-07-Q12"
+title = "Question 6 in Fall 2019 Final Exam"
+difficulty = "Intermediate"
+table = false
+type = "function programming"
+multipart= true
+
+question = '''
+(3) It is sometimes not known if the linked list pointed to by `head` is circular or just a regular linked list with the next field in the last node set to `NULL`. Write a non-member function `isCircular(ListNode* h)` that returns true if the list is circular and false otherwise. The function is invoked as `isCircular(head)`.
+'''
+
+starter-code = '''
+bool isCircular(ListNode* h) {
+
+}
+'''
+
+answer = '''
+bool isCircular(ListNode* h) {
+  if (h == nullptr) {  // is circular and regular at the same time
+    return true;
+  }
+  ListNode* p = h->next;
+  while (p != nullptr && p != h) {
+    p = p->next;
+  }
+  return p == h;
+}
+'''
+
+
+append-before = '''
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+class ListNode {
+public:
+    int id;
+    ListNode* next;
+    ListNode(int _id) : id(_id), next(nullptr) {}
+};
+ListNode* head;
+
+// Modified traverse from Part (1)
+void traverse(ListNode* h) {
+  if (!h) {
+      cout << "(empty)";
+      return;
+  }
+
+  ListNode* curr = h;
+  cout << curr->id << " ";
+  curr = curr->next;
+
+  while (curr && curr != h) {
+      cout << curr->id << " ";
+      curr = curr->next;
+  }
+}
+
+'''
+
+main-function = '''
+int main() {
+    string token;
+    ListNode* head = nullptr;
+    ListNode* prev = nullptr;
+
+    while (cin >> token) {
+        if (token == "C") { // make circular
+            if (prev) prev->next = head;
+            break;
+        }
+        int val = stoi(token);
+        ListNode* node = new ListNode(val);
+        if (!head) head = node;
+        if (prev) prev->next = node;
+        prev = node;
+    }
+
+    cout << "Traversing list: ";
+    traverse(head);
+    cout << endl;
+
+    cout << "List is circular? " << (isCircular(head) ? "true" : "false") << endl;
+
+    // Free memory safely if not circular
+    if (!isCircular(head)) {
+        ListNode* curr = head;
+        while (curr) {
+            ListNode* tmp = curr;
+            curr = curr->next;
+            delete tmp;
+        }
+    }
+
+    return 0;
+}
+'''
+
+[[exercises.testcases]]
+input = "Q4.P3.T1.in"
+output = "Q4.P3.T1.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T2.in"
+output = "Q4.P3.T2.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T3.in"
+output = "Q4.P3.T3.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T4.in"
+output = "Q4.P3.T4.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T5.in"
+output = "Q4.P3.T5.out"
+
+[[exercises.testcases]]
+input = "Q4.P3.T6.in"
+output = "Q4.P3.T6.out"
