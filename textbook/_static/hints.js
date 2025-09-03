@@ -74,7 +74,7 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
 
         gtag('event', 'testing_hint_requests', {
             event_category: 'Quiz Interaction',
-            event_label: `${questionID}`,
+            event_label: `hint-${questionID}`,
             quiz_user_id: quizUserID,
             debug_mode: true
         });
@@ -228,7 +228,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
 
         gtag('event', 'testing_hint_requests', {
             event_category: 'Quiz Interaction',
-            event_label: `${questionID}`,
+            event_label: `feedback-${questionID}`,
             quiz_user_id: quizUserID,
             debug_mode: true
         });
