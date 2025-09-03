@@ -21,7 +21,7 @@ function generate_exercises(filename) {
 	let currentMultipartForm = null;
 	let multipartIndex = 0;
 
-	let quizUserID;
+	let quizUserID = getOrCreateUserID();
 
 	gtag('set', {
 		user_properties: {
