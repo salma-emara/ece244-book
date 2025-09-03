@@ -398,7 +398,7 @@ function generate_exercises(filename) {
 				event_label: `submit-${questionID}`,
 				quiz_user_id: quizUserID,
 				debug_mode: true
-			});s
+			});
 
 			resultMessage.style.display = "block";
 
