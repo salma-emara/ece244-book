@@ -264,7 +264,6 @@ function generate_exercises(filename) {
 			codeRunner.addEventListener('input', () => {
 				const code = codeRunner.querySelector('.ace_content').innerText;
 				localStorage.setItem(`${storageKey}-programming-${thisPartIndex}`, JSON.stringify({ userCode: code }));
-				console.log("Code saved");
 			});
 
 
@@ -356,7 +355,6 @@ function generate_exercises(filename) {
 				const editor = ace.edit(editorDiv);  
 				const starterCode = ex["starter-code"] ? ex["starter-code"].trim() : '';
 				editor.setValue(starterCode, 1);  
-				console.log("Code cleared");
 			} 
 			else if (isTracingQuestion) {
 
@@ -383,7 +381,25 @@ function generate_exercises(filename) {
 
 		});
 
+		let quizUserID;
+
 		submitButton.addEventListener("click", async function () {
+
+			quizUserID = getOrCreateUserID();
+
+			gtag('set', {
+				user_properties: {
+					user_id_property: quizUserID
+				}
+			});
+
+
+			gtag('event', 'submit_button_clicked', {
+				event_category: 'Quiz Interaction',
+				event_label: `submit-${ex["question-id"]}`,
+				quiz_user_id: quizUserID,
+				debug_mode: true
+			});
 
 			resultMessage.style.display = "block";
 
