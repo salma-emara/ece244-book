@@ -394,8 +394,6 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
 
         feedbackDiv.innerText = feedback;
 
-        if (isCorrect) anotherFeedback.style.display = "none";  // hides the button
-
         previousFeedback.push(feedback);
         feedbackInfoContainer.appendChild(feedbackDiv);
 
