@@ -1,9 +1,5 @@
 let currentQuestionIndex = 0;
 
-document.addEventListener("submit", function (e) {
-    e.preventDefault(); 
-  });
-
 function startQuiz() {
 
     const filename = window.quizFilename || "unknown";
@@ -102,7 +98,7 @@ window.addEventListener("load", () => {
 
         for (let i = 0; i < quizForms.length; i++) {
             const form = quizForms[i];
-            
+
             // lock the user's code editor
             const textArea = form.querySelector("#codetorun .ace_text-input");
             if (textArea) textArea.setAttribute("readonly", "");
@@ -111,13 +107,13 @@ window.addEventListener("load", () => {
 
             // locks input
             const inputArea = form.querySelector("#input_section > textarea");
-            if (textArea) { 
+            if (textArea) {
                 textArea.setAttribute("readonly", "");
                 inputArea.style.backgroundColor = "var(--bg, #edebeb)";
-            }        
+            }
         }
     }
-  });
+});
 
 function closeFullscreenForm() {
 
@@ -205,7 +201,7 @@ function closeFullscreenForm() {
 
         for (let i = 0; i < quizForms.length; i++) {
             const form = quizForms[i];
-            
+
             // lock the user's code editor
             const textArea = form.querySelector("#codetorun .ace_text-input");
             if (textArea) textArea.setAttribute("readonly", "");
@@ -214,7 +210,7 @@ function closeFullscreenForm() {
 
             // locks input
             const inputArea = form.querySelector("#input_section > textarea");
-            if (inputArea) { 
+            if (inputArea) {
                 textArea.setAttribute("readonly", "");
                 inputArea.style.backgroundColor = "var(--bg, #edebeb)";
             }
@@ -224,11 +220,11 @@ function closeFullscreenForm() {
                 traceTextarea.style.backgroundColor = "#edebeb";
                 traceTextarea.setAttribute("readonly", "");
             }
-            
+
             localStorage.setItem("formsLocked", "true");
-            
+
             localStorage.setItem("displayTestcases", "true");
-        
+
         }
     }
     else {
@@ -255,14 +251,14 @@ function parse_and_generate_form(fileName) {
 
     window.addEventListener("load", () => {
 
-        if (localStorage.getItem("displayTestcases") === "true" && localStorage.getItem("formsLocked") === "true"){
+        if (localStorage.getItem("displayTestcases") === "true" && localStorage.getItem("formsLocked") === "true") {
 
             const quizForms = document.querySelectorAll("[id^='quizForm']");
             for (let i = 0; i < quizForms.length; i++) {
                 const formId = "quizForm" + (i + 1);
                 const form = document.getElementById(formId);
 
-                let savedData = JSON.parse(localStorage.getItem(fileName + formId + "_programming"));                
+                let savedData = JSON.parse(localStorage.getItem(fileName + formId + "_programming"));
                 if (savedData) displayTestcaseResults(form, savedData.inputArray, savedData.outputArray, savedData.actualOutput);
 
                 savedData = JSON.parse(localStorage.getItem(fileName + "quizForm" + (i + 1) + "_tracing"));
@@ -313,8 +309,8 @@ function parse_and_generate_form(fileName) {
         let isTracingQuestion = questions[i].tracing;
         let answer = "";
 
-        if (isProgrammingQuestion){
-            
+        if (isProgrammingQuestion) {
+
             let rawCode = questions[i].code || "";
             actualCode = rawCode
                 .replace(/&#35;/g, '#')
@@ -330,12 +326,12 @@ function parse_and_generate_form(fileName) {
             for (let j = 0; j < questionTestcases.length; j++) {
                 inputArray.push(questionTestcases[j].input || []);
                 outputArray.push(questionTestcases[j].output || []);
-            } 
+            }
 
             console.log("Inputs:", inputArray);
             console.log("Outputs:", outputArray);
-        } else if (isTracingQuestion){
-            
+        } else if (isTracingQuestion) {
+
             let rawCode = questions[i].code || "";
             actualCode = rawCode
                 .replace(/&#35;/g, '#')
@@ -451,18 +447,18 @@ function parse_and_generate_form(fileName) {
         const choicesElement = document.createElement("div");
 
         // code runner 
-    
+
         // create pre class element 
         const pre = document.createElement("pre");
         pre.classList.add("code-runner-quizzes");
-          
+
         // creating <code-runner language="c++" output="Hello World!"> 
         const codeRunner = document.createElement("code-runner");
 
         codeRunner.setAttribute("language", "c++");
         codeRunner.setAttribute("output", "");
         codeRunner.setAttribute("inputTestcase", "");
-            
+
         codeRunner.textContent = actualCode;
 
         // tracing block
@@ -484,9 +480,9 @@ function parse_and_generate_form(fileName) {
         if (isProgrammingQuestion) {
 
             pre.appendChild(codeRunner);
-            form.appendChild(pre);       
-            
-        } else if (isTracingQuestion){
+            form.appendChild(pre);
+
+        } else if (isTracingQuestion) {
 
             form.appendChild(editorContainer);
             form.appendChild(traceLabel);
@@ -515,7 +511,7 @@ function parse_and_generate_form(fileName) {
 
         const buttonRow = document.createElement("div");
         buttonRow.classList.add("button-row");
-      
+
         //add submit button
         const submitButton = document.createElement("button");
         submitButton.type = "button";
@@ -528,7 +524,7 @@ function parse_and_generate_form(fileName) {
 
             if (isProgrammingQuestion) {
                 const codeRunner = form.querySelector("code-runner");
-                
+
 
                 const existingTestcaseContainer = form.querySelector(".testcase-container");
                 if (existingTestcaseContainer) {
@@ -549,12 +545,12 @@ function parse_and_generate_form(fileName) {
 
                 actualOutput = await runTestCases(codeRunner, inputArray, messageElement, null);
 
-                if (actualOutput.includes("Please try again")){
+                if (actualOutput.includes("Please try again")) {
                     displayTestcaseSummary(messageElement, false, true, 0, 0);
                     return;
                 }
             }
-                
+
             handle_submission(form.id, answer, hint, fileName, outputArray, isProgrammingQuestion, actualCode, actualOutput, inputArray, question, isTracingQuestion);
         });
 
@@ -763,11 +759,11 @@ function parse_and_generate_form(fileName) {
                 displayTestcaseSummary(messageElement, false, false, progData.numTestcasesPassed, progData.totalTestcases);
                 codeRunner.textContent = progData.userCode;
 
-                codeRunner.setAttribute("output", progData.outputUI);  
-                                
+                codeRunner.setAttribute("output", progData.outputUI);
+
             }
 
-        } else if (isTracingQuestion){
+        } else if (isTracingQuestion) {
 
             const progData = JSON.parse(localStorage.getItem(fileName + "quizForm" + (i + 1) + "_tracing"));
 
@@ -781,7 +777,7 @@ function parse_and_generate_form(fileName) {
             // Check if there are stored values for the current form
             const selectedIndices = JSON.parse(localStorage.getItem(fileName + "quizForm" + (i + 1) + "_choices"));
             if (selectedIndices && selectedIndices.length !== 0) {
-                const choiceInputs = selectedIndices.map(index => 
+                const choiceInputs = selectedIndices.map(index =>
                     document.getElementById("choice" + (i + 1) + "-" + (index + 1)));
                 choiceInputs.forEach(choiceInput => {
                     choiceInput.checked = true;
@@ -806,7 +802,7 @@ async function handle_submission(formId, answer, hint, filename, outputArray, is
 
     let outputUI = "";
 
-    if (isProgrammingQuestion){
+    if (isProgrammingQuestion) {
 
         // outputUI text at submission
         const form = document.getElementById(formId);
@@ -814,7 +810,7 @@ async function handle_submission(formId, answer, hint, filename, outputArray, is
         outputUI = outputElement?.textContent.trim() || "";
 
     }
-    
+
     var isSingleCorrect = false;
     if (!isTracingQuestion && answer.length == 1) {
         isSingleCorrect = true;
@@ -858,7 +854,7 @@ async function handle_submission(formId, answer, hint, filename, outputArray, is
             form.appendChild(container);
         }
 
-    } else if (isTracingQuestion){
+    } else if (isTracingQuestion) {
         const traceInput = form.querySelector(".trace-textarea");
         const userOutput = traceInput ? traceInput.value.trim() : "";
 
@@ -894,11 +890,11 @@ async function handle_submission(formId, answer, hint, filename, outputArray, is
 
     if (isProgrammingQuestion) {
 
-        const form = document.getElementById(formId);  
+        const form = document.getElementById(formId);
         const editorContainer = form.querySelector("#codetorun"); // ace editor container inside that form
         const editor = ace.edit(editorContainer); // ace editor instance for that container
-        const code = editor.getValue();            
-        
+        const code = editor.getValue();
+
         localStorage.setItem(baseKey + "_programming", JSON.stringify({
             originalCode: originalCode,
             userCode: code,
@@ -909,7 +905,7 @@ async function handle_submission(formId, answer, hint, filename, outputArray, is
             numTestcasesPassed: numTestcasesPassed,
             totalTestcases: totalTestcases
         }));
-    } else if (isTracingQuestion){
+    } else if (isTracingQuestion) {
 
         const traceInput = form.querySelector(".trace-textarea");
         const userOutput = traceInput ? traceInput.value.trim() : "";
@@ -1012,17 +1008,17 @@ function AcodeSnippetFormatting(codeSnippet, choiceContainer, button) {
     });
 }
 
-function displayTestcaseSummary(messageElement, runningTestcases, error, numTestcasesPassed, totalTestcases){
+function displayTestcaseSummary(messageElement, runningTestcases, error, numTestcasesPassed, totalTestcases) {
 
-    if (runningTestcases){
+    if (runningTestcases) {
         messageElement.innerHTML = "Testing...";
         messageElement.style.color = "grey";
         messageElement.style.fontWeight = "bold";
-    } else if (error){
+    } else if (error) {
         messageElement.innerHTML = "Please try submitting again";
         messageElement.style.color = "red";
         messageElement.style.fontWeight = "bold";
-    } else if (numTestcasesPassed == totalTestcases){
+    } else if (numTestcasesPassed == totalTestcases) {
         messageElement.innerHTML = `Correct! ${numTestcasesPassed}/${totalTestcases} testcases passed`;
         messageElement.style.color = "green";
         messageElement.style.fontWeight = "bold";
@@ -1047,18 +1043,18 @@ function updateMessageElement(messageElement, isCorrect, hint, selectedIndices, 
             messageElement.innerHTML = "Correct! <span class='hint-text'>" + explanations.replace(/\n/g, "<br>") + "</span>";
             messageElement.style.color = "green";
             messageElement.style.fontWeight = "bold";
-        
-        } else if (isProgrammingQuestion){
+
+        } else if (isProgrammingQuestion) {
             messageElement.innerHTML = "Correct!";
             messageElement.style.color = "green";
             messageElement.style.fontWeight = "bold";
-        } else if (isTracingQuestion){
+        } else if (isTracingQuestion) {
             messageElement.innerHTML = "Correct!";
             messageElement.style.color = "green";
             messageElement.style.fontWeight = "bold";
         }
-        
-    } else if (isTracingQuestion){
+
+    } else if (isTracingQuestion) {
 
         messageElement.innerHTML = "Incorrect! Please trace again";
         messageElement.style.color = "red";
@@ -1119,11 +1115,11 @@ function displayTestcaseResults(form, inputArray, outputArray, actualOutput) {
     let numTestcasesPassed = 0;
 
     for (let i = 0; i < inputArray.length; i++) {
-        
+
         // test case button
         const testcaseButton = document.createElement("button");
         testcaseButton.type = "button";
-        testcaseButton.id = "testcase" + (i+1);
+        testcaseButton.id = "testcase" + (i + 1);
         testcaseButton.innerHTML = `Case ${i + 1}`;
         testcaseButton.classList.add("testcase-button");
         testcaseButtonContainer.appendChild(testcaseButton);
@@ -1140,7 +1136,7 @@ function displayTestcaseResults(form, inputArray, outputArray, actualOutput) {
         if (passed) numTestcasesPassed++;
 
         // input
-        if (inputArray[i] != ""){
+        if (inputArray[i] != "") {
             const inputPara = document.createElement("p");
             inputPara.innerHTML = `<strong>Input:</strong>`;
             testcaseDiv.appendChild(inputPara);
@@ -1198,9 +1194,9 @@ function displayTestcaseResults(form, inputArray, outputArray, actualOutput) {
             const allInfoArray = Array.from(allInfo);
 
             allInfoArray.forEach(div => {
-                 div.style.display = "none";
+                div.style.display = "none";
             });
-            
+
             testcaseDiv.style.display = "block";
 
         });
@@ -1212,7 +1208,7 @@ function displayTestcaseResults(form, inputArray, outputArray, actualOutput) {
 }
 
 function diffCheck(expected, actual) {
-    if (expected === actual) return {expectedResult: expected, actualResult: actual};
+    if (expected === actual) return { expectedResult: expected, actualResult: actual };
 
     let expectedResult = "";
     let actualResult = "";
@@ -1262,21 +1258,21 @@ function resetQuiz(fileName) {
         const existingTestcaseContainer = form.querySelector(".testcase-container");
         if (existingTestcaseContainer) existingTestcaseContainer.remove();
 
-        let key = fileName + "quizForm" + (i+1) + "_programming";
+        let key = fileName + "quizForm" + (i + 1) + "_programming";
         let progData = JSON.parse(localStorage.getItem(key));
 
-        if (progData){ // true if programming question
+        if (progData) { // true if programming question
 
             // unlock everything 
             const textArea = form.querySelector("#codetorun .ace_text-input");
             if (textArea) textArea.removeAttribute("readonly");
             const editorContainer = form.querySelector("#codetorun");
-            if (editorContainer) editorContainer.style.backgroundColor = ""; 
+            if (editorContainer) editorContainer.style.backgroundColor = "";
 
             const inputArea = form.querySelector("#input_section > textarea");
             if (inputArea) {
                 inputArea.removeAttribute("readonly");
-                inputArea.style.backgroundColor = ""; 
+                inputArea.style.backgroundColor = "";
             }
 
             const oldRunner = form.querySelector("code-runner");
@@ -1298,18 +1294,18 @@ function resetQuiz(fileName) {
             localStorage.removeItem(key);
         }
 
-        key = fileName + "quizForm" + (i+1) + "_tracing";
+        key = fileName + "quizForm" + (i + 1) + "_tracing";
         progData = JSON.parse(localStorage.getItem(key));
 
         if (progData) {
             localStorage.removeItem(key);
-            
+
             const traceTextarea = quizForms[i].querySelector(".trace-textarea");
             if (traceTextarea) {
                 traceTextarea.value = "";
                 traceTextarea.placeholder = "Write your expected output here...";
                 traceTextarea.removeAttribute("readonly");
-                traceTextarea.style.backgroundColor = ""; 
+                traceTextarea.style.backgroundColor = "";
             }
         }
 
@@ -1326,11 +1322,11 @@ function resetQuiz(fileName) {
 
     for (let i = localStorage.length - 1; i >= 0; i--) {
         const key = localStorage.key(i);
-    
+
         if (key && key.startsWith(prefix)) {
             localStorage.removeItem(key);
         }
-    
+
     }
 
     const resetButton = document.getElementById("reset-button");

@@ -1,5 +1,4 @@
 async function getChatCompletion(prompt) {
-    console.log("Sending prompt:", prompt);
     try {
         const response = await fetch('/.netlify/functions/hints', {
             method: 'POST',
@@ -15,7 +14,6 @@ async function getChatCompletion(prompt) {
             return;
         }
 
-        console.log("Success:", data.reply);
         return data.reply;
     } catch (err) {
         console.error("Network or parsing error:", err);
@@ -26,7 +24,6 @@ async function getChatCompletion(prompt) {
 
 async function generate_hints(questionID, form, originalCode, outputArray, actualOutput, questionPrompt, previousHints) {
 
-    console.log("question-id: ", questionID);
     // check if hints already exists
     let hintContainer = form.querySelector(".hint-container");
     let hintInfoContainer, anotherHint;
@@ -74,11 +71,10 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
 
         gtag('event', 'testing_hint_requests', {
             event_category: 'Quiz Interaction',
-            event_label: `${questionID}`,
+            event_label: `hint-${questionID}`,
             quiz_user_id: quizUserID,
             debug_mode: true
         });
-        console.log(`Hint count for ${hintKey}:`, countdown);
 
         if (anotherHint.textContent === "Get Hint") {
             anotherHint.textContent = "Get New Hint";
@@ -174,8 +170,6 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
 
 async function get_feedback(questionID, form, messageElement, exercise, studentRows, userAnswer, previousFeedback = []) {
     
-    console.log("question-id: ", questionID);
-
     let question = exercise.question;
     let headers = exercise.headers;
     let answer = exercise.answer;
@@ -228,11 +222,10 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
 
         gtag('event', 'testing_hint_requests', {
             event_category: 'Quiz Interaction',
-            event_label: `${questionID}`,
+            event_label: `feedback-${questionID}`,
             quiz_user_id: quizUserID,
             debug_mode: true
         });
-        console.log(`Hint count for ${hintKey}:`, countdown);
 
         if (anotherFeedback.textContent === "Get Feedback") {
             anotherFeedback.textContent = "Get More Feedback";
