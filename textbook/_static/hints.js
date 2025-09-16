@@ -1,5 +1,4 @@
 async function getChatCompletion(prompt) {
-    console.log("Sending prompt:", prompt);
     try {
         const response = await fetch('/.netlify/functions/hints', {
             method: 'POST',
@@ -15,7 +14,6 @@ async function getChatCompletion(prompt) {
             return;
         }
 
-        console.log("Success:", data.reply);
         return data.reply;
     } catch (err) {
         console.error("Network or parsing error:", err);
@@ -26,7 +24,6 @@ async function getChatCompletion(prompt) {
 
 async function generate_hints(questionID, form, originalCode, outputArray, actualOutput, questionPrompt, previousHints) {
 
-    console.log("question-id: ", questionID);
     // check if hints already exists
     let hintContainer = form.querySelector(".hint-container");
     let hintInfoContainer, anotherHint;
@@ -74,11 +71,10 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
 
         gtag('event', 'testing_hint_requests', {
             event_category: 'Quiz Interaction',
-            event_label: `${questionID}`,
+            event_label: `hint-${questionID}`,
             quiz_user_id: quizUserID,
             debug_mode: true
         });
-        console.log(`Hint count for ${hintKey}:`, countdown);
 
         if (anotherHint.textContent === "Get Hint") {
             anotherHint.textContent = "Get New Hint";
@@ -174,8 +170,6 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
 
 async function get_feedback(questionID, form, messageElement, exercise, studentRows, userAnswer, previousFeedback = []) {
     
-    console.log("question-id: ", questionID);
-
     let question = exercise.question;
     let headers = exercise.headers;
     let answer = exercise.answer;
@@ -228,11 +222,10 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
 
         gtag('event', 'testing_hint_requests', {
             event_category: 'Quiz Interaction',
-            event_label: `${questionID}`,
+            event_label: `feedback-${questionID}`,
             quiz_user_id: quizUserID,
             debug_mode: true
         });
-        console.log(`Hint count for ${hintKey}:`, countdown);
 
         if (anotherFeedback.textContent === "Get Feedback") {
             anotherFeedback.textContent = "Get More Feedback";
@@ -298,7 +291,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
             2. Interpret what logic or rule the student might be missing.
             3. Think of a concise explanation that clarifies the error or misunderstanding.
             4. Generate a new feedback message that:
-                - Highlights both what the student did correctly and what needs fixing
+                - Highlight what needs fixing and if the answer is fully correct, you can say so
                 - Is not a repeat of any message in the previous feedback list
                 - Is under 50 words
             5. Indicate whether the student's current answer is fully correct.
@@ -331,7 +324,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
             2. Interpret what logic or rule the student might be missing.
             3. Think of a concise explanation that clarifies the error or misunderstanding.
             4. Generate a new feedback message that:
-                - Highlights both what the student explained correctly and what needs fixing
+                - Highlight what needs fixing and if the answer is fully correct, you can say so
                 - Is not a repeat of any message in the previous feedback list
                 - Is under 50 words
             5. Indicate whether the student's current answer is fully correct.
@@ -363,7 +356,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
             2. Interpret what logic or rule the student might be missing.
             3. Think of a concise explanation that clarifies the error or misunderstanding.
             4. Generate a new feedback message that:
-                - Highlights both what the student explained correctly and what needs fixing
+                - Highlight what needs fixing and if the answer is fully correct, you can say so
                 - Is not a repeat of any message in the previous feedback list
                 - Is under 50 words
             5. Indicate whether the student's traced output is fully correct.
@@ -400,8 +393,6 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         } 
 
         feedbackDiv.innerText = feedback;
-
-        if (isCorrect) anotherFeedback.style.display = "none";  // hides the button
 
         previousFeedback.push(feedback);
         feedbackInfoContainer.appendChild(feedbackDiv);
