@@ -21,7 +21,7 @@ int main(void) {
   x.name = "Kenya";
   x.ID = 8012;
   y.name = "Cindy";
-  x.ID = 2023;
+  y.ID = 2023;
   cout << "X, Name: " << x.name << endl << "ID: " << x.ID << endl;
   return 0;
 }
@@ -32,7 +32,7 @@ In this structure, we have grouped together a string and an integer. The struct 
 
 To access data members of a structure, we use the dot operator (`.`) on the instance. For example, to access the `name` data member of the `x` instance, we write `x.name`.
 
-**<span style="color:red">Problem!</span>** In line 15, when we printed the name and ID of `Student x`, we had to access each data member to print them. If there were 10 data members, we would have to access each data member to print them. Unfortunately, that's a lot of code to write.
+**<span style="color:red">Problem!</span>** In line 16, when we printed the name and ID of `Student x`, we had to access each data member to print them. If there were 10 data members, we would have to access each data member to print them. Unfortunately, that's a lot of code to write.
  
 **<span style="color:green">Solution 1.</span>** We can create a function and name it `print` that takes in `struct Student` to help us print all data members of struct. This will make our code more modular, especially if we want to print the data members of multiple `struct Student`.
 
@@ -125,7 +125,7 @@ We will write a `main` function where we create an instance of the `Student` cla
 
 **Line 8.** We call the `print` function on the instance `x`. This is allowed since `print` is a `public` function of `Student`. 
 
-**<span style="color:red">Problem!</span>**However, the outout of the program **is undefined because the data members `name` and `ID` are uninitialized**.
+**<span style="color:red">Problem!</span>** However, the outout of the program **is undefined because the data members `name` and `ID` are uninitialized**.
 
 ```{figure} ./images/uninitialized-name-id.png
 :alt: Header vs. Source Files
