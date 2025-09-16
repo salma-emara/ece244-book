@@ -30,6 +30,7 @@ parts:
         sections:
           - file: chapters/chapter03-dma-pointers/dma.md
           - file: chapters/chapter03-dma-pointers/why-destructor.md
+          - file: chapters/chapter03-dma-pointers/recursive-destructor-call.md
           - file: chapters/chapter03-dma-pointers/testing-exercises.md
       - file: chapters/chapter04-io/intro.md
         sections:
