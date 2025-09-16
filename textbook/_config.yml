@@ -108,6 +108,9 @@ parse:
 
       </div>
 
+    cpp_visualizer: 
+      <script src="https://cdn.jsdelivr.net/gh/JinningL/pythontutor-c-webcomponent@0f6fc3a/loader_folder.js"></script>
+
     exercise_embed: |
       <link rel="stylesheet" href="../../_static/style.css">
       <script> window.exerciseFilename = "%%FILENAME%%"; </script>
@@ -135,3 +138,4 @@ parse:
       <div class="exercise-inline">
         <script> generate_exercises("%%FILENAME%%") </script>
       </div>
+
