@@ -10,9 +10,9 @@ In the previous chapter, we discuss that when an object is created, the construc
 * **Globals + Const variables:** Stores the constants and global variables of your program
 * **Code:** Stores the instructions of the program
   
-In the following example, we will see the stack used to store local variables and the heap storing dynamically allocated memory.
+In the following example, we will see the stack get used to store local variables and the heap to store dynamically allocated memory.
 
-### Step 1: Stack Only
+**Step 1: Stack Only**
 
 In {numref}`step1-stack-only`, in the first two lines, we declare and initialize `x` to 10 and declare and initialize pointer `p` of type `int*` to `NULL`. Both `x` and `p` are stored in the stack as they are local variables. 
 
@@ -31,7 +31,7 @@ In `*p = 5`, we use the **deference operator `*`** before `p` to dereference it,
 The stack stores local variables: `int x` and `int* p`, where `p` stores the address of `x` in the stack, and then through `p` we change the value of `x` from 10 to 5. 
 ```
 
-### Step 2: Dynamic Memory Allocation
+**Step 2: Dynamic Memory Allocation**
 
 In {numref}`step2-allocate`, we dynamically allocate memory for an integer using the `new` operator. The `new` operator allocates memory on the heap, and it returns the address to that memory. Hence, in `p = new int`, `p` now points to the heap memory where the integer is stored. We can access the value stored in that memory using `*p`.
 
@@ -48,9 +48,9 @@ In `*p = 20`, we again dereference `p` to change the value stored in the heap me
 Dynamically allocating memory using `new` operator. The pointer `p` now points to the heap memory where the integer is stored, and we can access it using `*p`.
 ```
 
-### Step 3: Freeing Memory
+**Step 3: Freeing Memory**
 
-In {numref}`step3-delete`, we free the dynamically allocated memory using the `delete` operator. After the `delete` operator we write the variable that stores the address on the heap, *i.e.* `p`. After this line, `p` still points to the same address, but that memory is no longer valid for use, and accessing it will lead to undefined behavior. `p` is now called a dangling pointer. This memory location is "freed" as shown in the image.
+In {numref}`step3-delete`, we free the dynamically allocated memory using the `delete` operator. The `delete` keyword requires we put the address that we want to free. In our case, this is the variable that stores the address on the heap, *i.e.* `p`. After this line, `p` still points to the same address, but that memory is no longer valid for use, and accessing it will lead to undefined behavior. `p` is now called a dangling pointer. This memory location is "freed" as shown in the image.
 
 **Code in `main.cpp`**
 ```{figure} ./images/step3-delete.png
@@ -63,7 +63,7 @@ In {numref}`step3-delete`, we free the dynamically allocated memory using the `d
 We free the dynamically allocated memory using the `delete` operator. This frees the memory back to the heap. 
 ```
 
-### Step 4: Resolve Dangling Pointer
+**Step 4: Resolve Dangling Pointer**
 
 To resolve the dangling pointer issue, we set `p` to `NULL` after freeing the memory. This way, we can check if `p` is `NULL` before dereferencing it in the future, preventing undefined behavior.
 
@@ -116,7 +116,7 @@ Objects can also be dynamically allocated using the `new` operator. When an obje
 Student* p = new Student;
 ```
 
-However, to free the memory of the object, the destructor is explicitly called when the `delete` operator is used. For example, the following line will call the destructor of the `Student` class:
+However, to free the memory of the object, the destructor is explicitly called when the `delete` operator is used. The destructor is called on the object before the memory gets released. For example, the following line will call the destructor of the `Student` class:
 
 ```cpp
 delete p;

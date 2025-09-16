@@ -1,0 +1,6 @@
+Queue empty? Yes
+Pushed: 10
+Pushed: 20
+Pushed: 30
+Queue empty? No
+Queue contents (front → back): 10 20 30 
