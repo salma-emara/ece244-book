@@ -1,0 +1,11 @@
+Initial vectors:
+a = <1, 2>
+b = <3, 4>
+c = <5, 6>
+
+Testing a += b:
+a = <4, 6>
+b = <3, 4>
+
+Testing chained (a += b) += c:
+a = <12, 16>

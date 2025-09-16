@@ -4,7 +4,7 @@ Welcome to the first edition of *Khufu: Object-Oriented Programming using C++* b
 
 This textbook only has exercise questions. It is tailored for students taking ECE 244: Programming Fundamentals at the University of Toronto, where the foundations of Object-Oriented Programming (OOP) using C++ programming language are discussed. 
 
-**Authors:** The exercises in this book are either taken from past exams in ECE 244 or designed by Salma Emara. This resource is maintained by Salma Emara. 
+**Authors:** The exercises in this book are either taken from past exams in ECE 244 or designed by Salma Emara. The exercises at the end of each chapter were made interactive by Nora Liu, a third-year student at the University of Toronto. This resource is maintained by Salma Emara. 
 
 ```{admonition} Why **Snefru** and **Khufu**?
 Snefru was a Pharaoh who ruled ancient Egypt during the Fourth Dynasty of the Old Kingdom, around 2600 BCE. Before his time, Egyptians primarily built step pyramids. Snefru led the construction of a transitional form, the Bent Pyramid, which starts at a 54-degree inclination but changes to a 43-degree angle halfway up, giving it a "bent" appearance. This alteration is believed to have been made during construction to prevent collapse, showcasing an iterative, learning-by-doing approach.

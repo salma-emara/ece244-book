@@ -1,0 +1,10 @@
+Inserted user1
+Inserted user2
+Changed user2->user3
+Inserted user2
+Failed to change user3->user1
+Changed user3->124user
+Failed to change 124user->user1
+Inserted $%saf 
+Changed $%saf->user
+Failed to change $%saf->helloworld
