@@ -30,6 +30,15 @@ To understand how are double pointers used, let's look at the following example:
       int** p2p; // Declare a double pointer
       int* p, *q;    // Declare a single pointer
       p = new int; // Dynamically allocate an integer
+      *p = 5;
+      p2p = &p; // Make p2p point to the address of p
+      q = *p2p; // Dereference p2p to get the value of p and assign it to q, equivalent to q = p
+      *q = 8; // Modify the value of x through double pointer p2p
+      cout &lt;&lt; "*p = " &lt;&lt; *p &lt;&lt; endl; // Output the value pointed to by p
+      cout &lt;&lt; "*q = " &lt;&lt; *q &lt;&lt; endl; // Output the value pointed to by q
+      cout &lt;&lt; "**p2p = " &lt;&lt; **p2p &lt;&lt; endl; // Output the value pointed to by p which is pointer through p2p
+      delete p; // Free the dynamically allocated memory
+      delete p2p; // Free the dynamically allocated memory -- double free
       return 0;
     }
   </c-visualizer>
