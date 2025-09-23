@@ -14,10 +14,17 @@ To understand how are double pointers used, let's look at the following example:
     <script type="application/json" data-kind="annotation">
       {
       "annotation": { 
-        "5": "Define integer variable x = 10", 
-        "6": "Define pointer p and initialize to NULL", 
-        "7": "Make p point to the address of x", 
-        "8": "Modify the value of x through pointer p (x = 5)
+        "5": "Declare a double pointer", 
+        "6": "Declare two single pointers", 
+        "7": "Dynamically allocate an integer", 
+        "8": "Modify the value of x through pointer p (x = 5)",
+        "9": "Make p2p point to the address of p",
+        "10": "Dereference p2p to get the value of p and assign it to q, equivalent to q = p",
+        "11": "Modify the value of x through double pointer p2p (x = 8)",
+        "12": "Output the value pointed to by p",
+        "13": "Output the value pointed to by q",
+        "14": "Output the value pointed to by p which is pointer through p2p",
+        "15": "Free the dynamically allocated memory",
       },
       "folds": [{ "start": 13, "end": 16 }]
     }
@@ -27,18 +34,20 @@ To understand how are double pointers used, let's look at the following example:
     using namespace std;
 
     int main() {
-      int** p2p; // Declare a double pointer
-      int* p, *q;    // Declare a single pointer
-      p = new int; // Dynamically allocate an integer
+      int** p2p; 
+      int* p, *q;     
+      p = new int;  
       *p = 5;
-      p2p = &p; // Make p2p point to the address of p
-      q = *p2p; // Dereference p2p to get the value of p and assign it to q, equivalent to q = p
-      *q = 8; // Modify the value of x through double pointer p2p
-      cout &lt;&lt; "*p = " &lt;&lt; *p &lt;&lt; endl; // Output the value pointed to by p
-      cout &lt;&lt; "*q = " &lt;&lt; *q &lt;&lt; endl; // Output the value pointed to by q
-      cout &lt;&lt; "**p2p = " &lt;&lt; **p2p &lt;&lt; endl; // Output the value pointed to by p which is pointer through p2p
-      delete p; // Free the dynamically allocated memory
+      p2p = &p; 
+      q = *p2p; 
+      *q = 8; 
+      cout &lt;&lt; "*p = " &lt;&lt; *p &lt;&lt; endl; 
+      cout &lt;&lt; "*q = " &lt;&lt; *q &lt;&lt; endl; 
+      cout &lt;&lt; "**p2p = " &lt;&lt; **p2p &lt;&lt; endl; 
+      delete p; 
       delete p2p; // Free the dynamically allocated memory -- double free
       return 0;
     }
   </c-visualizer>
+
+  
