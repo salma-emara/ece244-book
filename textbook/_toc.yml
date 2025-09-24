@@ -63,5 +63,5 @@ parts:
   - caption: "Hidden Pages"
     hidden: true
     chapters:
-      - file: semantic-search.md         
-      - file: chapters/chapter12-hash-tables/exercises.md
+      - file: semantic-search.md          
+      - file: exercises.md
