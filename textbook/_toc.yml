@@ -60,6 +60,7 @@ parts:
       - file: chapters/chapter12-hash-tables/intro.md
         sections:
           - file: chapters/chapter12-hash-tables/testing-exercises.md
+          - file: chapters/chapter12-hash-tables/exercises.md
   - caption: "Hidden Pages"
     hidden: true
     chapters:
