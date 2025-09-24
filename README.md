@@ -82,7 +82,32 @@ jupyter-book build textbook
       ```bash
       cp -r textbook/semantic-search.html textbook/_build/html
       ```
-      
+## For Visualizing C++ Code
+
+Run this command if you are using cpp-visualizer in any of the markdown files
+
+
+```
+jupyter-book build --all textbook
+```
+
+```
+cd textbook
+python viztrace_cpp_folder.py chapters
+```
+
+```
+cd ..
+cp -r textbook/trace textbook/_build/html
+```
+
+
+```
+cd textbook/_build/html
+python -m http.server 8000
+open http://localhost:8000
+```
+
 ### Check spelling mistakes
 
 To check spelling mistakes, you need to install `pyspelling` using the following command:

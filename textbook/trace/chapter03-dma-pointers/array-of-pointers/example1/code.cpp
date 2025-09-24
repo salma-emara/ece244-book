@@ -13,6 +13,5 @@ int main() {
   cout << "*q = " << *q << endl; 
   cout << "**p2p = " << **p2p << endl; 
   delete p; 
-  delete p2p; // Free the dynamically allocated memory -- double free
   return 0;
 }
