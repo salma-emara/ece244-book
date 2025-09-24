@@ -1,5 +1,5 @@
 {
-  "code": "#include <iostream>\n using namespace std;\n\n int main() {\n   int** p2p; // Declare a double pointer\n   int* p, *q;    // Declare a single pointer\n   p = new int; // Dynamically allocate an integer\n   *p = 5;\n   p2p = &p // Make p2p point to the address of p\n   q = *p2p; // Dereference p2p to get the value of p and assign it to q, equivalent to q = p\n   *q = 8; // Modify the value of x through double pointer p2p\n   cout << \"*p = \" << *p << endl; // Output the value pointed to by p\n   cout << \"*q = \" << *q << endl; // Output the value pointed to by q\n   cout << \"**p2p = \" << **p2p << endl; // Output the value pointed to by p which is pointer through p2p\n   delete p; // Free the dynamically allocated memory\n   delete p2p; // Free the dynamically allocated memory -- double free\n   return 0;\n }\n",
+  "code": "#include <iostream>\n using namespace std;\n\n int main() {\n   int** p2p; \n   int* p, *q;     \n   p = new int;  \n   *p = 5;\n   p2p = &p \n   q = *p2p; \n   *q = 8; \n   cout << \"*p = \" << *p << endl; \n   cout << \"*q = \" << *q << endl; \n   cout << \"**p2p = \" << **p2p << endl; \n   delete p; \n   delete p2p; // Free the dynamically allocated memory -- double free\n   return 0;\n }\n",
   "trace": [
     {
       "exception_msg": "error: expected ';' before 'q'",
