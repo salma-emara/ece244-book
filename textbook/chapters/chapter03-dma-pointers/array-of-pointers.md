@@ -30,7 +30,7 @@ To understand how are double pointers used, let's look at the following example:
     }
     </script>
 
-   #include &lt;iostream&gt;
+    #include &lt;iostream&gt;
     using namespace std;
 
     int main() {
@@ -38,7 +38,7 @@ To understand how are double pointers used, let's look at the following example:
       int* p, *q;     
       p = new int;  
       *p = 5;
-      p2p = &p; 
+      p2p = &p ; 
       q = *p2p; 
       *q = 8; 
       cout &lt;&lt; "*p = " &lt;&lt; *p &lt;&lt; endl; 
