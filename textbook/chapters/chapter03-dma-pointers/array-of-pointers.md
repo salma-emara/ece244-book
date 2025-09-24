@@ -49,5 +49,4 @@ To understand how are double pointers used, let's look at the following example:
       return 0;
     }
   </c-visualizer>
-
   
