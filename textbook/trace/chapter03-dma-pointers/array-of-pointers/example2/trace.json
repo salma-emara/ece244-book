@@ -1,0 +1,1801 @@
+{
+  "code": "#include <iostream>\nusing namespace std;\n\nclass Student {\n  public:\n    string name;\n    int ID;\n    Student() {\n      cout << \"Student constructor called\" << endl;\n    }\n    ~Student() {\n      cout << \"Student destructor called\" << endl;\n    }\n};\n\nint main() {\n  Student* arr = new Student[3]; // Dynamically allocate an array of 3 Student objects\n  arr[0].name = \"Alice\"; \n  return 0;\n}\n",
+  "trace": [
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {},
+      "line": 16,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 16,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": ""
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {},
+      "line": 17,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 16,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": ""
+    },
+    {
+      "event": "call",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 8,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 8,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": ""
+    },
+    {
+      "event": "step_line",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 9,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 9,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": ""
+    },
+    {
+      "event": "step_line",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 10,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 10,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\n"
+    },
+    {
+      "event": "return",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 10,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 10,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {},
+      "line": 17,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": "Student constructor called\n"
+    },
+    {
+      "event": "call",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 8,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 8,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 9,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 9,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 10,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 10,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "return",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 10,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 10,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {},
+      "line": 17,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "call",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 8,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 8,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 9,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 9,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 10,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 10,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "return",
+      "func_name": "Student::Student()",
+      "globals": {},
+      "heap": {},
+      "line": 10,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": false,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 17,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        },
+        {
+          "encoded_locals": {},
+          "frame_id": "0xFFF000BA0",
+          "func_name": "Student::Student()",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 10,
+          "ordered_varnames": [],
+          "parent_frame_id_list": [],
+          "unique_hash": "Student::Student()_0xFFF000BA0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {
+        "0x5C7BC80": [
+          "C_ARRAY",
+          "0x5C7BC80",
+          {
+            "elt_bytes": 16,
+            "heap_block": true,
+            "oob_addr": "0x5C7BCC0"
+          },
+          [
+            "C_STRUCT",
+            "0x5C7BC80",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC80",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC80",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC80",
+                        "pointer",
+                        "0x3",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC88",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BC90",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC90",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC90",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC90",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC98",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCA0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCA0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCA0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCA0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCA8",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCB0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCB0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCB0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCB0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCB8",
+                "int",
+                "<UNALLOCATED>",
+                {
+                  "bytes": 4
+                }
+              ]
+            ]
+          ]
+        ]
+      },
+      "line": 18,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "0x5C7BC88",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 18,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {
+        "0x5C7BC80": [
+          "C_ARRAY",
+          "0x5C7BC80",
+          {
+            "elt_bytes": 16,
+            "heap_block": true,
+            "oob_addr": "0x5C7BCC0"
+          },
+          [
+            "C_STRUCT",
+            "0x5C7BC80",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC80",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC80",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC80",
+                        "pointer",
+                        "0x3",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC88",
+                "int",
+                96976152,
+                {
+                  "bytes": 4,
+                  "hex": "05C7BD18"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BC90",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC90",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC90",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC90",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC98",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCA0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCA0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCA0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCA0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCA8",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCB0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCB0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCB0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCB0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCB8",
+                "int",
+                "<UNALLOCATED>",
+                {
+                  "bytes": 4
+                }
+              ]
+            ]
+          ]
+        ]
+      },
+      "line": 19,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "0x5C7BC88",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 19,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {
+        "0x5C7BC80": [
+          "C_ARRAY",
+          "0x5C7BC80",
+          {
+            "elt_bytes": 16,
+            "heap_block": true,
+            "oob_addr": "0x5C7BCC0"
+          },
+          [
+            "C_STRUCT",
+            "0x5C7BC80",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC80",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC80",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC80",
+                        "pointer",
+                        "0x3",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC88",
+                "int",
+                96976152,
+                {
+                  "bytes": 4,
+                  "hex": "05C7BD18"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BC90",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC90",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC90",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC90",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC98",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCA0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCA0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCA0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCA0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCA8",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCB0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCB0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCB0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCB0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCB8",
+                "int",
+                "<UNALLOCATED>",
+                {
+                  "bytes": 4
+                }
+              ]
+            ]
+          ]
+        ]
+      },
+      "line": 20,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "0x5C7BC88",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 19,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\nStudent constructor called\n"
+    },
+    {
+      "event": "return",
+      "func_name": "main",
+      "globals": {},
+      "heap": {
+        "0x5C7BC80": [
+          "C_ARRAY",
+          "0x5C7BC80",
+          {
+            "elt_bytes": 16,
+            "heap_block": true,
+            "oob_addr": "0x5C7BCC0"
+          },
+          [
+            "C_STRUCT",
+            "0x5C7BC80",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC80",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC80",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC80",
+                        "pointer",
+                        "0x3",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC88",
+                "int",
+                96976152,
+                {
+                  "bytes": 4,
+                  "hex": "05C7BD18"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BC90",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BC90",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BC90",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BC90",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BC98",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCA0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCA0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCA0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCA0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCA8",
+                "int",
+                6304280,
+                {
+                  "bytes": 4,
+                  "hex": "00603218"
+                }
+              ]
+            ]
+          ],
+          [
+            "C_STRUCT",
+            "0x5C7BCB0",
+            {
+              "bytes": 16,
+              "name": "Student"
+            },
+            [
+              "name",
+              [
+                "C_STRUCT",
+                "0x5C7BCB0",
+                {
+                  "bytes": 8,
+                  "name": "string"
+                },
+                [
+                  "_M_dataplus",
+                  [
+                    "C_STRUCT",
+                    "0x5C7BCB0",
+                    {
+                      "bytes": 8,
+                      "name": "_Alloc_hider"
+                    },
+                    [
+                      "_M_p",
+                      [
+                        "C_DATA",
+                        "0x5C7BCB0",
+                        "pointer",
+                        "<UNINITIALIZED>",
+                        {
+                          "bytes": 8,
+                          "target_type": "char"
+                        }
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "ID",
+              [
+                "C_DATA",
+                "0x5C7BCB8",
+                "int",
+                "<UNALLOCATED>",
+                {
+                  "bytes": 4
+                }
+              ]
+            ]
+          ]
+        ]
+      },
+      "line": 20,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "arr": [
+              "C_DATA",
+              "0xFFF000BB8",
+              "pointer",
+              "0x5C7BC88",
+              {
+                "bytes": 8,
+                "target_type": "Student"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 20,
+          "ordered_varnames": [
+            "arr"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": "Student constructor called\nStudent constructor called\nStudent constructor called\n"
+    }
+  ]
+}
