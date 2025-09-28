@@ -1,5 +1,5 @@
 {
-  "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n  int** p2p; \n  int* p, *q;     \n  p = new int;  \n  *p = 5;\n  p2p = &p ; \n  q = *p2p; \n  *q = 8; \n  cout << \"*p = \" << *p << endl; \n  cout << \"*q = \" << *q << endl; \n  cout << \"**p2p = \" << **p2p << endl; \n  delete p; \n  return 0;\n}\n",
+  "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n  int** p2p = NULL; \n  int* p = NULL, *q = NULL;     \n  p = new int;  \n  *p = 5;\n  p2p = &p ; \n  q = *p2p; \n  *q = 10; \n  **p2p = 8;\n  cout << \"*p = \" << *p << endl; \n  cout << \"*q = \" << *q << endl; \n  cout << \"**p2p = \" << **p2p << endl; \n  delete p; \n  return 0;\n}\n",
   "trace": [
     {
       "event": "step_line",
@@ -64,14 +64,14 @@
       "func_name": "main",
       "globals": {},
       "heap": {},
-      "line": 7,
+      "line": 5,
       "ordered_globals": [],
       "stack_to_render": [
         {
           "encoded_locals": {
             "p": [
               "C_DATA",
-              "0xFFF000BC0",
+              "0xFFF000BC8",
               "pointer",
               "<UNINITIALIZED>",
               {
@@ -81,7 +81,7 @@
             ],
             "p2p": [
               "C_DATA",
-              "0xFFF000BC8",
+              "0xFFF000BD0",
               "pointer",
               "<UNINITIALIZED>",
               {
@@ -91,7 +91,7 @@
             ],
             "q": [
               "C_DATA",
-              "0xFFF000BD0",
+              "0xFFF000BD8",
               "pointer",
               "<UNINITIALIZED>",
               {
@@ -105,7 +105,123 @@
           "is_highlighted": true,
           "is_parent": false,
           "is_zombie": false,
-          "line": 4,
+          "line": 5,
+          "ordered_varnames": [
+            "p2p",
+            "p",
+            "q"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": ""
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {},
+      "line": 6,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "p": [
+              "C_DATA",
+              "0xFFF000BC8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "int"
+              }
+            ],
+            "p2p": [
+              "C_DATA",
+              "0xFFF000BD0",
+              "pointer",
+              "0x0",
+              {
+                "bytes": 8,
+                "target_type": "int*"
+              }
+            ],
+            "q": [
+              "C_DATA",
+              "0xFFF000BD8",
+              "pointer",
+              "<UNINITIALIZED>",
+              {
+                "bytes": 8,
+                "target_type": "int"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 6,
+          "ordered_varnames": [
+            "p2p",
+            "p",
+            "q"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": ""
+    },
+    {
+      "event": "step_line",
+      "func_name": "main",
+      "globals": {},
+      "heap": {},
+      "line": 7,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "p": [
+              "C_DATA",
+              "0xFFF000BC8",
+              "pointer",
+              "0x0",
+              {
+                "bytes": 8,
+                "target_type": "int"
+              }
+            ],
+            "p2p": [
+              "C_DATA",
+              "0xFFF000BD0",
+              "pointer",
+              "0x0",
+              {
+                "bytes": 8,
+                "target_type": "int*"
+              }
+            ],
+            "q": [
+              "C_DATA",
+              "0xFFF000BD8",
+              "pointer",
+              "0x0",
+              {
+                "bytes": 8,
+                "target_type": "int"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 6,
           "ordered_varnames": [
             "p2p",
             "p",
@@ -160,7 +276,7 @@
               "C_DATA",
               "0xFFF000BD0",
               "pointer",
-              "<UNINITIALIZED>",
+              "0x0",
               {
                 "bytes": 8,
                 "target_type": "int*"
@@ -170,7 +286,7 @@
               "C_DATA",
               "0xFFF000BD8",
               "pointer",
-              "<UNINITIALIZED>",
+              "0x0",
               {
                 "bytes": 8,
                 "target_type": "int"
@@ -238,7 +354,7 @@
               "C_DATA",
               "0xFFF000BD0",
               "pointer",
-              "<UNINITIALIZED>",
+              "0x0",
               {
                 "bytes": 8,
                 "target_type": "int*"
@@ -248,7 +364,7 @@
               "C_DATA",
               "0xFFF000BD8",
               "pointer",
-              "<UNINITIALIZED>",
+              "0x0",
               {
                 "bytes": 8,
                 "target_type": "int"
@@ -326,7 +442,7 @@
               "C_DATA",
               "0xFFF000BD8",
               "pointer",
-              "<UNINITIALIZED>",
+              "0x0",
               {
                 "bytes": 8,
                 "target_type": "int"
@@ -445,10 +561,10 @@
             "C_DATA",
             "0x5C7BC80",
             "int",
-            8,
+            10,
             {
               "bytes": 4,
-              "hex": "00000008"
+              "hex": "0000000A"
             }
           ]
         ]
@@ -494,7 +610,7 @@
           "is_highlighted": true,
           "is_parent": false,
           "is_zombie": false,
-          "line": 11,
+          "line": 12,
           "ordered_varnames": [
             "p2p",
             "p",
@@ -572,7 +688,7 @@
           "is_highlighted": true,
           "is_parent": false,
           "is_zombie": false,
-          "line": 13,
+          "line": 12,
           "ordered_varnames": [
             "p2p",
             "p",
@@ -582,7 +698,7 @@
           "unique_hash": "main_0xFFF000BE0"
         }
       ],
-      "stdout": "*p = 8\n"
+      "stdout": ""
     },
     {
       "event": "step_line",
@@ -660,7 +776,7 @@
           "unique_hash": "main_0xFFF000BE0"
         }
       ],
-      "stdout": "*p = 8\n*q = 8\n"
+      "stdout": "*p = 8\n"
     },
     {
       "event": "step_line",
@@ -738,13 +854,33 @@
           "unique_hash": "main_0xFFF000BE0"
         }
       ],
-      "stdout": "*p = 8\n*q = 8\n**p2p = 8\n"
+      "stdout": "*p = 8\n*q = 8\n"
     },
     {
       "event": "step_line",
       "func_name": "main",
       "globals": {},
-      "heap": {},
+      "heap": {
+        "0x5C7BC80": [
+          "C_ARRAY",
+          "0x5C7BC80",
+          {
+            "elt_bytes": 4,
+            "heap_block": true,
+            "oob_addr": "0x5C7BC84"
+          },
+          [
+            "C_DATA",
+            "0x5C7BC80",
+            "int",
+            8,
+            {
+              "bytes": 4,
+              "hex": "00000008"
+            }
+          ]
+        ]
+      },
       "line": 16,
       "ordered_globals": [],
       "stack_to_render": [
@@ -799,7 +935,7 @@
       "stdout": "*p = 8\n*q = 8\n**p2p = 8\n"
     },
     {
-      "event": "return",
+      "event": "step_line",
       "func_name": "main",
       "globals": {},
       "heap": {},
@@ -845,6 +981,64 @@
           "is_parent": false,
           "is_zombie": false,
           "line": 17,
+          "ordered_varnames": [
+            "p2p",
+            "p",
+            "q"
+          ],
+          "parent_frame_id_list": [],
+          "unique_hash": "main_0xFFF000BE0"
+        }
+      ],
+      "stdout": "*p = 8\n*q = 8\n**p2p = 8\n"
+    },
+    {
+      "event": "return",
+      "func_name": "main",
+      "globals": {},
+      "heap": {},
+      "line": 18,
+      "ordered_globals": [],
+      "stack_to_render": [
+        {
+          "encoded_locals": {
+            "p": [
+              "C_DATA",
+              "0xFFF000BC8",
+              "pointer",
+              "0x5C7BC80",
+              {
+                "bytes": 8,
+                "target_type": "int"
+              }
+            ],
+            "p2p": [
+              "C_DATA",
+              "0xFFF000BD0",
+              "pointer",
+              "0xFFF000BC8",
+              {
+                "bytes": 8,
+                "target_type": "int*"
+              }
+            ],
+            "q": [
+              "C_DATA",
+              "0xFFF000BD8",
+              "pointer",
+              "0x5C7BC80",
+              {
+                "bytes": 8,
+                "target_type": "int"
+              }
+            ]
+          },
+          "frame_id": "0xFFF000BE0",
+          "func_name": "main",
+          "is_highlighted": true,
+          "is_parent": false,
+          "is_zombie": false,
+          "line": 18,
           "ordered_varnames": [
             "p2p",
             "p",
