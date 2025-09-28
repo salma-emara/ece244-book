@@ -6,6 +6,47 @@ table = false
 type = "tracing"
 multipart= true
 
+LLM = '''
+Consider the following program.
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      inFile.clear();
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+
+Given the following contents of `"input.txt"`, write the output.
+
+(1) `"input.txt"`
+<pre>
+  1
+  2
+  3
+</pre>
+'''
+
+
 question = '''
 Consider the following program.
 
@@ -58,6 +99,45 @@ table = false
 type = "tracing"
 multipart= true
 
+LLM = '''
+Consider the following program.
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      inFile.clear();
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+Given the following contents of `"input.txt"`, write the output.
+
+(2) `"input.txt"`
+<pre>
+  a32
+  b86
+  3
+</pre>
+'''
+
 question = '''
 (2) `"input.txt"`
 <pre>
@@ -82,6 +162,45 @@ difficulty = "Easy"
 table = false
 type = "explaination"
 multipart= true
+
+LLM = '''
+Consider the following program.
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      inFile.clear();
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+Given the following contents of `"input.txt"`, write the output.
+
+(3) `"input.txt"`
+<pre>
+a32
+b86 3
+</pre>
+'''
+
 
 question = '''
 (3) `"input.txt"`
@@ -109,6 +228,48 @@ difficulty = "Easy"
 table = false
 type = "tracing"
 multipart= true
+
+LLM = '''
+Consider the following program.
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      // inFile.clear(); COMMENTED OUT
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+
+Given the following contents of `"input.txt"`, write the output.
+
+
+(1) `"input.txt"`
+<pre>
+1
+2
+3
+</pre>
+'''
+
+
 
 question = '''
 Now you remove the `infile.clear()` from the code, so the program becomes:
@@ -161,6 +322,46 @@ table = false
 type = "explaination"
 multipart= true
 
+LLM = '''
+Consider the following program.
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      // inFile.clear(); COMMENTED OUT
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+
+Given the following contents of `"input.txt"`, write the output.
+
+(2) `"input.txt"`
+<pre>
+a32
+b86
+3
+</pre>
+'''
+
+
 question = '''
 (2) `"input.txt"`
 <pre>
@@ -188,6 +389,44 @@ difficulty = "Easy"
 table = false
 type = "explaination"
 multipart= true
+
+LLM = '''
+Consider the following program.
+
+```{code-block} cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+int main() {
+  int a;
+  ifstream inFile;
+  inFile.open("input.txt");
+  if (inFile.fail()) {
+    return 1;
+  }
+  while (1) {
+    inFile >> a;
+    if (inFile.fail()) {
+      cout << "failed.." << endl;
+      // inFile.clear(); COMMENTED OUT
+      inFile.ignore(100, '\n');
+      continue;
+    }
+    cout << "a = " << a << endl;
+    break;
+  }
+  return 0;
+}
+```
+
+Given the following contents of `"input.txt"`, write the output.
+
+(3) `"input.txt"`
+<pre>
+a32
+b86 3
+</pre>
+'''
 
 question = '''
 (3) `"input.txt"`

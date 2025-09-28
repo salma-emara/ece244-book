@@ -22,7 +22,7 @@ async function getChatCompletion(prompt) {
 }
 
 
-async function generate_hints(questionID, form, originalCode, outputArray, actualOutput, previousHints) {
+async function generate_hints(questionID, exercise, form, originalCode, outputArray, actualOutput, previousHints) {
 
     // check if hints already exists
     let hintContainer = form.querySelector(".hint-container");
