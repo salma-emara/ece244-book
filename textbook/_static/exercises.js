@@ -527,7 +527,7 @@ function generate_exercises(filename) {
 					return;
 				}
 
-				let hintContainer = await generate_hints(ex["question-id"], form, studentCode, expectedOutput, actualOutput, ex.question, []);
+				let hintContainer = await generate_hints(ex["question-id"], form, studentCode, expectedOutput, actualOutput, []);
 				handle_prog_submission(form, resultMessage, inputArray, expectedOutput, actualOutput, correctAnswer, type, hintContainer, studentCode, thisPartIndex);
 
 			} else if (type === "explaination" && ex.table){

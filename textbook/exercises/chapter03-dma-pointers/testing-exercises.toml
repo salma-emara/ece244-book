@@ -110,6 +110,35 @@ table = false
 type = "tracing"
 multipart= true
 
+LLM = '''
+Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.
+
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int* first_ptr;
+  int* second_ptr;
+  int** p_ptr;
+  first_ptr = new int;
+  second_ptr = new int;
+  p_ptr = &first_ptr;
+  *first_ptr = 4;
+  *second_ptr = 8;
+  second_ptr = *p_ptr;
+  cout << *first_ptr << " " << *second_ptr << endl;
+  delete first_ptr;
+  delete second_ptr;
+  delete *p_ptr;
+  return (0);
+}
+```
+
+(1) What is the output produced by `cout` on line 14 of the code
+
+'''
+
 question = '''
 Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.
 
@@ -150,6 +179,37 @@ difficulty = "Intermediate"
 table = false
 type = "multiple-choice"
 multipart= true
+
+LLM = '''
+Consider the following `main` function. The line numbers to the left are for reference and are not part of the code.
+
+```{code-block} cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int* first_ptr;
+  int* second_ptr;
+  int** p_ptr;
+  first_ptr = new int;
+  second_ptr = new int;
+  p_ptr = &first_ptr;
+  *first_ptr = 4;
+  *second_ptr = 8;
+  second_ptr = *p_ptr;
+  cout << *first_ptr << " " << *second_ptr << endl;
+  delete first_ptr;
+  delete second_ptr;
+  delete *p_ptr;
+  return (0);
+}
+```
+
+(2) The program may have a problem with it. What is the problem, if any? Circle only one answer.
+
+'''
+
+
 
 question = '''
 (2) The program may have a problem with it. What is the problem, if any? Circle only one answer.
@@ -372,6 +432,63 @@ type = "function programming"
 table = false
 multipart = true
 
+LLM = '''
+A Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.
+
+```{code-block} cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = _name;
+    age = _age;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+class Vtuber {
+ private:
+  // Vtuber Name
+  string name;
+  // Follower array with a variable size, each element should be a dynamically
+  // allocated object of class Follower.
+  Follower** followers;
+  // The size of follower array.
+  int follower_max;
+  // Number of followers
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  ~Vtuber();
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name);
+};
+
+```
+
+Specifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. The following graph illustrates it.
+
+```{figure} _images/followers.png
+```
+
+(1) Implement the constructor for `Vtuber`. Vtuber `name` should be initialized by `_name`, and `follower_max` should be initialized to 2. In addition, you should allocate an array called `followers` using `new`, with an initial size of 2 (the value of `follower_max`). Every element in this array should be a pointer to an object of class `Follower` and initialize all these pointers to `NULL`.
+
+Vtuber::Vtuber (const string& _name) {
+  
+  // Your code here
+
+}
+
+'''
+
 question = '''
 
 A Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.
@@ -530,6 +647,65 @@ type = "function programming"
 table = false
 multipart = true
 
+LLM = '''
+A Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.
+
+```{code-block} cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = _name;
+    age = _age;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+class Vtuber {
+ private:
+  // Vtuber Name
+  string name;
+  // Follower array with a variable size, each element should be a dynamically
+  // allocated object of class Follower.
+  Follower** followers;
+  // The size of follower array.
+  int follower_max;
+  // Number of followers
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  ~Vtuber();
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name);
+};
+
+```
+
+Specifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. 
+
+
+(2) Every Vtuber in `Vtube` can get new followers or lose their current followers. This is implemented by two methods: `insert_follower` and `remove_follower`. Now you are asked to implement these two methods:
+
+a. For insert_follower, a follower name and follower age are given. You need to create a dynamically allocated object of `Follower` and insert it into the followers array (in the first available location), using `new` operator. If the array is full, you should double `follower_max`, allocate a new follower array, and move all the data into this `new` array, and insert the `new` follower. Write the code below.
+
+void Vtuber::insert_follower(const string& follower_name, 
+                            int follower_age) {
+
+  // Your code here
+
+}
+
+'''
+
+
 question = '''
 
 (2) Every Vtuber in `Vtube` can get new followers or lose their current followers. This is implemented by two methods: `insert_follower` and `remove_follower`. Now you are asked to implement these two methods:
@@ -674,6 +850,64 @@ difficulty = "Challenging"
 type = "function programming"
 table = false
 multipart = true
+
+LLM = '''
+A Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.
+
+```{code-block} cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = _name;
+    age = _age;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+class Vtuber {
+ private:
+  // Vtuber Name
+  string name;
+  // Follower array with a variable size, each element should be a dynamically
+  // allocated object of class Follower.
+  Follower** followers;
+  // The size of follower array.
+  int follower_max;
+  // Number of followers
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  ~Vtuber();
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name);
+};
+
+```
+
+Specifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. 
+
+
+(2) Every Vtuber in `Vtube` can get new followers or lose their current followers. This is implemented by two methods: `insert_follower` and `remove_follower`. Now you are asked to implement these two methods:
+
+b. For `remove_follower`, a follower name is given. If there is any follower in the array matching the name, you should remove it and free its memory using `delete`. You can assume the follower names are all unique.
+
+void Vtuber::remove_follower(const string& follower_name) {
+  
+  // Your code here
+
+}
+
+'''
+
 
 question = '''
 b. For `remove_follower`, a follower name is given. If there is any follower in the array matching the name, you should remove it and free its memory using `delete`. You can assume the follower names are all unique.
@@ -836,6 +1070,62 @@ difficulty = "Challenging"
 type = "explaination"
 table = false
 multipart = true
+
+LLM = '''
+A Vtuber is an online entertainer who posts videos on Vtube. A Vtuber will have followers on Vtube. As a programmer from Vtube, you are asked to implement a class for Vtuber. The class definition and description are described below.
+
+```{code-block} cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Follower {
+ private:
+  string name;
+  int age;
+
+ public:
+  Follower(const string& _name, int _age) {
+    name = _name;
+    age = _age;
+  }
+  string get_name() const { return name; }
+  int get_age() const { return age; }
+};
+class Vtuber {
+ private:
+  // Vtuber Name
+  string name;
+  // Follower array with a variable size, each element should be a dynamically
+  // allocated object of class Follower.
+  Follower** followers;
+  // The size of follower array.
+  int follower_max;
+  // Number of followers
+  int follower_num;
+
+ public:
+  Vtuber(const string& _name);
+  ~Vtuber();
+  void insert_follower(const string& follower_name, int follower_age);
+  void remove_follower(const string& follower_name);
+};
+
+```
+
+Specifically, Vtuber's followers member variable is an array of pointers, each pointer pointing to a `Follower` object. 
+
+
+(3) Implement the destructor for the `Vtuber` class. You should free all the dynamically allocated objects using `delete`. Remember to be consistent with your previous implementation, as the entire program should not trigger any segmentation fault.
+
+Vtuber::~Vtuber() {
+  
+  // Your code here
+
+}
+
+'''
+
 
 question = '''
 
