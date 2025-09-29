@@ -1,4 +1,3 @@
-# Welcome to your Jupyter Book
+# String Streams
 
-This is a small sample book to give you a feel for how book content is
-structured.
+(work-in-progress)

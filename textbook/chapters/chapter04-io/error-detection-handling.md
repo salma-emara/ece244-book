@@ -127,33 +127,35 @@ Write a program that reads integers from a file named `numbers.txt` that has inp
 1. The file `numbers.txt` does not exist.
 2. The file contains non-integer inputs.
 
-
+**Code**
 ```cpp
-#include <iostream>
 #include <fstream>
+#include <iostream>
 using namespace std;
 
 int main(void) {
-    ifstream inFile("numbers.txt");
+  ifstream inFile("numbers.txt");
+  if (inFile.fail()) {
+    cerr << "Error opening file" << endl;
+    return 1;  // exit the program with an error code
+  }
+  int num;
+  int sum = 0;
+  inFile >> num;
+  while (!inFile.eof()) {
     if (inFile.fail()) {
-        cerr << "Error opening file" << endl;
-        return 1; // exit the program with an error code
+      cerr << "Non-integer input encountered. Ignoring the rest of the line."
+           << endl;
+      inFile.clear();             // clear the fail state
+      inFile.ignore(1000, '\n');  // ignore the rest of the line
+    } else {
+      sum += num;
     }
-    int num;
-    int sum = 0;
-    while (!inFile.eof()) {
-        inFile >> num;
-        if (inFile.fail()) {
-            cerr << "Non-integer input encountered. Ignoring the rest of the line." << endl;
-            inFile.clear(); // clear the fail state
-            inFile.ignore(1000, '\n'); // ignore the rest of the line
-        }else {
-          sum += num;
-        }
-    }
-    cout << "The sum of the integers in the file is: " << sum << endl;
-    inFile.close();
-    return 0;
+    inFile >> num;
+  }
+  cout << "The sum of the integers in the file is: " << sum << endl;
+  inFile.close();
+  return 0;
 }
 ```
 
