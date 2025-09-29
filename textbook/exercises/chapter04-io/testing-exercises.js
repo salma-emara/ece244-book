@@ -8,6 +8,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
+      "LLM": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(1) `\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
       "question": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(1) `\"input.txt\"`\n<pre>\n  1\n  2\n  3\n</pre>\n",
       "answer": "a = 1\n"
     },
@@ -18,6 +19,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
+      "LLM": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(2) `\"input.txt\"`\n<pre>\n  a32\n  b86\n  3\n</pre>\n",
       "question": "(2) `\"input.txt\"`\n<pre>\n  a32\n  b86\n  3\n</pre>\n",
       "answer": "failed..\nfailed..\na = 3\n"
     },
@@ -28,6 +30,7 @@ let parsedObject;
       "table": false,
       "type": "explaination",
       "multipart": true,
+      "LLM": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\n\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      inFile.clear();\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(3) `\"input.txt\"`\n<pre>\na32\nb86 3\n</pre>\n",
       "question": "(3) `\"input.txt\"`\n<pre>\na32\nb86 3\n</pre>\n",
       "answer": "failed..\n\nfailed..\n\nfailed..\n\nAnd it keeps repeating\n"
     },
@@ -38,6 +41,7 @@ let parsedObject;
       "table": false,
       "type": "tracing",
       "multipart": true,
+      "LLM": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      // inFile.clear(); COMMENTED OUT\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n\n(1) `\"input.txt\"`\n<pre>\n1\n2\n3\n</pre>\n",
       "question": "Now you remove the `infile.clear()` from the code, so the program becomes:\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      // inFile.clear(); COMMENTED OUT\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\n(1) `\"input.txt\"`\n<pre>\n1\n2\n3\n</pre>\n",
       "answer": "a = 1\n"
     },
@@ -48,6 +52,7 @@ let parsedObject;
       "table": false,
       "type": "explaination",
       "multipart": true,
+      "LLM": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      // inFile.clear(); COMMENTED OUT\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(2) `\"input.txt\"`\n<pre>\na32\nb86\n3\n</pre>\n",
       "question": "(2) `\"input.txt\"`\n<pre>\na32\nb86\n3\n</pre>\n",
       "answer": "failed..\n\nfailed..\n\nfailed..\n\nAnd it keeps repeating\n"
     },
@@ -58,6 +63,7 @@ let parsedObject;
       "table": false,
       "type": "explaination",
       "multipart": true,
+      "LLM": "Consider the following program.\n\n```{code-block} cpp\n#include <fstream>\n#include <iostream>\nusing namespace std;\nint main() {\n  int a;\n  ifstream inFile;\n  inFile.open(\"input.txt\");\n  if (inFile.fail()) {\n    return 1;\n  }\n  while (1) {\n    inFile >> a;\n    if (inFile.fail()) {\n      cout << \"failed..\" << endl;\n      // inFile.clear(); COMMENTED OUT\n      inFile.ignore(100, '\\n');\n      continue;\n    }\n    cout << \"a = \" << a << endl;\n    break;\n  }\n  return 0;\n}\n```\n\nGiven the following contents of `\"input.txt\"`, write the output.\n\n(3) `\"input.txt\"`\n<pre>\na32\nb86 3\n</pre>\n",
       "question": "(3) `\"input.txt\"`\n<pre>\na32\nb86 3\n</pre>\n",
       "answer": "failed..\n\nfailed..\n\nfailed..\n\nAnd it keeps repeating\n"
     },
