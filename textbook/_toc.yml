@@ -35,6 +35,7 @@ parts:
           - file: chapters/chapter03-dma-pointers/testing-exercises.md
       - file: chapters/chapter04-io/intro.md
         sections:
+          - file: chapters/chapter04-io/input-output.md
           - file: chapters/chapter04-io/testing-exercises.md
       - file: chapters/chapter05-operator-overloading/intro.md
         sections:
