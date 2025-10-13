@@ -166,7 +166,77 @@ We use the overloaded `==` operator in line 32 to compare the two `Complex` obje
 
 ## Overloading the `=` Operator
 
-(work-in-progress)
+In the previous example, we used two operators: `+` and `=` in `z = x + y;`, where `z`, `x` and `y` are `Complex` objects. We successfully overloaded the `+` operator to add two `Complex` objects. This returns a a new `Complex` object (let's call it `temp`). Then, the assignment operator `=` is used to assign the value of `temp` to the object `z`.
+
+It's time to overload the assignment operator `=`: `operator=`. **The good news is C++ provides a default assignment operator `operator=` for classes**. It performs a member-wise assignment of data members from the right-hand side object to the left-hand side object. This means the data members of `temp` are copied to the corresponding data members of `z`.
+
+Let's implement the default assignment operator for the `Complex` class to understand how it works. 
+
+**Step 1: Understand the function header**
+
+In the expression `z = temp;`, 
+
+1. We can interpret the `z = temp` to be equivalent to `z.operator=(temp)`. 
+2. The function name is `operator=`. 
+3. It should be a member function of `Complex` class, since we invoke `operator=` on `z`. 
+4. The object `temp` is passed as an argument to this member function of type `Complex`. 
+
+The function name and parameter type are written as follows:
+
+```{code-block} cpp
+<<return-type>> operator=(Complex rhs);
+```
+
+In C/C++, the assignment operator `=` must return something that allows for chained assignments, e.g. `z = y = x;`. This statement is evaluated right to left, i.e. `y = x` `x` is assigned to `y`, then in `z = y` `y` is assigned to `z`. In C/C++ standard, we should return from `operator=` the **original** left-hand side object after the assignment. Therefore, the assignment operator `=` must return a reference to the left-hand side object to allow for this chaining, which is of `Complex` class type. We add the `&` symbol to indicate that we are returning a reference.
+
+```{figure} ./images/chained-operator=.png
+:alt: chained-operator=
+:class: with-shadow
+:width: 400px
+:align: center
+:name: chained-operator=
+
+In chained assignments like `z = y = x;`, the expression `y = x` is evaluated first, and the result, which is the original `y`, is then assigned to `z`. To enable this chaining, the assignment operator `=` must return a reference to the left-hand side object, or the object on which we invoked the `operator=` member function.
+```
+
+Putting it all together, the function header for the assignment operator `=` is as follows:
+
+```{code-block} cpp
+Complex& operator=(Complex rhs);
+```
+
+**Step 2: Implement the `operator=` Member Function**
+
+We can implement the `operator=` member function by setting the data members of the left-hand side object to the corresponding data members of the right-hand side object `rhs`, i.e. `real = rhs.real` and `img = rhs.img`.
+
+**How can we get the reference to the left-hand side object?** One way is to use the `this` pointer. The `this` pointer points to the object on which the member function is invoked. Therefore, in `z.operator=(temp)`, `this` points to the object `z`. We can dereference the `this` pointer using `*this` to get the left-hand side object itself. `this` is of type `Complex*`, so `*this` is of type `Complex`. To return a reference to the left-hand side object, we use `return *this;`. 
+
+We can visualize each object and the `this` pointer as follows:
+
+```{figure} ./images/this-pointer.png
+:alt: this-pointer
+:class: with-shadow
+:width: 600px
+:align: center
+:name: this-pointer 
+The `this` pointer points to the object on which we invoke the function on, e.g. object `z`. We can dereference the `this` pointer using `*this` to get the left-hand side object itself.
+```
+
+Below is the complete implementation of the `operator=` member function:
+
+```{figure} ./images/operator=-implement.png
+:alt: operator-equals-implement
+:class: with-shadow
+:width: 600px
+:align: center
+:name: operator-equals-implement
+We copy the `real` and `img` data members from the right-hand side object `rhs` to the left-hand side object using the dot operator. Finally, we return a reference to the left-hand side object using `*this`.
+```
+
+In the image above, we optimize the `operator=` member function by passing the right-hand side object `rhs` as a `const` reference to avoid making a copy and to ensure that it is not modified.
+
+We didn't make the `operator=` member function a `const` member function because it modifies the state of the left-hand side object.
+
 
 
 
