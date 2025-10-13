@@ -216,7 +216,7 @@ We can visualize each object and the `this` pointer as follows:
 ```{figure} ./images/this-pointer.png
 :alt: this-pointer
 :class: with-shadow
-:width: 600px
+:width: 400px
 :align: center
 :name: this-pointer 
 The `this` pointer points to the object on which we invoke the function on, e.g. object `z`. We can dereference the `this` pointer using `*this` to get the left-hand side object itself.
