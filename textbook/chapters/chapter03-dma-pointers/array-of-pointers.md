@@ -151,7 +151,7 @@ This is done in two steps. For every `new`, there should be a corresponding `del
 
 **Step 4:** If we dynamically allocated four integers, we need to free each of them first using a loop:
 
-```{figure} ./images/free-int-per-int*.png
+```{figure} ./images/free-int-per-int_.png
 :alt: free-int-per-int*
 :class: with-shadow
 :width: 500px
@@ -163,7 +163,7 @@ Free each integer pointed to by the pointers in the array.
 
 **Step 5:** Finally, we free the memory allocated for the array of pointers itself:
 
-```{figure} ./images/delete-entire-int*-array.png
+```{figure} ./images/delete-entire-int_-array.png
 :alt: delete-entire-int*-array
 :class: with-shadow
 :width: 500px
@@ -226,7 +226,7 @@ We can also create an array of pointers to objects. For example, if we have a cl
 
 **Step 1:** We can allocate an array of three pointers using:
 
-```{figure} ./images/allocate-array-Student*.png
+```{figure} ./images/allocate-array-Student_.png
 :alt: allocate-array-Student*
 :class: with-shadow
 :width: 400px
@@ -268,7 +268,7 @@ This is done in two steps. For every `new`, there should be a corresponding `del
 
 **Step 4:** If we dynamically allocated three Student objects, we need to free each of them first using a loop:
 
-```{figure} ./images/free-Student-per-Student*.png
+```{figure} ./images/free-Student-per-Student_.png
 :alt: free-Student-per-Student*
 :class: with-shadow
 :width: 500px
@@ -280,7 +280,7 @@ Free each Student pointed to by the pointers in the array.
 
 **Step 5:** Finally, we free the memory allocated for the array of pointers itself:
 
-```{figure} ./images/delete-entire-Student*-array.png
+```{figure} ./images/delete-entire-Student_-array.png
 :alt: delete-entire-Student*-array
 :class: with-shadow
 :width: 500px

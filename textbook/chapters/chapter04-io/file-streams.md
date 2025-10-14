@@ -80,10 +80,10 @@ int main(void){
 
 **What is a buffer?**
 
-When we write data to a file using an `ofstream` object or to the terminal using `cin`, the data is first stored in a buffer in memory. The buffer is a temporary storage area that holds the data before it is written to the file. The data in the buffer is written to the file or terminal when:
+When we write data to a file using an `ofstream` object or to the terminal using `cout`, the data is first stored in a buffer in memory. The buffer is a temporary storage area that holds the data before it is written to the file. The data in the buffer is written to the file or terminal when:
 
 (i) the output has a newline character (`\n`) or an end-of-line manipulator like `endl`,
-(ii) we explicitly call the `flush` method of the `ofstream` object using `outFile.flush()` or `cin.flush()`, or 
+(ii) we explicitly call the `flush` method of the `ofstream` object using `outFile.flush()` or `cout.flush()`, or 
 (iii) we close the file using the `close` method.
 
 For example, `outFile << "Hello, World!";` writes the string to the buffer first. Then, when we write `outFile << endl;`, the buffer is flushed and the data is written to the file. This is done **for efficiency reasons, as writing data to a file or terminal can be slow, and buffering allows us to write larger chunks of data at once**.
