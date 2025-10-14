@@ -109,7 +109,7 @@ An **array of pointers** is a collection of **pointers** stored in contiguous me
 
 **Step 1:** We can allocate an array of four pointers using:
 
-```{figure} ./images/allocate-array-int_.png
+```{figure} ./images/allocate-array-int*.png
 :alt: allocate-array-int*
 :class: with-shadow
 :width: 400px

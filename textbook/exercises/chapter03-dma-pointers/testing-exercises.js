@@ -78,7 +78,7 @@ let parsedObject;
       "type": "tracing",
       "multipart": false,
       "question": "Consider the following program. \n\n```{code-block} cpp\nclass Point {\n  int x;\n  int y;\n\n public:\n  Point(int i, int j);\n  Point increment_x();\n  Point increment_y();\n  void print() const;\n};\nPoint::Point(int i, int j) {\n  x = i;\n  y = j;\n}\nPoint Point::increment_x() {\n  ++x;\n  return *this;\n}\nPoint Point::increment_y() {\n  ++y;\n  return *this;\n}\nvoid Point::print() const {\n  cout << \"(\" << x << \",\" << y << \")\" << endl;\n}\nint main() {\n  Point a(2, 3);\n  // Evaluation is done left to right\n  a.increment_x().increment_y().print();\n  a.print();\n  return 0;\n}\n```\n\nAssuming the C++ compiler does not optimize away copying of objects. Write the output produced by the program.\n",
-      "answer": "(3,4)\n",
+      "answer": "(3,4)\n(3,3)\n",
       "explanation": "<pre>\n(3,4)\n</pre>\nRecall, `this` is a pointer to the object itself. \n\n\n`a.increment_x()` is evaluated first, and would increment the `x` of object `a` making `x` of `a` equal to 3. This would return a new object with `x = 3` and `y = 3`. On this new object, you would call `increment_y()`, which would increment `y` to 4 and return a new object with `x = 3` and `y = 4`. Printing this new object would produce `(3,4)`.\n<pre>\n(3,3)\n</pre>\nPrinting object `a` would output `(3,3)` due to the previous `a.increment_x()` call. \n"
     },
     {

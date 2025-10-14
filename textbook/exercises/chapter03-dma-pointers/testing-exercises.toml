@@ -286,6 +286,7 @@ Assuming the C++ compiler does not optimize away copying of objects. Write the o
 
 answer = '''
 (3,4)
+(3,3)
 '''
 
 explanation = '''
