@@ -1,3 +1,3 @@
 # Objects with Pointers
 
-In this chapter, we realize that in classes that have pointers, there is a high chance that we need to define the class' own copy constructor, `operator=` and destructor.
+In this chapter, we discuss constructors that are called when we are creating an object from an existing object. This is called a copy constructor. These are given by default to all classes, unless we define our own. However, we will soon realize that in classes that have pointers, there is a high chance that we need to define the class' own copy constructor, `operator=` and destructor.
