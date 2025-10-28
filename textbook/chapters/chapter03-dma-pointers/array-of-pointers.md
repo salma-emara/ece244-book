@@ -26,7 +26,7 @@ To understand how are double pointers used, let's look at the following example:
         "14": "Output the value pointed to by q",
         "15": "Output the value pointed to by p which is pointer through p2p",
         "16": "Free the dynamically allocated memory"
-      },
+      }
     }
     </script>
 
