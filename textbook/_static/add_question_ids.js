@@ -15,6 +15,32 @@ function walkChaptersAndAddIds() {
     let content = fs.readFileSync(filePath, "utf8");
     let lines = content.split("\n");
 
+    // find any duplicates
+    const idLines = lines
+      .map((l, idx) => ({ line: l, idx }))
+      .filter(obj => obj.line.trim().startsWith("question-id"));
+
+    const seen = new Set();
+    const duplicates = [];
+
+    for (const { line, idx } of idLines) {
+      const id = line.split("=")[1].trim().replace(/"/g, "");
+      if (seen.has(id)) duplicates.push(idx);
+      seen.add(id);
+    }
+
+    // remove any duplicates
+    if (duplicates.length > 0) {
+      console.warn(`Found duplicate question-ids in ${filePath}, removing duplicates...`);
+      
+      // remove from bottom up so line indices remain valid
+      duplicates.sort((a, b) => b - a);
+      for (const idx of duplicates) {
+        lines.splice(idx, 1);
+      }
+    }
+
+    // rerun to ensure all have unique IDs
     let exerciseIndex = 0;
     for (let i = 0; i < lines.length; i++) {
       if (lines[i].trim() === "[[exercises]]") {
