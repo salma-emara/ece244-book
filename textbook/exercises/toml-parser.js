@@ -36,7 +36,12 @@ baseDirs.forEach((baseDir) => {
             const ex = tomlData.exercises[i];
 
             if (!('question-id' in ex)) {
-                throw new Error(`Exercise #${i + 1} of ${chapterName}: missing question-id`);
+
+                throw new Error(
+                    `Exercise #${i + 1} of ${chapterName} is missing a question-id.\n` +
+                    `To fix this, please run: node ./textbook/_static/add_question_ids.js`
+                );
+                
             }
 
             const label = `${ex['question-id']} of ${chapterName}`;

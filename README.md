@@ -180,7 +180,13 @@ To edit an existing exercise page:
 
 1- Open the .toml file of the exercise you want to edit and make the desired changes.
 
-2- In your terminal, go to `ece244-book` directory and execute the following command.
+2- Run the question ID patcher to ensure all exercises have unique IDs:
+
+``` 
+node ./textbook/_static/add_question_ids.js
+```
+
+3- In your terminal, go to `ece244-book` directory and execute the following command.
 
 ```
 node ./textbook/_static/toml_to_js_convertor.js
