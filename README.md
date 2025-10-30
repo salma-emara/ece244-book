@@ -24,10 +24,21 @@ pip install -r requirements.txt
 3- To build the book locally, run the following command:
 
 ```
+# To build everything for the first time 
+node ./textbook/_static/toml_to_js_convertor.js
+jupyter-book build --all textbook
+cp -r textbook/exercises/ textbook/_build/html/exercises
+cp -r embeddings/outputs textbook/_build/html
+
 # To build everything
 jupyter-book build --all textbook
 # To build after updating a markdown file
 jupyter-book build textbook
+
+# To build after updating exercises
+node ./textbook/_static/toml_to_js_convertor.js
+jupyter-book build --all textbook
+cp -r textbook/exercises/ textbook/_build/html/exercises
 ```
 
 4- To view the book, you have two options:
@@ -132,6 +143,65 @@ This book is written in MyST-Markdown, which is easy to learn. I ask you to be c
 If you are using VS Code, install MyST-Markdown extension to allow syntax highlighting for `.md` files.
 
 When you add a new `.md` file, remember to include it in `textbook/_toc.yml`.
+
+
+## Exercises: Add or Edit
+
+The exercises for the book are created in TOML files, which are then converted into JavaScript files to be read by the code to build the book.
+
+To convert .toml files to .js files:
+
+1- Ensure you have Node.js installed on your system. You can download it from their official website (https://nodejs.org).
+
+2- Download the required package by executing the following command:
+
+```
+npm install @iarna/toml
+```
+
+To add a new exercise page:
+
+1- Create a new .toml file containing the exericses in textbook/exercises in the chapter folder of your choice.
+
+2- In your terminal, execute the following command in `ece244-book` directory.
+
+```
+node ./textbook/_static/toml_to_js_convertor.js
+```
+A .js file will be created in the corresponding folders for all the .toml files present in the textbook/exercises directory.
+
+3- Open the .md file where you want the exercises to be and add the following line. Replace `file-name` with the name of your exercise file (without .js extension). 
+
+```
+{{exercise_embed | replace("%%FILENAME%%", "file-name") }}
+```
+
+To edit an existing exercise page:
+
+1- Open the .toml file of the exercise you want to edit and make the desired changes.
+
+2- In your terminal, go to `ece244-book` directory and execute the following command.
+
+```
+node ./textbook/_static/toml_to_js_convertor.js
+```
+
+To validate all exercise files
+
+1- In your terminal, go to `ece244-book` directory and execute the following command.
+
+```
+node textbook/exercises/toml-parser.js
+```
+
+2- If any file contains errors, only the first error in that file will be reported. Rerun the following command to catch the next one
+```
+node textbook/exercises/toml-parser.js
+```
+3- If no errors occur, an "All done." message will be shown in the terminal.
+
+Build the book locally and ensure the quiz is behaving as expected.
+
 
 ## Correcting mistakes 
 
