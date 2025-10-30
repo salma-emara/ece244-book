@@ -74,6 +74,7 @@ title = "Question 7 in Fall 2018 Midterm Exam"
 difficulty = "Intermediate"
 type = "function programming"
 table = false
+multipart = false
 
 question = '''
 The following is the definition/implementation of a class called `Foo`.
@@ -471,7 +472,7 @@ title = "Modified Version of Question 14 in Fall 2019 Midterm Exam"
 difficulty = "Intermediate"
 table = false
 type = "function programming"
-multipart= true
+multipart= false
 
 question = '''
 
