@@ -93,7 +93,7 @@ cp -r textbook/exercises/ textbook/_build/html/exercises
       ```bash
       cp -r textbook/semantic-search.html textbook/_build/html
       ```
-## For Visualizing C++ Code
+### For Visualizing C++ Code
 
 Run this command if you are using cpp-visualizer in any of the markdown files
 
@@ -145,7 +145,7 @@ If you are using VS Code, install MyST-Markdown extension to allow syntax highli
 When you add a new `.md` file, remember to include it in `textbook/_toc.yml`.
 
 
-## Exercises: Add or Edit
+### Exercises: Add or Edit
 
 The exercises for the book are created in TOML files, which are then converted into JavaScript files to be read by the code to build the book.
 
@@ -210,7 +210,7 @@ node textbook/exercises/toml-parser.js
 Build the book locally and ensure the exercises are behaving as expected.
 
 
-## Correcting mistakes 
+### Correcting mistakes 
 
 Since this book is still under development, it will have mistakes. If you find a typographical, grammatical or any other mistake, I would highly appreciate if you open an issue pointing out the mistake. You may also correct it and create a pull request. 
 
