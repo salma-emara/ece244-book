@@ -112,15 +112,11 @@ baseDirs.forEach((baseDir) => {
                 }
             }
 
-            // include this once we have main-functions for all function programing questions
-
-            // if (ex.type === 'function programming') {
-            //   if (typeof ex['main-function'] !== 'string') {
-            //     throw new Error(`${label}: missing main-function`);
-            //   }
-            // }
-
-            // need to add missing test cases later on
+            if (ex.type === 'function programming') {
+              if (typeof ex['main-function'] !== 'string') {
+                throw new Error(`${label}: missing main-function`);
+              }
+            }
 
             // multiple choice
             if (ex.type === 'multiple-choice') {
@@ -132,6 +128,17 @@ baseDirs.forEach((baseDir) => {
                 }
                 if (!Array.isArray(ex.explanations) || ex.explanations.some((e) => typeof e !== 'string')) {
                     throw new Error(`${label}: explanations must be an array of strings`);
+                }
+            }
+
+            // checks multipart LLM
+
+            if (ex.multipart) {
+                if (!('LLM' in ex)) {
+                    throw new Error(`${label}: multipart is true but missing LLM variable`);
+                }
+                if (typeof ex.LLM !== 'string') {
+                    throw new Error(`${label}: LLM must be a string`);
                 }
             }
 
