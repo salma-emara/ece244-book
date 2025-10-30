@@ -149,7 +149,7 @@ When you add a new `.md` file, remember to include it in `textbook/_toc.yml`.
 
 The exercises for the book are created in TOML files, which are then converted into JavaScript files to be read by the code to build the book.
 
-To convert .toml files to .js files:
+**To convert .toml files to .js files:**
 
 1- Ensure you have Node.js installed on your system. You can download it from their official website (https://nodejs.org).
 
@@ -159,7 +159,7 @@ To convert .toml files to .js files:
 npm install @iarna/toml
 ```
 
-To add a new exercise page:
+**To add a new exercise page:**
 
 1- Create a new .toml file containing the exericses in textbook/exercises in the chapter folder of your choice.
 
@@ -176,7 +176,7 @@ A .js file will be created in the corresponding folders for all the .toml files 
 {{exercise_embed | replace("%%FILENAME%%", "file-name") }}
 ```
 
-To edit an existing exercise page:
+**To edit an existing exercise page:**
 
 1- Open the .toml file of the exercise you want to edit and make the desired changes.
 
@@ -192,7 +192,7 @@ node ./textbook/_static/add_question_ids.js
 node ./textbook/_static/toml_to_js_convertor.js
 ```
 
-To validate all exercise files
+**To validate all exercise files**
 
 1- In your terminal, go to `ece244-book` directory and execute the following command.
 
@@ -200,13 +200,14 @@ To validate all exercise files
 node textbook/exercises/toml-parser.js
 ```
 
-2- If any file contains errors, only the first error in that file will be reported. Rerun the following command to catch the next one
+2- If any file contains errors, only the first error in that file will be reported. Fix the issue in the file, then rerun the command to see the next error.
+
 ```
 node textbook/exercises/toml-parser.js
 ```
 3- If no errors occur, an "All done." message will be shown in the terminal.
 
-Build the book locally and ensure the quiz is behaving as expected.
+Build the book locally and ensure the exercises are behaving as expected.
 
 
 ## Correcting mistakes 
