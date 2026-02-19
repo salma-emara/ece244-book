@@ -8,3 +8,6 @@ textbook/code/*/*/build/
 *.mov
 *.m4v
 textbook/code/
+
+# Local Netlify folder
+.netlify
