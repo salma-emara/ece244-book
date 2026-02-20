@@ -97,6 +97,7 @@ let parsedObject;
       "difficulty": "Intermediate",
       "type": "explaination",
       "table": true,
+      "multipart": false,
       "question": "Consider the code shown below. You can assume it compiles with no errors and runs. \n\n```{code-block} cpp\n#include <iostream>\nusing namespace std;\n\nint a = 0;\nint* b = &a;\nint** c = &b;\n\nint* foo(int** d) {\n  (**d)++;\n  b = *d;\n  int* e = new int;\n  *e = 10;\n  return e;\n}\n\nint main() {\n  int* g = nullptr;\n  int* f = new int;\n  *f = 5;\n  a++;\n\n  // Point 1\n\n  g = foo(&f);\n  a++;\n  (*g)++;\n\n  // Point 2\n\n  return 0;\n}\n\n```\n\nIn the table below, give the values of the variables indicated in the table columns when program execution reaches each of the two points, Point 1 and Point 2. If a value cannot be obtained due to dereferencing a `nullptr` pointer, write `nullptr` (but assume the program does not stop).\n\n",
       "headers": [
         "Point",

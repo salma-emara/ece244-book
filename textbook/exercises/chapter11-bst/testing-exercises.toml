@@ -6,6 +6,28 @@ type = "explaination"
 table = false
 multipart = true
 
+LLM = '''
+
+Consider the following binary tree. The keys of the nodes are shown below inside the nodes. 
+
+[1,
+  [2,
+    [3, null, null],
+    [4, null, null]
+  ],
+  [5,
+    null,
+    [6,
+      [7, null, null],
+      null
+    ]
+  ]
+]
+
+(1) What is the *preorder* traversal of the tree?
+
+'''
+
 question = '''
 
 Consider the following binary tree. The keys of the nodes are shown below inside the nodes. 
@@ -32,6 +54,29 @@ type = "explaination"
 table = false
 multipart = true
 
+
+LLM = '''
+
+Consider the following binary tree. The keys of the nodes are shown below inside the nodes. 
+
+[1,
+  [2,
+    [3, null, null],
+    [4, null, null]
+  ],
+  [5,
+    null,
+    [6,
+      [7, null, null],
+      null
+    ]
+  ]
+]
+
+(2) What is the *inorder* traversal of the tree? 
+
+'''
+
 question = '''
 (2) What is the *inorder* traversal of the tree? 
 '''
@@ -50,6 +95,29 @@ difficulty = "Easy"
 type = "explaination"
 table = false
 multipart = true
+
+
+LLM = '''
+
+Consider the following binary tree. The keys of the nodes are shown below inside the nodes. 
+
+[1,
+  [2,
+    [3, null, null],
+    [4, null, null]
+  ],
+  [5,
+    null,
+    [6,
+      [7, null, null],
+      null
+    ]
+  ]
+]
+
+(3) What is the *postorder* traversal of the tree? 
+
+'''
 
 question = '''
 (3) What is the *postorder* traversal of the tree? 

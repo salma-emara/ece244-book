@@ -507,11 +507,13 @@ void readInts() {
 } 
 '''
 
-main-function = '''
+append-before = '''
 #include <iostream>
 #include <string>
 using namespace std;
+'''
 
+main-function = '''
 int main() {
   readInts();
   return 0;

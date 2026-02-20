@@ -77,7 +77,8 @@ let parsedObject;
       "question": "Write a C++ function `void readInts()` that repeatedly reads integers from the standard input (using `cin`) and then immediately outputs the input integer (using `cout`), one integer per line. When a `'.'` character is encountered, the function prints the message `Done` on a line by itself and returns. If the user enters any characters other than integer digits or the `'.'`, the function prints the message `Error` on a line by itself and returns. You may assume the user will never enter `eof`.\n\nThus, for example, if the user enters `51 16 700 .`, the function prints:\n<pre>\n51\n16\n700\nDone\n</pre>\n\nHowever, if the user enters `101 21 13 abc 444`, the function prints:\n<pre>\n101\n21\n13\nError\n</pre>\n",
       "starter-code": "void readInts() {\n\n  // Your code here\n\n}\n",
       "answer": "void readInts() {\n  int num = 0;\n  string dot;\n  cin >> num;\n  while (!cin.fail()) {  // received a number\n    cout << num << endl;\n    cin >> num;\n  }\n  // then read a non-integer number\n  string c;\n  // need to clear fail flag before doing cin\n  cin.clear();\n  // Read in a string\n  cin >> c;\n  if (c == \".\") {\n    cout << \"Done\" << endl;\n  } else {\n    cout << \"Error\" << endl;\n  }\n} \n",
-      "main-function": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n  readInts();\n  return 0;\n}\n\n",
+      "append-before": "#include <iostream>\n#include <string>\nusing namespace std;\n",
+      "main-function": "int main() {\n  readInts();\n  return 0;\n}\n\n",
       "testcases": [
         {
           "input": [

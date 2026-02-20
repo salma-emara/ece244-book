@@ -366,6 +366,7 @@ title = "Question 9 in Fall 2021 Midterm Exam"
 difficulty = "Intermediate"
 type = "explaination"
 table = true
+multipart = false
 
 question = '''
 Consider the code shown below. You can assume it compiles with no errors and runs. 
