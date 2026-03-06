@@ -4,3 +4,5 @@ matplotlib
 numpy
 attrs>=20.3,<22
 lxml[html_clean]
+standard-imghdr
+Sphinx==5.00
