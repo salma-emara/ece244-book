@@ -308,7 +308,7 @@ Ellie writes a program to make a simple database for ECE students who like drink
 
 **ECE.h**
 ```{code-block} cpp
-#ifndefine ECE
+#ifndef ECE
 #define ECE
 
 #include "student.h"
@@ -364,7 +364,7 @@ Ellie writes a program to make a simple database for ECE students who like drink
 
 **ECE.h**
 ```{code-block} cpp
-#ifndefine ECE
+#ifndef ECE
 #define ECE
 
 #include "student.h"
@@ -434,7 +434,7 @@ Ellie writes a program to make a simple database for ECE students who like drink
 
 **ECE.h**
 ```{code-block} cpp
-#ifndefine ECE
+#ifndef ECE
 #define ECE
 
 #include "student.h"
@@ -506,7 +506,7 @@ Ellie writes a program to make a simple database for ECE students who like drink
 
 **ECE.h**
 ```{code-block} cpp
-#ifndefine ECE
+#ifndef ECE
 #define ECE
 
 #include "student.h"
@@ -584,7 +584,7 @@ Ellie writes a program to make a simple database for ECE students who like drink
 
 **ECE.h**
 ```{code-block} cpp
-#ifndefine ECE
+#ifndef ECE
 #define ECE
 
 #include "student.h"
