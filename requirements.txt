@@ -1,5 +1,5 @@
 ipython==8.12
-sphinx<8.0.0
+sphinx>=4,<6
 jupyter-book==0.13.1
 matplotlib
 numpy
